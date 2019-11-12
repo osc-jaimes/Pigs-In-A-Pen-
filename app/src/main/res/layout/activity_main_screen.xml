@@ -7,24 +7,70 @@
     tools:context=".MainScreen">
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/main_screen_background"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:contentDescription="@string/main_screen_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/main_screen_background" />
 
     <ImageView
-        android:id="@+id/imageView7"
-        android:layout_width="326dp"
-        android:layout_height="82dp"
+        android:id="@+id/logo"
+        android:layout_width="347dp"
+        android:layout_height="64dp"
+        android:contentDescription="@string/logo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.039"
-        app:layout_constraintStart_toStartOf="@+id/imageView4"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/main_screen_background"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/logo" />
+
+    <Button
+        android:id="@+id/singlePlayerButton"
+        android:layout_width="204dp"
+        android:layout_height="49dp"
+        android:background="@color/buttonColor"
+        android:onClick="pressSinglePlayerButton"
+        android:text="@string/single_player_button"
+        android:textColor="@color/buttonTextColor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.499"
+        app:layout_constraintStart_toStartOf="@+id/main_screen_background"
+        app:layout_constraintTop_toTopOf="@+id/main_screen_background"
+        app:layout_constraintVertical_bias="0.41" />
+
+    <Button
+        android:id="@+id/multiPlayerButton"
+        android:layout_width="203dp"
+        android:layout_height="47dp"
+        android:background="@color/buttonColor"
+        android:text="@string/multi_player_button"
+        android:textColor="@color/buttonTextColor"
+        app:layout_constraintBottom_toBottomOf="@+id/main_screen_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/singlePlayerButton"
+        app:layout_constraintVertical_bias="0.096" />
+
+    <ImageView
+        android:id="@+id/pigMainScreen"
+        android:layout_width="147dp"
+        android:layout_height="172dp"
+        android:contentDescription="@string/pig"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/main_screen_background"
+        app:layout_constraintHorizontal_bias="0.37"
+        app:layout_constraintStart_toEndOf="@+id/multiPlayerButton"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.895"
+        app:srcCompat="@drawable/pig" />
 </androidx.constraintlayout.widget.ConstraintLayout>

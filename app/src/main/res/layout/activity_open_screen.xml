@@ -7,10 +7,11 @@
     tools:context=".OpenScreen">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/backgroundOpenImage"
         android:layout_width="735dp"
         android:layout_height="477dp"
-        android:clickable="true"
+        android:clickable="false"
+        android:contentDescription="@string/open_screen_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -19,39 +20,16 @@
         app:srcCompat="@drawable/farm_scene" />
 
     <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="649dp"
-        android:layout_height="101dp"
+        android:id="@+id/logo"
+        android:layout_width="629dp"
+        android:layout_height="82dp"
+        android:contentDescription="@string/logo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.096"
+        app:layout_constraintVertical_bias="0.003"
         app:srcCompat="@drawable/logo" />
-
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="394dp"
-        android:layout_height="80dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.984"
-        app:srcCompat="@drawable/backgroundfences" />
-
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="368dp"
-        android:layout_height="85dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.985"
-        app:srcCompat="@drawable/backgroundfences" />
 
     <ImageView
         android:id="@+id/imageView3"
@@ -61,7 +39,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/logo"
         app:layout_constraintVertical_bias="0.975"
         app:srcCompat="@drawable/startbutton" />
 
