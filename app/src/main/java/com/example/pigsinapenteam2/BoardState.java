@@ -57,24 +57,84 @@ public class BoardState {
 
   public void setCellState(int xCoord, int yCoord, int cellInput){
 
+    if(xCoord > width){
+      return;
+
+    }//if statement
+
+    if(yCoord > height){
+      return;
+    }//if statement
+
     boardData[xCoord][yCoord][4] = cellInput;
 
   }//setCellState
 
   public int getTopWallState(int xCoord, int yCoord){
 
+    if(xCoord > width){
+      return -1;
+    }//if statement
+
+    if(yCoord > height){
+      return -1;
+    }//if statement
+
     return boardData[xCoord][yCoord][0];
+
   }//getTopWallState
 
   public void setTopWallState(int xCoord, int yCoord, int wallInput){
+
+    if(xCoord > width) {
+      return;
+    }//if statement
+
+    if(yCoord > height){
+      return;
+    }// if statement
 
     boardData[xCoord][yCoord][0] = wallInput;
 
     if(yCoord > 0){
       boardData[xCoord][yCoord - 1][2] = wallInput;
+
     }//if statement
 
   }//setTopWallState
+
+  public int getRightWallState(int xCoord, int yCoord){
+
+    if(xCoord > width){
+      return -1;
+    }//if statement
+
+    if(yCoord > height){
+      return -1;
+    }//if statement
+
+    return boardData[xCoord][yCoord][1];
+
+  }//getRightWallState
+
+  public void setRightWallState(int xCoord, int yCoord, int input){
+
+    if(xCoord > width){
+      return;
+    }//if statement
+
+    if(yCoord > height){
+      return;
+    }//if statement
+
+    boardData[xCoord][yCoord][1] = input;
+
+    if(xCoord < width){
+
+      boardData[xCoord + 1][yCoord][3] = input;
+
+    }//if statement
+  }//setRightWallState
 
 
 }
