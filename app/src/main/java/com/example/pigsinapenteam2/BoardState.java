@@ -4,6 +4,8 @@ package com.example.pigsinapenteam2;
  * stores the state of the board and all inputted data.
  * The board is a 3D array with a format as follows:
  * [x coordinate][y coordinate][wall data and cell data]
+ * for wall data and cell data, 0-3 are for the four walls of the cell, and
+ * 4 is for the cell data itself
  */
 public class BoardState {
 
@@ -36,12 +38,28 @@ public class BoardState {
   }//constructor
 
   public int getWidth(){
+
     return width;
+
   }//getWidth
 
   public int getHeight(){
+
     return height;
+
   }//getHeight
 
-  
+  public int getCellState(int xCoord, int yCoord){
+
+    return boardData[xCoord][yCoord][4];
+
+  }//getCellState
+
+  public void setCellState(int xCoord, int yCoord, int cellInput){
+
+    boardData[xCoord][yCoord][4] = cellInput;
+
+  }//setCellState
+
+
 }
