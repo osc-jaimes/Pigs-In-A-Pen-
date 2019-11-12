@@ -136,5 +136,37 @@ public class BoardState {
     }//if statement
   }//setRightWallState
 
+  public int getBottomWallState(int xCoord, int yCoord){
+
+    if(xCoord > width){
+      return -1;
+    }//if statement
+
+    if(yCoord > height){
+      return -1;
+    }// if statement
+
+    return boardData[xCoord][yCoord][2];
+
+  }//getBottomWallState
+
+  public void setBottomWallState(int xCoord, int yCoord, int input){
+
+    if(xCoord > width){
+      return;
+    }//if statement
+
+    if(yCoord > height){
+      return;
+    }//if statement
+
+    boardData[xCoord][yCoord][2] = input;
+
+    if(yCoord > 0){
+
+      boardData[xCoord][yCoord + 1][2] = input;
+
+    }//if statement
+  }//setBottomWallState
 
 }
