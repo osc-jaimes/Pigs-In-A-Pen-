@@ -34,4 +34,14 @@ public class BoardState {
     width = inputtedWidth;
     height = inputtedHeight;
   }//constructor
+
+  public int getWidth(){
+    return width;
+  }//getWidth
+
+  public int getHeight(){
+    return height;
+  }//getHeight
+
+  
 }
