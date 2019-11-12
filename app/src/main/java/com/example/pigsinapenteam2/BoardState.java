@@ -20,5 +20,18 @@ public class BoardState {
     boardData = new int[10][10][5];
     width = 10;
     height = 10;
-  }
+  }//default constructor
+
+  /**
+   * contructor for BoardState. creates a board of inputted size and assigns class
+   * variables.
+   * @param inputtedWidth
+   * @param inputtedHeight
+   */
+  public BoardState(int inputtedWidth, int inputtedHeight){
+
+    boardData = new int[inputtedWidth][inputtedHeight][5];
+    width = inputtedWidth;
+    height = inputtedHeight;
+  }//constructor
 }
