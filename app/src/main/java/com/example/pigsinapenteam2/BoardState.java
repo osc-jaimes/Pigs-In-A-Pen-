@@ -61,5 +61,20 @@ public class BoardState {
 
   }//setCellState
 
+  public int getTopWallState(int xCoord, int yCoord){
+
+    return boardData[xCoord][yCoord][0];
+  }//getTopWallState
+
+  public void setTopWallState(int xCoord, int yCoord, int wallInput){
+
+    boardData[xCoord][yCoord][0] = wallInput;
+
+    if(yCoord > 0){
+      boardData[xCoord][yCoord - 1][2] = wallInput;
+    }//if statement
+
+  }//setTopWallState
+
 
 }
