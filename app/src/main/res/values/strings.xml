@@ -9,5 +9,11 @@
     <string name="playing_background">Background for setup and play screen</string>
     <string name="pig">pig icon for the game</string>
     <string name="board_size_header">Board Size:</string>
+    <string name="drop_down_button">Button to control drop down menu</string>
+    <string-array name="board_size_options">
+        <item>Small</item>
+        <item>Medium</item>
+        <item>Large</item>
+    </string-array>
 
 </resources>

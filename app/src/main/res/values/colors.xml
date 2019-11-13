@@ -6,4 +6,5 @@
     <color name="buttonColor">#F0774C24</color>
     <color name="buttonTextColor">#F6BF45</color>
     <color name="accent">#9CA383</color>
+    <color name="dropdown">#87795D</color>
 </resources>
