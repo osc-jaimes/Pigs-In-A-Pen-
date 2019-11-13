@@ -52,6 +52,7 @@
         android:layout_width="203dp"
         android:layout_height="47dp"
         android:background="@color/buttonColor"
+        android:onClick="pressMultiPlayerButton"
         android:text="@string/multi_player_button"
         android:textColor="@color/buttonTextColor"
         app:layout_constraintBottom_toBottomOf="@+id/main_screen_background"

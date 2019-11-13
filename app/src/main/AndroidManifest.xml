@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".SinglePlayerScreen"></activity>
+        <activity android:name=".MultiPlayerScreen"></activity>
+        <activity android:name=".SinglePlayerScreen" />
         <activity android:name=".MainScreen" />
         <activity android:name=".OpenScreen">
             <intent-filter>

@@ -20,6 +20,7 @@ public class MainScreen extends AppCompatActivity {
   }
 
   public void pressMultiPlayerButton(View v){
-
+    Intent goToMultiPlayerScreen = new Intent(getApplicationContext(), MultiPlayerScreen.class);
+    startActivity(goToMultiPlayerScreen);
   }
 }

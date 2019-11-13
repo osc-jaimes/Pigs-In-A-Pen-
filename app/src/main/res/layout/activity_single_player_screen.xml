@@ -14,5 +14,55 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/grass_background" />
+
+    <Button
+        android:id="@+id/secondaryBackground"
+        android:layout_width="586dp"
+        android:layout_height="271dp"
+        android:background="@color/buttonColor"
+        android:clickable="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/background"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/background" />
+
+    <Button
+        android:id="@+id/secondBg"
+        android:layout_width="541dp"
+        android:layout_height="230dp"
+        android:background="@color/accent"
+        android:clickable="false"
+        app:layout_constraintBottom_toBottomOf="@+id/secondaryBackground"
+        app:layout_constraintEnd_toEndOf="@+id/secondaryBackground"
+        app:layout_constraintHorizontal_bias="0.511"
+        app:layout_constraintStart_toStartOf="@+id/secondaryBackground"
+        app:layout_constraintTop_toTopOf="@+id/secondaryBackground"
+        app:layout_constraintVertical_bias="0.487" />
+
+    <TextView
+        android:id="@+id/boardSizeHeader"
+        android:layout_width="130dp"
+        android:layout_height="30dp"
+        android:elevation="2dp"
+        android:text="@string/board_size_header"
+        android:textColor="@android:color/background_light"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/secondBg"
+        app:layout_constraintHorizontal_bias="0.028"
+        app:layout_constraintStart_toStartOf="@+id/secondBg"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.271" />
+
+    <Spinner
+        android:id="@+id/planets_spinner"
+        android:layout_width="115dp"
+        android:layout_height="50dp"
+        android:spinnerMode="dropdown"
+        tools:layout_editor_absoluteX="107dp"
+        tools:layout_editor_absoluteY="133dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
