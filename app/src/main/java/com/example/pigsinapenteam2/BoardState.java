@@ -203,4 +203,27 @@ public class BoardState {
 
   }//setLeftWallState
 
+  public int getWallState( int xCoord, int yCoord) {
+
+    int stateAdd = 0;
+
+    if(xCoord > width){
+      return -1;
+    }//if statement
+
+    if(yCoord > height){
+      return -1;
+    }//if statement
+
+    //adds all four wallStates together to check if cell is done
+    for( int n = 0; n <= 4; n++){
+
+      stateAdd = stateAdd +boardData[xCoord][yCoord][n];
+
+    }//for loop
+
+    return stateAdd;
+
+  }//getWallState
+
 }//BoardState
