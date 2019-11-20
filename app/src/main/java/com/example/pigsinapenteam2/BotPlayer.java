@@ -16,16 +16,52 @@ package com.example.pigsinapenteam2;
  *     all at once. Stores data in various places //TODO
  */
 public class BotPlayer extends Player {
+  private int[][] cellLinks;
+  private int[][] chains;
+  private boolean[] isLink;
+  private boolean[] isVisited;
+  private int boardWidth;
+  private int boardHeight;
+  private int numBoardCells;
+  private boolean isEndgame;
 
   /**
    * BotPlayer(int,int) -> void:
    *    constructor.
    *
-   * @param length
+   * @param height
    * @param width
    */
-  public void BotPlayer(int length, int width) {
+  public void BotPlayer(int height, int width) {
     //option: make input arg just GameState? BoardState?
+    boardWidth = width;
+    boardHeight = height;
+    numBoardCells = width * height;
+    isEndgame = false;
+    cellLinks = new int[numBoardCells][2];
+    chains = new int[numBoardCells / 2][5];
+    isLink = new boolean[numBoardCells];
+    isVisited = new boolean[numBoardCells];
+
+    //initialize isLink, isVisited to all false
+    for (int i = 0; i < numBoardCells; i++) {
+      isLink[i] = false;
+      isVisited[i] = false;
+    }
+
+    //initialize cellLinks to all 0
+    for (int i = 0; i < numBoardCells; i++) {
+      for (int j = 0; j < 2; j++) {
+        cellLinks[i][j] = 0;
+      }
+    }
+
+    //initialize chains to all 0
+    for (int i = 0; i < (numBoardCells / 2); i++) {
+      for (int j = 0; j < 5; j++) {
+        chains[i][j] = 0;
+      }
+    }
   }
 
   /**
