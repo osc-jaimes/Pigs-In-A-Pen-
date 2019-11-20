@@ -22,11 +22,13 @@ public class GameState {
    * @param player1Points points of player 1
    * @param player2Points points of player 2
    */
-  public GameState(Player player1, Player player2, int player1Points, int player2Points){
+  public GameState(BoardState currentBoardState, Player player1, Player player2, int player1Points, int player2Points, int currentPlayer){
     this.player1 = player1;
     this.player2 = player2;
     this.player1Points = player1Points;
     this.player2Points = player2Points;
+    this.currentBoardState = currentBoardState;
+    this.currentPlayer = currentPlayer;
   }
 
   /**
