@@ -7,7 +7,7 @@ package com.example.pigsinapenteam2;
  *    Sets the location of the wall the bot wishes to play at to 2.
  *    Returns the new GameState.
  *
- * captureCheck() -> void:
+ * captureCheck(BoardState) -> boolean:
  *     Runs a number of internal checks and searches //TODO
  *
  * linkScan() -> void:
@@ -24,6 +24,7 @@ public class BotPlayer extends Player {
   private int boardHeight;
   private int numBoardCells;
   private boolean isEndgame;
+  private int difficulty;
 
   /**
    * BotPlayer(int,int) -> void:
@@ -31,12 +32,14 @@ public class BotPlayer extends Player {
    *
    * @param height
    * @param width
+   * @param botDifficulty: 0 for easy, 1 normal, 2 hard.
    */
-  public void BotPlayer(int height, int width) {
+  public void BotPlayer(int height, int width, int botDifficulty) {
     //option: make input arg just GameState? BoardState?
     boardWidth = width;
     boardHeight = height;
     numBoardCells = width * height;
+    difficulty = botDifficulty;
     isEndgame = false;
     cellLinks = new int[numBoardCells][2];
     chains = new int[numBoardCells / 2][5];
@@ -70,19 +73,42 @@ public class BotPlayer extends Player {
    *    Returns the new GameState.
    *
    * @param inputState
-   * @return
+   * @return: new GameState
    */
   public GameState doMove(GameState inputState) {
+    boolean canCapture;
+    BoardState currentBoardState;
+
+    currentBoardState = inputState.boardState;
+    canCapture = captureCheck(currentBoardState); //sets isEndgame and canCapture
+
+    if ((difficulty == 2) && isEndgame) {
+      linkScan();
+    } else if ((difficulty == 1) && isEndgame && canCapture) {
+      linkScan();
+    }
+
+    //insert here something like
+    //if (condition A):
+    //  go here, get address over there
+    //else if (condition B):
+    //  go here instead, get address somewhere
+    //else:
+    //  etc
+
     return inputState;
   }
 
   /**
-   * CaptureCheck() -> void:
+   * CaptureCheck(BoardState) -> boolean:
    *     Runs a number of internal checks and searches
    *     (sets internal variables) //TODO
+   *
+   * @param boardState: current board
+   * @return: true if can capture this turn, false otherwise
    */
-  private void captureCheck() {
-
+  private boolean captureCheck(BoardState boardState) {
+    return false; //default value, will change later
   }
 
   /**
