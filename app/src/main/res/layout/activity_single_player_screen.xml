@@ -52,10 +52,55 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/secondBg"
-        app:layout_constraintHorizontal_bias="0.028"
+        app:layout_constraintHorizontal_bias="0.433"
         app:layout_constraintStart_toStartOf="@+id/secondBg"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.271" />
+        app:layout_constraintVertical_bias="0.275" />
+
+    <TextView
+        android:id="@+id/boardSizeHeader4"
+        android:layout_width="130dp"
+        android:layout_height="30dp"
+        android:elevation="2dp"
+        android:text="@string/character"
+        android:textColor="@android:color/background_light"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/secondBg"
+        app:layout_constraintHorizontal_bias="0.832"
+        app:layout_constraintStart_toStartOf="@+id/secondBg"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.275" />
+
+    <TextView
+        android:id="@+id/boardSizeHeader3"
+        android:layout_width="130dp"
+        android:layout_height="30dp"
+        android:elevation="2dp"
+        android:text="@string/difficulty_header"
+        android:textColor="@android:color/background_light"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/secondBg"
+        app:layout_constraintHorizontal_bias="0.041"
+        app:layout_constraintStart_toStartOf="@+id/secondBg"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.275" />
+
+    <TextView
+        android:id="@+id/boardSizeHeader2"
+        android:layout_width="130dp"
+        android:layout_height="30dp"
+        android:elevation="2dp"
+        android:text="@string/board_type_header"
+        android:textColor="@android:color/background_light"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/secondBg"
+        app:layout_constraintHorizontal_bias="0.433"
+        app:layout_constraintStart_toStartOf="@+id/secondBg"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.538" />
 
     <Spinner
         android:id="@+id/board_size_drop_down"
@@ -68,10 +113,26 @@
         android:spinnerMode="dropdown"
         app:layout_constraintBottom_toBottomOf="@+id/secondBg"
         app:layout_constraintEnd_toEndOf="@+id/secondBg"
-        app:layout_constraintHorizontal_bias="0.028"
+        app:layout_constraintHorizontal_bias="0.429"
         app:layout_constraintStart_toStartOf="@+id/secondBg"
         app:layout_constraintTop_toBottomOf="@+id/boardSizeHeader"
         app:layout_constraintVertical_bias="0.087" />
+
+    <Spinner
+        android:id="@+id/board_size_drop_down_difficulty"
+        android:layout_width="127dp"
+        android:layout_height="36dp"
+        android:background="@color/dropdown"
+        android:elevation="2dp"
+        android:entries="@array/board_type_options"
+        android:popupBackground="@color/dropdown"
+        android:spinnerMode="dropdown"
+        app:layout_constraintBottom_toBottomOf="@+id/secondBg"
+        app:layout_constraintEnd_toEndOf="@+id/secondBg"
+        app:layout_constraintHorizontal_bias="0.429"
+        app:layout_constraintStart_toStartOf="@+id/secondBg"
+        app:layout_constraintTop_toBottomOf="@+id/boardSizeHeader"
+        app:layout_constraintVertical_bias="0.805" />
 
     <ImageView
         android:id="@+id/dropDownButton"
@@ -81,10 +142,72 @@
         android:elevation="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/background"
-        app:layout_constraintHorizontal_bias="0.165"
+        app:layout_constraintHorizontal_bias="0.439"
         app:layout_constraintStart_toStartOf="@+id/secondBg"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.4"
         app:srcCompat="@android:drawable/arrow_down_float" />
 
+    <ImageView
+        android:id="@+id/dropDownButton2"
+        android:layout_width="31dp"
+        android:layout_height="21dp"
+        android:contentDescription="@string/drop_down_button"
+        android:elevation="2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/background"
+        app:layout_constraintHorizontal_bias="0.439"
+        app:layout_constraintStart_toStartOf="@+id/secondBg"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.674"
+        app:srcCompat="@android:drawable/arrow_down_float" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="127dp"
+        android:layout_height="36dp"
+        android:background="@color/dropdown"
+        android:text="@string/easy_option"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/secondaryBackground"
+        app:layout_constraintHorizontal_bias="0.77"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/boardSizeHeader3"
+        app:layout_constraintVertical_bias="0.054" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="127dp"
+        android:layout_height="36dp"
+        android:background="@color/dropdown"
+        android:text="@string/medium_option"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/boardSizeHeader2"
+        app:layout_constraintHorizontal_bias="0.767"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:layout_constraintVertical_bias="0.109" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="127dp"
+        android:layout_height="36dp"
+        android:background="@color/dropdown"
+        android:text="@string/hard_option"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/board_size_drop_down_difficulty"
+        app:layout_constraintHorizontal_bias="0.767"
+        app:layout_constraintStart_toStartOf="@+id/background"
+        app:layout_constraintTop_toBottomOf="@+id/button2"
+        app:layout_constraintVertical_bias="0.164" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="155dp"
+        android:layout_height="104dp"
+        android:background="@drawable/grass_background"
+        android:elevation="2dp"
+        app:srcCompat="@drawable/pig"
+        tools:layout_editor_absoluteX="425dp"
+        tools:layout_editor_absoluteY="148dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
