@@ -49,7 +49,7 @@ public class GameState {
    *
    * @return boolean isBot
    */
-  public boolean isBotP1(){
+  public boolean isBotPlayer1(){
     return Player1.isBot();
   }
 
@@ -61,7 +61,7 @@ public class GameState {
    * @return boolean isBot
    */
 
-  public boolean isBotP2(){
+  public boolean isBotPlayer2(){
     return Player2.isBot();
   }
 
