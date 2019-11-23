@@ -24,11 +24,23 @@ public class EasyBotPlayer extends BotPlayer {
 
   }
 
-  private boolean isWallACapture(WallCoordinate coords) {
+  private boolean isWallACapture(BoardState state, WallCoordinate coords) {
 
   }
 
-  private boolean isWallLegal(WallCoordinate coords) {
+  private boolean isWallLegal(BoardState state, WallCoordinate coords) {
+    int wallState = -1;
 
+    if (coords.isTop()) {
+      wallState = state.getTopWallState(coords.x, coords.y);
+    } else if (coords.isRight()) {
+      wallState = state.getRightWallState(coords.x, coords.y);
+    } else if (coords.isBottom()) {
+      wallState = state.getBottomWallState(coords.x, coords.y);
+    } else if (coords.isLeft()) {
+      WallCoordinate = state.getLeftWallState(coords.x, coords.y);
+    }
+
+    return (wallState == 0);
   }
 }

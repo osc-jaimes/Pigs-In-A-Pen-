@@ -52,6 +52,22 @@ public class WallCoordinate {
     return (wallPosition % 2 == 0);
   }
 
+  public boolean isTop() {
+    return (wallPosition == 0);
+  }
+
+  public boolean isRight() {
+    return (wallPosition == 1);
+  }
+
+  public boolean isBottom() {
+    return (wallPosition == 2);
+  }
+
+  public boolean isLeft() {
+    return (wallPosition == 3);
+  }
+
   public int getWallPosition() {
     return wallPosition;
   }
