@@ -20,5 +20,17 @@ public class EasyBotPlayer extends BotPlayer {
   @Override
   public GameState doMove(GameState inputState) {
     return super.doMove(inputState);
+    //go through grid
+    //if capture opportunity, add to possibleCaptures
+    //if legal move, add to possibleMoves
+
+  }
+
+  private boolean isWallACapture(int xCoord, int yCoord, boolean isVertical) {
+
+  }
+
+  private boolean isWallLegal(int xCoord, int yCoord, boolean isVertical) {
+
   }
 }
