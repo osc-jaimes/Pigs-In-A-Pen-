@@ -8,6 +8,7 @@
 
     <ImageView
         android:id="@+id/background"
+        android:scaleType="fitXY"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/playing_background"
