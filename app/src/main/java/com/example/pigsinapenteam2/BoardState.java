@@ -114,7 +114,9 @@ public class BoardState {
       return;
     }//if statement
 
+    //checks if yCoordinate is greater than board, then sets bottom wall state instead
     if(yCoord > height){
+      setBottomWallState(xCoord, yCoord-1, wallInput);
       return;
     }// if statement
 
@@ -133,7 +135,7 @@ public class BoardState {
    * @param yCoord                                          |          |
    * @return the data of the right wall                     *----------*
    */
-  public int getRightWallState(int xCoord, int yCoord){
+  private int getRightWallState(int xCoord, int yCoord){
 
     if(xCoord > width){
       return -1;
@@ -154,7 +156,7 @@ public class BoardState {
    * @param yCoord                                          |          |
    * @param input                                           *----------*
    */
-  public void setRightWallState(int xCoord, int yCoord, int input){
+  private void setRightWallState(int xCoord, int yCoord, int input){
 
     if(xCoord > width){
       return;
@@ -173,7 +175,7 @@ public class BoardState {
     }//if statement
   }//setRightWallState
 
-  public int getBottomWallState(int xCoord, int yCoord){
+  private int getBottomWallState(int xCoord, int yCoord){
 
     if(xCoord > width){
       return -1;
@@ -187,7 +189,7 @@ public class BoardState {
 
   }//getBottomWallState
 
-  public void setBottomWallState(int xCoord, int yCoord, int input){
+  private void setBottomWallState(int xCoord, int yCoord, int input){
 
     if(xCoord > width){
       return;
@@ -209,7 +211,8 @@ public class BoardState {
   public int getLeftWallState(int xCoord, int yCoord){
 
     if(xCoord > width){
-      return -1;
+
+      return getRightWallState(xCoord-1, yCoord);
     }//if statement
 
     if(yCoord > height){
@@ -223,6 +226,7 @@ public class BoardState {
   public void setLeftWallState(int xCoord, int yCoord, int input){
 
     if(xCoord > width){
+      setRightWallState(xCoord-1, yCoord, input);
       return;
     }//if statement
 
