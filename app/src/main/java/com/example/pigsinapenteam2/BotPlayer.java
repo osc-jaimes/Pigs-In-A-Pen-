@@ -1,6 +1,9 @@
 package com.example.pigsinapenteam2;
 
 /**
+ * THIS BRANCH, THIS CODE HAS BEEN DEPRECATED.
+ * (but I can't figure out how to rename this branch so yeah)
+ *
  * BotPlayer: plays the game, so you don't have to
  *
  * doMove(GameState) -> GameState:
