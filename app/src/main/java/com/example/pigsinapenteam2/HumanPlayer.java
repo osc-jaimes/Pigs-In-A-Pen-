@@ -5,6 +5,7 @@
  *
  * public methods:
  * hasMoved: returns true or false if the player has moved or not.
+ * doMove: changes the GameState according to the moves the player does
  */
 package com.example.pigsinapenteam2;
 
@@ -35,7 +36,7 @@ public class HumanPlayer extends Player {
     /**
      * doMove
      *
-     * takes the stored values of x, y and sets the wall state of those values to on.
+     * takes the location of the cell that is going to be changed and sets the boardState to the new move
      *
      *
      * @param inputState an inputted gameState board of pigs + pen
