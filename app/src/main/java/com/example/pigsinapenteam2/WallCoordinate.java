@@ -81,5 +81,6 @@ public class WallCoordinate {
     index[0] = x;
     index[1] = y;
     index[2] = wallPosition;
+    return index;
   }
 }
