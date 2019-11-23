@@ -1,5 +1,7 @@
 package com.example.pigsinapenteam2;
 
+import java.util.LinkedList;
+
 /**
  * EasyBotPlayer: (easy mode) plays so you don't have to.
  */
@@ -7,20 +9,37 @@ public class EasyBotPlayer extends BotPlayer {
   private int boardHeight;
   private int boardWidth;
 
-  private WallCoordinate[] possibleMoves;
-  private WallCoordinate[] possibleCaptures;
+  private LinkedList<WallCoordinate> possibleMoves;
+  private LinkedList<WallCoordinate> possibleCaptures;
 
   public void EasyBotPlayer(int height, int width) {
     boardHeight = height;
     boardWidth = width;
+    possibleMoves = new LinkedList<WallCoordinate>();
+    possibleCaptures = new LinkedList<WallCoordinate>();
   }
 
   @Override
-  public GameState doMove(GameState inputState) {
-    return super.doMove(inputState);
-    //go through grid
-    //if capture opportunity, add to possibleCaptures
-    //if legal move, add to possibleMoves
+  public GameState doMove(GameState inputGameState) {
+    WallCoordinate currentWall = new WallCoordinate();
+    BoardState state = inputGameState.boardState;
+
+    for (int yIndex = 0; yIndex < boardHeight; yIndex++) {
+      for (int xIndex = 0; xIndex < boardWidth; xIndex++) {
+        for (int wallIndex = 0; wallIndex < 4; wallIndex++) {
+          currentWall.x = xIndex;
+          currentWall.y = yIndex;
+          currentWall.setWallPosition(wallIndex);
+
+          if (isWallLegal(state, currentWall)) {
+            possibleMoves.add(currentWall);
+            if (isWallACapture(state, currentWall)) {
+              possibleCaptures.add(currentWall);
+            }
+          }
+        }
+      }
+    }
 
   }
 
