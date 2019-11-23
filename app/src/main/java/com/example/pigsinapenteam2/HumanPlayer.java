@@ -8,12 +8,10 @@
  */
 package com.example.pigsinapenteam2;
 
+
 public class HumanPlayer extends Player {
 // Variables
     private boolean hasMoved;
-    private int nextMoveX;
-    private int nextMoveY;
-    private boolean nextMoveIsHorizontal;
     //
 
 
@@ -32,31 +30,6 @@ public class HumanPlayer extends Player {
         return hasMoved;
     }
 
-    /**
-     * setNextMove
-     *
-     * sets variables to store for other functions to use in a turn.
-     *
-     * @param xCoordinate the x coordinate the player chooses
-     * @param yCoordinate the y coordinate the player chooses
-     * @param isHorizontal a boolean true if the move is horizontal and false if vertical
-     */
-    public void setNextMove(int xCoordinate, int yCoordinate, boolean isHorizontal){
-        nextMoveX = xCoordinate;
-        nextMoveY = yCoordinate;
-        nextMoveIsHorizontal = isHorizontal;
-    }
-
-    /**
-     * nextMoveIsHorizontal
-     *
-     * getter for the boolean nextMoveIsHorizontal variable.
-     *
-     * @return boolean nextMoveIsHorizontal, true if move horizontal, false if vertical
-     */
-    public boolean nextMoveIsHorizontal(){
-        return nextMoveIsHorizontal;
-    }
 
 
     /**
@@ -68,10 +41,10 @@ public class HumanPlayer extends Player {
      * @param inputState an inputted gameState board of pigs + pen
      * @return an output gameState with the updated value for a wall.
      */
-   // @Override
-   // public GameState doMove(GameState inputState){
-        //inputState.getBoardState().setWallState(nextMoveX, nextMoveY, 1);
-        //return inputState;
-   // }
+   @Override
+   public GameState doMove(GameState inputState, int cellX, int cellY, boolean isHorizontal){
+       inputState.getBoardState().setWall(cellX, cellY, isHorizontal);
+        return inputState;
+   }
 
 }
