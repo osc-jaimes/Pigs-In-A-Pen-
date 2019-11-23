@@ -83,4 +83,16 @@ public class WallCoordinate {
     index[2] = wallPosition;
     return index;
   }
+
+  public boolean equals(WallCoordinate otherWall) {
+    boolean isSame = true;
+
+    isSame = isSame && (x == otherWall.x);
+    isSame = isSame && (y == otherWall.y);
+    isSame = isSame && (wallPosition == otherWall.getWallPosition());
+
+    return isSame;
+  }
+
+
 }
