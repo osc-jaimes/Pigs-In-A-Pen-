@@ -59,4 +59,11 @@ public class WallCoordinate {
   public void setWallPosition(int newWallPosition) {
     wallPosition = newWallPosition;
   }
+
+  public int[] getIndexForm() {
+    int[] index = new int[3];
+    index[0] = x;
+    index[1] = y;
+    index[2] = wallPosition;
+  }
 }
