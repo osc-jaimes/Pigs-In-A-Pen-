@@ -106,9 +106,9 @@ public class BoardState {
    * sets the top wall at specified coordinates             *----------*   <== sets this
    * @param xCoord                                          |          |
    * @param yCoord                                          |          |
-   * @param wallInput                                       *----------*
+   * @param input                                       *----------*
    */
-  public void setTopWallState(int xCoord, int yCoord, int wallInput){
+  public void setTopWallState(int xCoord, int yCoord, int input){
 
     if(xCoord > width) {
       return;
@@ -116,14 +116,14 @@ public class BoardState {
 
     //checks if yCoordinate is greater than board, then sets bottom wall state instead
     if(yCoord > height){
-      setBottomWallState(xCoord, yCoord-1, wallInput);
+      setBottomWallState(xCoord, yCoord-1, input);
       return;
     }// if statement
 
-    boardData[xCoord][yCoord][0] = wallInput;
+    boardData[xCoord][yCoord][0] = input;
 
     if(yCoord > 0){
-      boardData[xCoord][yCoord - 1][2] = wallInput;
+      boardData[xCoord][yCoord - 1][2] = input;
 
     }//if statement
 
@@ -244,26 +244,19 @@ public class BoardState {
 
   }//setLeftWallState
 
-  public int getWallState( int xCoord, int yCoord) {
+  public boolean isComplete( int xCoord, int yCoord) {
 
-    int stateAdd = 0;
 
-    if(xCoord > width){
-      return -1;
-    }//if statement
 
-    if(yCoord > height){
-      return -1;
-    }//if statement
+
 
     //adds all four wallStates together to check if cell is done
-    for( int n = 0; n <= 4; n++){
+    for( int n = 0; n <= 3; n++){
 
-      stateAdd = stateAdd +boardData[xCoord][yCoord][n];
+      if(boardData[xCoord][yCoord][n] );
 
     }//for loop
 
-    return stateAdd;
 
   }//getWallState
 
