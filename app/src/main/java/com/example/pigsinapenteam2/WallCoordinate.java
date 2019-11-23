@@ -3,7 +3,9 @@ package com.example.pigsinapenteam2;
 /**
  * WallCoordinate: for storing coordinates easily.
  *
+ *  isHorizontal: true if position 0 or 2.
  *
+ *  isVertical: true if position 1 or 3.
  */
 public class WallCoordinate {
   public int x;
@@ -48,5 +50,13 @@ public class WallCoordinate {
 
   public boolean isHorizontal() {
     return (wallPosition % 2 == 0);
+  }
+
+  public int getWallPosition() {
+    return wallPosition;
+  }
+
+  public void setWallPosition(int newWallPosition) {
+    wallPosition = newWallPosition;
   }
 }
