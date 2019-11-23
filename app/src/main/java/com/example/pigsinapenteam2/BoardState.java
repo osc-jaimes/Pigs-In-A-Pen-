@@ -49,12 +49,24 @@ public class BoardState {
 
   }//getHeight
 
+  /**
+   * gets data from the saved cell data at the specified coordinates
+   * @param xCoord
+   * @param yCoord
+   * @return    the int value at [xCoord][yCoord][4]
+   */
   public int getCellState(int xCoord, int yCoord){
 
     return boardData[xCoord][yCoord][4];
 
   }//getCellState
 
+  /**
+   * sets data for the cell state at the specified coordinates
+   * @param xCoord
+   * @param yCoord
+   * @param cellInput the new int value at [xCoord][yCoord][4]
+   */
   public void setCellState(int xCoord, int yCoord, int cellInput){
 
     if(xCoord > width){
@@ -70,6 +82,12 @@ public class BoardState {
 
   }//setCellState
 
+  /**
+   * gets the top wall at specified coordinates             *----------*   <== retrieves this
+   * @param xCoord                                          |          |
+   * @param yCoord                                          |          |
+   * @return the data of the top wall                       *----------*
+   */
   public int getTopWallState(int xCoord, int yCoord){
 
     if(xCoord > width){
@@ -84,6 +102,12 @@ public class BoardState {
 
   }//getTopWallState
 
+  /**
+   * sets the top wall at specified coordinates             *----------*   <== sets this
+   * @param xCoord                                          |          |
+   * @param yCoord                                          |          |
+   * @param wallInput                                       *----------*
+   */
   public void setTopWallState(int xCoord, int yCoord, int wallInput){
 
     if(xCoord > width) {
@@ -103,6 +127,12 @@ public class BoardState {
 
   }//setTopWallState
 
+  /**
+   * gets the right wall at specified coordinates           *----------*
+   * @param xCoord                                          |          | <== retrieves this
+   * @param yCoord                                          |          |
+   * @return the data of the right wall                     *----------*
+   */
   public int getRightWallState(int xCoord, int yCoord){
 
     if(xCoord > width){
@@ -117,6 +147,13 @@ public class BoardState {
 
   }//getRightWallState
 
+
+  /**
+   * sets the right wall at specified coordinates           *----------*
+   * @param xCoord                                          |          |  <== sets this
+   * @param yCoord                                          |          |
+   * @param input                                           *----------*
+   */
   public void setRightWallState(int xCoord, int yCoord, int input){
 
     if(xCoord > width){
@@ -193,7 +230,7 @@ public class BoardState {
       return;
     }//if statement
 
-    boardData[xCoord][yCoord][4] = input;
+    boardData[xCoord][yCoord][3] = input;
 
     if(xCoord > 0){
 
