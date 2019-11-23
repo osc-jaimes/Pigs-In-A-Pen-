@@ -68,10 +68,10 @@ public class HumanPlayer extends Player {
      * @param inputState an inputted gameState board of pigs + pen
      * @return an output gameState with the updated value for a wall.
      */
-    @Override
-    public GameState doMove(GameState inputState){
-        inputState.boardState.setWallState(nextMoveX, nextMoveY, 1);
-        return inputState;
-    }
+   // @Override
+   // public GameState doMove(GameState inputState){
+        //inputState.getBoardState().setWallState(nextMoveX, nextMoveY, 1);
+        //return inputState;
+   // }
 
 }

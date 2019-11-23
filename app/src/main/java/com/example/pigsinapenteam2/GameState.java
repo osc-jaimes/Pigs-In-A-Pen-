@@ -50,7 +50,7 @@ public class GameState {
    * @return boolean isBot
    */
   public boolean isBotPlayer1(){
-    return Player1.isBot();
+   return this.player1.isBot();
   }
 
   /**
@@ -62,7 +62,7 @@ public class GameState {
    */
 
   public boolean isBotPlayer2(){
-    return Player2.isBot();
+    return this.player2.isBot();
   }
 
 
@@ -77,5 +77,10 @@ public class GameState {
   }
   public int increasePlayer2Points(){
     return player2Points + 1;
+  }
+
+
+  public BoardState getBoardState(){
+    return this.currentBoardState;
   }
 }

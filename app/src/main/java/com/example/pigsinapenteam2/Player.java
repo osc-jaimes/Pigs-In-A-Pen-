@@ -15,4 +15,10 @@ public class Player {
     public GameState doMove(GameState inputState){
         return inputState;
     }
+
+    public boolean isBot(){
+        return false;
+    }
+
+
 }
