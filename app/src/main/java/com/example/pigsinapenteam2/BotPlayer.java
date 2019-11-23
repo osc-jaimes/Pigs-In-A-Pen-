@@ -120,6 +120,9 @@ public class BotPlayer extends Player {
    *     all at once. Stores data in various internal vars //TODO
    */
   private void linkScan() {
+    //for cell in board:
+    //if neighboring edge is empty, add to list
+    // (check if edge of board)
 
   }
 
