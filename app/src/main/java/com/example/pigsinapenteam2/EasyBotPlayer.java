@@ -1,6 +1,7 @@
 package com.example.pigsinapenteam2;
 
 import java.util.LinkedList;
+import java.util.Random;
 
 /**
  * EasyBotPlayer: (easy mode) plays so you don't have to.
@@ -21,8 +22,29 @@ public class EasyBotPlayer extends BotPlayer {
 
   @Override
   public GameState doMove(GameState inputGameState) {
-    WallCoordinate currentWall = new WallCoordinate();
     BoardState state = inputGameState.boardState;
+    WallCoordinate moveToDo;
+
+    fillPossibleCapturesAndMoves(state);
+    moveToDo = chooseRandomMove();
+
+    possibleCaptures.clear();
+    possibleMoves.clear();
+
+    return moveToDo;
+  }
+
+  private WallCoordinate chooseRandomMove() {
+    Random random = new Random();
+    if (possibleCaptures.size() == 0) {
+      return possibleMoves.get(random.nextInt(possibleMoves.size()));
+    } else {
+      return possibleCaptures.get(random.nextInt(possibleCaptures.size()))
+    }
+  }
+
+  private void fillPossibleCapturesAndMoves(BoardState state) {
+    WallCoordinate currentWall = new WallCoordinate();
 
     for (int yIndex = 0; yIndex < boardHeight; yIndex++) {
       for (int xIndex = 0; xIndex < boardWidth; xIndex++) {
@@ -40,7 +62,6 @@ public class EasyBotPlayer extends BotPlayer {
         }
       }
     }
-
   }
 
   private boolean isWallACapture(BoardState state, WallCoordinate coords) {
