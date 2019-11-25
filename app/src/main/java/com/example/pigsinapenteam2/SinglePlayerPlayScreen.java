@@ -6,24 +6,31 @@ import android.os.Bundle;
 import android.view.View;
 
 public class SinglePlayerPlayScreen extends AppCompatActivity {
-
+//Instance Variables + instantiations
   GameState gameState;
   HumanPlayer player1;
-
-  int buttonPressCount = 0;
+  View confirmButton = findViewById(R.id.confirmButton);
+  //
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_single_player_play_screen);
+    //setting confirm button to not exist for now
+    confirmButton.setVisibility(View.GONE);
   }
 
+  /**
+   * onClick
+   *
+   * On user click, the button will first light up, and on click of confirm button the set move will pass on
+   * @param v The view on where the buttons reside
+   */
   public void onClick(View v) {
     if (!player1.getHasMoved()) {
-      buttonPressCount++;
-      v.setVisibility(View.VISIBLE);
-      if (buttonPressCount == 2) {
-        switch (v.getId()) {
+      confirmButton.setVisibility(View.VISIBLE);
+      if (v.findViewById(R.id.confirmButton)){
+        switch (v.findViewById()) {
           case (R.id.H1):
             player1.doMove(gameState, 0, 0, true);
             break;
