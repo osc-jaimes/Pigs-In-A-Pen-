@@ -29,6 +29,20 @@ public class BotPlayer extends Player {
   private int difficulty;
 
   /**
+   * default constructor.
+   */
+  public void BotPlayer() {
+    boardWidth = 0;
+    boardHeight = 0;
+    numBoardCells = 0;
+    isEndgame = false;
+    cellLinks = new int[0][0];
+    chains = new int[0][0];
+    isLink = new boolean[0];
+    isVisited = new boolean[0];
+  }
+
+  /**
    * BotPlayer(int,int) -> void:
    *    constructor.
    *
