@@ -32,7 +32,18 @@ public class EasyBotPlayer extends BotPlayer {
     possibleCaptures.clear();
     possibleMoves.clear();
 
-    return moveToDo;
+    if (moveToDo.isTop()) {
+      state.setTopWallState(moveToDo.x, moveToDo.y, 2);
+    } else if (moveToDo.isLeft()) {
+      state.setLeftWallState(moveToDo.x, moveToDo.y, 2);
+    } else if (moveToDo.isBottom()) {
+      state.setBottomWallState(moveToDo.x, moveToDo.y, 2);
+    } else if (moveToDo.isRight()) {
+      state.setRightWallState(moveToDo.x, moveToDo.y, 2);
+    }
+
+    //inputGameState.boardState = state;
+    return inputGameState;
   }
 
   private WallCoordinate chooseRandomMove() {
