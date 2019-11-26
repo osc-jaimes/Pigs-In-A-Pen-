@@ -1,6 +1,6 @@
 package com.example.pigsinapenteam2;
 
-import Player;
+//import Player;
 
 /**
  * BotPlayer: plays the game, so you don't have to
@@ -81,7 +81,7 @@ public class BotPlayer extends Player {
     boolean canCapture;
     BoardState currentBoardState;
 
-    currentBoardState = inputState.boardState;
+    currentBoardState = inputState.getBoardState();
     canCapture = captureCheck(currentBoardState); //sets isEndgame and canCapture
 
     if ((difficulty == 2) && isEndgame) {
