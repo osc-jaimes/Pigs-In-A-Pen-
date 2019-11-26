@@ -67,38 +67,13 @@ public class EasyBotPlayer extends BotPlayer {
 
           if (isWallLegal(state, currentWall)) {
             possibleMoves.add(currentWall);
-            if (isWallACapture(state, currentWall)) {
+            if (super.isWallACapture(state, currentWall)) {
               possibleCaptures.add(currentWall);
             }
           }
         }
       }
     }
-  }
-
-  private boolean isWallACapture(BoardState state, WallCoordinate coords) {
-    //IMPORTANT NOTE: only checks one cell. MAKE SEPARATE COORD OBJECT for the other
-    //side of the wall!
-    boolean allAreWalls = true;
-    if (!coords.isTop()) {
-      if (state.getTopWallState(coords.x, coords.y) == 0) {
-        allAreWalls = false;
-      }
-    } else if (!coords.isRight()) {
-      if (state.getRightWallState(coords.x, coords.y) == 0) {
-        allAreWalls = false;
-      }
-    } else if (!coords.isBottom()) {
-      if (state.getBottomWallState(coords.x, coords.y) == 0) {
-        allAreWalls = false;
-      }
-    } else if (!coords.isLeft()) {
-      if (state.getLeftWallState(coords.x, coords.y) == 0) {
-        allAreWalls = false;
-      }
-    }
-
-    return allAreWalls;
   }
 
   private boolean isWallLegal(BoardState state, WallCoordinate coords) {
