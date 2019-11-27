@@ -32,16 +32,10 @@ public class EasyBotPlayer extends BotPlayer {
     possibleCaptures.clear();
     possibleMoves.clear();
 
-    if (moveToDo.isTop()) {
-      state.setTopWallState(moveToDo.x, moveToDo.y, 2);
-    } else if (moveToDo.isLeft()) {
-      state.setLeftWallState(moveToDo.x, moveToDo.y, 2);
-    } else if (moveToDo.isBottom()) {
-      state.setBottomWallState(moveToDo.x, moveToDo.y, 2);
-    } else if (moveToDo.isRight()) {
-      state.setRightWallState(moveToDo.x, moveToDo.y, 2);
-    }
+    int[] coordsOfMove = moveToDo.getIndexForm();
+    state.setWallAi(coordsOfMove[0], coordsOfMove[1], coordsOfMove[2]);
 
+    //TEST THIS: do we need this line?
     //inputGameState.boardState = state;
     return inputGameState;
   }
