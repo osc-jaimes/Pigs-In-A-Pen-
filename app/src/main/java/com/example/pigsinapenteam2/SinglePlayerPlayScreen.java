@@ -16,7 +16,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
   //Instance Variables + instantiations
   GameState gameState;
   HumanPlayer player1;
-  View confirmButton = findViewById(R.id.confirmButton);
+  Button confirmButton = findViewById(R.id.confirmButton);
   boolean confirmButtonPressed;
   //
 
@@ -25,11 +25,11 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_single_player_play_screen);
     //setting confirm button to not exist for now
-    confirmButton.setVisibility(View.GONE);
+    //confirmButton.setVisibility(View.GONE);
   }
   public void onClickHorizontal1(View v) {
     if (!player1.getHasMoved()) {
-      confirmButton.setVisibility(View.VISIBLE);
+     // confirmButton.setVisibility(View.VISIBLE);
       confirmButtonPressed = false;
     }
     if(confirmButtonPressed = true){
@@ -45,7 +45,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
   }
   public void onClickHorizontal2(View v) {
     if (!player1.getHasMoved()) {
-      confirmButton.setVisibility(View.VISIBLE);
+    //  confirmButton.setVisibility(View.VISIBLE);
       confirmButtonPressed = false;
     }
     if(confirmButtonPressed = true){
@@ -54,7 +54,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
   }
   public void onClickHorizontal3(View v) {
     if (!player1.getHasMoved()) {
-      confirmButton.setVisibility(View.VISIBLE);
+    //  confirmButton.setVisibility(View.VISIBLE);
       confirmButtonPressed = false;
     }
     if(confirmButtonPressed = true){
@@ -63,7 +63,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
   }
   public void onClickHorizontal14(View v) {
     if (!player1.getHasMoved()) {
-      confirmButton.setVisibility(View.VISIBLE);
+    //  confirmButton.setVisibility(View.VISIBLE);
       confirmButtonPressed = false;
     }
     if(confirmButtonPressed = true){
@@ -72,7 +72,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
   }
   public void onClickHorizontal5(View v) {
     if (!player1.getHasMoved()) {
-      confirmButton.setVisibility(View.VISIBLE);
+     // confirmButton.setVisibility(View.VISIBLE);
       confirmButtonPressed = false;
     }
     if(confirmButtonPressed = true){
@@ -81,7 +81,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
   }
   public void onClickHorizontal16(View v) {
     if (!player1.getHasMoved()) {
-      confirmButton.setVisibility(View.VISIBLE);
+     // confirmButton.setVisibility(View.VISIBLE);
       confirmButtonPressed = false;
     }
     if(confirmButtonPressed = true){
@@ -90,7 +90,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
   }
   public void onClickHorizontal7(View v) {
     if (!player1.getHasMoved()) {
-      confirmButton.setVisibility(View.VISIBLE);
+     // confirmButton.setVisibility(View.VISIBLE);
       confirmButtonPressed = false;
     }
     if(confirmButtonPressed = true){
@@ -99,7 +99,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
   }
   public void onClickHorizontal8(View v) {
     if (!player1.getHasMoved()) {
-      confirmButton.setVisibility(View.VISIBLE);
+    //  confirmButton.setVisibility(View.VISIBLE);
       confirmButtonPressed = false;
     }
     if(confirmButtonPressed = true){
@@ -108,7 +108,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
   }
   public void onClickHorizontal9(View v) {
     if (!player1.getHasMoved()) {
-      confirmButton.setVisibility(View.VISIBLE);
+   //   confirmButton.setVisibility(View.VISIBLE);
       confirmButtonPressed = false;
     }
     if(confirmButtonPressed = true){
@@ -117,7 +117,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
   }
   public void onClickVertical1(View v){
     if (!player1.getHasMoved()) {
-      confirmButton.setVisibility(View.VISIBLE);
+    //  confirmButton.setVisibility(View.VISIBLE);
       confirmButtonPressed = false;
     }
     if(confirmButtonPressed = true){
@@ -126,7 +126,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
   }
   public void onClickVertical2(View v){
     if (!player1.getHasMoved()) {
-      confirmButton.setVisibility(View.VISIBLE);
+    //  confirmButton.setVisibility(View.VISIBLE);
       confirmButtonPressed = false;
     }
     if(confirmButtonPressed = true){
@@ -135,7 +135,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
   }
   public void onClickVertical3(View v){
     if (!player1.getHasMoved()) {
-      confirmButton.setVisibility(View.VISIBLE);
+   //   confirmButton.setVisibility(View.VISIBLE);
       confirmButtonPressed = false;
     }
     if(confirmButtonPressed = true){
@@ -144,7 +144,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
   }
   public void onClickVertical4(View v){
     if (!player1.getHasMoved()) {
-      confirmButton.setVisibility(View.VISIBLE);
+    //  confirmButton.setVisibility(View.VISIBLE);
       confirmButtonPressed = false;
     }
     if(confirmButtonPressed = true){
@@ -153,7 +153,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
   }
   public void onClickVertical5(View v){
     if (!player1.getHasMoved()) {
-      confirmButton.setVisibility(View.VISIBLE);
+    //  confirmButton.setVisibility(View.VISIBLE);
       confirmButtonPressed = false;
     }
     if(confirmButtonPressed = true){
@@ -162,7 +162,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
   }
   public void onClickVertical6(View v){
     if (!player1.getHasMoved()) {
-      confirmButton.setVisibility(View.VISIBLE);
+    //  confirmButton.setVisibility(View.VISIBLE);
       confirmButtonPressed = false;
     }
     if(confirmButtonPressed = true){
@@ -171,23 +171,13 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
   }
   public void onClickVertical8(View v){
     if (!player1.getHasMoved()) {
-      confirmButton.setVisibility(View.VISIBLE);
+    //  confirmButton.setVisibility(View.VISIBLE);
       confirmButtonPressed = false;
     }
     if(confirmButtonPressed = true){
       player1.doMove(gameState, 3, 1, false);
     }
   }
-
-
-
-
-
-
-  }
-
-
-
 
 
 
