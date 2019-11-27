@@ -19,6 +19,8 @@
 
     <string name="score_board">Sore Board for the game</string>
 
+    <string name="pause_button">Button to pause the game</string>
+
     <string-array name="board_size_options">
         <item>Small</item>
         <item>Medium</item>

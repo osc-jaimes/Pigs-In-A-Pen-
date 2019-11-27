@@ -29,9 +29,10 @@
         android:onClick="buttonClicked"
         app:layout_constraintBottom_toTopOf="@+id/button13"
         app:layout_constraintEnd_toStartOf="@+id/v5"
-        app:layout_constraintHorizontal_bias="0.964"
+        app:layout_constraintHorizontal_bias="0.959"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button9" />
+        app:layout_constraintTop_toBottomOf="@+id/button9"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/v6"
@@ -69,7 +70,7 @@
         android:layout_height="35dp"
         android:layout_marginTop="100dp"
         android:layout_marginEnd="84dp"
-        android:background="@color/dropdown"
+        android:background="@color/fencePost"
         app:layout_constraintEnd_toStartOf="@+id/button5"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -81,7 +82,7 @@
         android:layout_height="35dp"
         android:layout_marginTop="56dp"
         android:layout_marginEnd="84dp"
-        android:background="@color/dropdown"
+        android:background="@color/fencePost"
         app:layout_constraintEnd_toStartOf="@+id/button10"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/background"
@@ -93,7 +94,7 @@
         android:layout_height="35dp"
         android:layout_marginTop="56dp"
         android:layout_marginEnd="84dp"
-        android:background="@color/dropdown"
+        android:background="@color/fencePost"
         app:layout_constraintEnd_toStartOf="@+id/button14"
         app:layout_constraintTop_toBottomOf="@+id/button9" />
 
@@ -103,7 +104,7 @@
         android:layout_height="35dp"
         android:layout_marginTop="100dp"
         android:layout_marginEnd="84dp"
-        android:background="@color/dropdown"
+        android:background="@color/fencePost"
         android:onClick="buttonClicked"
         app:layout_constraintEnd_toStartOf="@+id/button6"
         app:layout_constraintTop_toTopOf="parent" />
@@ -114,7 +115,7 @@
         android:layout_height="35dp"
         android:layout_marginTop="56dp"
         android:layout_marginEnd="84dp"
-        android:background="@color/dropdown"
+        android:background="@color/fencePost"
         app:layout_constraintEnd_toStartOf="@+id/button11"
         app:layout_constraintTop_toBottomOf="@+id/button5" />
 
@@ -124,7 +125,7 @@
         android:layout_height="35dp"
         android:layout_marginTop="56dp"
         android:layout_marginEnd="84dp"
-        android:background="@color/dropdown"
+        android:background="@color/fencePost"
         app:layout_constraintEnd_toStartOf="@+id/button15"
         app:layout_constraintTop_toBottomOf="@+id/button10" />
 
@@ -134,7 +135,7 @@
         android:layout_height="35dp"
         android:layout_marginTop="100dp"
         android:layout_marginEnd="84dp"
-        android:background="@color/dropdown"
+        android:background="@color/fencePost"
         app:layout_constraintEnd_toStartOf="@+id/button8"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -144,7 +145,7 @@
         android:layout_height="35dp"
         android:layout_marginTop="56dp"
         android:layout_marginEnd="84dp"
-        android:background="@color/dropdown"
+        android:background="@color/fencePost"
         app:layout_constraintEnd_toStartOf="@+id/button12"
         app:layout_constraintTop_toBottomOf="@+id/button6" />
 
@@ -154,7 +155,7 @@
         android:layout_height="35dp"
         android:layout_marginTop="56dp"
         android:layout_marginEnd="84dp"
-        android:background="@color/dropdown"
+        android:background="@color/fencePost"
         app:layout_constraintEnd_toStartOf="@+id/button16"
         app:layout_constraintTop_toBottomOf="@+id/button11" />
 
@@ -164,7 +165,7 @@
         android:layout_height="35dp"
         android:layout_marginTop="100dp"
         android:layout_marginEnd="164dp"
-        android:background="@color/dropdown"
+        android:background="@color/fencePost"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -174,7 +175,7 @@
         android:layout_height="35dp"
         android:layout_marginTop="56dp"
         android:layout_marginEnd="164dp"
-        android:background="@color/dropdown"
+        android:background="@color/fencePost"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button8" />
 
@@ -184,7 +185,7 @@
         android:layout_height="35dp"
         android:layout_marginTop="56dp"
         android:layout_marginEnd="164dp"
-        android:background="@color/dropdown"
+        android:background="@color/fencePost"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button12" />
 
@@ -221,6 +222,42 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/button9"
         app:layout_constraintTop_toBottomOf="@+id/h0" />
+
+    <Button
+        android:id="@+id/h6"
+        android:layout_width="84dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="56dp"
+        android:background="@color/transparent"
+        android:onClick="buttonClicked"
+        app:layout_constraintEnd_toStartOf="@+id/button14"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/button13"
+        app:layout_constraintTop_toBottomOf="@+id/h3" />
+
+    <Button
+        android:id="@+id/h7"
+        android:layout_width="84dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="56dp"
+        android:background="@color/transparent"
+        android:onClick="buttonClicked"
+        app:layout_constraintEnd_toStartOf="@+id/button15"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/button14"
+        app:layout_constraintTop_toBottomOf="@+id/h4" />
+
+    <Button
+        android:id="@+id/h8"
+        android:layout_width="84dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="56dp"
+        android:background="@color/transparent"
+        android:onClick="buttonClicked"
+        app:layout_constraintEnd_toStartOf="@+id/button16"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/button15"
+        app:layout_constraintTop_toBottomOf="@+id/h5" />
 
     <Button
         android:id="@+id/h4"
@@ -316,5 +353,18 @@
         app:layout_constraintStart_toEndOf="@+id/v2"
         app:layout_constraintTop_toBottomOf="@+id/button8"
         app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="42dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="60dp"
+        android:contentDescription="@string/pause_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.881"
+        app:layout_constraintStart_toEndOf="@+id/scoreboard"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/pause_button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

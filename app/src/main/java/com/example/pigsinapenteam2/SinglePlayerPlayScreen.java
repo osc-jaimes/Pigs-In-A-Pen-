@@ -22,7 +22,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
   public void buttonClicked(View V){
     int buttonId = V.getId();
     Button theButton = findViewById(buttonId);
-    theButton.setBackgroundColor(getResources().getColor(R.color.buttonColor));
+    theButton.setBackgroundColor(getResources().getColor(R.color.fences));
 
   }
 
