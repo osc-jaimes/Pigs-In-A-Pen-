@@ -278,4 +278,54 @@ public class BoardState {
 
   }//getWallState
 
+  /**
+   * sets walls based on if horizontal or vertical. places at x, y coordinate
+   * @param xCoord  x coordinate on 2D array
+   * @param yCoord Y coordinate on 2D array
+   * @param isHorizontal  boolean to know if wall needing to be placed is horizontal
+   */
+  public void setWall(int xCoord, int yCoord, boolean isHorizontal){
+    if(!(isHorizontal == false)){
+      setLeftWallState(xCoord, yCoord, 1);
+
+    }//if
+    else{
+      setTopWallState(xCoord, yCoord, 1);
+    }//else
+  }//setTopWall
+
+  public void setWallAi(int xCoord, int yCoord, int wallDirection){
+
+     int wallInput = 1;
+
+    switch(wallDirection){
+
+      case 0 :
+
+        setTopWallState(xCoord, yCoord, wallInput);
+        break;
+
+      case 1:
+
+        setRightWallState(xCoord, yCoord, wallInput);
+        break;
+
+      case 2:
+
+        setBottomWallState(xCoord, yCoord, wallInput);
+        break;
+
+      case 3:
+
+        setLeftWallState(xCoord, yCoord, wallInput);
+        break;
+
+      default:
+
+        break;
+
+    }//switch
+
+  }//setWallAi
+
 }//BoardState
