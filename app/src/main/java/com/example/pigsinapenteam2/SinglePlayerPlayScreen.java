@@ -16,7 +16,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
   //Instance Variables + instantiations
   GameState gameState;
   HumanPlayer player1;
-  View confirmButton = findViewById(R.id.confirmButton);
+  Button confirmButton = findViewById(R.id.confirmButton);
   int cellX;
   int cellY;
   boolean isHorizontal;
