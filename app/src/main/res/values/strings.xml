@@ -16,6 +16,9 @@
     <string name="board_type_header">Board Type:</string>
     <string name="drop_down_button">Button to control drop down menu</string>
     <string name="play_button">Start Game</string>
+
+    <string name="score_board">Sore Board for the game</string>
+
     <string-array name="board_size_options">
         <item>Small</item>
         <item>Medium</item>
