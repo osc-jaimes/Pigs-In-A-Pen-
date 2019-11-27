@@ -81,5 +81,43 @@ public class WallCoordinate {
     index[0] = x;
     index[1] = y;
     index[2] = wallPosition;
+    return index;
   }
+
+  public boolean equals(WallCoordinate otherWall) {
+    boolean isSame = true;
+
+    isSame = isSame && (x == otherWall.x);
+    isSame = isSame && (y == otherWall.y);
+    isSame = isSame && (wallPosition == otherWall.getWallPosition());
+
+    return isSame;
+  }
+
+  public boolean isSameWall(WallCoordinate otherWall) {
+    if (equals(otherWall)) {
+      return true;
+    }
+
+    boolean xCorrect = false;
+    boolean yCorrect = false;
+    int otherWallPos = otherWall.getWallPosition();
+
+    if (wallPosition == 0 && otherWallPos == 2) {
+      xCorrect = (x == otherWall.x);
+      yCorrect = (y == otherWall.y + 1);
+    } else if (wallPosition == 2 && otherWallPos == 0) {
+      xCorrect = (x == otherWall.x);
+      yCorrect = (otherWall.y == y + 1);
+    } else if (wallPosition == 1 && otherWallPos == 3) {
+      xCorrect = (otherWall.x == x + 1);
+      yCorrect = (y == otherWall.y);
+    } else if (wallPosition == 3 && otherWallPos == 0) {
+      xCorrect = (x == otherWall.x + 1);
+      yCorrect = (y == otherWall.y);
+    }
+
+    return (xCorrect && yCorrect);
+  }
+
 }

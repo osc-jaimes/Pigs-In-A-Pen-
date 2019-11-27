@@ -18,15 +18,20 @@ import Player;
  *     all at once. Stores data in various places //TODO
  */
 public class BotPlayer extends Player {
-  private int[][] cellLinks;
-  private int[][] chains;
-  private boolean[] isLink;
-  private boolean[] isVisited;
   private int boardWidth;
   private int boardHeight;
   private int numBoardCells;
-  private boolean isEndgame;
   private int difficulty;
+
+  /**
+   * default constructor.
+   */
+  public void BotPlayer() {
+    boardWidth = 0;
+    boardHeight = 0;
+    numBoardCells = 0;
+    difficulty = 0;
+  }
 
   /**
    * BotPlayer(int,int) -> void:
@@ -42,31 +47,6 @@ public class BotPlayer extends Player {
     boardHeight = height;
     numBoardCells = width * height;
     difficulty = botDifficulty;
-    isEndgame = false;
-    cellLinks = new int[numBoardCells][2];
-    chains = new int[numBoardCells / 2][5];
-    isLink = new boolean[numBoardCells];
-    isVisited = new boolean[numBoardCells];
-
-    //initialize isLink, isVisited to all false
-    for (int i = 0; i < numBoardCells; i++) {
-      isLink[i] = false;
-      isVisited[i] = false;
-    }
-
-    //initialize cellLinks to all 0
-    for (int i = 0; i < numBoardCells; i++) {
-      for (int j = 0; j < 2; j++) {
-        cellLinks[i][j] = 0;
-      }
-    }
-
-    //initialize chains to all 0
-    for (int i = 0; i < (numBoardCells / 2); i++) {
-      for (int j = 0; j < 5; j++) {
-        chains[i][j] = 0;
-      }
-    }
   }
 
   /**
@@ -78,55 +58,49 @@ public class BotPlayer extends Player {
    * @return: new GameState
    */
   public GameState doMove(GameState inputState) {
-    boolean canCapture;
-    BoardState currentBoardState;
-
-    currentBoardState = inputState.boardState;
-    canCapture = captureCheck(currentBoardState); //sets isEndgame and canCapture
-
-    if ((difficulty == 2) && isEndgame) {
-      linkScan();
-    } else if ((difficulty == 1) && isEndgame && canCapture) {
-      linkScan();
-    }
-
-    //insert here something like
-    //if (condition A):
-    //  go here, get address over there
-    //else if (condition B):
-    //  go here instead, get address somewhere
-    //else:
-    //  etc
-
     return inputState;
   }
 
-  /**
-   * CaptureCheck(BoardState) -> boolean:
-   *     Runs a number of internal checks and searches
-   *     (sets internal variables) //TODO
-   *
-   * @param boardState: current board
-   * @return: true if can capture this turn, false otherwise
-   */
-  private boolean captureCheck(BoardState boardState) {
-    return false; //default value, will change later
+  protected boolean isWallACapture(BoardState state, WallCoordinate coords) {
+    //IMPORTANT NOTE: only checks one cell. MAKE SEPARATE COORD OBJECT for the other
+    //side of the wall!
+    boolean allAreWalls = true;
+    if (!coords.isTop()) {
+      if (state.getTopWallState(coords.x, coords.y) == 0) {
+        allAreWalls = false;
+      }
+    } else if (!coords.isRight()) {
+      if (state.getRightWallState(coords.x, coords.y) == 0) {
+        allAreWalls = false;
+      }
+    } else if (!coords.isBottom()) {
+      if (state.getBottomWallState(coords.x, coords.y) == 0) {
+        allAreWalls = false;
+      }
+    } else if (!coords.isLeft()) {
+      if (state.getLeftWallState(coords.x, coords.y) == 0) {
+        allAreWalls = false;
+      }
+    }
+
+    return allAreWalls;
   }
 
-  /**
-   * linkScan() -> void:
-   *     Runs a search for "chains" or "links," i.e. finds sections
-   *     of the grid that are connected and can be captured pretty much
-   *     all at once. Stores data in various internal vars //TODO
-   */
-  private void linkScan() {
-    //for cell in board:
-    //if neighboring edge is empty, add to list
-    // (check if edge of board)
 
+  protected boolean isWallLegal(BoardState state, WallCoordinate coords) {
+    int wallState = -1;
+
+    if (coords.isTop()) {
+      wallState = state.getTopWallState(coords.x, coords.y);
+    } else if (coords.isRight()) {
+      wallState = state.getRightWallState(coords.x, coords.y);
+    } else if (coords.isBottom()) {
+      wallState = state.getBottomWallState(coords.x, coords.y);
+    } else if (coords.isLeft()) {
+      wallState = state.getLeftWallState(coords.x, coords.y);
+    }
+
+    return (wallState == 0);
   }
-
-
-
 }
 
