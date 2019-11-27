@@ -1,11 +1,24 @@
 package com.example.pigsinapenteam2;
 
+import java.util.LinkedList;
+
 public class MediumBotPlayer extends BotPlayer {
   Chains chains;
+  LinkedList<WallCoordinate> possibleMoves;
+  LinkedList<WallCoordinate> possibleCaptures;
+
+  public void MediumBotPlayer() {
+    super.BotPlayer();
+    chains = new Chains(0,0);
+    possibleMoves = new LinkedList<WallCoordinate>();
+    possibleCaptures = new LinkedList<WallCoordinate>();
+  }
 
   public void MediumBotPlayer(int height, int width) {
     super.BotPlayer(height, width, 1);
-    chains = Chains(height, width);
+    chains = new Chains(height, width);
+    possibleCaptures = new LinkedList<WallCoordinate>();
+    possibleMoves = new LinkedList<WallCoordinate>();
   }
 
   @Override
