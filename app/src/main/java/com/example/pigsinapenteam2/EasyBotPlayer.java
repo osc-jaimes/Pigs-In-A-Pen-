@@ -51,7 +51,7 @@ public class EasyBotPlayer extends BotPlayer {
     if (possibleCaptures.size() == 0) {
       return possibleMoves.get(random.nextInt(possibleMoves.size()));
     } else {
-      return possibleCaptures.get(random.nextInt(possibleCaptures.size()))
+      return possibleCaptures.get(random.nextInt(possibleCaptures.size()));
     }
   }
 
