@@ -276,6 +276,6 @@ public class BoardState {
 
     return true;
 
-  }//getWallState
+  }//isComplete
 
 }//BoardState
