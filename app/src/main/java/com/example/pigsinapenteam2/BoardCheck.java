@@ -26,8 +26,23 @@ public class BoardCheck {
     }//for loop
   }//boardChecker
 
-  private void cellScoreCheck(int xCoord, int yCoord)
+  private void cellScoreCheck(int xCoord, int yCoord){
+    int input = currentBoard.getCellState(xCoord, yCoord);
 
+    switch (input){
 
+      case 1:
+        playerOneScore += 1;
+        break;
 
-}
+      case 2:
+        playerTwoScore += 1;
+        break;
+
+      default:
+        break;
+    }//switch
+
+  }//cellScoreCheck
+
+}//BoardCheck
