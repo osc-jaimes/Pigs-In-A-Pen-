@@ -7,4 +7,7 @@
     <color name="buttonTextColor">#F6BF45</color>
     <color name="accent">#9CA383</color>
     <color name="dropdown">#87795D</color>
+    <color name ="transparent">#00FF001C</color>
+    <color name ="fencePost">#654321</color>
+    <color name ="fences">#c69d08</color>
 </resources>

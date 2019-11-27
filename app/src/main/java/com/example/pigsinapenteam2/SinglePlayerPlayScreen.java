@@ -2,7 +2,14 @@ package com.example.pigsinapenteam2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.res.Resources;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.view.View;
 
 public class SinglePlayerPlayScreen extends AppCompatActivity {
@@ -28,6 +35,13 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
     if(confirmButtonPressed = true){
       player1.doMove(gameState, 0, 0, true);
     }
+  }
+
+  public void buttonClicked(View V){
+    int buttonId = V.getId();
+    Button theButton = findViewById(buttonId);
+    theButton.setBackgroundColor(getResources().getColor(R.color.fences));
+
   }
   public void onClickHorizontal2(View v) {
     if (!player1.getHasMoved()) {
@@ -164,6 +178,18 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
       player1.doMove(gameState, 3, 1, false);
     }
   }
+
+
+
+
+
+
+  }
+
+
+
+
+
 
   public void onClickConfirmationButton(View v) {
     confirmButtonPressed = true;
