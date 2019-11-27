@@ -8,7 +8,7 @@ public class MediumBotPlayer extends BotPlayer {
 
   @Override
   public GameState doMove(GameState inputState) {
-    return super.doMove(inputState);
+
 
     //horizontal walls: (during this loop do per-cell checks)
     //for 0 to height-1:
@@ -20,5 +20,7 @@ public class MediumBotPlayer extends BotPlayer {
     // for 0 to height:
     //    -run stuff on top wall version
     //    -run stuff on bottom wall version
+
+    return super.doMove(inputState);
   }
 }
