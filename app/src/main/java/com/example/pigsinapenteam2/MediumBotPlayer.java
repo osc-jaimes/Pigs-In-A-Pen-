@@ -1,9 +1,11 @@
 package com.example.pigsinapenteam2;
 
 public class MediumBotPlayer extends BotPlayer {
+  Chains chains;
 
   public void MediumBotPlayer(int height, int width) {
     super.BotPlayer(height, width, 1);
+    chains = Chains(height, width);
   }
 
   @Override

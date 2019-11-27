@@ -14,4 +14,10 @@ public class Chains {
     boardHeight = 0;
     IsCellAChainLink = new boolean[boardWidth][boardHeight];
   }
+
+  public void Chains(int height, int width) {
+    boardWidth = width;
+    boardHeight = height;
+    IsCellAChainLink = new boolean[boardWidth][boardHeight];
+  }
 }
