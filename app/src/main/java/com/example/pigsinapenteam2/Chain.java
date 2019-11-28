@@ -31,6 +31,16 @@ public class Chain {
     isHeadSet = false;
   }
 
+  public void addHead(WallCoordinate newHeadCoords) {
+    length += 1;
+    head = newHeadCoords;
+  }
+
+  public void addTail(WallCoordinate newTailCoords) {
+    length += 1;
+    tail = newTailCoords;
+  }
+
   public boolean setTailOpen(boolean tailOpen) {
     isTailSet = true;
     isTailOpen = tailOpen;
