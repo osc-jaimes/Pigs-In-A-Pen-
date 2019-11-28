@@ -1,6 +1,5 @@
 package com.example.pigsinapenteam2;
 
-import Player;
 
 /**
  * BotPlayer: plays the game, so you don't have to
@@ -26,7 +25,7 @@ public class BotPlayer extends Player {
   /**
    * default constructor.
    */
-  public void BotPlayer() {
+  public BotPlayer() {
     boardWidth = 0;
     boardHeight = 0;
     numBoardCells = 0;
@@ -41,7 +40,7 @@ public class BotPlayer extends Player {
    * @param width
    * @param botDifficulty: 0 for easy, 1 normal, 2 hard.
    */
-  public void BotPlayer(int height, int width, int botDifficulty) {
+  public BotPlayer(int height, int width, int botDifficulty) {
     //option: make input arg just GameState? BoardState?
     boardWidth = width;
     boardHeight = height;

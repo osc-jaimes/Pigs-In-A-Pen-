@@ -11,7 +11,7 @@ public class Chain {
   //a tail or head would be "closed" if you can place a wall there
   //   and immediately get a point.
 
-  public void Chain() {
+  public Chain() {
     length = 0;
     head = new WallCoordinate();
     tail = new WallCoordinate();
@@ -21,7 +21,7 @@ public class Chain {
     isTailSet = false;
   }
 
-  public void Chain(WallCoordinate chainHead, WallCoordinate chainTail) {
+  public Chain(WallCoordinate chainHead, WallCoordinate chainTail) {
     length = 1;
     head = chainHead;
     tail = chainTail;

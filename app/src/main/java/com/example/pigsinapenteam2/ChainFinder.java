@@ -9,13 +9,13 @@ public class ChainFinder {
   int boardWidth;
   boolean[][] IsCellAChainLink;
 
-  public void ChainFinder() {
+  public ChainFinder() {
     boardWidth = 0;
     boardHeight = 0;
     IsCellAChainLink = new boolean[boardWidth][boardHeight];
   }
 
-  public void ChainFinder(int height, int width) {
+  public ChainFinder(int height, int width) {
     boardWidth = width;
     boardHeight = height;
     IsCellAChainLink = new boolean[boardWidth][boardHeight];

@@ -7,14 +7,14 @@ public class MediumBotPlayer extends BotPlayer {
   LinkedList<WallCoordinate> possibleMoves;
   LinkedList<WallCoordinate> possibleCaptures;
 
-  public void MediumBotPlayer() {
+  public MediumBotPlayer() {
     super.BotPlayer();
     chainFinder = new ChainFinder(0,0);
     possibleMoves = new LinkedList<WallCoordinate>();
     possibleCaptures = new LinkedList<WallCoordinate>();
   }
 
-  public void MediumBotPlayer(int height, int width) {
+  public MediumBotPlayer(int height, int width) {
     super.BotPlayer(height, width, 1);
     chainFinder = new ChainFinder(height, width);
     possibleCaptures = new LinkedList<WallCoordinate>();
