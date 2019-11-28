@@ -144,7 +144,7 @@ public class BoardState {
    * @param yCoord                                          |          |
    * @return the data of the right wall                     *----------*
    */
-  private int getRightWallState(int xCoord, int yCoord){
+  public int getRightWallState(int xCoord, int yCoord){
 
     if(xCoord > width){
       return 0;
@@ -186,7 +186,7 @@ public class BoardState {
   }//setRightWallState
 
   //=======================================================================================
-  private int getBottomWallState(int xCoord, int yCoord){
+  public int getBottomWallState(int xCoord, int yCoord){
 
     if(xCoord > width){
       return 0;

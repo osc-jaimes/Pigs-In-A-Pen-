@@ -7,14 +7,6 @@ package com.example.pigsinapenteam2;
  * doMove(GameState) -> GameState:
  *    Sets the location of the wall the bot wishes to play at to 2.
  *    Returns the new GameState.
- *
- * captureCheck(BoardState) -> boolean:
- *     Runs a number of internal checks and searches //TODO
- *
- * linkScan() -> void:
- *     Runs a search for "chains" or "links," i.e. finds sections
- *     of the grid that are connected and can be captured pretty much
- *     all at once. Stores data in various places //TODO
  */
 public class BotPlayer extends Player {
   private int boardWidth;

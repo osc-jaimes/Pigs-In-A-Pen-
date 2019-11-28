@@ -3,22 +3,22 @@ package com.example.pigsinapenteam2;
 import java.util.LinkedList;
 
 public class MediumBotPlayer extends BotPlayer {
-  ChainFinder chainFinder;
-  LinkedList<WallCoordinate> possibleMoves;
-  LinkedList<WallCoordinate> possibleCaptures;
+  private ChainFinder chainFinder;
+  private LinkedList<WallCoordinate> possibleMoves;
+  private LinkedList<WallCoordinate> possibleCaptures;
 
   public MediumBotPlayer() {
     super();
     chainFinder = new ChainFinder(0,0);
-    possibleMoves = new LinkedList<WallCoordinate>();
-    possibleCaptures = new LinkedList<WallCoordinate>();
+    possibleMoves = new LinkedList<>();
+    possibleCaptures = new LinkedList<>();
   }
 
   public MediumBotPlayer(int height, int width) {
     super(height, width, 1);
     chainFinder = new ChainFinder(height, width);
-    possibleCaptures = new LinkedList<WallCoordinate>();
-    possibleMoves = new LinkedList<WallCoordinate>();
+    possibleCaptures = new LinkedList<>();
+    possibleMoves = new LinkedList<>();
   }
 
   @Override
