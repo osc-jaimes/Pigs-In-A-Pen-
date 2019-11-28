@@ -6,6 +6,8 @@ public class Chain {
   WallCoordinate tail;
   boolean isHeadOpen;
   boolean isTailOpen;
+  boolean isHeadSet;
+  boolean isTailSet;
   //a tail or head would be "closed" if you can place a wall there
   //   and immediately get a point.
 
@@ -15,5 +17,17 @@ public class Chain {
     tail = new WallCoordinate();
     isHeadOpen = true;
     isTailOpen = true;
+    isHeadSet = false;
+    isTailSet = false;
+  }
+
+  public void Chain(WallCoordinate chainHead, WallCoordinate chainTail) {
+    length = 1;
+    head = chainHead;
+    tail = chainTail;
+    isTailOpen = true;
+    isHeadOpen = true;
+    isTailSet = false;
+    isHeadSet = false;
   }
 }
