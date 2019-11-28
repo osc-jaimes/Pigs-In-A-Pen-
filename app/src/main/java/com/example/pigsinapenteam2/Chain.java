@@ -31,3 +31,10 @@ public class Chain {
     isHeadSet = false;
   }
 }
+
+public class ChainHeadOpenFlagUnsetException extends Exception {
+  public void ChainHeadOpenFlagUnsetException(){}
+  public void ChainHeadOpenFlagUnsetException(String message){
+    super(message);
+  }
+}
