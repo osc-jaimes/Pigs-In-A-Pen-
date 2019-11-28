@@ -14,7 +14,7 @@ public class EasyBotPlayer extends BotPlayer {
   private LinkedList<WallCoordinate> possibleCaptures;
 
   public EasyBotPlayer(int height, int width) {
-    super.BotPlayer(height,width,0);
+    super(height,width,0);
     boardHeight = height;
     boardWidth = width;
     possibleMoves = new LinkedList<WallCoordinate>();
