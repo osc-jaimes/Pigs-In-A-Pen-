@@ -41,12 +41,12 @@ public class Chain {
     tail = newTailCoords;
   }
 
-  public boolean setTailOpen(boolean tailOpen) {
+  public void setTailOpen(boolean tailOpen) {
     isTailSet = true;
     isTailOpen = tailOpen;
   }
 
-  public boolean setHeadOpen(boolean headOpen) {
+  public void setHeadOpen(boolean headOpen) {
     isHeadSet = true;
     isHeadOpen = headOpen;
   }

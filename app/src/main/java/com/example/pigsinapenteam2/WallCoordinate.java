@@ -18,7 +18,7 @@ public class WallCoordinate {
    * @param yCoord
    * @param wallPos: 0 for top, 1 for right, onwards clockwise (max 3)
    */
-  public void WallCoordinate(int xCoord, int yCoord, int wallPos) {
+  public WallCoordinate(int xCoord, int yCoord, int wallPos) {
     x = xCoord;
     y = yCoord;
     wallPosition = wallPos;
@@ -27,7 +27,7 @@ public class WallCoordinate {
   /**
    * default constructor
    */
-  public void WallCoordinate() {
+  public WallCoordinate() {
     x = 0;
     y = 0;
     wallPosition = 0;
@@ -38,7 +38,7 @@ public class WallCoordinate {
    * @param xCoord
    * @param yCoord
    */
-  public void wallCoordinate(int xCoord, int yCoord) {
+  public WallCoordinate(int xCoord, int yCoord) {
     x = xCoord;
     y = yCoord;
     wallPosition = 0;
