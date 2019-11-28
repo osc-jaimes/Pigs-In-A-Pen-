@@ -38,3 +38,10 @@ public class ChainHeadOpenFlagUnsetException extends Exception {
     super(message);
   }
 }
+
+public class ChainTailOpenFlagUnsetException extends Exception {
+  public void ChainTailOpenFlagUnsetException(){}
+  public void ChainTailOpenFlagUnsetException(String message){
+    super(message);
+  }
+}
