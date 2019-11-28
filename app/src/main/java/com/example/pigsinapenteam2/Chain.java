@@ -30,18 +30,38 @@ public class Chain {
     isTailSet = false;
     isHeadSet = false;
   }
-}
 
-public class ChainHeadOpenFlagUnsetException extends Exception {
-  public void ChainHeadOpenFlagUnsetException(){}
-  public void ChainHeadOpenFlagUnsetException(String message){
-    super(message);
+  public boolean setTailOpen(boolean tailOpen) {
+    isTailSet = true;
+    isTailOpen = tailOpen;
+  }
+
+  public boolean setHeadOpen(boolean headOpen) {
+    isHeadSet = true;
+    isHeadOpen = headOpen;
+  }
+
+  public boolean getHeadOpen() throws ChainEndOpenFlagUnsetException {
+    if (!isHeadSet) {
+      throw new ChainEndOpenFlagUnsetException("Head flag not yet set.");
+    } else {
+      return isHeadOpen;
+    }
+  }
+
+  public boolean getTailOpen() throws ChainEndOpenFlagUnsetException {
+    if (!isTailSet) {
+      throw new ChainEndOpenFlagUnsetException("Tail flag not yet set.");
+    } else {
+      return isTailOpen;
+    }
+  }
+
+  private class ChainEndOpenFlagUnsetException extends Exception {
+    public ChainEndOpenFlagUnsetException(String message){
+      super(message);
+    }
+    public ChainEndOpenFlagUnsetException(){}
   }
 }
 
-public class ChainTailOpenFlagUnsetException extends Exception {
-  public void ChainTailOpenFlagUnsetException(){}
-  public void ChainTailOpenFlagUnsetException(String message){
-    super(message);
-  }
-}
