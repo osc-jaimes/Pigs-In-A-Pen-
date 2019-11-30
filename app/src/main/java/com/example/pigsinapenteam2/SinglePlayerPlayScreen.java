@@ -252,18 +252,19 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
       }while(botCurrentPoints < gameState.player2Points);
     }
   }
-<<<<<<< HEAD
 
 
-  public void updateScore(){
-    TextView tv = (TextView)findViewById(R.id.player1Score);
+
+  public void updateScore() {
+    TextView tv = (TextView) findViewById(R.id.player1Score);
     tv.setText("" + this.gameState.player1Points);
-=======
+  }
+
   public void endGame(){
     if(gameState.player1Points + gameState.player2Points >= totalScore) {
 
       //make victory screen pop up - include buttons like restart/etc
     }
->>>>>>> 69d5bca53971e75af6727a8eb1430bc0a366d35f
+
   }
 }
