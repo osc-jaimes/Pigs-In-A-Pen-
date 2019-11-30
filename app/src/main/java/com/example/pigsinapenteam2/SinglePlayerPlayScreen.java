@@ -21,6 +21,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
   boolean isHorizontal;
   Button currentButton;
   boolean confirmedAction;
+  protected int totalScore;
 
 
   private Player currentPlayer;
@@ -49,7 +50,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
                     | View.SYSTEM_UI_FLAG_FULLSCREEN
                     | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
 
-    int totalScore = WIDTH * HEIGHT /2;
+    totalScore = WIDTH * HEIGHT /2;
   }
 
   public void buttonClicked(View V){
@@ -247,6 +248,12 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
       do{
         this.gameState = player2.doMove(this.gameState);
       }while(botCurrentPoints < gameState.player2Points);
+    }
+  }
+  public void endGame(){
+    if(gameState.player1Points + gameState.player2Points >= totalScore) {
+
+      //make victory screen pop up - include buttons like restart/etc
     }
   }
 }
