@@ -17,6 +17,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
   HumanPlayer player1;
   BotPlayer player2;
   Button confirmButton;
+  Button pauseButton;
   int cellX;
   int cellY;
   boolean playerHasMoved;
@@ -36,6 +37,8 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
     this.confirmButton = findViewById(R.id.confirmButtonPlayer1);
     //setting confirm button to not exist for now
     confirmButton.setVisibility(View.GONE);
+    this.pauseButton = findViewById(R.id.pauseButton);
+    pauseButton.setVisibility(View.GONE);
     this.player1 = new HumanPlayer();
     this.player2 = new EasyBotPlayer(HEIGHT,WIDTH);
     this.currentPlayer = player1;
@@ -265,8 +268,8 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
     TextView tv = (TextView) findViewById(R.id.player1Score);
     tv.setText("" + this.gameState.player1Points);
   }
-
-  public void endGame(){
+//NEEDS SCREENS - menu options.
+  /**public void endGame(){
       if(gameState.player2Points > gameState.player1Points){
         Intent goToLoseScreen = new Intent(getApplicationContext(), LoseScreen.class);
         startActivity(goToLoseScreen);
@@ -274,4 +277,19 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
       Intent goToWinScreen = new Intent(getApplicationContext(), VictoryScreen.class);
       startActivity(goToWinScreen);
     }
+    public void onClickPause(View v){
+    pauseButton.setVisibility(View.VISIBLE);
+    //Blur background -- TODO when mvp is done
+    }
+    public void resumeButton(View v){
+    pauseButton.setVisibility(View.GONE);
+    }
+    public void restartButton(View v){
+    this.recreate();
+    //Not sure if this works. If not, use startActivity.
+    }
+    public void mainMenuButton(View v){
+    Intent goToMainMenu = new Intent(getApplicationContext(), MainScreen.class);
+    startActivity(goToMainMenu);
+    }*/
 }
