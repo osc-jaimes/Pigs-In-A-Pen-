@@ -163,6 +163,30 @@ public class WallCoordinate {
   }
 
   public WallCoordinate getOtherSideCoordinate() {
+    WallCoordinate otherSideWall;
+    int newXCoord;
+    int newYCoord;
+    int newWallPos;
+    if (isTop()) {
+      newXCoord = x;
+      newYCoord = y - 1;
+      newWallPos = 2;
+    } else if (isRight()) {
+      newXCoord = x + 1;
+      newYCoord = y;
+      newWallPos = 3;
+    } else if (isBottom()) {
+      newXCoord = x;
+      newYCoord = y + 1;
+      newWallPos = 0;
+    } else { //isLeft()
+      newXCoord = x - 1;
+      newYCoord = y;
+      newWallPos = 1;
+    }
 
+    otherSideWall = new WallCoordinate(newXCoord, newYCoord, newWallPos,
+                                        boardHeight, boardWidth);
+    return otherSideWall;
   }
 }
