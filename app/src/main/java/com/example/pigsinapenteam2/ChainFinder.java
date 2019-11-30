@@ -28,34 +28,54 @@ public class ChainFinder {
 
   public void findLinks(BoardState state) {
     //TODO
-    //loop through
     int cellDegree;
     int adjacencyIndex;
     int indexOfCurrentCell;
     int indexOfAdjacentCell;
     WallCoordinate currentWallCoord;
+    WallCoordinate oppositeWallCoord;
 
+    //loop through all cells
     for (int yCoord = 0; yCoord < boardHeight; yCoord++) {
       for (int xCoord = 0; xCoord < boardWidth; xCoord++) {
+
+        //at a particular cell:
         cellDegree = 0;
+        //look at all 4 walls
+        indexOfCurrentCell = coordsToIndex(xCoord,yCoord);
         for (int wallPosition = 0; wallPosition < 4; wallPosition++) {
           currentWallCoord = new WallCoordinate(xCoord, yCoord, wallPosition,
                                                 boardHeight, boardWidth);
+          oppositeWallCoord = currentWallCoord.getOtherSideCoordinate();
+
+          indexOfAdjacentCell = coordsToIndex(oppositeWallCoord.x, oppositeWallCoord.y);
           if (state.getWallAi(xCoord, yCoord, wallPosition) == 0) {
             adjacencyIndex = cellDegree % 2;
-            indexOfCurrentCell = coordsToIndex(xCoord,yCoord);
 
 
-            cellAdjacencyList[indexOfCurrentCell][adjacencyIndex] =
+            //if wall open, it and the adjacent one are "connected"
+            if (oppositeWallCoord.isValidCell()) {
+              cellAdjacencyList[indexOfCurrentCell][adjacencyIndex] = indexOfAdjacentCell;
+            } else {
+              cellAdjacencyList[indexOfCurrentCell][adjacencyIndex] = -1;
+            }
+
+
             cellDegree += 1;
 
           }
 
         }
-        if (cellDegree > 2) {
+        if (cellDegree < 2) {
           setIsCellChainLinkXY(false, xCoord, yCoord);
-        } else {
+          cellAdjacencyList[indexOfCurrentCell][0] = 0;
+          cellAdjacencyList[indexOfCurrentCell][1] = 0;
+        } else if (cellDegree == 2){
           setIsCellChainLinkXY(true, xCoord, yCoord);
+        } else {
+          setIsCellChainLinkXY(false, xCoord, yCoord);
+          cellAdjacencyList[indexOfCurrentCell][0] = 0;
+          cellAdjacencyList[indexOfCurrentCell][1] = 0;
         }
       }
     }
@@ -81,7 +101,7 @@ public class ChainFinder {
     isCellAChainLinkArray[xCoord][yCoord] = isChainLink;
   }
 
-  private boolean isCellAChainLinkXY(int xCoord, int yCoord) {
+  private boolean isCellChainLinkXY(int xCoord, int yCoord) {
     return isCellAChainLinkArray[xCoord][yCoord];
   }
 
