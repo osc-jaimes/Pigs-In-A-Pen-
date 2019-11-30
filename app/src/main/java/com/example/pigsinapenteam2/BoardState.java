@@ -114,7 +114,7 @@ public class BoardState {
    * sets the top wall at specified coordinates             *----------*   <== sets this
    * @param xCoord                                          |          |
    * @param yCoord                                          |          |
-   * @param input                                       *----------*
+   * @param input                                           *----------*
    */
   public void setTopWallState(int xCoord, int yCoord, int input){
 
