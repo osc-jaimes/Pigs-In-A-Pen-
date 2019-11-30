@@ -36,7 +36,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
     //setting confirm button to not exist for now
     confirmButton.setVisibility(View.GONE);
     this.player1 = new HumanPlayer();
-    this.player2 = new EasyBotPlayer();
+    this.player2 = new EasyBotPlayer(HEIGHT,WIDTH);
     this.currentPlayer = player1;
     this.playerHasMoved = false;
     this.currentButton = null;
