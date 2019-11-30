@@ -2,6 +2,7 @@ package com.example.pigsinapenteam2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -9,8 +10,10 @@ import android.widget.Button;
 public class SinglePlayerPlayScreen extends AppCompatActivity {
   //Instance Variables + instantiations
   GameState gameState;
+  public final int WIDTH = 4;
+  public final int HEIGHT = 3;
   HumanPlayer player1;
-  BotPlayer botPlayer;
+  BotPlayer player2;
   Button confirmButton;
   int cellX;
   int cellY;
@@ -26,12 +29,25 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_single_player_play_screen);
+    setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
     this.confirmButton = findViewById(R.id.confirmButtonPlayer1);
     //setting confirm button to not exist for now
     confirmButton.setVisibility(View.GONE);
+    this.player1 = new HumanPlayer();
+    this.player2 = new EasyBotPlayer();
     this.currentPlayer = player1;
     this.playerHasMoved = false;
     this.currentButton = null;
+    BoardState boardState = new BoardState(WIDTH,HEIGHT);
+    this.gameState = new GameState(boardState, this.player1, this.player2,0);
+
+    this.getWindow().getDecorView().setSystemUiVisibility(
+            View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                    | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                    | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                    | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                    | View.SYSTEM_UI_FLAG_FULLSCREEN
+                    | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
   }
 
   public void buttonClicked(View V){
@@ -48,6 +64,10 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
 
   }
 
+  /**
+   * Changes the fence selection from currentButton to button V.
+   * @param V the button that is pressed
+   */
   public void changeChoice(View V){
     int buttonId = V.getId();
     Button buttonClicked = findViewById(buttonId);
@@ -212,9 +232,18 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
     this.currentButton = null;
     this.playerHasMoved = true;
     this.confirmButton.setVisibility(View.GONE);
+    this.confirmAction(this.cellX, this.cellY, this.isHorizontal);
   }
 
   public void confirmAction(int cellX, int cellY, boolean isHorizontal){
+    int currentScore = gameState.player1Points;
     player1.doMove(gameState, cellX, cellY, isHorizontal);
+    //just placed a fence, no pen closed
+    if(gameState.player1Points == currentScore){
+      int botCurrentPoints = gameState.player2Points;
+      do{
+        this.gameState = player2.doMove(this.gameState);
+      }while(botCurrentPoints < gameState.player2Points);
+    }
   }
 }
