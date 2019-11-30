@@ -2,6 +2,7 @@ package com.example.pigsinapenteam2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
@@ -233,6 +234,9 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
   }
 
   public void onClickConfirmationButton(View v) {
+    if(gameState.player1Points + gameState.player2Points >= totalScore){
+      endGame();
+    }
     this.currentButton.setClickable(false);
     this.currentButton = null;
     this.playerHasMoved = true;
@@ -263,10 +267,11 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
   }
 
   public void endGame(){
-    if(gameState.player1Points + gameState.player2Points >= totalScore) {
-
-      //make victory screen pop up - include buttons like restart/etc
+      if(gameState.player2Points > gameState.player1Points){
+        Intent goToLoseScreen = new Intent(getApplicationContext(), LoseScreen.class);
+        startActivity(goToLoseScreen);
+      }
+      Intent goToWinScreen = new Intent(getApplicationContext(), VictoryScreen.class);
+      startActivity(goToWinScreen);
     }
-
-  }
 }
