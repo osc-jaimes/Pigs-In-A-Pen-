@@ -22,7 +22,7 @@ public class EasyBotPlayer extends BotPlayer {
 
   @Override
   public GameState doMove(GameState inputGameState) {
-    BoardState state = inputGameState.getBoardState();
+    BoardState state = inputGameState.currentBoardState;
     WallCoordinate moveToDo;
 
     fillPossibleCapturesAndMoves(state);
@@ -35,7 +35,7 @@ public class EasyBotPlayer extends BotPlayer {
     state.setWallAi(coordsOfMove[0], coordsOfMove[1], coordsOfMove[2]);
 
     //TEST THIS: do we need this line?
-    //inputGameState.boardState = state;
+    inputGameState.currentBoardState = state;
     return inputGameState;
   }
 
