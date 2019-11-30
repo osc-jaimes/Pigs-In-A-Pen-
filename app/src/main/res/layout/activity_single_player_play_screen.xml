@@ -36,13 +36,14 @@
 
     <Button
         android:id="@+id/v6"
-        android:layout_width="30dp"
+        android:layout_width="31dp"
         android:layout_height="56dp"
-        android:layout_marginEnd="84dp"
+        android:layout_marginStart="84dp"
         android:background="@color/transparent"
         android:onClick="onClickVertical7"
-        app:layout_constraintEnd_toStartOf="@+id/v7"
-        app:layout_constraintTop_toBottomOf="@+id/h4" />
+        app:layout_constraintBottom_toTopOf="@+id/button15"
+        app:layout_constraintStart_toEndOf="@+id/v5"
+        app:layout_constraintTop_toBottomOf="@+id/button11" />
 
     <Button
         android:id="@+id/v7"
@@ -61,7 +62,7 @@
         android:layout_marginEnd="84dp"
         android:background="@color/transparent"
         android:onClick="onClickVertical6"
-        app:layout_constraintEnd_toStartOf="@+id/v6"
+        app:layout_constraintEnd_toEndOf="@+id/h4"
         app:layout_constraintTop_toBottomOf="@+id/h3" />
 
     <Button
