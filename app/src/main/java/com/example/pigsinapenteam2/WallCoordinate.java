@@ -13,6 +13,7 @@ public class WallCoordinate {
   private int wallPosition; //0 to 3
   private int boardHeight;
   private int boardWidth;
+  private boolean validCell;
 
   /**
    * WallCoordinates: Constructor
@@ -26,6 +27,13 @@ public class WallCoordinate {
     wallPosition = wallPos;
     boardHeight = height;
     boardWidth = width;
+
+    validCell = false;
+    if (xCoord < width) {
+      if (yCoord < height) {
+        validCell = true;
+      }
+    }
   }
 
   /**
@@ -37,6 +45,19 @@ public class WallCoordinate {
     wallPosition = 0;
     boardHeight = 0;
     boardWidth = 0;
+    validCell = false;
+
+  }
+
+  public boolean isValidCell() {
+    validCell = false;
+    if (x < boardWidth) {
+      if (y < boardHeight) {
+        validCell = true;
+      }
+    }
+
+    return validCell;
   }
 
   public boolean isVertical() {
@@ -139,5 +160,9 @@ public class WallCoordinate {
     buttonName += cellNum;
 
     return buttonName;
+  }
+
+  public WallCoordinate getOtherSideCoordinate() {
+
   }
 }

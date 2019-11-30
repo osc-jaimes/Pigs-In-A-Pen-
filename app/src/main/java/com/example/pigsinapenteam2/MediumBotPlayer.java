@@ -45,6 +45,7 @@ public class MediumBotPlayer extends BotPlayer {
     }
 
     //make move decision
+    //don't forget: set inputState.botLastMove to moveToDo or whatever
     //TODO
 
     return super.doMove(inputState);
