@@ -193,8 +193,16 @@ public class WallCoordinate {
       newWallPos = 1;
     }
 
-    otherSideWall = new WallCoordinate(newXCoord, newYCoord, newWallPos,
-                                        boardHeight, boardWidth);
+    try {
+      otherSideWall = new WallCoordinate(newXCoord, newYCoord, newWallPos,
+          boardHeight, boardWidth);
+    } catch (InvalidWallPositionException e) {
+      otherSideWall = new WallCoordinate();
+      System.out.println(e.getMessage());
+      System.out.println("getOtherSideCoordinate broke, had wrong wall pos. " +
+                          "Don't know how. Function will now return default WallCoord.");
+    }
+
     return otherSideWall;
   }
 

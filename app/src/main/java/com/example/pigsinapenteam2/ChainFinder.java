@@ -44,8 +44,16 @@ public class ChainFinder {
         //look at all 4 walls
         indexOfCurrentCell = coordsToIndex(xCoord,yCoord);
         for (int wallPosition = 0; wallPosition < 4; wallPosition++) {
-          currentWallCoord = new WallCoordinate(xCoord, yCoord, wallPosition,
-                                                boardHeight, boardWidth);
+          try {
+            currentWallCoord = new WallCoordinate(xCoord, yCoord, wallPosition,
+                boardHeight, boardWidth);
+          } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("in findLinks had wrong wall position probably." +
+                "setting currentWall to default.");
+            currentWallCoord = new WallCoordinate();
+          }
+
           oppositeWallCoord = currentWallCoord.getOtherSideCoordinate();
 
           indexOfAdjacentCell = coordsToIndex(oppositeWallCoord.x, oppositeWallCoord.y);
