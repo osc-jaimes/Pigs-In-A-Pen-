@@ -334,7 +334,7 @@ public class BoardState {
    * @param yCoord
    * @param wantedWall 0 for top, 1 for right, 2 bottom, 3 left
    */
-  public int getWall(int xCoord, int yCoord, int wantedWall){
+  public int getWallAi(int xCoord, int yCoord, int wantedWall){
 
     switch(wantedWall){
 
