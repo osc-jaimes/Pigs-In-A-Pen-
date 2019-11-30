@@ -11,18 +11,18 @@ public class EasyBotPlayer extends BotPlayer {
   private int boardWidth;
 
   private LinkedList<WallCoordinate> possibleMoves;
-  private LinkedList<WallCoordinate> possibleCaptures;
 
-  public void EasyBotPlayer(int height, int width) {
+
+  public EasyBotPlayer(int height, int width) {
+    super(height,width,0);
     boardHeight = height;
     boardWidth = width;
-    possibleMoves = new LinkedList<WallCoordinate>();
-    possibleCaptures = new LinkedList<WallCoordinate>();
+    possibleMoves = new LinkedList<>();
   }
 
   @Override
   public GameState doMove(GameState inputGameState) {
-    BoardState state = inputGameState.boardState;
+    BoardState state = inputGameState.getBoardState();
     WallCoordinate moveToDo;
 
     fillPossibleCapturesAndMoves(state);
@@ -31,7 +31,12 @@ public class EasyBotPlayer extends BotPlayer {
     possibleCaptures.clear();
     possibleMoves.clear();
 
-    return moveToDo;
+    int[] coordsOfMove = moveToDo.getIndexForm();
+    state.setWallAi(coordsOfMove[0], coordsOfMove[1], coordsOfMove[2]);
+
+    //TEST THIS: do we need this line?
+    //inputGameState.boardState = state;
+    return inputGameState;
   }
 
   private WallCoordinate chooseRandomMove() {
@@ -39,7 +44,7 @@ public class EasyBotPlayer extends BotPlayer {
     if (possibleCaptures.size() == 0) {
       return possibleMoves.get(random.nextInt(possibleMoves.size()));
     } else {
-      return possibleCaptures.get(random.nextInt(possibleCaptures.size()))
+      return possibleCaptures.get(random.nextInt(possibleCaptures.size()));
     }
   }
 
@@ -53,55 +58,14 @@ public class EasyBotPlayer extends BotPlayer {
           currentWall.y = yIndex;
           currentWall.setWallPosition(wallIndex);
 
-          if (isWallLegal(state, currentWall)) {
+          if (super.isWallLegal(state, currentWall)) {
             possibleMoves.add(currentWall);
-            if (isWallACapture(state, currentWall)) {
+            if (super.isWallACapture(state, currentWall)) {
               possibleCaptures.add(currentWall);
             }
           }
         }
       }
     }
-  }
-
-  private boolean isWallACapture(BoardState state, WallCoordinate coords) {
-    //IMPORTANT NOTE: only checks one cell. MAKE SEPARATE COORD OBJECT for the other
-    //side of the wall!
-    boolean allAreWalls = true;
-    if (!coords.isTop()) {
-      if (state.getTopWallState(coords.x, coords.y) == 0) {
-        allAreWalls = false;
-      }
-    } else if (!coords.isRight()) {
-      if (state.getRightWallState(coords.x, coords.y) == 0) {
-        allAreWalls = false;
-      }
-    } else if (!coords.isBottom()) {
-      if (state.getBottomWallState(coords.x, coords.y) == 0) {
-        allAreWalls = false;
-      }
-    } else if (!coords.isLeft()) {
-      if (state.getLeftWallState(coords.x, coords.y) == 0) {
-        allAreWalls = false;
-      }
-    }
-
-    return allAreWalls;
-  }
-
-  private boolean isWallLegal(BoardState state, WallCoordinate coords) {
-    int wallState = -1;
-
-    if (coords.isTop()) {
-      wallState = state.getTopWallState(coords.x, coords.y);
-    } else if (coords.isRight()) {
-      wallState = state.getRightWallState(coords.x, coords.y);
-    } else if (coords.isBottom()) {
-      wallState = state.getBottomWallState(coords.x, coords.y);
-    } else if (coords.isLeft()) {
-      WallCoordinate = state.getLeftWallState(coords.x, coords.y);
-    }
-
-    return (wallState == 0);
   }
 }
