@@ -111,8 +111,8 @@ public class BotPlayer extends Player {
     int cellX = coords.x;
     int cellY = coords.y;
 
-    //will be checking a pair of cells, now correcting so
-    //the first cell has lower coords
+    //will be checking a pair of cells.
+    //first we correct so the first cell has the lower coords
     if (coords.isTop()) {
       cellY -= 1;
     } else if (coords.isLeft()) {
