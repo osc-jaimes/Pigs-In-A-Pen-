@@ -2,47 +2,64 @@ package com.example.pigsinapenteam2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.res.Resources;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.view.View;
 
 public class SinglePlayerPlayScreen extends AppCompatActivity {
   //Instance Variables + instantiations
   GameState gameState;
   HumanPlayer player1;
+  BotPlayer botPlayer;
   Button confirmButton;
   int cellX;
   int cellY;
+  boolean playerHasMoved;
   boolean isHorizontal;
+  Button currentButton;
+  boolean confirmedAction;
   //
+
+  private Player currentPlayer;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_single_player_play_screen);
-    this.confirmButton = findViewById(R.id.confirmButton);
+    this.confirmButton = findViewById(R.id.confirmButtonPlayer1);
     //setting confirm button to not exist for now
    confirmButton.setVisibility(View.GONE);
+   this.currentPlayer = player1;
+   this.playerHasMoved = false;
+   this.currentButton = null;
   }
 
   public void buttonClicked(View V){
-    int buttonId = V.getId();
-    Button theButton = findViewById(buttonId);
-    theButton.setBackgroundColor(getResources().getColor(R.color.fences));
+    if(this.currentButton == null){
+      int buttonId = V.getId();
+      Button currentButton = findViewById(buttonId);
+      this.currentButton = currentButton;
+      currentButton.setBackgroundColor(getResources().getColor(R.color.fences));
+    } else{
+      this.changeChoice(V);
+    }
+
 
   }
 
+  public void changeChoice(View V){
+    int buttonId = V.getId();
+    Button buttonClicked = findViewById(buttonId);
+    buttonClicked.setBackgroundColor(getResources().getColor(R.color.transparent));
+    this.currentButton.setBackgroundColor(getResources().getColor(R.color.fences));
+  }
+
   public void onClickVertical1(View v){
-    if (!player1.getHasMoved()) {
+    if(!playerHasMoved) {
       confirmButton.setVisibility(View.VISIBLE);
       buttonClicked(v);
     }
+
     cellX = 0;
     cellY = 0;
     isHorizontal = false;
@@ -51,7 +68,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
   public void onClickVertical2(View v) {
     if (!player1.getHasMoved()) {
       confirmButton.setVisibility(View.VISIBLE);
-      buttonClicked(v);
+      this.buttonClicked(v);
     }
     cellX = 1;
     cellY = 0;
@@ -119,8 +136,8 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
   }
 
   public void onClickConfirmationButton(View v) {
-    confirmAction(cellX, cellY, isHorizontal);
-    confirmButton.setVisibility(View.GONE);
+    //confirmAction(cellX, cellY, isHorizontal);
+    //confirmButton.setVisibility(View.GONE);
   }
 
   public void confirmAction(int cellX, int cellY, boolean isHorizontal){
