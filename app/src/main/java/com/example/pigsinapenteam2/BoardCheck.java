@@ -3,15 +3,17 @@ package com.example.pigsinapenteam2;
 
 public class BoardCheck {
 
-  int playerOneScore;
-  int playerTwoScore;
-  BoardState currentBoard;
+  private int playerOneScore;
+  private int playerTwoScore;
+  private BoardState currentBoard;
 
   public BoardCheck( BoardState instanceBoard){
 
-    playerOneScore = 0;
-    playerTwoScore = 0;
-    currentBoard = instanceBoard;
+    this.playerOneScore = 0;
+    this.playerTwoScore = 0;
+    this.currentBoard = instanceBoard;
+
+    boardChecker();
 
   }//BoardCheckConstructor
 
