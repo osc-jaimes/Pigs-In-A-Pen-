@@ -18,7 +18,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
   boolean isHorizontal;
   Button currentButton;
   boolean confirmedAction;
-  //
+
 
   private Player currentPlayer;
 
