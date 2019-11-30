@@ -234,15 +234,15 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
   }
 
   public void onClickConfirmationButton(View v) {
-    if(gameState.player1Points + gameState.player2Points >= totalScore){
-      endGame();
-    }
     this.currentButton.setClickable(false);
     this.currentButton = null;
     this.playerHasMoved = true;
     this.confirmButton.setVisibility(View.GONE);
     this.confirmAction(this.cellX, this.cellY, this.isHorizontal);
     this.updateScore();
+    if(gameState.player1Points + gameState.player2Points >= totalScore){
+      endGame();
+    }
     System.out.println(this.gameState.currentBoardState);
   }
 
