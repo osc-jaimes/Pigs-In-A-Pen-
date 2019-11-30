@@ -333,14 +333,15 @@
 
     <Button
         android:id="@+id/v2"
-        android:layout_width="30dp"
+        android:layout_width="31dp"
         android:layout_height="56dp"
         android:layout_marginStart="84dp"
         android:background="@color/transparent"
         android:onClick="onClickVertical3"
         app:layout_constraintBottom_toTopOf="@+id/button11"
         app:layout_constraintStart_toEndOf="@+id/v1"
-        app:layout_constraintTop_toBottomOf="@+id/button6" />
+        app:layout_constraintTop_toBottomOf="@+id/button6"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/v3"
