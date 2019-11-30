@@ -24,10 +24,10 @@ public class MediumBotPlayer extends BotPlayer {
 
   @Override
   public GameState doMove(GameState inputState) {
-    BoardState state = inputState.boardState;
+    BoardState state = inputState.getBoardState();
 
     //get links
-    chainFinder.findLinks();
+    chainFinder.findLinks(state);
 
     //get legal moves (without conceding a point)
     //get possible captures

@@ -22,7 +22,7 @@ public class EasyBotPlayer extends BotPlayer {
 
   @Override
   public GameState doMove(GameState inputGameState) {
-    BoardState state = inputGameState.boardState;
+    BoardState state = inputGameState.getBoardState();
     WallCoordinate moveToDo;
 
     fillPossibleCapturesAndMoves(state);
