@@ -105,5 +105,53 @@ public class BotPlayer extends Player {
 
     return (wallState == 0);
   }
+
+  protected boolean willWallConcedePoint(BoardState state, WallCoordinate coords) {
+    int cellDegree = 0;
+    int cellX = coords.x;
+    int cellY = coords.y;
+
+    //will be checking a pair of cells, now correcting so
+    //the first cell has lower coords
+    if (coords.isTop()) {
+      cellY -= 1;
+    } else if (coords.isLeft()) {
+      cellX -= 1;
+    }
+
+    //check first cell
+    for (int wallPos = 0; wallPos < 4; wallPos++) {
+      if (state.getWallAi(cellX, cellY, wallPos) == 0) {
+        cellDegree += 1;
+      }
+    }
+
+    //if this will give other player a point get outa here
+    if (cellDegree == 2) {
+      return true;
+    }
+
+    //get second cell coords
+    if (coords.isHorizontal()) {
+      cellX += 1;
+    } else { //if vertical
+      cellY += 1;
+    }
+
+    //check second cell
+    cellDegree = 0;
+    for (int wallPos = 0; wallPos < 4; wallPos++) {
+      if (state.getWallAi(cellX, cellY, wallPos) == 0) {
+        cellDegree += 1;
+      }
+    }
+
+    //last check
+    if (cellDegree == 2) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
 
