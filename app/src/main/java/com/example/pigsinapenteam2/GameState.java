@@ -33,16 +33,14 @@ public class GameState {
    *
    * @param player1 player1 class
    * @param player2 player2 class
-   * @param player1Points points of player 1
-   * @param player2Points points of player 2
    */
-  public GameState(BoardState currentBoardState, Player player1, Player player2, int player1Points, int player2Points, int currentPlayer){
+  public GameState(BoardState currentBoardState, Player player1, Player player2, int currentPlayer){
     this.player1 = player1;
     this.player2 = player2;
     this.currentBoardState = currentBoardState;
     this.currentBoardCheck = new BoardCheck(currentBoardState);
-    this.player1Points = currentBoardCheck.getPlayerOneScore();
-    this.player2Points = currentBoardCheck.getPlayerTwoScore();
+    player1Points = currentBoardCheck.getPlayerOneScore();
+    player2Points = currentBoardCheck.getPlayerTwoScore();
     this.currentPlayer = currentPlayer;
   }
 
