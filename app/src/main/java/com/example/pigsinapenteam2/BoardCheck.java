@@ -22,6 +22,7 @@ public class BoardCheck {
     for(int i = 0; i < currentBoard.getWidth(); i++){
       for(int j = 0; j < currentBoard.getHeight(); j++){
 
+        System.out.println("checked:" + i + j);
         cellScoreCheck(i,j);
 
       }//inner for loop
@@ -34,10 +35,12 @@ public class BoardCheck {
     switch (input){
 
       case 1:
+        System.out.println("playerOneScore is updated by one");
         playerOneScore += 1;
         break;
 
       case 2:
+        System.out.println("playerTwoScore updated by one");
         playerTwoScore += 1;
         break;
 
