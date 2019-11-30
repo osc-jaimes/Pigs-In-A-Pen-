@@ -5,7 +5,7 @@ import java.util.Random;
 public class GameState {
   //Variables
   Random rand;
-  BoardState currentBoardState;
+  public BoardState currentBoardState;
   BoardCheck currentBoardCheck;
   int currentPlayer;
   Player player1;

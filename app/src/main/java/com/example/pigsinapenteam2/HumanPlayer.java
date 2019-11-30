@@ -44,7 +44,7 @@ public class HumanPlayer extends Player {
      */
 
    public GameState doMove(GameState inputState, int cellX, int cellY, boolean isHorizontal){
-       inputState.getBoardState().setWall(cellX, cellY, isHorizontal);
+       inputState.currentBoardState.setWall(cellX, cellY, isHorizontal);
         return inputState;
    }
 
