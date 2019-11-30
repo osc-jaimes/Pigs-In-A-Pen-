@@ -95,7 +95,7 @@ public class BoardState {
    * @param yCoord                                          |          |
    * @return the data of the top wall                       *----------*
    */
-  public int getTopWallState(int xCoord, int yCoord){
+  private int getTopWallState(int xCoord, int yCoord){
 
     if(xCoord > width){
       return 0;
@@ -116,7 +116,7 @@ public class BoardState {
    * @param yCoord                                          |          |
    * @param input                                       *----------*
    */
-  public void setTopWallState(int xCoord, int yCoord, int input){
+  private void setTopWallState(int xCoord, int yCoord, int input){
 
     if(xCoord > width) {
       return;
@@ -221,7 +221,7 @@ public class BoardState {
   }//setBottomWallState
 
   //=======================================================================================
-  public int getLeftWallState(int xCoord, int yCoord){
+  private int getLeftWallState(int xCoord, int yCoord){
 
     if(xCoord > width){
 
@@ -237,7 +237,7 @@ public class BoardState {
   }//getLeftWallState
 
   //=======================================================================================
-  public void setLeftWallState(int xCoord, int yCoord, int input){
+  private void setLeftWallState(int xCoord, int yCoord, int input){
 
     if(xCoord > width){
       setRightWallState(xCoord-1, yCoord, input);
@@ -285,7 +285,7 @@ public class BoardState {
    * @param isHorizontal  boolean to know if wall needing to be placed is horizontal
    */
   public void setWall(int xCoord, int yCoord, boolean isHorizontal){
-    if(!(isHorizontal == false)){
+    if(!(isHorizontal)){
       setLeftWallState(xCoord, yCoord, 1);
 
     }//if
