@@ -16,7 +16,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
   //Instance Variables + instantiations
   GameState gameState;
   HumanPlayer player1;
-  Button confirmButton = findViewById(R.id.confirmButton);
+  Button confirmButton;
   int cellX;
   int cellY;
   boolean isHorizontal;
@@ -26,8 +26,9 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_single_player_play_screen);
+    this.confirmButton = findViewById(R.id.confirmButton);
     //setting confirm button to not exist for now
-    confirmButton.setVisibility(View.GONE);
+   confirmButton.setVisibility(View.GONE);
   }
 
   public void buttonClicked(View V){
