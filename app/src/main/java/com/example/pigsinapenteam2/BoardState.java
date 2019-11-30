@@ -1,5 +1,7 @@
 package com.example.pigsinapenteam2;
 
+import androidx.annotation.NonNull;
+
 /**
  * stores the state of the board and all inputted data.
  * The board is a 3D array with a format as follows:
@@ -130,7 +132,7 @@ public class BoardState {
 
     boardData[xCoord][yCoord][0] = input;
 
-    if(yCoord > 0){
+    if(yCoord >= 0){
       boardData[xCoord][yCoord - 1][2] = input;
 
     }//if statement
@@ -178,7 +180,7 @@ public class BoardState {
 
     boardData[xCoord][yCoord][1] = input;
 
-    if(xCoord < width){
+    if(xCoord <= width){
 
       boardData[xCoord + 1][yCoord][3] = input;
 
@@ -213,7 +215,7 @@ public class BoardState {
 
     boardData[xCoord][yCoord][2] = input;
 
-    if(yCoord > 0){
+    if(yCoord >= 0){
 
       boardData[xCoord][yCoord + 1][0] = input;
 
@@ -250,7 +252,7 @@ public class BoardState {
 
     boardData[xCoord][yCoord][3] = input;
 
-    if(xCoord > 0){
+    if(xCoord <= width){
 
       boardData[xCoord - 1][yCoord][1] = input;
 
@@ -357,7 +359,8 @@ public class BoardState {
       default:
         return -1;
     }//switch
-  }
+  }//getWallAi
+
 
 
   @Override
