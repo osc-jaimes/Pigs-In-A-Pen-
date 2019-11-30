@@ -44,7 +44,8 @@ public class MediumBotPlayer extends BotPlayer {
       chainFinder.findChains();
     }
 
-
+    //make move decision
+    //TODO
 
     return super.doMove(inputState);
   }

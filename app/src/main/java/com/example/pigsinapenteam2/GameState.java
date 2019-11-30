@@ -13,6 +13,7 @@ public class GameState {
   int player1Points;
   int player2Points;
   int gameMode;
+  public WallCoordinate botLastMove;
   //
 
 

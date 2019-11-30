@@ -27,6 +27,7 @@ public class EasyBotPlayer extends BotPlayer {
 
     fillPossibleCapturesAndMoves(state);
     moveToDo = chooseRandomMove();
+    inputGameState.botLastMove = moveToDo;
 
     possibleCaptures.clear();
     possibleMoves.clear();
