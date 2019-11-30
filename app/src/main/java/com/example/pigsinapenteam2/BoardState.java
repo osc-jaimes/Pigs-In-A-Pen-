@@ -334,31 +334,28 @@ public class BoardState {
    * @param yCoord
    * @param wantedWall 0 for top, 1 for right, 2 bottom, 3 left
    */
-  public void getWall(int xCoord, int yCoord, int wantedWall){
+  public int getWall(int xCoord, int yCoord, int wantedWall){
 
     switch(wantedWall){
 
       case 0:
 
-        getTopWallState(xCoord, yCoord);
-        break;
+        return getTopWallState(xCoord, yCoord);
 
       case 1:
 
-        getRightWallState(xCoord, yCoord);
-        break;
+        return getRightWallState(xCoord, yCoord);
 
       case 2:
 
-        getBottomWallState(xCoord, yCoord);
-        break;
+        return getBottomWallState(xCoord, yCoord);
 
       case 3:
 
-        getLeftWallState(xCoord, yCoord);
+        return getLeftWallState(xCoord, yCoord);
 
       default:
-        break;
+        return -1;
     }//switch
   }
 

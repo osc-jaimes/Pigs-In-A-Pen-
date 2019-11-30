@@ -3,6 +3,7 @@ package com.example.pigsinapenteam2;
 public class GameState {
   //Variables
   BoardState currentBoardState;
+  BoardCheck currentBoardCheck;
   int currentPlayer;
   Player player1;
   Player player2;
@@ -25,9 +26,10 @@ public class GameState {
   public GameState(BoardState currentBoardState, Player player1, Player player2, int player1Points, int player2Points, int currentPlayer){
     this.player1 = player1;
     this.player2 = player2;
-    this.player1Points = player1Points;
-    this.player2Points = player2Points;
     this.currentBoardState = currentBoardState;
+    this.currentBoardCheck = new BoardCheck(currentBoardState);
+    this.player1Points = currentBoardCheck.getPlayerOneScore();
+    this.player2Points = currentBoardCheck.getPlayerTwoScore();
     this.currentPlayer = currentPlayer;
   }
 
@@ -62,25 +64,27 @@ public class GameState {
    */
 
   public boolean isBotPlayer2(){
+
     return this.player2.isBot();
+
   }
 
 
   public int getPlayer1Points(){
+
     return player1Points;
-  }
-  public int increasePlayer1Points(){
-    return player1Points + 1;
-  }
-  public int getPlayer2Points(){
-    return player2Points;
-  }
-  public int increasePlayer2Points(){
-    return player2Points + 1;
+
   }
 
+  public int getPlayer2Points(){
+
+    return player2Points;
+
+  }
 
   public BoardState getBoardState(){
+
     return this.currentBoardState;
+
   }
 }
