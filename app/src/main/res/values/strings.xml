@@ -16,7 +16,7 @@
     <string name="board_type_header">Board Type:</string>
     <string name="drop_down_button">Button to control drop down menu</string>
     <string name="play_button">Start Game</string>
-
+    <string name="end_turn_button">End Turn</string>
     <string name="score_board">Sore Board for the game</string>
 
     <string name="pause_button">Button to pause the game</string>
