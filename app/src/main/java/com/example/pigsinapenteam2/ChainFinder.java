@@ -31,8 +31,9 @@ public class ChainFinder {
     //loop through
   }
 
-  public LinkedList<Chain> findChains() {
+  public void findChains() {
     //TODO
+    //just remember the chains, don't return
   }
 
   private int coordsToIndex(int xCoord, int yCoord) {

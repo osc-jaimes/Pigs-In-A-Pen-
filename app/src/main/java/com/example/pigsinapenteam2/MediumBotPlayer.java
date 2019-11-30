@@ -6,6 +6,7 @@ public class MediumBotPlayer extends BotPlayer {
   private ChainFinder chainFinder;
   private LinkedList<WallCoordinate> possibleMoves;
   private LinkedList<WallCoordinate> possibleCaptures;
+  private boolean isEndgame;
 
   public MediumBotPlayer() {
     super();
@@ -23,6 +24,16 @@ public class MediumBotPlayer extends BotPlayer {
 
   @Override
   public GameState doMove(GameState inputState) {
+    BoardState state = inputState.boardState;
+
+    //get links
+    chainFinder.findLinks();
+
+    //get legal moves (without conceding a point)
+    //get possible captures
+
+    //if endgame:
+    chainFinder.findChains();
 
 
     //horizontal walls: (during this loop do per-cell checks)
