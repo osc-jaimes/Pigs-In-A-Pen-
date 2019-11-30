@@ -9,12 +9,9 @@ import android.widget.Button;
 public class SinglePlayerPlayScreen extends AppCompatActivity {
   //Instance Variables + instantiations
   GameState gameState;
-  HumanPlayer player1;
-  BotPlayer botPlayer;
   Button confirmButton;
   int cellX;
   int cellY;
-  boolean playerHasMoved;
   boolean isHorizontal;
   Button currentButton;
   boolean confirmedAction;
@@ -50,8 +47,8 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
   public void changeChoice(View V){
     int buttonId = V.getId();
     Button buttonClicked = findViewById(buttonId);
-    buttonClicked.setBackgroundColor(getResources().getColor(R.color.transparent));
-    this.currentButton.setBackgroundColor(getResources().getColor(R.color.fences));
+    this.currentButton.setBackgroundColor(getResources().getColor(R.color.transparent));
+    buttonClicked.setBackgroundColor(getResources().getColor(R.color.fences));
   }
 
   public void onClickVertical1(View v){
