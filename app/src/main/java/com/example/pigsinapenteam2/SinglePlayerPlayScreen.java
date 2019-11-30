@@ -6,6 +6,7 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class SinglePlayerPlayScreen extends AppCompatActivity {
   //Instance Variables + instantiations
@@ -21,6 +22,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
   boolean isHorizontal;
   Button currentButton;
   boolean confirmedAction;
+  protected int totalScore;
 
 
   private Player currentPlayer;
@@ -48,6 +50,8 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
                     | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                     | View.SYSTEM_UI_FLAG_FULLSCREEN
                     | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+
+    totalScore = WIDTH * HEIGHT /2;
   }
 
   public void buttonClicked(View V){
@@ -229,10 +233,12 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
   }
 
   public void onClickConfirmationButton(View v) {
+    this.currentButton.setClickable(false);
     this.currentButton = null;
     this.playerHasMoved = true;
     this.confirmButton.setVisibility(View.GONE);
     this.confirmAction(this.cellX, this.cellY, this.isHorizontal);
+    this.updateScore();
   }
 
   public void confirmAction(int cellX, int cellY, boolean isHorizontal){
@@ -245,5 +251,19 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
         this.gameState = player2.doMove(this.gameState);
       }while(botCurrentPoints < gameState.player2Points);
     }
+  }
+<<<<<<< HEAD
+
+
+  public void updateScore(){
+    TextView tv = (TextView)findViewById(R.id.player1Score);
+    tv.setText("" + this.gameState.player1Points);
+=======
+  public void endGame(){
+    if(gameState.player1Points + gameState.player2Points >= totalScore) {
+
+      //make victory screen pop up - include buttons like restart/etc
+    }
+>>>>>>> 69d5bca53971e75af6727a8eb1430bc0a366d35f
   }
 }
