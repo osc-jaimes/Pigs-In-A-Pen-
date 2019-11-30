@@ -42,7 +42,7 @@ public class HumanPlayer extends Player {
      * @param inputState an inputted gameState board of pigs + pen
      * @return an output gameState with the updated value for a wall.
      */
-   @Override
+
    public GameState doMove(GameState inputState, int cellX, int cellY, boolean isHorizontal){
        inputState.getBoardState().setWall(cellX, cellY, isHorizontal);
         return inputState;

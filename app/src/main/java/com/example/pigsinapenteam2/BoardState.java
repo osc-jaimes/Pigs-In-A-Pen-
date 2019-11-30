@@ -328,4 +328,38 @@ public class BoardState {
 
   }//setWallAi
 
+  /**
+   * getWall is used for BotPlayer to see a inputted wall.
+   * @param xCoord
+   * @param yCoord
+   * @param wantedWall 0 for top, 1 for right, 2 bottom, 3 left
+   */
+  public void getWallAi(int xCoord, int yCoord, int wantedWall){
+
+    switch(wantedWall){
+
+      case 0:
+
+        getTopWallState(xCoord, yCoord);
+        break;
+
+      case 1:
+
+        getRightWallState(xCoord, yCoord);
+        break;
+
+      case 2:
+
+        getBottomWallState(xCoord, yCoord);
+        break;
+
+      case 3:
+
+        getLeftWallState(xCoord, yCoord);
+
+      default:
+        break;
+    }//switch
+  }
+
 }//BoardState
