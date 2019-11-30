@@ -229,6 +229,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
   }
 
   public void onClickConfirmationButton(View v) {
+    this.currentButton.setClickable(false);
     this.currentButton = null;
     this.playerHasMoved = true;
     this.confirmButton.setVisibility(View.GONE);
