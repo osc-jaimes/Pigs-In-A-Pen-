@@ -11,6 +11,8 @@ public class WallCoordinate {
   public int x;
   public int y;
   private int wallPosition; //0 to 3
+  private int boardHeight;
+  private int boardWidth;
 
   /**
    * WallCoordinates: Constructor
@@ -18,10 +20,12 @@ public class WallCoordinate {
    * @param yCoord
    * @param wallPos: 0 for top, 1 for right, onwards clockwise (max 3)
    */
-  public WallCoordinate(int xCoord, int yCoord, int wallPos) {
+  public WallCoordinate(int xCoord, int yCoord, int wallPos, int height, int width) {
     x = xCoord;
     y = yCoord;
     wallPosition = wallPos;
+    boardHeight = height;
+    boardWidth = width;
   }
 
   /**
@@ -31,17 +35,8 @@ public class WallCoordinate {
     x = 0;
     y = 0;
     wallPosition = 0;
-  }
-
-  /**
-   * incomplete constructor: sets wallPosition to top (0)
-   * @param xCoord
-   * @param yCoord
-   */
-  public WallCoordinate(int xCoord, int yCoord) {
-    x = xCoord;
-    y = yCoord;
-    wallPosition = 0;
+    boardHeight = 0;
+    boardWidth = 0;
   }
 
   public boolean isVertical() {
@@ -120,4 +115,29 @@ public class WallCoordinate {
     return (xCorrect && yCorrect);
   }
 
+  public String getButtonName() {
+    String buttonName = "";
+    if (isHorizontal()) {
+      buttonName += "h";
+    } else {
+      buttonName += "v";
+    }
+
+    int cellNum;
+    if (isHorizontal()){
+      cellNum = y * boardWidth + x;
+      if (isBottom()) {
+        cellNum += boardWidth;
+      }
+    } else { //isVertical()
+      cellNum = y * (boardWidth + 1) + x;
+      if (isRight()) {
+        cellNum += 1;
+      }
+    }
+
+    buttonName += cellNum;
+
+    return buttonName;
+  }
 }
