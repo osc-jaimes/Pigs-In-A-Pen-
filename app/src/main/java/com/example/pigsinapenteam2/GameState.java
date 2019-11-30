@@ -99,4 +99,9 @@ public class GameState {
     return this.currentBoardState;
 
   }
+  public void runBoardCheck(){
+
+    currentBoardCheck.boardChecker();
+
+  }//runBoardCheck
 }
