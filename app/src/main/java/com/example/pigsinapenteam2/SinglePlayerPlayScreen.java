@@ -6,6 +6,7 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class SinglePlayerPlayScreen extends AppCompatActivity {
   //Instance Variables + instantiations
@@ -234,6 +235,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
     this.playerHasMoved = true;
     this.confirmButton.setVisibility(View.GONE);
     this.confirmAction(this.cellX, this.cellY, this.isHorizontal);
+    this.updateScore();
   }
 
   public void confirmAction(int cellX, int cellY, boolean isHorizontal){
@@ -246,5 +248,11 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
         this.gameState = player2.doMove(this.gameState);
       }while(botCurrentPoints < gameState.player2Points);
     }
+  }
+
+
+  public void updateScore(){
+    TextView tv = (TextView)findViewById(R.id.player1Score);
+    tv.setText("" + this.gameState.player1Points);
   }
 }
