@@ -21,7 +21,12 @@ public class WallCoordinate {
    * @param yCoord
    * @param wallPos: 0 for top, 1 for right, onwards clockwise (max 3)
    */
-  public WallCoordinate(int xCoord, int yCoord, int wallPos, int height, int width) {
+  public WallCoordinate(int xCoord, int yCoord, int wallPos, int height, int width)
+  throws InvalidWallPositionException {
+    if ((wallPos < 0) || (wallPos > 3)) {
+      throw new InvalidWallPositionException("Invalid wall position. Must be from 0 to 3.");
+    }
+
     x = xCoord;
     y = yCoord;
     wallPosition = wallPos;
@@ -88,7 +93,10 @@ public class WallCoordinate {
     return wallPosition;
   }
 
-  public void setWallPosition(int newWallPosition) {
+  public void setWallPosition(int newWallPosition) throws InvalidWallPositionException {
+    if ((newWallPosition < 0) || (newWallPosition > 3)) {
+      throw new InvalidWallPositionException("Invalid wall position. Must be from 0 to 3.");
+    }
     wallPosition = newWallPosition;
   }
 
@@ -188,5 +196,12 @@ public class WallCoordinate {
     otherSideWall = new WallCoordinate(newXCoord, newYCoord, newWallPos,
                                         boardHeight, boardWidth);
     return otherSideWall;
+  }
+
+  private class InvalidWallPositionException extends Exception {
+    public InvalidWallPositionException(String message){
+      super(message);
+    }
+    public InvalidWallPositionException(){}
   }
 }
