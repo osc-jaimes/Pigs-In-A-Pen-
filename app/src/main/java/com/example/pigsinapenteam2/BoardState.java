@@ -359,4 +359,24 @@ public class BoardState {
     }//switch
   }
 
+
+  @Override
+  public String toString(){
+    String finalStr = "";
+    for(int i = 0; i < this.boardData.length; i++){
+      for(int j = 0; j < this.boardData[i].length; j++){
+        for(int k = 0; k < this.boardData[i][j].length; k++ ){
+          finalStr += "" + this.boardData[i][j][k];
+
+        }
+        finalStr += " ";
+      }
+      finalStr += "\n";
+    }
+
+    finalStr += " End";
+
+    return finalStr;
+  }
+
 }//BoardState

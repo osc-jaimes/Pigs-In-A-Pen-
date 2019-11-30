@@ -239,17 +239,19 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
     this.confirmButton.setVisibility(View.GONE);
     this.confirmAction(this.cellX, this.cellY, this.isHorizontal);
     this.updateScore();
+    System.out.println(this.gameState.currentBoardState);
   }
 
   public void confirmAction(int cellX, int cellY, boolean isHorizontal){
-    int currentScore = gameState.player1Points;
-    player1.doMove(gameState, cellX, cellY, isHorizontal);
+    int currentScore = this.gameState.player1Points;
+    this.gameState = player1.doMove(this.gameState, cellX, cellY, isHorizontal);
+    this.gameState.runBoardCheck();
     //just placed a fence, no pen closed
-    if(gameState.player1Points == currentScore){
-      int botCurrentPoints = gameState.player2Points;
+    if(this.gameState.player1Points == currentScore){
+      int botCurrentPoints = this.gameState.player2Points;
       do{
-        this.gameState = player2.doMove(this.gameState);
-      }while(botCurrentPoints < gameState.player2Points);
+        //this.gameState = player2.doMove(this.gameState);
+      }while(botCurrentPoints < this.gameState.player2Points);
     }
   }
 
