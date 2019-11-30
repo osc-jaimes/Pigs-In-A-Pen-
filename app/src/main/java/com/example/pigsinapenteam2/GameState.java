@@ -1,7 +1,10 @@
 package com.example.pigsinapenteam2;
 
+import java.util.Random;
+
 public class GameState {
   //Variables
+  Random rand;
   BoardState currentBoardState;
   BoardCheck currentBoardCheck;
   int currentPlayer;
@@ -11,6 +14,16 @@ public class GameState {
   int player2Points;
   int gameMode;
   //
+
+
+  public GameState(BoardState currentBoardState, Player player1, Player player2){
+    this.player1 = player1;
+    this.player2 = player2;
+    player1Points = currentBoardCheck.getPlayerOneScore();
+    player2Points = currentBoardCheck.getPlayerTwoScore();
+    currentPlayer = rand.nextInt(1);
+
+  }
 
   /**
    * GameState
@@ -32,6 +45,7 @@ public class GameState {
     this.player2Points = currentBoardCheck.getPlayerTwoScore();
     this.currentPlayer = currentPlayer;
   }
+
 
   /**
    * getGameMode
