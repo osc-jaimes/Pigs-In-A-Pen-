@@ -26,7 +26,7 @@
         android:layout_height="56dp"
         android:layout_marginEnd="80dp"
         android:background="@color/transparent"
-        android:onClick="buttonClicked"
+        android:onClick="onClickVertical5"
         app:layout_constraintBottom_toTopOf="@+id/button13"
         app:layout_constraintEnd_toStartOf="@+id/v5"
         app:layout_constraintHorizontal_bias="0.959"
@@ -36,13 +36,14 @@
 
     <Button
         android:id="@+id/v6"
-        android:layout_width="30dp"
+        android:layout_width="31dp"
         android:layout_height="56dp"
-        android:layout_marginEnd="84dp"
+        android:layout_marginStart="84dp"
         android:background="@color/transparent"
-        android:onClick="buttonClicked"
-        app:layout_constraintEnd_toStartOf="@+id/v7"
-        app:layout_constraintTop_toBottomOf="@+id/h4" />
+        android:onClick="onClickVertical7"
+        app:layout_constraintBottom_toTopOf="@+id/button15"
+        app:layout_constraintStart_toEndOf="@+id/v5"
+        app:layout_constraintTop_toBottomOf="@+id/button11" />
 
     <Button
         android:id="@+id/v7"
@@ -50,7 +51,7 @@
         android:layout_height="56dp"
         android:layout_marginEnd="164dp"
         android:background="@color/transparent"
-        android:onClick="buttonClicked"
+        android:onClick="onClickVertical8"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/h5" />
 
@@ -60,8 +61,8 @@
         android:layout_height="56dp"
         android:layout_marginEnd="84dp"
         android:background="@color/transparent"
-        android:onClick="buttonClicked"
-        app:layout_constraintEnd_toStartOf="@+id/v6"
+        android:onClick="onClickVertical6"
+        app:layout_constraintEnd_toEndOf="@+id/h4"
         app:layout_constraintTop_toBottomOf="@+id/h3" />
 
     <Button
@@ -206,7 +207,7 @@
         android:layout_height="35dp"
         android:layout_marginTop="100dp"
         android:background="@color/transparent"
-        android:onClick="buttonClicked"
+        android:onClick="onClickHorizontal1"
         app:layout_constraintEnd_toEndOf="@+id/button5"
         app:layout_constraintStart_toStartOf="@+id/button4"
         app:layout_constraintTop_toTopOf="parent" />
@@ -217,7 +218,7 @@
         android:layout_height="35dp"
         android:layout_marginTop="56dp"
         android:background="@color/transparent"
-        android:onClick="buttonClicked"
+        android:onClick="onClickHorizontal4"
         app:layout_constraintEnd_toStartOf="@+id/button10"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/button9"
@@ -229,7 +230,7 @@
         android:layout_height="35dp"
         android:layout_marginTop="56dp"
         android:background="@color/transparent"
-        android:onClick="buttonClicked"
+        android:onClick="onClickHorizontal7"
         app:layout_constraintEnd_toStartOf="@+id/button14"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/button13"
@@ -241,7 +242,7 @@
         android:layout_height="35dp"
         android:layout_marginTop="56dp"
         android:background="@color/transparent"
-        android:onClick="buttonClicked"
+        android:onClick="onClickHorizontal8"
         app:layout_constraintEnd_toStartOf="@+id/button15"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/button14"
@@ -253,7 +254,7 @@
         android:layout_height="35dp"
         android:layout_marginTop="56dp"
         android:background="@color/transparent"
-        android:onClick="buttonClicked"
+        android:onClick="onClickHorizontal9"
         app:layout_constraintEnd_toStartOf="@+id/button16"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/button15"
@@ -265,7 +266,7 @@
         android:layout_height="35dp"
         android:layout_marginTop="56dp"
         android:background="@color/transparent"
-        android:onClick="buttonClicked"
+        android:onClick="onClickHorizontal5"
         app:layout_constraintEnd_toStartOf="@+id/button11"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/button10"
@@ -277,7 +278,7 @@
         android:layout_height="35dp"
         android:layout_marginTop="56dp"
         android:background="@color/transparent"
-        android:onClick="buttonClicked"
+        android:onClick="onClickHorizontal6"
         app:layout_constraintEnd_toStartOf="@+id/button12"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/button11"
@@ -289,7 +290,7 @@
         android:layout_height="35dp"
         android:layout_marginTop="100dp"
         android:background="@color/transparent"
-        android:onClick="buttonClicked"
+        android:onClick="onClickHorizontal2"
         app:layout_constraintEnd_toStartOf="@+id/button6"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/button5"
@@ -301,7 +302,7 @@
         android:layout_height="35dp"
         android:layout_marginTop="100dp"
         android:background="@color/transparent"
-        android:onClick="buttonClicked"
+        android:onClick="onClickHorizontal3"
         app:layout_constraintEnd_toStartOf="@+id/button8"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/button6"
@@ -325,7 +326,7 @@
         android:layout_height="56dp"
         android:layout_marginStart="84dp"
         android:background="@color/transparent"
-        android:onClick="buttonClicked"
+        android:onClick="onClickVertical2"
         app:layout_constraintBottom_toTopOf="@+id/button10"
         app:layout_constraintStart_toEndOf="@+id/v0"
         app:layout_constraintTop_toBottomOf="@+id/button5" />
