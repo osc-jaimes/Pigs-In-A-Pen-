@@ -11,14 +11,13 @@ public class EasyBotPlayer extends BotPlayer {
   private int boardWidth;
 
   private LinkedList<WallCoordinate> possibleMoves;
-  private LinkedList<WallCoordinate> possibleCaptures;
+
 
   public EasyBotPlayer(int height, int width) {
     super(height,width,0);
     boardHeight = height;
     boardWidth = width;
     possibleMoves = new LinkedList<>();
-    possibleCaptures = new LinkedList<>();
   }
 
   @Override

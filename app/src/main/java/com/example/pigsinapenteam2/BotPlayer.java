@@ -1,6 +1,8 @@
 package com.example.pigsinapenteam2;
 
 
+import java.util.LinkedList;
+
 /**
  * BotPlayer: plays the game, so you don't have to
  *
@@ -13,6 +15,7 @@ public class BotPlayer extends Player {
   private int boardHeight;
   private int numBoardCells;
   private int difficulty;
+  protected LinkedList<WallCoordinate> possibleCaptures;
 
   /**
    * default constructor.
@@ -22,6 +25,7 @@ public class BotPlayer extends Player {
     boardHeight = 0;
     numBoardCells = 0;
     difficulty = 0;
+    possibleCaptures = new LinkedList<>();
   }
 
   /**
@@ -38,6 +42,7 @@ public class BotPlayer extends Player {
     boardHeight = height;
     numBoardCells = width * height;
     difficulty = botDifficulty;
+    possibleCaptures = new LinkedList<>();
   }
 
   /**
@@ -50,6 +55,10 @@ public class BotPlayer extends Player {
    */
   public GameState doMove(GameState inputState) {
     return inputState;
+  }
+
+  public boolean getHasMoved() {
+    return true;
   }
 
   protected boolean isWallACapture(BoardState state, WallCoordinate coords) {
