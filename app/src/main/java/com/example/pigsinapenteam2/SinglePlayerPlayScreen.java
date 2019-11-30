@@ -16,7 +16,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
   //Instance Variables + instantiations
   GameState gameState;
   HumanPlayer player1;
-  View confirmButton = findViewById(R.id.confirmButton);
+  Button confirmButton;
   int cellX;
   int cellY;
   boolean isHorizontal;
@@ -26,8 +26,9 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_single_player_play_screen);
+    this.confirmButton = findViewById(R.id.confirmButton);
     //setting confirm button to not exist for now
-    confirmButton.setVisibility(View.GONE);
+   confirmButton.setVisibility(View.GONE);
   }
 
   public void buttonClicked(View V){
@@ -40,6 +41,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
   public void onClickVertical1(View v){
     if (!player1.getHasMoved()) {
       confirmButton.setVisibility(View.VISIBLE);
+      buttonClicked(v);
     }
     cellX = 0;
     cellY = 0;
@@ -49,6 +51,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
   public void onClickVertical2(View v) {
     if (!player1.getHasMoved()) {
       confirmButton.setVisibility(View.VISIBLE);
+      buttonClicked(v);
     }
     cellX = 1;
     cellY = 0;
@@ -58,6 +61,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
   public void onClickVertical3(View v) {
     if (!player1.getHasMoved()) {
       confirmButton.setVisibility(View.VISIBLE);
+      buttonClicked(v);
     }
     cellX = 2;
     cellY = 0;
@@ -67,6 +71,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
   public void onClickVertical4(View v) {
     if (!player1.getHasMoved()) {
       confirmButton.setVisibility(View.VISIBLE);
+      buttonClicked(v);
     }
     cellX = 3;
     cellY = 0;
@@ -76,6 +81,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
   public void onClickVertical5(View v) {
     if (!player1.getHasMoved()) {
       confirmButton.setVisibility(View.VISIBLE);
+      buttonClicked(v);
     }
     cellX = 0;
     cellY = 1;
@@ -85,6 +91,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
   public void onClickVertical6(View v) {
     if (!player1.getHasMoved()) {
       confirmButton.setVisibility(View.VISIBLE);
+      buttonClicked(v);
     }
     cellX = 1;
     cellY = 1;
@@ -94,6 +101,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
   public void onClickVertical7(View v) {
     if (!player1.getHasMoved()) {
       confirmButton.setVisibility(View.VISIBLE);
+      buttonClicked(v);
     }
     cellX = 2;
     cellY = 1;
@@ -103,6 +111,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
   public void onClickVertical8(View v) {
     if (!player1.getHasMoved()) {
       confirmButton.setVisibility(View.VISIBLE);
+      buttonClicked(v);
     }
     cellX = 3;
     cellY = 1;
