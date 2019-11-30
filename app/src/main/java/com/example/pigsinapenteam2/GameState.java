@@ -2,14 +2,14 @@ package com.example.pigsinapenteam2;
 
 public class GameState {
   //Variables
-  private BoardState currentBoardState;
-  private BoardCheck currentBoardCheck;
-  private int currentPlayer;
-  private Player player1;
-  private Player player2;
-  private int player1Points;
-  private int player2Points;
-  private int gameMode;
+  BoardState currentBoardState;
+  BoardCheck currentBoardCheck;
+  int currentPlayer;
+  Player player1;
+  Player player2;
+  int player1Points;
+  int player2Points;
+  int gameMode;
   //
 
   /**
