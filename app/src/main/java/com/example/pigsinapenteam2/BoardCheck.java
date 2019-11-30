@@ -45,4 +45,16 @@ public class BoardCheck {
 
   }//cellScoreCheck
 
+  public int getPlayerOneScore(){
+
+    return playerOneScore;
+
+  }//getPlayerOneScore
+
+  public int getPlayerTwoScore(){
+
+    return playerTwoScore;
+
+  }//getPlayerTwoScore
+
 }//BoardCheck
