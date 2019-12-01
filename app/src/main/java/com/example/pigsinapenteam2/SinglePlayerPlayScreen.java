@@ -46,7 +46,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
     //pauseButton.setVisibility(View.GONE);
 
     //pauseMenu = findViewById(R.id.pauseMenu);
-    pauseMenu.setVisibility(View.GONE);
+    //pauseMenu.setVisibility(View.GONE);
 
     this.player1 = new HumanPlayer();
     this.player2 = new EasyBotPlayer(HEIGHT,WIDTH);
