@@ -89,10 +89,10 @@
             android:background="@color/fencePost"
             app:layout_constraintBottom_toBottomOf="@+id/v0"
             app:layout_constraintEnd_toEndOf="@+id/h0"
-            app:layout_constraintHorizontal_bias="0.693"
+            app:layout_constraintHorizontal_bias="0.688"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.641" />
+            app:layout_constraintVertical_bias="0.632" />
 
         <ImageView
             android:id="@+id/pauseButton"
@@ -118,8 +118,8 @@
             android:id="@+id/button15"
             android:layout_width="31dp"
             android:layout_height="35dp"
-            android:layout_marginEnd="80dp"
-            android:layout_marginBottom="100dp"
+            android:layout_marginEnd="84dp"
+            android:layout_marginBottom="92dp"
             android:background="@color/fencePost"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/button16" />
@@ -142,7 +142,7 @@
             android:background="@color/transparent"
             android:onClick="onClickHorizontal1"
             app:layout_constraintEnd_toEndOf="@+id/button5"
-            app:layout_constraintHorizontal_bias="0.877"
+            app:layout_constraintHorizontal_bias="0.87"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -200,7 +200,7 @@
             android:onClick="onClickVertical1"
             app:layout_constraintBottom_toBottomOf="@+id/button9"
             app:layout_constraintEnd_toStartOf="@+id/v1"
-            app:layout_constraintHorizontal_bias="0.690"
+            app:layout_constraintHorizontal_bias="0.682"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.794" />
@@ -227,7 +227,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/v7"
             app:layout_constraintTop_toBottomOf="@+id/v2"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.015" />
 
         <Button
             android:id="@+id/button6"
@@ -244,7 +244,7 @@
             android:id="@+id/h8"
             android:layout_width="84dp"
             android:layout_height="35dp"
-            android:layout_marginBottom="94dp"
+            android:layout_marginBottom="92dp"
             android:background="@color/transparent"
             android:onClick="onClickHorizontal9"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -261,10 +261,10 @@
             android:onClick="onClickVertical6"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/v6"
-            app:layout_constraintHorizontal_bias="0.505"
+            app:layout_constraintHorizontal_bias="0.503"
             app:layout_constraintStart_toEndOf="@+id/v4"
             app:layout_constraintTop_toBottomOf="@+id/v1"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.015" />
 
         <Button
             android:id="@+id/button8"
@@ -275,14 +275,14 @@
             app:layout_constraintBottom_toBottomOf="@+id/v3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.653" />
+            app:layout_constraintVertical_bias="0.641" />
 
         <Button
             android:id="@+id/h7"
             android:layout_width="84dp"
             android:layout_height="35dp"
-            android:layout_marginEnd="32dp"
-            android:layout_marginBottom="94dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="92dp"
             android:background="@color/transparent"
             android:onClick="onClickHorizontal8"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -343,7 +343,7 @@
             app:layout_constraintBottom_toTopOf="@+id/button10"
             app:layout_constraintEnd_toStartOf="@+id/button6"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.641" />
+            app:layout_constraintVertical_bias="0.636" />
 
         <Button
             android:id="@+id/h2"
@@ -377,19 +377,19 @@
             android:background="@color/fencePost"
             app:layout_constraintBottom_toTopOf="@+id/button13"
             app:layout_constraintEnd_toStartOf="@+id/button10"
-            app:layout_constraintHorizontal_bias="0.69"
+            app:layout_constraintHorizontal_bias="0.691"
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/h6"
             android:layout_width="84dp"
             android:layout_height="35dp"
-            android:layout_marginBottom="94dp"
+            android:layout_marginBottom="92dp"
             android:background="@color/transparent"
             android:onClick="onClickHorizontal7"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/h7"
-            app:layout_constraintHorizontal_bias="0.88"
+            app:layout_constraintHorizontal_bias="0.873"
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
@@ -400,9 +400,10 @@
             android:onClick="onClickHorizontal4"
             app:layout_constraintBottom_toTopOf="@+id/h6"
             app:layout_constraintEnd_toEndOf="@+id/button10"
-            app:layout_constraintHorizontal_bias="0.877"
+            app:layout_constraintHorizontal_bias="0.879"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/h0" />
+            app:layout_constraintTop_toBottomOf="@+id/h0"
+            app:layout_constraintVertical_bias="0.508" />
 
         <Button
             android:id="@+id/button14"
@@ -414,7 +415,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/button15"
             app:layout_constraintTop_toBottomOf="@+id/button10"
-            app:layout_constraintVertical_bias="0.862" />
+            app:layout_constraintVertical_bias="1.0" />
 
         <Button
             android:id="@+id/v4"
