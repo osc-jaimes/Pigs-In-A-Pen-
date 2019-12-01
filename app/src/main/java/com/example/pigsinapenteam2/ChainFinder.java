@@ -7,11 +7,13 @@ import java.util.LinkedList;
  *  and provides helper functions for counting/measuring/finding them.
  */
 public class ChainFinder {
-  int boardHeight;
-  int boardWidth;
-  boolean[] isCellAChainLinkArray;
-  int[][] cellAdjacencyList;
-  LinkedList<Chain> chains;
+  private final int boardHeight;
+  private  final int boardWidth;
+  private boolean[] isCellAChainLinkArray;
+  private int[][] cellAdjacencyList;
+  private LinkedList<Chain> chains;
+  private WallCoordinate[][] adjacentOpenWallByIndex;
+  
 
   public ChainFinder() {
     boardWidth = 0;
@@ -19,6 +21,7 @@ public class ChainFinder {
     isCellAChainLinkArray = new boolean[boardWidth * boardHeight];
     cellAdjacencyList = new int[boardHeight * boardWidth][4];
     chains = new LinkedList<>();
+    adjacentOpenWallByIndex = new WallCoordinate[boardHeight * boardWidth][4];
   }
 
   public ChainFinder(int height, int width) {
@@ -27,6 +30,7 @@ public class ChainFinder {
     isCellAChainLinkArray = new boolean[boardWidth *boardHeight];
     cellAdjacencyList = new int[boardHeight * boardWidth][4];
     chains = new LinkedList<>();
+    adjacentOpenWallByIndex = new WallCoordinate[boardHeight * boardWidth][4];
   }
 
   public void findLinks(BoardState state) {
@@ -59,6 +63,7 @@ public class ChainFinder {
       if (state.getWallAi(xCoord, yCoord, wallPosition) == 0) {
         cellAdjacencyList[indexOfCurrentCell][cellDegree] = indexOfAdjacentCell;
         cellDegree += 1;
+        adjacentOpenWallByIndex[indexOfCurrentCell][cellDegree] = currentWallCoord;
       }
     }
     if (cellDegree == 2){
@@ -71,6 +76,8 @@ public class ChainFinder {
   public void findChains() {
     //TODO
     //just remember the chains, don't return
+
+
   }
 
   private int coordsToIndex(int xCoord, int yCoord) {
@@ -88,5 +95,13 @@ public class ChainFinder {
     coords[0] = index % boardWidth;
     coords[1] = index / boardWidth;
     return coords;
+  }
+
+  private boolean isCellAChainLink(int x, int y) {
+    return isCellAChainLinkArray[coordsToIndex(x,y)];
+  }
+
+  private boolean isCellAChainLink(int index) {
+    return isCellAChainLinkArray[index];
   }
 }
