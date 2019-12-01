@@ -110,7 +110,9 @@ public class BoardState {
     boardData[row][cols][topWallState] = 1;
 
     if(row > 0){
-      boardData[]
+
+      boardData[row - 1][cols][bottomWallState] = 1;
+
     }
 
   }//setTopWallState
