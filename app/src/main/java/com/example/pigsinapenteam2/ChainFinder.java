@@ -147,24 +147,26 @@ public class ChainFinder {
   private void sortChains() {
     //implements insertion sort
     Chain keyChain;
-    Chain selectedChain;
-    int selected;
+    Chain iChain;
+    int iValue;
     int key;
-    int subListIndex;
+    int i;
     if (chains.size() > 1) {
-      for (int endSubList = 1; endSubList < chains.size(); endSubList++) {
-        keyChain = chains.get(endSubList);
+      for (int j = 1; j < chains.size(); j++) {
+        keyChain = chains.get(j);
         key = keyChain.length;
-        subListIndex = endSubList - 1;
-        selectedChain = chains.get(subListIndex);
-        selected = selectedChain.length;
-        while ((subListIndex > 1) && (selected > key)) {
-          chains.set(subListIndex + 1, selectedChain);
-          subListIndex = subListIndex - 1;
-          selectedChain = chains.get(subListIndex);
-          selected = selectedChain.length;
+        i = j - 1;
+        iChain = chains.get(i);
+        iValue = iChain.length;
+        while ((i >= 0) && (iValue > key)) {
+          chains.set(i + 1, iChain);
+          i = i - 1;
+          if (i >= 0) {
+            iChain = chains.get(i);
+            iValue = iChain.length;
+          }
         }
-        chains.set(subListIndex + 1, keyChain);
+        chains.set(i + 1, keyChain);
       }
     }
   }
