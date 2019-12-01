@@ -250,6 +250,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
      Button AIButton = findViewById(resID);
      AIButton.setBackgroundColor(getResources().getColor(R.color.fences));
      AIButton.setVisibility(View.VISIBLE);
+     AIButton.setClickable(false);
     }
 
   }
