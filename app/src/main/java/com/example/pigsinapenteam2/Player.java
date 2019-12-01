@@ -13,11 +13,15 @@ public class Player {
      * @return the gameState without any changes here.
      */
     public GameState doMove(GameState inputState){
-        return inputState;
+
+      return inputState;
+
     }
 
     public boolean isBot(){
-        return false;
+
+      return false;
+
     }
 
 
