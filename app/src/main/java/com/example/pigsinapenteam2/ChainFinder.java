@@ -10,24 +10,26 @@ public class ChainFinder {
   int boardHeight;
   int boardWidth;
   boolean[][] isCellAChainLinkArray;
-  int[][] cellAdjacencyList;
+  int[][] cellAdjacencyMatrix;
 
   public ChainFinder() {
     boardWidth = 0;
     boardHeight = 0;
     isCellAChainLinkArray = new boolean[boardWidth][boardHeight];
-    cellAdjacencyList = new int[boardWidth * boardHeight][2];
+    cellAdjacencyMatrix = new int[boardHeight][boardWidth];
   }
 
   public ChainFinder(int height, int width) {
     boardWidth = width;
     boardHeight = height;
     isCellAChainLinkArray = new boolean[boardWidth][boardHeight];
-    cellAdjacencyList = new int[boardWidth * boardHeight][2];
+    cellAdjacencyMatrix = new int[boardHeight][boardWidth];
   }
 
   public void findLinks(BoardState state) {
     //TODO
+    //make it work for adjacency MATRIX instead of 2 x numCells array thing
+
     int cellDegree;
     int adjacencyIndex;
     int indexOfCurrentCell;
