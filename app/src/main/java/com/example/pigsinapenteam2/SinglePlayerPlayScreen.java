@@ -206,7 +206,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
   }
   public void onClickHorizontal9(View v) {
     this.buttonClicked(v);
-    cellX = 0;
+    cellX = 2;
     cellY = 2;
     isHorizontal = true;
   }
