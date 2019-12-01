@@ -49,14 +49,6 @@
             app:layout_constraintVertical_bias="1.0"
             tools:text="@string/pausedInfo" />
 
-        <ImageView
-            android:id="@+id/player1Pig"
-            android:layout_width="122dp"
-            android:layout_height="137dp"
-            app:srcCompat="@drawable/pig"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="137dp" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageView
@@ -98,11 +90,17 @@
             android:id="@+id/pauseButton"
             android:layout_width="42dp"
             android:layout_height="47dp"
+            android:layout_marginStart="623dp"
+            android:layout_marginTop="54dp"
+            android:layout_marginEnd="66dp"
+            android:layout_marginBottom="311dp"
             android:contentDescription="@string/pause_button"
             android:onClick="onClickPause"
-            app:srcCompat="@drawable/pause_button"
-            tools:layout_editor_absoluteX="618dp"
-            tools:layout_editor_absoluteY="32dp" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/pause_button" />
 
         <Button
             android:id="@+id/button16"
@@ -435,10 +433,31 @@
             android:id="@+id/confirmButtonPlayer1"
             android:layout_width="124dp"
             android:layout_height="46dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="60dp"
             android:background="@color/dropdown"
             android:onClick="onClickConfirmationButton"
             android:text="@string/end_turn_button"
-            tools:layout_editor_absoluteY="301dp" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <ImageView
+            android:id="@+id/player1Pig"
+            android:layout_width="122dp"
+            android:layout_height="137dp"
+            android:layout_marginTop="124dp"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.026"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.153"
+            app:srcCompat="@drawable/pig" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageView
