@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class SinglePlayerPlayScreen extends AppCompatActivity {
-  //Instance Variables + instantiations
+  //Instance Variables
   GameState gameState;
   public final int WIDTH = 4;
   public final int HEIGHT = 3;
@@ -21,7 +21,6 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
   boolean playerHasMoved;
   boolean isHorizontal;
   Button currentButton;
-  boolean confirmedAction;
   protected int totalScore;
 
 
@@ -33,7 +32,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
     setContentView(R.layout.activity_single_player_play_screen);
     setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
     this.confirmButton = findViewById(R.id.confirmButtonPlayer1);
-    //setting confirm button to not exist for now
+    //setting confirm button to invisible
     confirmButton.setVisibility(View.GONE);
     this.player1 = new HumanPlayer();
     this.player2 = new EasyBotPlayer(HEIGHT,WIDTH);
@@ -43,6 +42,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
     BoardState boardState = new BoardState(WIDTH,HEIGHT);
     this.gameState = new GameState(boardState, this.player1, this.player2,0);
 
+    //Make the game full screen, hides any action bars on the phone.
     this.getWindow().getDecorView().setSystemUiVisibility(
             View.SYSTEM_UI_FLAG_LAYOUT_STABLE
                     | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
@@ -51,9 +51,13 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
                     | View.SYSTEM_UI_FLAG_FULLSCREEN
                     | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
 
-    totalScore = WIDTH * HEIGHT /2;
+    this.totalScore = (WIDTH * HEIGHT) / 2;
   }
 
+  /**
+   * Highlights the fence button last clicked and displays the confirm button.
+   * @param V the button that is pressed.
+   */
   public void buttonClicked(View V){
     if(this.currentButton == null){
       int buttonId = V.getId();
@@ -62,6 +66,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
       this.confirmButton.setVisibility(View.VISIBLE);
       currentButton.setBackgroundColor(getResources().getColor(R.color.fences));
     } else{
+      //if there already is a fence button chosen
       this.changeChoice(V);
     }
 
@@ -70,7 +75,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
 
   /**
    * Changes the fence selection from currentButton to button V.
-   * @param V the button that is pressed
+   * @param V the button that is pressed.
    */
   public void changeChoice(View V){
     int buttonId = V.getId();
