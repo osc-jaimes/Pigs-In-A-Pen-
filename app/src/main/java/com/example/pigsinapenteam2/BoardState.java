@@ -14,18 +14,11 @@ public class BoardState {
   private int[][][] boardData;
   private int width;
   private int height;
-
-  //=======================================================================================
-  /**
-   * default constructor for BoardState. Sets the board as a 10x10 empty board
-   *
-   */
-  public BoardState() {
-
-    boardData = new int[10][10][5];
-    width = 10;
-    height = 10;
-  }//default constructor
+  private int topWallState;
+  private int rightWallState;
+  private int bottomWallState;
+  private int leftWallState;
+  private int cellState;
 
   //=======================================================================================
   /**
@@ -36,9 +29,14 @@ public class BoardState {
    */
   public BoardState(int inputtedWidth, int inputtedHeight){
 
-    boardData = new int[inputtedWidth][inputtedHeight][5];
+    boardData = new int[inputtedHeight][inputtedWidth][5];
     width = inputtedWidth;
     height = inputtedHeight;
+    topWallState = 0;
+    rightWallState = 1;
+    bottomWallState = 2;
+    leftWallState = 3;
+    cellState = 4;
   }//constructor
 
   //=======================================================================================
@@ -58,222 +56,153 @@ public class BoardState {
   //=======================================================================================
   /**
    * gets data from the saved cell data at the specified coordinates
-   * @param xCoord
-   * @param yCoord
-   * @return    the int value at [xCoord][yCoord][4]
+   * @param row
+   * @param cols
+   * @return    the int value at [row][cols][4]
    */
-  public int getCellState(int xCoord, int yCoord){
+  public int getCellState(int row, int cols){
 
-    return boardData[xCoord][yCoord][4];
+    return boardData[row][cols][cellState];
 
   }//getCellState
 
   //=======================================================================================
   /**
    * sets data for the cell state at the specified coordinates
-   * @param xCoord
-   * @param yCoord
-   * @param cellInput the new int value at [xCoord][yCoord][4]
+   * @param row
+   * @param cols
+   * @param cellInput the new int value at [row][cols][4]
    */
-  public void setCellState(int xCoord, int yCoord, int cellInput){
+  public void setCellState(int row, int cols, int cellInput){
 
-    if(xCoord > width){
-      return;
-
-    }//if statement
-
-    if(yCoord > height){
-      return;
-    }//if statement
-
-    boardData[xCoord][yCoord][4] = cellInput;
+    boardData[row][cols][cellState] = cellInput;
 
   }//setCellState
 
   //=======================================================================================
   /**
    * gets the top wall at specified coordinates             *----------*   <== retrieves this
-   * @param xCoord                                          |          |
-   * @param yCoord                                          |          |
+   * @param row                                             |          |
+   * @param cols                                            |          |
    * @return the data of the top wall                       *----------*
    */
-  private int getTopWallState(int xCoord, int yCoord){
+  private int getTopWallState(int row, int cols){
 
-    if(xCoord > width){
-      return 0;
-    }//if statement
-
-    if(yCoord > height){
-      return getBottomWallState(xCoord, yCoord-1);
-    }//if statement
-
-    return boardData[xCoord][yCoord][0];
+    return boardData[row][cols][topWallState];
 
   }//getTopWallState
 
   //=======================================================================================
   /**
-   * sets the top wall at specified coordinates             *----------*   <== sets this
-   * @param xCoord                                          |          |
-   * @param yCoord                                          |          |
-   * @param input                                           *----------*
+   * sets the top wall at specified coordinates            *----------*   <== sets this
+   * @param row                                            |          |
+   * @param cols                                           |          |
+   * @param                                                *----------*
    */
-  private void setTopWallState(int xCoord, int yCoord, int input){
+  private void setTopWallState(int row, int cols){
 
-    if(xCoord > width) {
+    if(row >= height){
+
+      setBottomWallState(row - 1, cols);
       return;
     }//if statement
 
-    //checks if yCoordinate is greater than board, then sets bottom wall state instead
-    if(yCoord > height){
-      setBottomWallState(xCoord, yCoord-1, input);
-      return;
-    }// if statement
+    boardData[row][cols][topWallState] = 1;
 
-    boardData[xCoord][yCoord][0] = input;
+    if(row > 0){
 
-    if(yCoord >= 0){
-      boardData[xCoord][yCoord - 1][2] = input;
+      boardData[row - 1][cols][bottomWallState] = 1;
 
-    }//if statement
+    }
 
   }//setTopWallState
 
   //=======================================================================================
   /**
-   * gets the right wall at specified coordinates           *----------*
-   * @param xCoord                                          |          | <== retrieves this
-   * @param yCoord                                          |          |
-   * @return the data of the right wall                     *----------*
+   * gets the right wall at specified coordinates          *----------*
+   * @param row                                            |          | <== retrieves this
+   * @param cols                                           |          |
+   * @return the data of the right wall                    *----------*
    */
-  private int getRightWallState(int xCoord, int yCoord){
+  private int getRightWallState(int row, int cols){
 
-    if(xCoord > width){
-      return 0;
-    }//if statement
-
-    if(yCoord > height){
-      return 0;
-    }//if statement
-
-    return boardData[xCoord][yCoord][1];
+    return boardData[row][cols][rightWallState];
 
   }//getRightWallState
 
 
   //=======================================================================================
   /**
-   * sets the right wall at specified coordinates           *----------*
-   * @param xCoord                                          |          |  <== sets this
-   * @param yCoord                                          |          |
-   * @param input                                           *----------*
+   * sets the right wall at specified coordinates         *----------*
+   * @param row                                           |          |  <== sets this
+   * @param cols                                          |          |
+   *                                                      *----------*
    */
-  private void setRightWallState(int xCoord, int yCoord, int input){
+  private void setRightWallState(int row, int cols){
 
-    if(xCoord > width){
-      return;
-    }//if statement
+    boardData[row][cols][rightWallState] = 1;
 
-    if(yCoord > height){
-      return;
-    }//if statement
+    if(cols < (width - 1)){
 
-    boardData[xCoord][yCoord][1] = input;
-
-    if(xCoord <= width){
-
-      boardData[xCoord + 1][yCoord][3] = input;
+      boardData[row][cols + 1][leftWallState] = 1;
 
     }//if statement
   }//setRightWallState
 
   //=======================================================================================
-  private int getBottomWallState(int xCoord, int yCoord){
+  private int getBottomWallState(int row, int cols){
 
-    if(xCoord > width){
-      return 0;
-    }//if statement
-
-    if(yCoord > height){
-      return 0;
-    }// if statement
-
-    return boardData[xCoord][yCoord][2];
+    return boardData[row][cols][bottomWallState];
 
   }//getBottomWallState
 
   //=======================================================================================
-  private void setBottomWallState(int xCoord, int yCoord, int input){
+  private void setBottomWallState(int row, int cols){
 
-    if(xCoord > width){
-      return;
-    }//if statement
+    boardData[row][cols][bottomWallState] = 1;
 
-    if(yCoord > height){
-      return;
-    }//if statement
+    if(row < (height - 1)){
 
-    boardData[xCoord][yCoord][2] = input;
-
-    if(yCoord >= 0){
-
-      boardData[xCoord][yCoord + 1][0] = input;
+      boardData[row + 1][cols][topWallState] = 1;
 
     }//if statement
   }//setBottomWallState
 
   //=======================================================================================
-  private int getLeftWallState(int xCoord, int yCoord){
+  private int getLeftWallState(int row, int cols){
 
-    if(xCoord > width){
-
-      return getRightWallState(xCoord-1, yCoord);
-    }//if statement
-
-    if(yCoord > height){
-      return 0;
-    }//if statement
-
-    return boardData[xCoord][yCoord][3];
+    return boardData[row][cols][leftWallState];
 
   }//getLeftWallState
 
   //=======================================================================================
-  private void setLeftWallState(int xCoord, int yCoord, int input){
+  private void setLeftWallState(int row, int cols){
 
-    if(xCoord > width){
-      setRightWallState(xCoord-1, yCoord, input);
+    if(cols >= width){
+
+      setRightWallState(row, cols -1);
       return;
     }//if statement
+    System.out.println("Before left wall");
+    boardData[row][cols][leftWallState] = 1;
+    System.out.println("After left wall");
 
-    if(yCoord > height){
-      return;
+    if(cols > 0){
+      System.out.println("Before right wall");
+      boardData[row][cols - 1][rightWallState] = 1;
+      System.out.println("After right wall");
     }//if statement
-
-    boardData[xCoord][yCoord][3] = input;
-
-    if(xCoord <= width){
-
-      boardData[xCoord - 1][yCoord][1] = input;
-
-    }//if statement
-
   }//setLeftWallState
 
   //=======================================================================================
-  public boolean isComplete( int xCoord, int yCoord) {
+  public boolean isComplete( int row, int cols) {
 
+    for(int i = 0; i < 4; i++){
 
-
-
-
-    //adds all four wallStates together to check if cell is done
-    for( int n = 0; n <= 3; n++){
-
-      if(boardData[xCoord][yCoord][n] == 0){
+      if(boardData[row][cols][i] == 0){
         return false;
-      }//if statement
 
+      }//if statement
     }//for loop
 
     return true;
@@ -282,21 +211,21 @@ public class BoardState {
 
   /**
    * sets walls based on if horizontal or vertical. places at x, y coordinate
-   * @param xCoord  x coordinate on 2D array
-   * @param yCoord Y coordinate on 2D array
+   * @param row  x coordinate on 2D array
+   * @param cols Y coordinate on 2D array
    * @param isHorizontal  boolean to know if wall needing to be placed is horizontal
    */
-  public void setWall(int xCoord, int yCoord, boolean isHorizontal){
+  public void setWall(int row, int cols, boolean isHorizontal){
     if(!(isHorizontal)){
-      setLeftWallState(xCoord, yCoord, 1);
+      setLeftWallState(row, cols);
 
     }//if
     else{
-      setTopWallState(xCoord, yCoord, 1);
+      setTopWallState(row, cols);
     }//else
   }//setTopWall
 
-  public void setWallAi(int xCoord, int yCoord, int wallDirection){
+  public void setWallAi(int row, int cols, int wallDirection){
 
      int wallInput = 1;
 
@@ -304,22 +233,22 @@ public class BoardState {
 
       case 0 :
 
-        setTopWallState(xCoord, yCoord, wallInput);
+        setTopWallState(row, cols);
         break;
 
       case 1:
 
-        setRightWallState(xCoord, yCoord, wallInput);
+        setRightWallState(row, cols);
         break;
 
       case 2:
 
-        setBottomWallState(xCoord, yCoord, wallInput);
+        setBottomWallState(row, cols);
         break;
 
       case 3:
 
-        setLeftWallState(xCoord, yCoord, wallInput);
+        setLeftWallState(row, cols);
         break;
 
       default:
@@ -332,29 +261,29 @@ public class BoardState {
 
   /**
    * getWall is used for BotPlayer to see a inputted wall.
-   * @param xCoord
-   * @param yCoord
+   * @param row
+   * @param cols
    * @param wantedWall 0 for top, 1 for right, 2 bottom, 3 left
    */
-  public int getWallAi(int xCoord, int yCoord, int wantedWall){
+  public int getWallAi(int row, int cols, int wantedWall){
 
     switch(wantedWall){
 
       case 0:
 
-        return getTopWallState(xCoord, yCoord);
+        return getTopWallState(row, cols);
 
       case 1:
 
-        return getRightWallState(xCoord, yCoord);
+        return getRightWallState(row, cols);
 
       case 2:
 
-        return getBottomWallState(xCoord, yCoord);
+        return getBottomWallState(row, cols);
 
       case 3:
 
-        return getLeftWallState(xCoord, yCoord);
+        return getLeftWallState(row, cols);
 
       default:
         return -1;
