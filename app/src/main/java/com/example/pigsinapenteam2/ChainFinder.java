@@ -10,80 +10,54 @@ public class ChainFinder {
   int boardHeight;
   int boardWidth;
   boolean[][] isCellAChainLinkArray;
-  int[][] cellAdjacencyMatrix;
+  int[][] cellAdjacencyList;
 
   public ChainFinder() {
     boardWidth = 0;
     boardHeight = 0;
     isCellAChainLinkArray = new boolean[boardWidth][boardHeight];
-    cellAdjacencyMatrix = new int[boardHeight][boardWidth];
+    cellAdjacencyList = new int[boardHeight * boardWidth][4];
   }
 
   public ChainFinder(int height, int width) {
     boardWidth = width;
     boardHeight = height;
     isCellAChainLinkArray = new boolean[boardWidth][boardHeight];
-    cellAdjacencyMatrix = new int[boardHeight][boardWidth];
+    cellAdjacencyList = new int[boardHeight * boardWidth][4];
   }
 
   public void findLinks(BoardState state) {
-    //TODO
-    //make it work for adjacency MATRIX instead of 2 x numCells array thing
-
-    int cellDegree;
-    int adjacencyIndex;
-    int indexOfCurrentCell;
-    int indexOfAdjacentCell;
-    WallCoordinate currentWallCoord;
-    WallCoordinate oppositeWallCoord;
-
-    currentWallCoord = new WallCoordinate(0, 0, 0, boardHeight, boardWidth);
-
-
     //loop through all cells
     for (int yCoord = 0; yCoord < boardHeight; yCoord++) {
       for (int xCoord = 0; xCoord < boardWidth; xCoord++) {
-
-        //at a particular cell:
-        cellDegree = 0;
-        //look at all 4 walls
-        indexOfCurrentCell = coordsToIndex(xCoord,yCoord);
-        for (int wallPosition = 0; wallPosition < 4; wallPosition++) {
-          currentWallCoord.x = xCoord;
-          currentWallCoord.y = yCoord;
-          currentWallCoord.setWallPosition(wallPosition);
-
-          oppositeWallCoord = currentWallCoord.getOtherSideCoordinate();
-
-          indexOfAdjacentCell = coordsToIndex(oppositeWallCoord.x, oppositeWallCoord.y);
-          if (state.getWallAi(xCoord, yCoord, wallPosition) == 0) {
-            adjacencyIndex = cellDegree % 2;
-
-
-            //if wall open, it and the adjacent one are "connected"
-            if (oppositeWallCoord.isValidCell()) {
-              cellAdjacencyList[indexOfCurrentCell][adjacencyIndex] = indexOfAdjacentCell;
-            } else {
-              cellAdjacencyList[indexOfCurrentCell][adjacencyIndex] = -1;
-            }
-
-            cellDegree += 1;
-
-          }
-
-        }
-        if (cellDegree < 2) {
-          setIsCellChainLinkXY(false, xCoord, yCoord);
-          cellAdjacencyList[indexOfCurrentCell][0] = 0;
-          cellAdjacencyList[indexOfCurrentCell][1] = 0;
-        } else if (cellDegree == 2){
-          setIsCellChainLinkXY(true, xCoord, yCoord);
-        } else {
-          setIsCellChainLinkXY(false, xCoord, yCoord);
-          cellAdjacencyList[indexOfCurrentCell][0] = 0;
-          cellAdjacencyList[indexOfCurrentCell][1] = 0;
-        }
+        findLinksOfOneCell(state, xCoord, yCoord);
       }
+    }
+  }
+
+  private void findLinksOfOneCell(BoardState state, int xCoord, int yCoord) {
+    int cellDegree = 0;
+    int indexOfCurrentCell = coordsToIndex(xCoord,yCoord);
+    int indexOfAdjacentCell;
+    WallCoordinate currentWallCoord;
+    currentWallCoord = new WallCoordinate(0, 0, 0, boardHeight, boardWidth);
+    WallCoordinate oppositeWallCoord;
+
+    for (int wallPosition = 0; wallPosition < 4; wallPosition++) {
+
+      currentWallCoord.x = xCoord;
+      currentWallCoord.y = yCoord;
+      currentWallCoord.setWallPosition(wallPosition);
+      oppositeWallCoord = currentWallCoord.getOtherSideCoordinate();
+      indexOfAdjacentCell = coordsToIndex(oppositeWallCoord.x, oppositeWallCoord.y);
+
+      if (state.getWallAi(xCoord, yCoord, wallPosition) == 0) {
+        cellAdjacencyList[indexOfCurrentCell][cellDegree] = indexOfAdjacentCell;
+        cellDegree += 1;
+      }
+    }
+    if (cellDegree == 2){
+      setIsCellChainLinkXY(true, xCoord, yCoord);
     }
   }
 
@@ -93,7 +67,13 @@ public class ChainFinder {
   }
 
   private int coordsToIndex(int xCoord, int yCoord) {
-    return (yCoord * boardWidth + xCoord);
+    if (xCoord >= boardWidth) {
+      return -1;
+    } else if (yCoord >= boardHeight) {
+      return -1;
+    } else {
+      return (yCoord * boardWidth + xCoord);
+    }
   }
 
   private int[] indexToCoords(int index) {
