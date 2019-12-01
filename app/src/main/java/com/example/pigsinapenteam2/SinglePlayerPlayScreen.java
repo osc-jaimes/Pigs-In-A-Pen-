@@ -1,12 +1,15 @@
 package com.example.pigsinapenteam2;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class SinglePlayerPlayScreen extends AppCompatActivity {
@@ -33,11 +36,12 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_single_player_play_screen);
     setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+
     this.confirmButton = findViewById(R.id.confirmButtonPlayer1);
     //setting confirm button to invisible
     confirmButton.setVisibility(View.GONE);
     //this.pauseButton = findViewById(R.id.pauseButton);
-    pauseButton.setVisibility(View.GONE);
+    //pauseButton.setVisibility(View.GONE);
     this.player1 = new HumanPlayer();
     this.player2 = new EasyBotPlayer(HEIGHT,WIDTH);
     this.currentPlayer = player1;
@@ -268,6 +272,12 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
   }
 
 
+  public void onClickPause(View v){
+
+
+
+  }
+
 
   public void updateScore() {
     TextView tv = (TextView) findViewById(R.id.player1Score);
@@ -282,10 +292,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
       Intent goToWinScreen = new Intent(getApplicationContext(), VictoryScreen.class);
       startActivity(goToWinScreen);
     }
-    public void onClickPause(View v){
-    pauseButton.setVisibility(View.VISIBLE);
-    //Blur background -- TODO when mvp is done
-    }
+
     public void resumeButton(View v){
     pauseButton.setVisibility(View.GONE);
     }
