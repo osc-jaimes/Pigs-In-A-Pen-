@@ -265,6 +265,13 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
     gameButtons.setVisibility(View.VISIBLE);
     pauseMenuLayout.setVisibility(View.GONE);
   }
+  public void pauseToMainMenu(View v){
+    Intent goToMainMenu = new Intent(getApplicationContext(), MainScreen.class);
+    startActivity(goToMainMenu);
+  }
+  public void restartButton(View v){
+    this.recreate();
+  }
 
 
 
