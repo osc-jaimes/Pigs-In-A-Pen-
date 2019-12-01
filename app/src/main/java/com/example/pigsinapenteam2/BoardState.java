@@ -14,6 +14,11 @@ public class BoardState {
   private int[][][] boardData;
   private int width;
   private int height;
+  private int topWallState;
+  private int rightWallState;
+  private int bottomWallState;
+  private int leftWallState;
+  private int cellState;
 
   //=======================================================================================
   /**
@@ -52,7 +57,7 @@ public class BoardState {
    */
   public int getCellState(int xCoord, int yCoord){
 
-    return boardData[xCoord][yCoord][4];
+    return boardData[xCoord][yCoord][cellState];
 
   }//getCellState
 
@@ -65,19 +70,20 @@ public class BoardState {
    */
   public void setCellState(int xCoord, int yCoord, int cellInput){
 
-    boardData[xCoord][yCoord][4] = cellInput;
+    boardData[xCoord][yCoord][cellState] = cellInput;
 
   }//setCellState
 
   //=======================================================================================
   /**
    * gets the top wall at specified coordinates             *----------*   <== retrieves this
-   * @param xCoord                                          |          |
-   * @param yCoord                                          |          |
+   * @param row                                          |          |
+   * @param cols                                          |          |
    * @return the data of the top wall                       *----------*
    */
-  private int getTopWallState(int xCoord, int yCoord){
+  private int getTopWallState(int row, int cols){
 
+    return boardData[row][cols][topWallState];
 
   }//getTopWallState
 
@@ -101,6 +107,7 @@ public class BoardState {
    */
   private int getRightWallState(int xCoord, int yCoord){
 
+    return boardData[xCoord][yCoord][rightWallState];
 
   }//getRightWallState
 
@@ -119,6 +126,8 @@ public class BoardState {
   //=======================================================================================
   private int getBottomWallState(int xCoord, int yCoord){
 
+    return boardData[xCoord][yCoord][bottomWallState];
+
   }//getBottomWallState
 
   //=======================================================================================
@@ -128,6 +137,8 @@ public class BoardState {
 
   //=======================================================================================
   private int getLeftWallState(int xCoord, int yCoord){
+
+    return boardData[xCoord][yCoord][leftWallState];
 
   }//getLeftWallState
 
