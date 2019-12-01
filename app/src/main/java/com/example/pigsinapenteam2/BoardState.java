@@ -97,13 +97,13 @@ public class BoardState {
    * sets the top wall at specified coordinates            *----------*   <== sets this
    * @param row                                            |          |
    * @param cols                                           |          |
-   * @param input                                          *----------*
+   * @param                                                *----------*
    */
-  private void setTopWallState(int row, int cols, int input){
+  private void setTopWallState(int row, int cols){
 
     if(row >= height){
 
-      setBottomWallState(row - 1, cols, input);
+      setBottomWallState(row - 1, cols);
       return;
     }//if statement
 
@@ -136,9 +136,9 @@ public class BoardState {
    * sets the right wall at specified coordinates         *----------*
    * @param row                                           |          |  <== sets this
    * @param cols                                          |          |
-   * @param input                                         *----------*
+   *                                                      *----------*
    */
-  private void setRightWallState(int row, int cols, int input){
+  private void setRightWallState(int row, int cols){
 
   }//setRightWallState
 
@@ -150,7 +150,7 @@ public class BoardState {
   }//getBottomWallState
 
   //=======================================================================================
-  private void setBottomWallState(int row, int cols, int input){
+  private void setBottomWallState(int row, int cols){
 
   }//setBottomWallState
 
@@ -162,8 +162,21 @@ public class BoardState {
   }//getLeftWallState
 
   //=======================================================================================
-  private void setLeftWallState(int row, int cols, int input){
+  private void setLeftWallState(int row, int cols){
 
+    if(cols >= width){
+
+      setRightWallState(row, cols -1);
+
+    }//if statement
+
+    boardData[row][cols][leftWallState] = 1;
+
+    if(cols > 0){
+
+      boardData[row][cols - 1][rightWallState] = 1;
+
+    }//if statement
   }//setLeftWallState
 
   //=======================================================================================
@@ -180,11 +193,11 @@ public class BoardState {
    */
   public void setWall(int row, int cols, boolean isHorizontal){
     if(!(isHorizontal)){
-      setLeftWallState(row, cols, 1);
+      setLeftWallState(row, cols);
 
     }//if
     else{
-      setTopWallState(row, cols, 1);
+      setTopWallState(row, cols);
     }//else
   }//setTopWall
 
@@ -196,22 +209,22 @@ public class BoardState {
 
       case 0 :
 
-        setTopWallState(row, cols, wallInput);
+        setTopWallState(row, cols);
         break;
 
       case 1:
 
-        setRightWallState(row, cols, wallInput);
+        setRightWallState(row, cols);
         break;
 
       case 2:
 
-        setBottomWallState(row, cols, wallInput);
+        setBottomWallState(row, cols);
         break;
 
       case 3:
 
-        setLeftWallState(row, cols, wallInput);
+        setLeftWallState(row, cols);
         break;
 
       default:
