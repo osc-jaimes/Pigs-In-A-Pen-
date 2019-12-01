@@ -2,6 +2,7 @@ package com.example.pigsinapenteam2;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -21,7 +22,8 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
   BotPlayer player2;
   Button confirmButton;
   Button pauseButton;
-  View pauseMenu;
+  View pauseMenuLayout;
+  View gameButtons;
   int cellX;
   int cellY;
   boolean playerHasMoved;
@@ -41,13 +43,9 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
     this.confirmButton = findViewById(R.id.confirmButtonPlayer1);
     //setting confirm button to invisible
     confirmButton.setVisibility(View.GONE);
-
-    //this.pauseButton = findViewById(R.id.pauseButton);
-    //pauseButton.setVisibility(View.GONE);
-
-    //pauseMenu = findViewById(R.id.pauseMenu);
-    //pauseMenu.setVisibility(View.GONE);
-
+    this.pauseMenuLayout = findViewById(R.id.pauseMenuLayout);
+    this.pauseMenuLayout.setVisibility(View.GONE);
+    this.gameButtons = findViewById(R.id.gameButtons);
     this.player1 = new HumanPlayer();
     this.player2 = new EasyBotPlayer(HEIGHT,WIDTH);
     this.currentPlayer = player1;
@@ -255,13 +253,16 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
     }
 
   }
-
-
   public void onClickPause(View v){
-
-
-
+    pauseMenuLayout.setVisibility(View.VISIBLE);
+    gameButtons.setVisibility(View.GONE);
+    //Blur background -- TODO when mvp is done
   }
+  public void resumeButton(View v){
+    gameButtons.setVisibility(View.VISIBLE);
+    pauseMenuLayout.setVisibility(View.GONE);
+  }
+
 
 
   public void updateScore() {
@@ -277,14 +278,10 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
       Intent goToWinScreen = new Intent(getApplicationContext(), VictoryScreen.class);
       startActivity(goToWinScreen);
     }
-<<<<<<< HEAD
-
-=======
     public void onClickPause(View v){
     pauseMenu.setVisibility(View.VISIBLE);
     //Blur background -- TODO when mvp is done
     }
->>>>>>> 86ba78859c6cfa3e9cb33b971e50dfca87c4b886
     public void resumeButton(View v){
     pauseButton.setVisibility(View.GONE);
     }
