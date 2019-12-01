@@ -242,12 +242,16 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
     this.gameState = player1.doMove(this.gameState, cellX, cellY, isHorizontal);
     this.gameState.runBoardCheck();
 
-    if(!(gameState.player1Points > lastPlayer1Score)){
-     // this.gameState = player2.doMove(this.gameState);
-      //String id = this.gameState.botLastMove.getButtonName();
-      //int resID = this.getResources().getIdentifier(id, "id", this.getPackageName());
-      //Button AIButton = findViewById(resID);
-      //AIButton.setVisibility(View.VISIBLE);
+    if(true){
+      System.out.println("BOARD STATE BEFORE DO MOVE: ");
+      System.out.println(this.gameState.currentBoardState);
+     this.gameState = player2.doMove(this.gameState);
+     String id = this.gameState.botLastMove.getButtonName();
+     System.out.println(id);
+     int resID = this.getResources().getIdentifier(id, "id", this.getPackageName());
+     Button AIButton = findViewById(resID);
+     AIButton.setBackgroundColor(getResources().getColor(R.color.fences));
+     AIButton.setVisibility(View.VISIBLE);
     }
 
   }
