@@ -50,14 +50,14 @@ public class EasyBotPlayer extends BotPlayer {
   }
 
   private void fillPossibleCapturesAndMoves(BoardState state) {
-    WallCoordinate currentWall = new WallCoordinate();
-
+    WallCoordinate currentWall;
+    WallCoordinate wallHandOff;
     for (int yIndex = 0; yIndex < boardHeight; yIndex++) {
       for (int xIndex = 0; xIndex < boardWidth; xIndex++) {
         for (int wallIndex = 0; wallIndex < 4; wallIndex++) {
-          currentWall.x = xIndex;
-          currentWall.y = yIndex;
-          currentWall.setWallPosition(wallIndex);
+          currentWall = new WallCoordinate(xIndex, yIndex, wallIndex, boardHeight, boardWidth);
+
+          //might be having object-related problems
 
           if (super.isWallLegal(state, currentWall)) {
             possibleMoves.add(currentWall);
