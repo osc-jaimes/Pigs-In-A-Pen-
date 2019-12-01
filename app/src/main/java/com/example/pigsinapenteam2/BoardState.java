@@ -227,8 +227,6 @@ public class BoardState {
 
   public void setWallAi(int row, int cols, int wallDirection){
 
-     int wallInput = 1;
-
     switch(wallDirection){
 
       case 0 :
