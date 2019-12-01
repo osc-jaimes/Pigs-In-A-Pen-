@@ -17,18 +17,6 @@ public class BoardState {
 
   //=======================================================================================
   /**
-   * default constructor for BoardState. Sets the board as a 10x10 empty board
-   *
-   */
-  public BoardState() {
-
-    boardData = new int[10][10][5];
-    width = 10;
-    height = 10;
-  }//default constructor
-
-  //=======================================================================================
-  /**
    * contructor for BoardState. creates a board of inputted size and assigns class
    * variables.
    * @param inputtedWidth
