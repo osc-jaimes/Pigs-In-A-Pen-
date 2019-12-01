@@ -31,15 +31,18 @@ public class BoardCheck {
   private void cellScoreCheck(int xCoord, int yCoord){
 
     int input = currentBoard.getCellState(xCoord, yCoord);
+    int checkedCell = 3;
 
     switch (input){
 
       case 1:
         playerOneScore += 1;
+        currentBoard.setCellState(xCoord, yCoord, checkedCell);
         break;
 
       case 2:
         playerTwoScore += 1;
+        currentBoard.setCellState(xCoord, yCoord, checkedCell);
         break;
 
       default:
