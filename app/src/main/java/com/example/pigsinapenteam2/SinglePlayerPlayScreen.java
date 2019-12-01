@@ -19,7 +19,9 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
   public final int WIDTH = 3;
   public final int HEIGHT = 2;
   HumanPlayer player1;
+  final int PLAYERONEINT = 1;
   BotPlayer player2;
+  final int PLAYERTWOINT = 2;
   Button confirmButton;
   Button pauseButton;
   View pauseMenuLayout;
@@ -236,8 +238,14 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
   }
 
   public void confirmAction(int cellX, int cellY, boolean isHorizontal){
+
+    int currentScore = this.gameState.player1Points;
+
     int lastPlayer1Score = gameState.player1Points;
     this.gameState = player1.doMove(this.gameState, cellX, cellY, isHorizontal);
+
+    cellCheckAndUpdate(cellX, cellY, PLAYERONEINT);
+
     this.gameState.runBoardCheck();
 
     if(true){
@@ -294,4 +302,47 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
     Intent goToMainMenu = new Intent(getApplicationContext(), MainScreen.class);
     startActivity(goToMainMenu);
     }*/
-}
+
+
+  private void cellCheckAndUpdate(int cellX,int cellY, int playerInt){
+
+    int checkedCellX = cellXCheck(cellX);
+    int checkedCellY = cellYCheck(cellY);
+
+    if(this.gameState.currentBoardState.isComplete(checkedCellX, checkedCellY)){
+
+      this.gameState.currentBoardState.setCellState(checkedCellX, checkedCellY, playerInt);
+
+    }//if statement
+  }//cellCheckAndUpdate
+
+  private int cellXCheck(int cellX){
+
+    if(cellX >= HEIGHT){
+
+      return cellX - 1;
+
+    }//if statement
+
+    else{
+
+      return cellX;
+
+    }//else statement
+  }//cellXCheck
+
+  private int cellYCheck(int cellY){
+
+    if(cellY >= WIDTH){
+
+      return cellY - 1;
+
+    }//if statement
+
+    else{
+
+      return cellY;
+
+    }//else statement
+  }//cellYCheck
+}//singlePlayerPlayScreen
