@@ -19,7 +19,7 @@
     <string name="end_turn_button">End Turn</string>
     <string name="score_board">Sore Board for the game</string>
     <string name="pausedInfo">Paused</string>
-
+    <string name="resumeText">Resume</string>
     <string name="pause_button">Button to pause the game</string>
 
     <string-array name="board_size_options">

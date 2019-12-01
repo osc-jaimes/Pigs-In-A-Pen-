@@ -1,6 +1,7 @@
 package com.example.pigsinapenteam2;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -19,6 +20,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
   Button confirmButton;
   Button pauseButton;
   View pauseMenuLayout;
+  View gameButtons;
   int cellX;
   int cellY;
   boolean playerHasMoved;
@@ -37,8 +39,9 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
     this.confirmButton = findViewById(R.id.confirmButtonPlayer1);
     //setting confirm button to invisible
     confirmButton.setVisibility(View.GONE);
-    pauseMenuLayout = findViewById(R.id.pauseMenuLayout);
-    pauseMenuLayout.setVisibility(View.GONE);
+    this.pauseMenuLayout = findViewById(R.id.pauseMenuLayout);
+    this.pauseMenuLayout.setVisibility(View.GONE);
+    this.gameButtons = findViewById(R.id.gameButtons);
     this.player1 = new HumanPlayer();
     this.player2 = new EasyBotPlayer(HEIGHT,WIDTH);
     this.currentPlayer = player1;
@@ -269,7 +272,12 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
   }
   public void onClickPause(View v){
     pauseMenuLayout.setVisibility(View.VISIBLE);
+    gameButtons.setVisibility(View.GONE);
     //Blur background -- TODO when mvp is done
+  }
+  public void resumeButton(View v){
+    gameButtons.setVisibility(View.VISIBLE);
+    pauseMenuLayout.setVisibility(View.GONE);
   }
 
 
