@@ -104,6 +104,8 @@ public class ChainFinder {
         chains.add(currentChain);
       }
     }
+
+    sortChains();
   }
 
   private Chain followChainHead(Chain chain, int headCellIndex) {
@@ -140,6 +142,35 @@ public class ChainFinder {
       }
     }
     return chain;
+  }
+
+  private void sortChains() {
+    //implements insertion sort
+    Chain keyChain;
+    Chain selectedChain;
+    int selected;
+    int key;
+    int subListIndex;
+    if (chains.size() > 1) {
+      for (int endSubList = 1; endSubList < chains.size(); endSubList++) {
+        keyChain = chains.get(endSubList);
+        key = keyChain.length;
+        subListIndex = endSubList - 1;
+        selectedChain = chains.get(subListIndex);
+        selected = selectedChain.length;
+        while ((subListIndex > 1) && (selected > key)) {
+          chains.set(subListIndex + 1, selectedChain);
+          subListIndex = subListIndex - 1;
+          selectedChain = chains.get(subListIndex);
+          selected = selectedChain.length;
+        }
+        chains.set(subListIndex + 1, keyChain);
+      }
+    }
+  }
+
+  public LinkedList<Chain> getChains() {
+    return chains;
   }
 
   private int coordsToIndex(int xCoord, int yCoord) {
