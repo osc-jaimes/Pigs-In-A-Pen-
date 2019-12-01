@@ -37,6 +37,9 @@ public class ChainFinder {
     WallCoordinate currentWallCoord;
     WallCoordinate oppositeWallCoord;
 
+    currentWallCoord = new WallCoordinate(0, 0, 0, boardHeight, boardWidth);
+
+
     //loop through all cells
     for (int yCoord = 0; yCoord < boardHeight; yCoord++) {
       for (int xCoord = 0; xCoord < boardWidth; xCoord++) {
@@ -46,15 +49,9 @@ public class ChainFinder {
         //look at all 4 walls
         indexOfCurrentCell = coordsToIndex(xCoord,yCoord);
         for (int wallPosition = 0; wallPosition < 4; wallPosition++) {
-          try {
-            currentWallCoord = new WallCoordinate(xCoord, yCoord, wallPosition,
-                boardHeight, boardWidth);
-          } catch (Exception e) {
-            System.out.println(e.getMessage());
-            System.out.println("in findLinks had wrong wall position probably." +
-                "setting currentWall to default.");
-            currentWallCoord = new WallCoordinate();
-          }
+          currentWallCoord.x = xCoord;
+          currentWallCoord.y = yCoord;
+          currentWallCoord.setWallPosition(wallPosition);
 
           oppositeWallCoord = currentWallCoord.getOtherSideCoordinate();
 
@@ -69,7 +66,6 @@ public class ChainFinder {
             } else {
               cellAdjacencyList[indexOfCurrentCell][adjacencyIndex] = -1;
             }
-
 
             cellDegree += 1;
 

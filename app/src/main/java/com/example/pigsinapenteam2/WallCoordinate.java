@@ -14,6 +14,7 @@ public class WallCoordinate {
   private int boardHeight;
   private int boardWidth;
   private boolean validCell;
+  private boolean validPos;
 
   /**
    * WallCoordinates: Constructor
@@ -21,17 +22,17 @@ public class WallCoordinate {
    * @param yCoord
    * @param wallPos: 0 for top, 1 for right, onwards clockwise (max 3)
    */
-  public WallCoordinate(int xCoord, int yCoord, int wallPos, int height, int width)
-  throws InvalidWallPositionException {
-    if ((wallPos < 0) || (wallPos > 3)) {
-      throw new InvalidWallPositionException("Invalid wall position. Must be from 0 to 3.");
-    }
-
+  public WallCoordinate(int xCoord, int yCoord, int wallPos, int height, int width) {
     x = xCoord;
     y = yCoord;
     wallPosition = wallPos;
     boardHeight = height;
     boardWidth = width;
+
+    validPos = false;
+    if ((-1 < wallPos) && (wallPos < 4)) {
+      validPos = true;
+    }
 
     validCell = false;
     if (xCoord < width) {
@@ -52,6 +53,10 @@ public class WallCoordinate {
     boardWidth = 0;
     validCell = false;
 
+  }
+
+  public boolean isValidPosition() {
+    return validPos;
   }
 
   public boolean isValidCell() {
@@ -93,11 +98,12 @@ public class WallCoordinate {
     return wallPosition;
   }
 
-  public void setWallPosition(int newWallPosition) throws InvalidWallPositionException {
-    if ((newWallPosition < 0) || (newWallPosition > 3)) {
-      throw new InvalidWallPositionException("Invalid wall position. Must be from 0 to 3.");
-    }
+  public void setWallPosition(int newWallPosition) {
     wallPosition = newWallPosition;
+    validPos = false;
+    if ((-1 < wallPosition) && (wallPosition < 4)) {
+      validPos = true;
+    }
   }
 
   public int[] getIndexForm() {
@@ -193,23 +199,9 @@ public class WallCoordinate {
       newWallPos = 1;
     }
 
-    try {
-      otherSideWall = new WallCoordinate(newXCoord, newYCoord, newWallPos,
+
+    otherSideWall = new WallCoordinate(newXCoord, newYCoord, newWallPos,
           boardHeight, boardWidth);
-    } catch (InvalidWallPositionException e) {
-      otherSideWall = new WallCoordinate();
-      System.out.println(e.getMessage());
-      System.out.println("getOtherSideCoordinate broke, had wrong wall pos. " +
-                          "Don't know how. Function will now return default WallCoord.");
-    }
-
     return otherSideWall;
-  }
-
-  private class InvalidWallPositionException extends Exception {
-    public InvalidWallPositionException(String message){
-      super(message);
-    }
-    public InvalidWallPositionException(){}
   }
 }
