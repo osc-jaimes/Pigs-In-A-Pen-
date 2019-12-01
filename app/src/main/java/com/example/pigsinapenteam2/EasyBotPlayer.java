@@ -50,7 +50,8 @@ public class EasyBotPlayer extends BotPlayer {
   }
 
   private void fillPossibleCapturesAndMoves(BoardState state) {
-    WallCoordinate currentWall = new WallCoordinate();
+    WallCoordinate currentWall = new WallCoordinate(0,0,0,
+                                                    boardHeight,boardWidth);
 
     for (int yIndex = 0; yIndex < boardHeight; yIndex++) {
       for (int xIndex = 0; xIndex < boardWidth; xIndex++) {
