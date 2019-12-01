@@ -4,49 +4,72 @@ import java.util.LinkedList;
 
 public class MediumBotPlayer extends BotPlayer {
   private ChainFinder chainFinder;
-  private LinkedList<WallCoordinate> possibleMoves;
+  private LinkedList<WallCoordinate> possibleMovesNoConcede;
   private LinkedList<WallCoordinate> possibleCaptures;
   private boolean isEndgame;
+  private int boardHeight;
+  private int boardWidth;
 
   public MediumBotPlayer() {
     super();
     chainFinder = new ChainFinder(0,0);
-    possibleMoves = new LinkedList<>();
+    possibleMovesNoConcede = new LinkedList<>();
     possibleCaptures = new LinkedList<>();
+    boardHeight = 0;
+    boardWidth = 0;
   }
 
   public MediumBotPlayer(int height, int width) {
     super(height, width, 1);
     chainFinder = new ChainFinder(height, width);
     possibleCaptures = new LinkedList<>();
-    possibleMoves = new LinkedList<>();
+    possibleMovesNoConcede = new LinkedList<>();
+    boardHeight = height;
+    boardWidth = width;
   }
 
   @Override
   public GameState doMove(GameState inputState) {
     BoardState state = inputState.getBoardState();
 
-    //get links
-    chainFinder.findLinks(state);
-
     //get legal moves (without conceding a point)
     //get possible captures
+    fillPossibleCapturesAndMovesNoConcede(state);
 
     //if endgame:
-    chainFinder.findChains();
+    if (possibleMovesNoConcede.size() == 0) {
+      //find links
+      chainFinder.findLinks(state);
+      //find chains
+      chainFinder.findChains();
+    }
 
-
-    //horizontal walls: (during this loop do per-cell checks)
-    //for 0 to height-1:
-    // for 0 to width:
-    //    -run stuff on left wall version
-    //    -run stuff on right wall version
-    //vertical walls:
-    //for 0 to width-1:
-    // for 0 to height:
-    //    -run stuff on top wall version
-    //    -run stuff on bottom wall version
+    //make move decision
+    //TODO
 
     return super.doMove(inputState);
+  }
+
+  private void fillPossibleCapturesAndMovesNoConcede(BoardState state) {
+    WallCoordinate currentWall = new WallCoordinate();
+
+    for (int yIndex = 0; yIndex < boardHeight; yIndex++) {
+      for (int xIndex = 0; xIndex < boardWidth; xIndex++) {
+        for (int wallIndex = 0; wallIndex < 4; wallIndex++) {
+          currentWall.x = xIndex;
+          currentWall.y = yIndex;
+          currentWall.setWallPosition(wallIndex);
+
+          if (super.isWallLegal(state, currentWall)) {
+            if (!super.willWallConcedePoint(state, currentWall)) {
+              possibleMovesNoConcede.add(currentWall);
+              if (super.isWallACapture(state, currentWall)) {
+                possibleCaptures.add(currentWall);
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }

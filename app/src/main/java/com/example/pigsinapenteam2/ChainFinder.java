@@ -10,25 +10,37 @@ public class ChainFinder {
   int boardHeight;
   int boardWidth;
   boolean[][] IsCellAChainLink;
-  int[] cellAdjacencyList;
+  int[][] cellAdjacencyList;
 
   public ChainFinder() {
     boardWidth = 0;
     boardHeight = 0;
     IsCellAChainLink = new boolean[boardWidth][boardHeight];
-    cellAdjacencyList = new int[boardWidth * boardHeight];
+    cellAdjacencyList = new int[boardWidth * boardHeight][2];
   }
 
   public ChainFinder(int height, int width) {
     boardWidth = width;
     boardHeight = height;
     IsCellAChainLink = new boolean[boardWidth][boardHeight];
-    cellAdjacencyList = new int[boardWidth * boardHeight];
+    cellAdjacencyList = new int[boardWidth * boardHeight][2];
   }
 
   public void findLinks(BoardState state) {
     //TODO
     //loop through
+    int cellDegree;
+    for (int yCoord = 0; yCoord < boardHeight; yCoord++) {
+      for (int xCoord = 0; xCoord < boardWidth; xCoord++) {
+        cellDegree = 0;
+        for (int wallPosition = 0; wallPosition < 4; wallPosition++) {
+          if (state.getWallAi(xCoord, yCoord, wallPosition) == 0) {
+            cellDegree += 1;
+          }
+
+        }
+      }
+    }
   }
 
   public void findChains() {
