@@ -74,10 +74,57 @@ public class ChainFinder {
   }
 
   public void findChains() {
-    //TODO
-    //just remember the chains, don't return
+    Chain currentChain;
+    WallCoordinate chainHead;
+    WallCoordinate chainTail;
+    int newCellIndex;
 
+    boolean[] visited = new boolean[boardWidth * boardHeight];
+    for (int i = 0; i < visited.length; i++) {
+      visited[i] = false;
+    }
 
+    for (int currentCellIndex = 0;
+         currentCellIndex < cellAdjacencyList.length;
+         currentCellIndex++) {
+      if (!visited[currentCellIndex] && isCellAChainLink(currentCellIndex)) {
+        visited[currentCellIndex] = true;
+        chainHead = adjacentOpenWallByIndex[currentCellIndex][0];
+        chainTail = adjacentOpenWallByIndex[currentCellIndex][1];
+        currentChain = new Chain(chainHead, chainTail);
+
+        //follow the chain down: head
+        newCellIndex = cellAdjacencyList[currentCellIndex][0];
+        while (isCellAChainLink(newCellIndex) && !visited[newCellIndex]) {
+          visited[newCellIndex] = true;
+          if (cellAdjacencyList[newCellIndex][0] != currentCellIndex) {
+            chainHead = adjacentOpenWallByIndex[newCellIndex][0];
+            currentChain.addCellHead(chainHead);
+            newCellIndex = cellAdjacencyList[newCellIndex][0];
+          } else {
+            chainHead = adjacentOpenWallByIndex[newCellIndex][1];
+            currentChain.addCellHead(chainHead);
+            newCellIndex = cellAdjacencyList[newCellIndex][1];
+          }
+        }
+
+        //follow the chain down: tail
+        newCellIndex = cellAdjacencyList[currentCellIndex][1];
+        while (isCellAChainLink(newCellIndex) && !visited[newCellIndex]) {
+          visited[newCellIndex] = true;
+          if (cellAdjacencyList[newCellIndex][0] != currentCellIndex) {
+            chainTail = adjacentOpenWallByIndex[newCellIndex][0];
+            currentChain.addCellTail(chainTail);
+            newCellIndex = cellAdjacencyList[newCellIndex][0];
+          } else {
+            chainTail = adjacentOpenWallByIndex[newCellIndex][1];
+            currentChain.addCellTail(chainTail);
+            newCellIndex = cellAdjacencyList[newCellIndex][1];
+          }
+        }
+        chains.add(currentChain);
+      }
+    }
   }
 
   private int coordsToIndex(int xCoord, int yCoord) {
