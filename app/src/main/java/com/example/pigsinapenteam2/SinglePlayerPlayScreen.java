@@ -18,6 +18,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
   BotPlayer player2;
   Button confirmButton;
   Button pauseButton;
+  View pauseMenu;
   int cellX;
   int cellY;
   boolean playerHasMoved;
@@ -36,8 +37,8 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
     this.confirmButton = findViewById(R.id.confirmButtonPlayer1);
     //setting confirm button to invisible
     confirmButton.setVisibility(View.GONE);
-    //this.pauseButton = findViewById(R.id.pauseButton);
-    pauseButton.setVisibility(View.GONE);
+    //pauseMenu = findViewById(R.id.pauseMenu);
+    pauseMenu.setVisibility(View.GONE);
     this.player1 = new HumanPlayer();
     this.player2 = new EasyBotPlayer(HEIGHT,WIDTH);
     this.currentPlayer = player1;
@@ -283,7 +284,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
       startActivity(goToWinScreen);
     }
     public void onClickPause(View v){
-    pauseButton.setVisibility(View.VISIBLE);
+    pauseMenu.setVisibility(View.VISIBLE);
     //Blur background -- TODO when mvp is done
     }
     public void resumeButton(View v){
