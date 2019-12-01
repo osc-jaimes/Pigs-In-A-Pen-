@@ -36,7 +36,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
     this.confirmButton = findViewById(R.id.confirmButtonPlayer1);
     //setting confirm button to invisible
     confirmButton.setVisibility(View.GONE);
-    this.pauseButton = findViewById(R.id.pauseButton);
+    //this.pauseButton = findViewById(R.id.pauseButton);
     pauseButton.setVisibility(View.GONE);
     this.player1 = new HumanPlayer();
     this.player2 = new EasyBotPlayer(HEIGHT,WIDTH);
@@ -249,7 +249,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
     this.confirmAction(this.cellX, this.cellY, this.isHorizontal);
     this.updateScore();
     if(gameState.player1Points + gameState.player2Points >= totalScore){
-      endGame();
+      //endGame();
     }
     System.out.println(this.gameState.currentBoardState);
   }
