@@ -38,13 +38,17 @@ public class HumanPlayer extends Player {
      *
      * takes the location of the cell that is going to be changed and sets the boardState to the new move
      *
+     * EDIT BY BENJAMIN: Added a int input for which player it is. needed for score check
      *
      * @param inputState an inputted gameState board of pigs + pen
      * @return an output gameState with the updated value for a wall.
      */
 
    public GameState doMove(GameState inputState, int cellX, int cellY, boolean isHorizontal){
+
        inputState.currentBoardState.setWall(cellX, cellY, isHorizontal);
+
+
         return inputState;
    }
 

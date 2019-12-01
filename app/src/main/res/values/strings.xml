@@ -4,6 +4,7 @@
     <string name="logo"> Pigs in a pen logo</string>
 
     <string name="character">Character:</string>
+    <string name="paused">Game Paused</string>
 
     <string name="main_screen_background">main_screen_background</string>
     <string name="main_screen_pig"> Main Screen Pig</string>
@@ -18,7 +19,8 @@
     <string name="play_button">Start Game</string>
     <string name="end_turn_button">End Turn</string>
     <string name="score_board">Sore Board for the game</string>
-
+    <string name="pausedInfo">Paused</string>
+    <string name="resumeText">Resume</string>
     <string name="pause_button">Button to pause the game</string>
 
     <string-array name="board_size_options">
