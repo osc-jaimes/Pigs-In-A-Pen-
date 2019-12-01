@@ -15,8 +15,8 @@ import android.widget.TextView;
 public class SinglePlayerPlayScreen extends AppCompatActivity {
   //Instance Variables
   GameState gameState;
-  public final int WIDTH = 4;
-  public final int HEIGHT = 3;
+  public final int WIDTH = 3;
+  public final int HEIGHT = 2;
   HumanPlayer player1;
   BotPlayer player2;
   Button confirmButton;
@@ -41,13 +41,13 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
     this.confirmButton = findViewById(R.id.confirmButtonPlayer1);
     //setting confirm button to invisible
     confirmButton.setVisibility(View.GONE);
-<<<<<<< HEAD
+
     //this.pauseButton = findViewById(R.id.pauseButton);
     //pauseButton.setVisibility(View.GONE);
-=======
+
     //pauseMenu = findViewById(R.id.pauseMenu);
     pauseMenu.setVisibility(View.GONE);
->>>>>>> 86ba78859c6cfa3e9cb33b971e50dfca87c4b886
+
     this.player1 = new HumanPlayer();
     this.player2 = new EasyBotPlayer(HEIGHT,WIDTH);
     this.currentPlayer = player1;
@@ -108,42 +108,42 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
 
   public void onClickVertical2(View v) {
     this.buttonClicked(v);
-    cellX = 1;
-    cellY = 0;
+    cellX = 0;
+    cellY = 1;
     isHorizontal = false;
   }
 
   public void onClickVertical3(View v) {
     this.buttonClicked(v);
-    cellX = 2;
-    cellY = 0;
+    cellX = 0;
+    cellY = 2;
     isHorizontal = false;
   }
 
   public void onClickVertical4(View v) {
     this.buttonClicked(v);
     cellX = 0;
-    cellY = 1;
+    cellY = 3;
     isHorizontal = false;
   }
 
   public void onClickVertical5(View v) {
     this.buttonClicked(v);
     cellX = 1;
-    cellY = 1;
+    cellY = 0;
     isHorizontal = false;
   }
 
   public void onClickVertical6(View v) {
     this.buttonClicked(v);
-    cellX = 2;
+    cellX = 1;
     cellY = 1;
     isHorizontal = false;
   }
 
   public void onClickVertical7(View v) {
     this.buttonClicked(v);
-    cellX = 0;
+    cellX = 1;
     cellY = 2;
     isHorizontal = false;
   }
@@ -151,33 +151,11 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
   public void onClickVertical8(View v) {
     this.buttonClicked(v);
     cellX = 1;
-    cellY = 2;
-    isHorizontal = false;
-  }
-  public void onClickVertical9(View v) {
-    this.buttonClicked(v);
-    cellX = 2;
-    cellY = 2;
-    isHorizontal = false;
-  }
-  public void onClickVertical10(View v) {
-    this.buttonClicked(v);
-    cellX = 0;
     cellY = 3;
     isHorizontal = false;
   }
-  public void onClickVertical11(View v) {
-    this.buttonClicked(v);
-    cellX = 1;
-    cellY = 3;
-    isHorizontal = false;
-  }
-  public void onClickVertical12(View v) {
-    this.buttonClicked(v);
-    cellX = 2;
-    cellY = 3;
-    isHorizontal = false;
-  }
+
+
   public void onClickHorizontal1(View v) {
     this.buttonClicked(v);
     cellX = 0;
@@ -186,43 +164,43 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
   }
   public void onClickHorizontal2(View v) {
     this.buttonClicked(v);
-    cellX = 1;
-    cellY = 0;
+    cellX = 0;
+    cellY = 1;
     isHorizontal = true;
   }
   public void onClickHorizontal3(View v) {
     this.buttonClicked(v);
-    cellX = 2;
-    cellY = 0;
+    cellX = 0;
+    cellY = 2;
     isHorizontal = true;
   }
   public void onClickHorizontal4(View v) {
     this.buttonClicked(v);
-    cellX = 3;
+    cellX = 1;
     cellY = 0;
     isHorizontal = true;
   }
   public void onClickHorizontal5(View v) {
     this.buttonClicked(v);
-    cellX = 0;
+    cellX = 1;
     cellY = 1;
     isHorizontal = true;
   }
   public void onClickHorizontal6(View v) {
     this.buttonClicked(v);
     cellX = 1;
-    cellY = 1;
+    cellY = 2;
     isHorizontal = true;
   }
   public void onClickHorizontal7(View v) {
     this.buttonClicked(v);
     cellX = 2;
-    cellY = 1;
+    cellY = 0;
     isHorizontal = true;
   }
   public void onClickHorizontal8(View v) {
     this.buttonClicked(v);
-    cellX = 3;
+    cellX = 2;
     cellY = 1;
     isHorizontal = true;
   }
@@ -244,12 +222,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
     cellY = 2;
     isHorizontal = true;
   }
-  public void onClickHorizontal12(View v) {
-    this.buttonClicked(v);
-    cellX = 3;
-    cellY = 2;
-    isHorizontal = true;
-  }
+
 
   public void onClickConfirmationButton(View v) {
     this.currentButton.setClickable(false);
