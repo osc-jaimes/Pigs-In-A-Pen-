@@ -225,7 +225,7 @@ public class BoardState {
     }//else
   }//setTopWall
 
-  public void setWallAi(int row, int cols, int wallDirection){
+  public void setWallAi(int cols, int row, int wallDirection){
 
     switch(wallDirection){
 
@@ -263,7 +263,7 @@ public class BoardState {
    * @param cols
    * @param wantedWall 0 for top, 1 for right, 2 bottom, 3 left
    */
-  public int getWallAi(int row, int cols, int wantedWall){
+  public int getWallAi(int cols, int row, int wantedWall){
 
     switch(wantedWall){
 
