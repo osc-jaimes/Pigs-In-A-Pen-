@@ -35,7 +35,7 @@ public class EasyBotPlayer extends BotPlayer {
     int[] coordsOfMove = moveToDo.getIndexForm();
     state.setWallAi(coordsOfMove[0], coordsOfMove[1], coordsOfMove[2]);
 
-    //TEST THIS: do we need this line?
+    //TEST THIS: do we need this line? (yes)
     inputGameState.currentBoardState = state;
     return inputGameState;
   }

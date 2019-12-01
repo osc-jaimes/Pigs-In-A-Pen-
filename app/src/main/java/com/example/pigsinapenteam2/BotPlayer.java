@@ -94,13 +94,13 @@ public class BotPlayer extends Player {
     int wallState = -1;
 
     if (coords.isTop()) {
-      wallState = state.getWallAi(coords.x, coords.y,0);
+      wallState = state.getWallAi(coords.y, coords.x,0);
     } else if (coords.isRight()) {
-      wallState = state.getWallAi(coords.x, coords.y, 1);
+      wallState = state.getWallAi(coords.y, coords.x, 1);
     } else if (coords.isBottom()) {
-      wallState = state.getWallAi(coords.x, coords.y, 2);
+      wallState = state.getWallAi(coords.y, coords.x, 2);
     } else if (coords.isLeft()) {
-      wallState = state.getWallAi(coords.x, coords.y, 3);
+      wallState = state.getWallAi(coords.y, coords.x, 3);
     }
 
     return (wallState == 0);

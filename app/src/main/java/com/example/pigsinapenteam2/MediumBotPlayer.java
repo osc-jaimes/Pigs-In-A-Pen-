@@ -43,9 +43,19 @@ public class MediumBotPlayer extends BotPlayer {
       chainFinder.findChains();
     }
 
+    WallCoordinate moveToDo;
+
     //make move decision
     //don't forget: set inputState.botLastMove to moveToDo or whatever
     //TODO
+
+    if (possibleCaptures.size() == 0) {
+
+    } else {
+
+    }
+
+
 
     return super.doMove(inputState);
   }
