@@ -13,6 +13,8 @@ public class WallCoordinate {
   private int wallPosition; //0 to 3
   private int boardHeight;
   private int boardWidth;
+  private boolean validCell;
+  private boolean validPos;
 
   /**
    * WallCoordinates: Constructor
@@ -26,6 +28,18 @@ public class WallCoordinate {
     wallPosition = wallPos;
     boardHeight = height;
     boardWidth = width;
+
+    validPos = false;
+    if ((-1 < wallPos) && (wallPos < 4)) {
+      validPos = true;
+    }
+
+    validCell = false;
+    if (xCoord < width) {
+      if (yCoord < height) {
+        validCell = true;
+      }
+    }
   }
 
   /**
@@ -37,6 +51,23 @@ public class WallCoordinate {
     wallPosition = 0;
     boardHeight = 0;
     boardWidth = 0;
+    validCell = false;
+
+  }
+
+  public boolean isValidPosition() {
+    return validPos;
+  }
+
+  public boolean isValidCell() {
+    validCell = false;
+    if (x < boardWidth) {
+      if (y < boardHeight) {
+        validCell = true;
+      }
+    }
+
+    return validCell;
   }
 
   public boolean isVertical() {
@@ -69,6 +100,10 @@ public class WallCoordinate {
 
   public void setWallPosition(int newWallPosition) {
     wallPosition = newWallPosition;
+    validPos = false;
+    if ((-1 < wallPosition) && (wallPosition < 4)) {
+      validPos = true;
+    }
   }
 
   public int[] getIndexForm() {
@@ -139,5 +174,34 @@ public class WallCoordinate {
     buttonName += cellNum;
 
     return buttonName;
+  }
+
+  public WallCoordinate getOtherSideCoordinate() {
+    WallCoordinate otherSideWall;
+    int newXCoord;
+    int newYCoord;
+    int newWallPos;
+    if (isTop()) {
+      newXCoord = x;
+      newYCoord = y - 1;
+      newWallPos = 2;
+    } else if (isRight()) {
+      newXCoord = x + 1;
+      newYCoord = y;
+      newWallPos = 3;
+    } else if (isBottom()) {
+      newXCoord = x;
+      newYCoord = y + 1;
+      newWallPos = 0;
+    } else { //isLeft()
+      newXCoord = x - 1;
+      newYCoord = y;
+      newWallPos = 1;
+    }
+
+
+    otherSideWall = new WallCoordinate(newXCoord, newYCoord, newWallPos,
+          boardHeight, boardWidth);
+    return otherSideWall;
   }
 }

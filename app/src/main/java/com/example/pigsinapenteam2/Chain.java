@@ -31,24 +31,24 @@ public class Chain {
     isHeadSet = false;
   }
 
-  public void addHead(WallCoordinate newHeadCoords) {
+  public void addCellHead(WallCoordinate newHeadCoords) {
     length += 1;
     head = newHeadCoords;
   }
 
-  public void addTail(WallCoordinate newTailCoords) {
+  public void addCellTail(WallCoordinate newTailCoords) {
     length += 1;
     tail = newTailCoords;
   }
 
-  public void setTailOpen(boolean tailOpen) {
+  public void setTailOpen(boolean tailIsOpen) {
     isTailSet = true;
-    isTailOpen = tailOpen;
+    isTailOpen = tailIsOpen;
   }
 
-  public void setHeadOpen(boolean headOpen) {
+  public void setHeadOpen(boolean headIsOpen) {
     isHeadSet = true;
-    isHeadOpen = headOpen;
+    isHeadOpen = headIsOpen;
   }
 
   public boolean getHeadOpen() throws ChainEndOpenFlagUnsetException {
