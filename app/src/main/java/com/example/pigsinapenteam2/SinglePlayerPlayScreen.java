@@ -41,13 +41,13 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
     this.confirmButton = findViewById(R.id.confirmButtonPlayer1);
     //setting confirm button to invisible
     confirmButton.setVisibility(View.GONE);
-<<<<<<< HEAD
+
     //this.pauseButton = findViewById(R.id.pauseButton);
     //pauseButton.setVisibility(View.GONE);
-=======
+
     //pauseMenu = findViewById(R.id.pauseMenu);
     pauseMenu.setVisibility(View.GONE);
->>>>>>> 86ba78859c6cfa3e9cb33b971e50dfca87c4b886
+
     this.player1 = new HumanPlayer();
     this.player2 = new EasyBotPlayer(HEIGHT,WIDTH);
     this.currentPlayer = player1;
