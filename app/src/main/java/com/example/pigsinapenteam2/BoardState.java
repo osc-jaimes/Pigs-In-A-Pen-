@@ -140,6 +140,13 @@ public class BoardState {
    */
   private void setRightWallState(int row, int cols){
 
+    boardData[row][cols][rightWallState] = 1;
+
+    if(cols < (width - 1)){
+
+      boardData[row][cols + 1][leftWallState] = 1;
+
+    }//if statement
   }//setRightWallState
 
   //=======================================================================================
@@ -152,6 +159,13 @@ public class BoardState {
   //=======================================================================================
   private void setBottomWallState(int row, int cols){
 
+    boardData[row][cols][bottomWallState] = 1;
+
+    if(row < (height - 1)){
+
+      boardData[row + 1][cols][topWallState] = 1;
+
+    }//if statement
   }//setBottomWallState
 
   //=======================================================================================
