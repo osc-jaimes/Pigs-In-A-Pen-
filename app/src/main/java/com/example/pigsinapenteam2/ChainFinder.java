@@ -13,6 +13,7 @@ public class ChainFinder {
   private int[][] cellAdjacencyList;
   private LinkedList<Chain> chains;
   private WallCoordinate[][] adjacentOpenWallByIndex;
+  private boolean[] visited;
   
 
   public ChainFinder() {
@@ -22,6 +23,10 @@ public class ChainFinder {
     cellAdjacencyList = new int[boardHeight * boardWidth][4];
     chains = new LinkedList<>();
     adjacentOpenWallByIndex = new WallCoordinate[boardHeight * boardWidth][4];
+    boolean[] visited = new boolean[boardWidth * boardHeight];
+    for (int i = 0; i < visited.length; i++) {
+      visited[i] = false;
+    }
   }
 
   public ChainFinder(int height, int width) {
@@ -31,6 +36,10 @@ public class ChainFinder {
     cellAdjacencyList = new int[boardHeight * boardWidth][4];
     chains = new LinkedList<>();
     adjacentOpenWallByIndex = new WallCoordinate[boardHeight * boardWidth][4];
+    boolean[] visited = new boolean[boardWidth * boardHeight];
+    for (int i = 0; i < visited.length; i++) {
+      visited[i] = false;
+    }
   }
 
   public void findLinks(BoardState state) {
@@ -77,12 +86,6 @@ public class ChainFinder {
     Chain currentChain;
     WallCoordinate chainHead;
     WallCoordinate chainTail;
-    int newCellIndex;
-
-    boolean[] visited = new boolean[boardWidth * boardHeight];
-    for (int i = 0; i < visited.length; i++) {
-      visited[i] = false;
-    }
 
     for (int currentCellIndex = 0;
          currentCellIndex < cellAdjacencyList.length;
@@ -94,37 +97,49 @@ public class ChainFinder {
         currentChain = new Chain(chainHead, chainTail);
 
         //follow the chain down: head
-        newCellIndex = cellAdjacencyList[currentCellIndex][0];
-        while (isCellAChainLink(newCellIndex) && !visited[newCellIndex]) {
-          visited[newCellIndex] = true;
-          if (cellAdjacencyList[newCellIndex][0] != currentCellIndex) {
-            chainHead = adjacentOpenWallByIndex[newCellIndex][0];
-            currentChain.addCellHead(chainHead);
-            newCellIndex = cellAdjacencyList[newCellIndex][0];
-          } else {
-            chainHead = adjacentOpenWallByIndex[newCellIndex][1];
-            currentChain.addCellHead(chainHead);
-            newCellIndex = cellAdjacencyList[newCellIndex][1];
-          }
-        }
+        currentChain = followChainHead(currentChain, currentCellIndex);
 
         //follow the chain down: tail
-        newCellIndex = cellAdjacencyList[currentCellIndex][1];
-        while (isCellAChainLink(newCellIndex) && !visited[newCellIndex]) {
-          visited[newCellIndex] = true;
-          if (cellAdjacencyList[newCellIndex][0] != currentCellIndex) {
-            chainTail = adjacentOpenWallByIndex[newCellIndex][0];
-            currentChain.addCellTail(chainTail);
-            newCellIndex = cellAdjacencyList[newCellIndex][0];
-          } else {
-            chainTail = adjacentOpenWallByIndex[newCellIndex][1];
-            currentChain.addCellTail(chainTail);
-            newCellIndex = cellAdjacencyList[newCellIndex][1];
-          }
-        }
+        currentChain = followChainTail(currentChain, currentCellIndex);
         chains.add(currentChain);
       }
     }
+  }
+
+  private Chain followChainHead(Chain chain, int headCellIndex) {
+    WallCoordinate chainHead;
+    int newCellIndex = cellAdjacencyList[headCellIndex][0];
+    while (isCellAChainLink(newCellIndex) && !visited[newCellIndex]) {
+      visited[newCellIndex] = true;
+      if (cellAdjacencyList[newCellIndex][0] != headCellIndex) {
+        chainHead = adjacentOpenWallByIndex[newCellIndex][0];
+        chain.addCellHead(chainHead);
+        newCellIndex = cellAdjacencyList[newCellIndex][0];
+      } else {
+        chainHead = adjacentOpenWallByIndex[newCellIndex][1];
+        chain.addCellHead(chainHead);
+        newCellIndex = cellAdjacencyList[newCellIndex][1];
+      }
+    }
+    return chain;
+  }
+
+  private Chain followChainTail(Chain chain, int tailCellIndex) {
+    WallCoordinate chainTail;
+    int newCellIndex = cellAdjacencyList[tailCellIndex][1];
+    while (isCellAChainLink(newCellIndex) && !visited[newCellIndex]) {
+      visited[newCellIndex] = true;
+      if (cellAdjacencyList[newCellIndex][0] != tailCellIndex) {
+        chainTail = adjacentOpenWallByIndex[newCellIndex][0];
+        chain.addCellHead(chainTail);
+        newCellIndex = cellAdjacencyList[newCellIndex][0];
+      } else {
+        chainTail = adjacentOpenWallByIndex[newCellIndex][1];
+        chain.addCellHead(chainTail);
+        newCellIndex = cellAdjacencyList[newCellIndex][1];
+      }
+    }
+    return chain;
   }
 
   private int coordsToIndex(int xCoord, int yCoord) {
