@@ -22,7 +22,6 @@ public class BoardCheck {
     for(int i = 0; i < currentBoard.getWidth() - 1; i++){
       for(int j = 0; j < currentBoard.getHeight() - 1; j++){
 
-        System.out.println("checked:" + i + j);
         cellScoreCheck(i,j);
 
       }//inner for loop
@@ -30,17 +29,16 @@ public class BoardCheck {
   }//boardChecker
 
   private void cellScoreCheck(int xCoord, int yCoord){
+
     int input = currentBoard.getCellState(xCoord, yCoord);
 
     switch (input){
 
       case 1:
-        System.out.println("playerOneScore is updated by one");
         playerOneScore += 1;
         break;
 
       case 2:
-        System.out.println("playerTwoScore updated by one");
         playerTwoScore += 1;
         break;
 
