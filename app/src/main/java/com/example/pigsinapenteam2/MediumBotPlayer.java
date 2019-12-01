@@ -12,7 +12,6 @@ public class MediumBotPlayer extends BotPlayer {
 
   public MediumBotPlayer() {
     super();
-    chainFinder = new ChainFinder(0,0);
     possibleMovesNoConcede = new LinkedList<>();
     possibleCaptures = new LinkedList<>();
     boardHeight = 0;
@@ -21,7 +20,6 @@ public class MediumBotPlayer extends BotPlayer {
 
   public MediumBotPlayer(int height, int width) {
     super(height, width, 1);
-    chainFinder = new ChainFinder(height, width);
     possibleCaptures = new LinkedList<>();
     possibleMovesNoConcede = new LinkedList<>();
     boardHeight = height;
@@ -31,6 +29,7 @@ public class MediumBotPlayer extends BotPlayer {
   @Override
   public GameState doMove(GameState inputState) {
     BoardState state = inputState.getBoardState();
+    chainFinder = new ChainFinder(boardHeight, boardWidth);
 
     //get legal moves (without conceding a point)
     //get possible captures
@@ -44,8 +43,19 @@ public class MediumBotPlayer extends BotPlayer {
       chainFinder.findChains();
     }
 
+    WallCoordinate moveToDo;
+
     //make move decision
+    //don't forget: set inputState.botLastMove to moveToDo or whatever
     //TODO
+
+    if (possibleCaptures.size() == 0) {
+
+    } else {
+
+    }
+
+
 
     return super.doMove(inputState);
   }
