@@ -9,21 +9,24 @@ import java.util.LinkedList;
 public class ChainFinder {
   int boardHeight;
   int boardWidth;
-  boolean[][] isCellAChainLinkArray;
+  boolean[] isCellAChainLinkArray;
   int[][] cellAdjacencyList;
+  LinkedList<Chain> chains;
 
   public ChainFinder() {
     boardWidth = 0;
     boardHeight = 0;
-    isCellAChainLinkArray = new boolean[boardWidth][boardHeight];
+    isCellAChainLinkArray = new boolean[boardWidth * boardHeight];
     cellAdjacencyList = new int[boardHeight * boardWidth][4];
+    chains = new LinkedList<>();
   }
 
   public ChainFinder(int height, int width) {
     boardWidth = width;
     boardHeight = height;
-    isCellAChainLinkArray = new boolean[boardWidth][boardHeight];
+    isCellAChainLinkArray = new boolean[boardWidth *boardHeight];
     cellAdjacencyList = new int[boardHeight * boardWidth][4];
+    chains = new LinkedList<>();
   }
 
   public void findLinks(BoardState state) {
@@ -49,6 +52,8 @@ public class ChainFinder {
       currentWallCoord.y = yCoord;
       currentWallCoord.setWallPosition(wallPosition);
       oppositeWallCoord = currentWallCoord.getOtherSideCoordinate();
+
+      //this is -1 if the wall's an edge
       indexOfAdjacentCell = coordsToIndex(oppositeWallCoord.x, oppositeWallCoord.y);
 
       if (state.getWallAi(xCoord, yCoord, wallPosition) == 0) {
@@ -57,7 +62,9 @@ public class ChainFinder {
       }
     }
     if (cellDegree == 2){
-      setIsCellChainLinkXY(true, xCoord, yCoord);
+      isCellAChainLinkArray[indexOfCurrentCell] = true;
+    } else {
+      isCellAChainLinkArray[indexOfCurrentCell] = false;
     }
   }
 
@@ -82,13 +89,4 @@ public class ChainFinder {
     coords[1] = index / boardWidth;
     return coords;
   }
-
-  private void setIsCellChainLinkXY(boolean isChainLink, int xCoord, int yCoord) {
-    isCellAChainLinkArray[xCoord][yCoord] = isChainLink;
-  }
-
-  private boolean isCellChainLinkXY(int xCoord, int yCoord) {
-    return isCellAChainLinkArray[xCoord][yCoord];
-  }
-
 }
