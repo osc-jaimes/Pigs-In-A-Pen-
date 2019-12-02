@@ -1,37 +1,48 @@
 package com.example.pigsinapenteam2;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
-import android.content.DialogInterface;
+import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 public class SinglePlayerPlayScreen extends AppCompatActivity {
-  //Instance Variables
-  GameState gameState;
+  //==== Instance Variables =====
+
+  //Game State
+  public GameState gameState;
+
+  //Players
+  public HumanPlayer player1;
+  public BotPlayer player2;
+
+  //Final Variables
   public final int WIDTH = 3;
   public final int HEIGHT = 2;
-  HumanPlayer player1;
-  final int PLAYERONEINT = 1;
-  BotPlayer player2;
-  final int PLAYERTWOINT = 2;
-  Button confirmButton;
-  Button pauseButton;
-  View pauseMenuLayout;
-  View gameButtons;
-  int cellX;
-  int cellY;
-  boolean playerHasMoved;
-  boolean isHorizontal;
-  Button currentButton;
-  protected int totalScore;
+  public final int PLAYERONEINT = 1;
+  public final int PLAYERTWOINT = 2;
+
+  //Buttons
+  public Button confirmButton;
+  public Button currentButton;
+
+  //Views (Relative Views)
+  public View pauseMenuLayout;
+  public View gameButtons;
+
+  //Ints
+  public int cellX;
+  public int cellY;
+  public int totalScore;
+
+  //Booleans
+  public boolean playerHasMoved;
+  public boolean isHorizontal;
+
+
 
 
   private Player currentPlayer;
@@ -41,31 +52,27 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_single_player_play_screen);
     setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-
+    //===== Confirm Button ===========
     this.confirmButton = findViewById(R.id.confirmButtonPlayer1);
-    //setting confirm button to invisible
     confirmButton.setVisibility(View.GONE);
+    //===== Pause Button ========
     this.pauseMenuLayout = findViewById(R.id.pauseMenuLayout);
     this.pauseMenuLayout.setVisibility(View.GONE);
+    //===== Game Buttons Layout ======
     this.gameButtons = findViewById(R.id.gameButtons);
+    //===== Players in game =======
     this.player1 = new HumanPlayer();
     this.player2 = new EasyBotPlayer(HEIGHT,WIDTH);
     this.currentPlayer = player1;
     this.playerHasMoved = false;
+    //===== Current Chosen 'Fence' Button =======
     this.currentButton = null;
+    //===== Board State & Game State ======
     BoardState boardState = new BoardState(WIDTH,HEIGHT);
     this.gameState = new GameState(boardState, this.player1, this.player2,0);
-
-    //Make the game full screen, hides any action bars on the phone.
-    this.getWindow().getDecorView().setSystemUiVisibility(
-            View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                    | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                    | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                    | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                    | View.SYSTEM_UI_FLAG_FULLSCREEN
-                    | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
-
-    this.totalScore = (WIDTH * HEIGHT) / 2;
+    //===== Full Screen =====
+    ScreenLogic.fullScreen(this);
+    this.totalScore = (WIDTH * HEIGHT) ;
   }
 
   /**
@@ -99,6 +106,11 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
     this.currentButton = buttonClicked;
   }
 
+  /**
+   * Highlights the vertical fence button at position 0,0
+   * and updates instance variables needed for backend logic
+   * @param v
+   */
   public void onClickVertical1(View v){
     buttonClicked(v);
     cellX = 0;
@@ -106,6 +118,11 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
     isHorizontal = false;
   }
 
+  /**
+   * Highlights the vertical fence button at position 0,1
+   * and updates instance variables needed for backend logic
+   * @param v
+   */
   public void onClickVertical2(View v) {
     this.buttonClicked(v);
     cellX = 0;
@@ -113,6 +130,11 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
     isHorizontal = false;
   }
 
+  /**
+   * Highlights the vertical fence button at position 0,2
+   * and updates instance variables needed for backend logic
+   * @param v
+   */
   public void onClickVertical3(View v) {
     this.buttonClicked(v);
     cellX = 0;
@@ -120,6 +142,11 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
     isHorizontal = false;
   }
 
+  /**
+   * Highlights the vertical fence button at position 0,3
+   * and updates instance variables needed for backend logic
+   * @param v
+   */
   public void onClickVertical4(View v) {
     this.buttonClicked(v);
     cellX = 0;
@@ -127,6 +154,11 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
     isHorizontal = false;
   }
 
+  /**
+   * Highlights the vertical fence button at position 1,0
+   * and updates instance variables needed for backend logic
+   * @param v
+   */
   public void onClickVertical5(View v) {
     this.buttonClicked(v);
     cellX = 1;
@@ -134,6 +166,11 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
     isHorizontal = false;
   }
 
+  /**
+   * Highlights the vertical fence button at position 1,1
+   * and updates instance variables needed for backend logic
+   * @param v
+   */
   public void onClickVertical6(View v) {
     this.buttonClicked(v);
     cellX = 1;
@@ -141,6 +178,11 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
     isHorizontal = false;
   }
 
+  /**
+   * Highlights the vertical fence button at position 1,2
+   * and updates instance variables needed for backend logic
+   * @param v
+   */
   public void onClickVertical7(View v) {
     this.buttonClicked(v);
     cellX = 1;
@@ -148,6 +190,11 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
     isHorizontal = false;
   }
 
+  /**
+   * Highlights the vertical fence button at position 1,3
+   * and updates instance variables needed for backend logic
+   * @param v
+   */
   public void onClickVertical8(View v) {
     this.buttonClicked(v);
     cellX = 1;
@@ -155,75 +202,119 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
     isHorizontal = false;
   }
 
-
+  /**
+   * Highlights the horizontal fence button at position 0,0
+   * and updates instance variables needed for backend logic
+   * @param v
+   */
   public void onClickHorizontal1(View v) {
     this.buttonClicked(v);
     cellX = 0;
     cellY = 0;
     isHorizontal = true;
   }
+
+  /**
+   * Highlights the horizontal fence button at position 0,1
+   * and updates instance variables needed for backend logic
+   * @param v
+   */
   public void onClickHorizontal2(View v) {
     this.buttonClicked(v);
     cellX = 0;
     cellY = 1;
     isHorizontal = true;
   }
+
+  /**
+   * Highlights the horizontal fence button at position 0,2
+   * and updates instance variables needed for backend logic
+   * @param v
+   */
   public void onClickHorizontal3(View v) {
     this.buttonClicked(v);
     cellX = 0;
     cellY = 2;
     isHorizontal = true;
   }
+
+  /**
+   * Highlights the horizontal fence button at position 1,0
+   * and updates instance variables needed for backend logic
+   * @param v
+   */
   public void onClickHorizontal4(View v) {
     this.buttonClicked(v);
     cellX = 1;
     cellY = 0;
     isHorizontal = true;
   }
+
+  /**
+   * Highlights the horizontal fence button at position 1,1
+   * and updates instance variables needed for backend logic
+   * @param v
+   */
   public void onClickHorizontal5(View v) {
     this.buttonClicked(v);
     cellX = 1;
     cellY = 1;
     isHorizontal = true;
   }
+
+  /**
+   * Highlights the horizontal fence button at position 1,2
+   * and updates instance variables needed for backend logic
+   * @param v
+   */
   public void onClickHorizontal6(View v) {
     this.buttonClicked(v);
     cellX = 1;
     cellY = 2;
     isHorizontal = true;
   }
+
+  /**
+   * Highlights the horizontal fence button at position 2,0
+   * and updates instance variables needed for backend logic
+   * @param v
+   */
   public void onClickHorizontal7(View v) {
     this.buttonClicked(v);
     cellX = 2;
     cellY = 0;
     isHorizontal = true;
   }
+
+  /**
+   * Highlights the horizontal fence button at position 2,1
+   * and updates instance variables needed for backend logic
+   * @param v
+   */
   public void onClickHorizontal8(View v) {
     this.buttonClicked(v);
     cellX = 2;
     cellY = 1;
     isHorizontal = true;
   }
+
+  /**
+   * Highlights the horizontal fence button at position 2,2
+   * and updates instance variables needed for backend logic
+   * @param v
+   */
   public void onClickHorizontal9(View v) {
     this.buttonClicked(v);
     cellX = 2;
     cellY = 2;
     isHorizontal = true;
   }
-  public void onClickHorizontal10(View v) {
-    this.buttonClicked(v);
-    cellX = 1;
-    cellY = 2;
-    isHorizontal = true;
-  }
-  public void onClickHorizontal11(View v) {
-    this.buttonClicked(v);
-    cellX = 2;
-    cellY = 2;
-    isHorizontal = true;
-  }
 
 
+  /**
+   * Confirms the current chosen fence button and processes the move in the backend.
+   * @param v
+   */
   public void onClickConfirmationButton(View v) {
     this.currentButton.setClickable(false);
     this.currentButton = null;
