@@ -22,6 +22,8 @@
     <string name="pausedInfo">Paused</string>
     <string name="resumeText">Resume</string>
     <string name="pause_button">Button to pause the game</string>
+    <string name="restartButton">Restart</string>
+    <string name="menuButton">Menu</string>
 
     <string-array name="board_size_options">
         <item>Small</item>

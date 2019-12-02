@@ -61,8 +61,8 @@ public class WallCoordinate {
 
   public boolean isValidCell() {
     validCell = false;
-    if (x < boardWidth) {
-      if (y < boardHeight) {
+    if ((x < boardWidth) && (x > -1)) {
+      if ((y < boardHeight) && (y > -1)) {
         validCell = true;
       }
     }

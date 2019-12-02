@@ -229,7 +229,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
     this.confirmButton.setVisibility(View.GONE);
     this.confirmAction(this.cellX, this.cellY, this.isHorizontal);
     this.updateScore();
-    if(gameState.player1Points + gameState.player2Points >= totalScore){
+    if(gameState.player1Points + gameState.player2Points == totalScore){
       //endGame();
     }
     System.out.println(this.gameState.currentBoardState);
@@ -240,21 +240,26 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
     int currentScore = this.gameState.player1Points;
     int playerScoreMarker = 1;
 
+    int lastPlayer1Score = gameState.player1Points;
     this.gameState = player1.doMove(this.gameState, cellX, cellY, isHorizontal);
 
-
+    cellCheckAndUpdate(cellX, cellY, PLAYERONEINT);
 
     this.gameState.runBoardCheck();
 
-    //just placed a fence, no pen closed
-    if(this.gameState.player1Points == currentScore){
-
-      int botCurrentPoints = this.gameState.player2Points;
-
-      do{
-        this.gameState = player2.doMove(this.gameState);
-      }while(botCurrentPoints < this.gameState.player2Points);
+    if(true){
+      System.out.println("BOARD STATE BEFORE DO MOVE: ");
+      System.out.println(this.gameState.currentBoardState);
+     this.gameState = player2.doMove(this.gameState);
+     String id = this.gameState.botLastMove.getButtonName();
+     System.out.println(id);
+     int resID = this.getResources().getIdentifier(id, "id", this.getPackageName());
+     Button AIButton = findViewById(resID);
+     AIButton.setBackgroundColor(getResources().getColor(R.color.fences));
+     AIButton.setVisibility(View.VISIBLE);
+     AIButton.setClickable(false);
     }
+
   }
   public void onClickPause(View v){
     pauseMenuLayout.setVisibility(View.VISIBLE);
@@ -264,6 +269,13 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
   public void resumeButton(View v){
     gameButtons.setVisibility(View.VISIBLE);
     pauseMenuLayout.setVisibility(View.GONE);
+  }
+  public void pauseToMainMenu(View v){
+    Intent goToMainMenu = new Intent(getApplicationContext(), MainScreen.class);
+    startActivity(goToMainMenu);
+  }
+  public void restartButton(View v){
+    this.recreate();
   }
 
 
@@ -296,4 +308,47 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
     Intent goToMainMenu = new Intent(getApplicationContext(), MainScreen.class);
     startActivity(goToMainMenu);
     }*/
-}
+
+
+  private void cellCheckAndUpdate(int cellX,int cellY, int playerInt){
+
+    int checkedCellX = cellXCheck(cellX);
+    int checkedCellY = cellYCheck(cellY);
+
+    if(this.gameState.currentBoardState.isComplete(checkedCellX, checkedCellY)){
+
+      this.gameState.currentBoardState.setCellState(checkedCellX, checkedCellY, playerInt);
+
+    }//if statement
+  }//cellCheckAndUpdate
+
+  private int cellXCheck(int cellX){
+
+    if(cellX >= HEIGHT){
+
+      return cellX - 1;
+
+    }//if statement
+
+    else{
+
+      return cellX;
+
+    }//else statement
+  }//cellXCheck
+
+  private int cellYCheck(int cellY){
+
+    if(cellY >= WIDTH){
+
+      return cellY - 1;
+
+    }//if statement
+
+    else{
+
+      return cellY;
+
+    }//else statement
+  }//cellYCheck
+}//singlePlayerPlayScreen
