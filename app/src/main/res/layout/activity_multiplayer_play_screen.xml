@@ -94,6 +94,19 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.645" />
 
+        <Button
+            android:id="@+id/confirmButtonPlayer2"
+            android:layout_width="124dp"
+            android:layout_height="46dp"
+            android:layout_marginBottom="56dp"
+            android:background="@color/dropdown"
+            android:onClick="onClickConfirmationButton"
+            android:text="@string/end_turn_button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.529"
+            app:layout_constraintStart_toEndOf="@+id/pauseMenu" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageView
