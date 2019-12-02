@@ -75,14 +75,12 @@ public class MediumBotPlayer extends BotPlayer {
   }
 
   private void fillPossibleCapturesAndMovesNoConcede(BoardState state) {
-    WallCoordinate currentWall = new WallCoordinate();
+    WallCoordinate currentWall;
 
     for (int yIndex = 0; yIndex < boardHeight; yIndex++) {
       for (int xIndex = 0; xIndex < boardWidth; xIndex++) {
         for (int wallIndex = 0; wallIndex < 4; wallIndex++) {
-          currentWall.x = xIndex;
-          currentWall.y = yIndex;
-          currentWall.setWallPosition(wallIndex);
+          currentWall = new WallCoordinate(xIndex,yIndex,wallIndex,boardHeight,boardWidth);
 
           if (super.isWallLegal(state, currentWall)) {
             if (!super.willWallConcedePoint(state, currentWall)) {
