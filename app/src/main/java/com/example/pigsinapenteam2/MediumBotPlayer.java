@@ -1,6 +1,7 @@
 package com.example.pigsinapenteam2;
 
 import java.util.LinkedList;
+import java.util.Random;
 
 public class MediumBotPlayer extends BotPlayer {
   private ChainFinder chainFinder;
@@ -46,16 +47,26 @@ public class MediumBotPlayer extends BotPlayer {
     WallCoordinate moveToDo;
 
     //make move decision
-    //don't forget: set inputState.botLastMove to moveToDo or whatever
-    //TODO
+
 
     if (possibleCaptures.size() == 0) {
-
+      if (possibleMovesNoConcede.size() == 0) {
+        isEndgame = true;
+        Chain smallestChain = chainFinder.getChains().get(0);
+        moveToDo = smallestChain.head;
+      } else {
+        Random random = new Random();
+        moveToDo = possibleMovesNoConcede.get(random.nextInt(possibleMovesNoConcede.size()));
+      }
     } else {
-
+      Random random = new Random();
+      moveToDo = possibleCaptures.get(random.nextInt(possibleCaptures.size()));
     }
 
-
+    int[] coordsOfMove = moveToDo.getIndexForm();
+    state.setWallAi(coordsOfMove[0], coordsOfMove[1], coordsOfMove[2]);
+    inputState.currentBoardState = state;
+    inputState.botLastMove = moveToDo;
 
     return super.doMove(inputState);
   }

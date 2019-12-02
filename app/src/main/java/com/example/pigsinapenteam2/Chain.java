@@ -1,13 +1,13 @@
 package com.example.pigsinapenteam2;
 
 public class Chain {
-  int length;
-  WallCoordinate head;
-  WallCoordinate tail;
-  boolean isHeadOpen;
-  boolean isTailOpen;
-  boolean isHeadSet;
-  boolean isTailSet;
+  public int length;
+  public WallCoordinate head;
+  public WallCoordinate tail;
+  private boolean isHeadOpen;
+  private boolean isTailOpen;
+  private boolean isHeadSet;
+  private boolean isTailSet;
   //a tail or head would be "closed" if you can place a wall there
   //   and immediately get a point.
 
