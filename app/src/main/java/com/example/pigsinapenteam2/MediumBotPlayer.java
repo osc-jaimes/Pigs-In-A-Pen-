@@ -34,7 +34,7 @@ public class MediumBotPlayer extends BotPlayer {
 
     //get legal moves (without conceding a point)
     //get possible captures
-    fillPossibleCapturesAndMovesNoConcede(state);
+    fillPossibleMovesNoConcedeAndCaptures(state);
 
     //if endgame:
     if (possibleMovesNoConcede.size() == 0) {
@@ -51,16 +51,20 @@ public class MediumBotPlayer extends BotPlayer {
 
     if (possibleCaptures.size() == 0) {
       if (possibleMovesNoConcede.size() == 0) {
-        isEndgame = true;
-        Chain smallestChain = chainFinder.getChains().get(0);
+        LinkedList<Chain> chains = chainFinder.getChains();
+        Chain smallestChain = chains.getFirst();
         moveToDo = smallestChain.head;
+        System.out.println(moveToDo);
+        System.out.println(1);
       } else {
         Random random = new Random();
         moveToDo = possibleMovesNoConcede.get(random.nextInt(possibleMovesNoConcede.size()));
+        System.out.println(2);
       }
     } else {
       Random random = new Random();
       moveToDo = possibleCaptures.get(random.nextInt(possibleCaptures.size()));
+      System.out.println(3);
     }
 
     possibleCaptures.clear();
@@ -74,7 +78,7 @@ public class MediumBotPlayer extends BotPlayer {
     return super.doMove(inputState);
   }
 
-  private void fillPossibleCapturesAndMovesNoConcede(BoardState state) {
+  private void fillPossibleMovesNoConcedeAndCaptures(BoardState state) {
     WallCoordinate currentWall;
 
     for (int yIndex = 0; yIndex < boardHeight; yIndex++) {
@@ -85,9 +89,9 @@ public class MediumBotPlayer extends BotPlayer {
           if (super.isWallLegal(state, currentWall)) {
             if (!super.willWallConcedePoint(state, currentWall)) {
               possibleMovesNoConcede.add(currentWall);
-              if (super.isWallACapture(state, currentWall)) {
+            }
+            if (super.isWallACapture(state, currentWall)) {
                 possibleCaptures.add(currentWall);
-              }
             }
           }
         }

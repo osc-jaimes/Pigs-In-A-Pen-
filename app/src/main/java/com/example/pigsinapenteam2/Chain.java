@@ -67,6 +67,14 @@ public class Chain {
     }
   }
 
+  public String toString() {
+    String outputString = "";
+    outputString += "length: " + length + "\n";
+    outputString += "head: " + head + "\n";
+    outputString += "tail: " + tail + "\n";
+    return outputString;
+  }
+
   private class ChainEndOpenFlagUnsetException extends Exception {
     public ChainEndOpenFlagUnsetException(String message){
       super(message);

@@ -218,4 +218,14 @@ public class WallCoordinate {
     }
     //TODO: either switch how I use getWallAi or switch the function itself yx -> xy
   }
+
+  public String toString() {
+    String outputString = "";
+    outputString += "x coord: " + x + "\n";
+    outputString += "y coord: " + y + "\n";
+    outputString += "wall position: " + wallPosition + "\n";
+    outputString += "board Height: " + boardHeight + "\n";
+    outputString += "board Width: " + boardWidth + "\n";
+    return outputString;
+  }
 }

@@ -52,6 +52,7 @@ public class ChainFinder {
     WallCoordinate currentWallCoord;
     currentWallCoord = new WallCoordinate(0, 0, 0, boardHeight, boardWidth);
     WallCoordinate oppositeWallCoord;
+    WallCoordinate adjacentWallCoord;
 
     for (int wallPosition = 0; wallPosition < 4; wallPosition++) {
 
@@ -66,7 +67,9 @@ public class ChainFinder {
       if (currentWallCoord.getStateOfThisWall(state) == 0) {
         cellAdjacencyList[indexOfCurrentCell][cellDegree] = indexOfAdjacentCell;
         cellDegree += 1;
-        adjacentOpenWallByIndex[indexOfCurrentCell][cellDegree] = currentWallCoord;
+        adjacentWallCoord = new WallCoordinate(currentWallCoord.x, currentWallCoord.y,
+                          currentWallCoord.getWallPosition(), boardHeight, boardWidth);
+        adjacentOpenWallByIndex[indexOfCurrentCell][cellDegree] = adjacentWallCoord;
       }
     }
     if (cellDegree == 2){
@@ -196,6 +199,10 @@ public class ChainFinder {
   }
 
   private boolean isCellAChainLink(int index) {
-    return isCellAChainLinkArray[index];
+    if (index < 0) {
+      return false;
+    } else {
+      return isCellAChainLinkArray[index];
+    }
   }
 }

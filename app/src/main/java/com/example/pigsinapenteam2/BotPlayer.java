@@ -62,46 +62,26 @@ public class BotPlayer extends Player {
   }
 
   protected boolean isWallACapture(BoardState state, WallCoordinate coords) {
-    //IMPORTANT NOTE: only checks one cell. MAKE SEPARATE COORD OBJECT for the other
-    //side of the wall!
-    boolean allAreWalls = true;
+    int numWalls = 0;
     int xCoord = coords.x;
     int yCoord = coords.y;
-    int wallpos = coords.getWallPosition();
-    if (!coords.isTop()) {
-      if (state.getWallAi(xCoord, yCoord, 0) == 0) {
-        allAreWalls = false;
-      }
-    } else if (!coords.isRight()) {
-      if (state.getWallAi(xCoord, yCoord, 1) == 0) {
-        allAreWalls = false;
-      }
-    } else if (!coords.isBottom()) {
-      if (state.getWallAi(xCoord, yCoord, 2) == 0) {
-        allAreWalls = false;
-      }
-    } else if (!coords.isLeft()) {
-      if (state.getWallAi(xCoord, yCoord, 3) == 0) {
-        allAreWalls = false;
+
+    for (int i = 0; i < 4; i++) {
+      if (state.getWallAi(xCoord,yCoord,i) == 1) {
+        numWalls += 1;
       }
     }
 
-    return allAreWalls;
+    if (numWalls == 3) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
 
   protected boolean isWallLegal(BoardState state, WallCoordinate coords) {
-    int wallState = -1;
-
-    if (coords.isTop()) {
-      wallState = state.getWallAi(coords.x, coords.y,0);
-    } else if (coords.isRight()) {
-      wallState = state.getWallAi(coords.x, coords.y, 1);
-    } else if (coords.isBottom()) {
-      wallState = state.getWallAi(coords.x, coords.y, 2);
-    } else if (coords.isLeft()) {
-      wallState = state.getWallAi(coords.x, coords.y, 3);
-    }
+    int wallState = coords.getStateOfThisWall(state);
 
     return (wallState == 0);
   }
