@@ -63,6 +63,9 @@ public class MediumBotPlayer extends BotPlayer {
       moveToDo = possibleCaptures.get(random.nextInt(possibleCaptures.size()));
     }
 
+    possibleCaptures.clear();
+    possibleMovesNoConcede.clear();
+
     int[] coordsOfMove = moveToDo.getIndexForm();
     state.setWallAi(coordsOfMove[0], coordsOfMove[1], coordsOfMove[2]);
     inputState.currentBoardState = state;

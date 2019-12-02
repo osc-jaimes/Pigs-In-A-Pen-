@@ -18,6 +18,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
   GameState gameState;
   public final int WIDTH = 3;
   public final int HEIGHT = 2;
+  public final int PLAYERONEINT = 1;
   HumanPlayer player1;
   BotPlayer player2;
   Button confirmButton;
