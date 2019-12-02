@@ -208,6 +208,7 @@
         android:layout_width="172dp"
         android:layout_height="43dp"
         android:background="@color/buttonColor"
+        android:onClick="playGame"
         android:text="@string/play_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -220,9 +221,12 @@
         android:id="@+id/imageView"
         android:layout_width="146dp"
         android:layout_height="102dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/grass_background"
         android:elevation="2dp"
-        app:srcCompat="@drawable/sheep"
-        tools:layout_editor_absoluteX="432dp"
-        tools:layout_editor_absoluteY="150dp" />
+        app:layout_constraintEnd_toEndOf="@+id/secondBg"
+        app:layout_constraintHorizontal_bias="0.418"
+        app:layout_constraintStart_toEndOf="@+id/character"
+        app:layout_constraintTop_toBottomOf="@+id/boardSizeHeader5"
+        app:srcCompat="@drawable/sheep" />
 </androidx.constraintlayout.widget.ConstraintLayout>
