@@ -94,13 +94,13 @@ public class BotPlayer extends Player {
     int wallState = -1;
 
     if (coords.isTop()) {
-      wallState = state.getWallAi(coords.y, coords.x,0);
+      wallState = state.getWallAi(coords.x, coords.y,0);
     } else if (coords.isRight()) {
-      wallState = state.getWallAi(coords.y, coords.x, 1);
+      wallState = state.getWallAi(coords.x, coords.y, 1);
     } else if (coords.isBottom()) {
-      wallState = state.getWallAi(coords.y, coords.x, 2);
+      wallState = state.getWallAi(coords.x, coords.y, 2);
     } else if (coords.isLeft()) {
-      wallState = state.getWallAi(coords.y, coords.x, 3);
+      wallState = state.getWallAi(coords.x, coords.y, 3);
     }
 
     return (wallState == 0);
@@ -108,50 +108,37 @@ public class BotPlayer extends Player {
 
   protected boolean willWallConcedePoint(BoardState state, WallCoordinate coords) {
     int cellDegree = 0;
-    int cellX = coords.x;
-    int cellY = coords.y;
+    int xCoord = coords.x;
+    int yCoord = coords.y;
+    int wallpos = coords.getWallPosition();
+    WallCoordinate wallToCheck = new WallCoordinate(xCoord,yCoord,wallpos,
+                                                    state.getHeight(), state.getWidth());
 
-    //will be checking a pair of cells.
-    //first we correct so the first cell has the lower coords
-    if (coords.isTop()) {
-      cellY -= 1;
-    } else if (coords.isLeft()) {
-      cellX -= 1;
-    }
-
-    //check first cell
-    for (int wallPos = 0; wallPos < 4; wallPos++) {
-      if (state.getWallAi(cellX, cellY, wallPos) == 0) {
+    for (int currentWallPos = 0; currentWallPos < 4; currentWallPos++) {
+      wallToCheck.setWallPosition(currentWallPos);
+      if (wallToCheck.getStateOfThisWall(state) == 0) {
         cellDegree += 1;
       }
     }
 
-    //if this will give other player a point get outa here
     if (cellDegree == 2) {
       return true;
     }
 
-    //get second cell coords
-    if (coords.isHorizontal()) {
-      cellX += 1;
-    } else { //if vertical
-      cellY += 1;
-    }
-
-    //check second cell
+    wallToCheck = coords.getOtherSideCoordinate();
     cellDegree = 0;
-    for (int wallPos = 0; wallPos < 4; wallPos++) {
-      if (state.getWallAi(cellX, cellY, wallPos) == 0) {
+    for (int currentWallPos = 0; currentWallPos < 4; currentWallPos++) {
+      wallToCheck.setWallPosition(currentWallPos);
+      if (wallToCheck.getStateOfThisWall(state) == 0) {
         cellDegree += 1;
       }
     }
 
-    //last check
     if (cellDegree == 2) {
       return true;
-    } else {
-      return false;
     }
+
+    return false;
   }
 }
 

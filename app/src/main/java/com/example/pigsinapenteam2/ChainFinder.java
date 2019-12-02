@@ -69,7 +69,7 @@ public class ChainFinder {
       //this is -1 if the wall's an edge
       indexOfAdjacentCell = coordsToIndex(oppositeWallCoord.x, oppositeWallCoord.y);
 
-      if (state.getWallAi(xCoord, yCoord, wallPosition) == 0) {
+      if (currentWallCoord.getStateOfThisWall(state) == 0) {
         cellAdjacencyList[indexOfCurrentCell][cellDegree] = indexOfAdjacentCell;
         cellDegree += 1;
         adjacentOpenWallByIndex[indexOfCurrentCell][cellDegree] = currentWallCoord;

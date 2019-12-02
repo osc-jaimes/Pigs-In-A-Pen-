@@ -216,5 +216,6 @@ public class WallCoordinate {
         return 0;
       }
     }
+    //TODO: either switch how I use getWallAi or switch the function itself yx -> xy
   }
 }
