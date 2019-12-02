@@ -204,4 +204,17 @@ public class WallCoordinate {
           boardHeight, boardWidth);
     return otherSideWall;
   }
+
+  public int getStateOfThisWall(BoardState state) {
+    if (isValidCell()) {
+      return state.getWallAi(x,y,wallPosition);
+    } else {
+      WallCoordinate oppWall = getOtherSideCoordinate();
+      if (oppWall.isValidCell()) {
+        return state.getWallAi(oppWall.x,oppWall.y,oppWall.getWallPosition());
+      } else {
+        return 0;
+      }
+    }
+  }
 }

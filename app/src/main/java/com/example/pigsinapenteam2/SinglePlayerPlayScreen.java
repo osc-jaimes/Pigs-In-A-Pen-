@@ -47,7 +47,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
     this.pauseMenuLayout.setVisibility(View.GONE);
     this.gameButtons = findViewById(R.id.gameButtons);
     this.player1 = new HumanPlayer();
-    this.player2 = new EasyBotPlayer(HEIGHT,WIDTH);
+    this.player2 = new MediumBotPlayer(HEIGHT,WIDTH);
     this.currentPlayer = player1;
     this.playerHasMoved = false;
     this.currentButton = null;
@@ -252,7 +252,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
       int botCurrentPoints = this.gameState.player2Points;
 
       do{
-        //this.gameState = player2.doMove(this.gameState);
+        this.gameState = player2.doMove(this.gameState);
       }while(botCurrentPoints < this.gameState.player2Points);
     }
   }
