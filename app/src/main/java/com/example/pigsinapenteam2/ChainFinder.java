@@ -23,23 +23,17 @@ public class ChainFinder {
     cellAdjacencyList = new int[boardHeight * boardWidth][4];
     chains = new LinkedList<>();
     adjacentOpenWallByIndex = new WallCoordinate[boardHeight * boardWidth][4];
-    boolean[] visited = new boolean[boardWidth * boardHeight];
-    for (int i = 0; i < visited.length; i++) {
-      visited[i] = false;
-    }
+    visited = new boolean[boardWidth * boardHeight];
   }
 
   public ChainFinder(int height, int width) {
     boardWidth = width;
     boardHeight = height;
-    isCellAChainLinkArray = new boolean[boardWidth *boardHeight];
+    isCellAChainLinkArray = new boolean[boardWidth * boardHeight];
     cellAdjacencyList = new int[boardHeight * boardWidth][4];
     chains = new LinkedList<>();
     adjacentOpenWallByIndex = new WallCoordinate[boardHeight * boardWidth][4];
-    boolean[] visited = new boolean[boardWidth * boardHeight];
-    for (int i = 0; i < visited.length; i++) {
-      visited[i] = false;
-    }
+    visited = new boolean[boardWidth * boardHeight];
   }
 
   public void findLinks(BoardState state) {
@@ -87,10 +81,15 @@ public class ChainFinder {
     WallCoordinate chainHead;
     WallCoordinate chainTail;
 
+    for (int i = 0; i < visited.length; i++) {
+      visited[i] = false;
+    }
+
     for (int currentCellIndex = 0;
          currentCellIndex < cellAdjacencyList.length;
          currentCellIndex++) {
-      if (!visited[currentCellIndex] && isCellAChainLink(currentCellIndex)) {
+      if (!visited[currentCellIndex] &&
+          isCellAChainLink(currentCellIndex)) {
         visited[currentCellIndex] = true;
         chainHead = adjacentOpenWallByIndex[currentCellIndex][0];
         chainTail = adjacentOpenWallByIndex[currentCellIndex][1];
