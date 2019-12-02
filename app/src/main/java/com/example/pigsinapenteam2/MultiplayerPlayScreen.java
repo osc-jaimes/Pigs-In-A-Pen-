@@ -36,6 +36,8 @@ public class MultiplayerPlayScreen extends AppCompatActivity {
   public View pauseMenuLayout;
   public View gameButtons;
 
+
+
   private boolean isHorizontal;
   private boolean playerHasMoved;
 
@@ -48,8 +50,13 @@ public class MultiplayerPlayScreen extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_multiplayer_play_screen);
+    ScreenLogic.fullScreen(this);
     this.confirmButtonPlayer1 = findViewById(R.id.confirmButtonPlayer1);
     this.confirmButtonPlayer2 = findViewById(R.id.confirmButtonPlayer2);
+    this.pauseMenuLayout = findViewById(R.id.pauseMenuLayout);
+    this.gameButtons = findViewById(R.id.gameButtons);
+
+    this.pauseMenuLayout.setVisibility(View.GONE);
 
     this.player1 = new HumanPlayer();
     this.player2 = new HumanPlayer();
@@ -57,6 +64,11 @@ public class MultiplayerPlayScreen extends AppCompatActivity {
     this.currentPlayer = this.player1;
 
     this.playerHasMoved = false;
+
+    this.currentPlayer = this.player1;
+
+    BoardState boardState = new BoardState(WIDTH,HEIGHT);
+    this.gameState = new GameState(boardState, this.player1, this.player2,0);
   }
 
 
@@ -70,7 +82,7 @@ public class MultiplayerPlayScreen extends AppCompatActivity {
       int buttonId = V.getId();
       Button currentButton = findViewById(buttonId);
       this.currentButton = currentButton;
-      this.confirmButtonPlayer1.setVisibility(View.VISIBLE);
+      //this.confirmButtonPlayer1.setVisibility(View.VISIBLE);
       currentButton.setBackgroundColor(getResources().getColor(R.color.fences));
     } else{
       //if there already is a fence button chosen
@@ -323,7 +335,16 @@ public class MultiplayerPlayScreen extends AppCompatActivity {
     this.currentButton.setClickable(false);
     this.currentButton = null;
     this.playerHasMoved = true;
-    this.confirmButtonPlayer1.setVisibility(View.GONE);
+    if(this.currentPlayer == player1) {
+      this.confirmButtonPlayer1.setVisibility(View.GONE);
+      this.confirmButtonPlayer2.setVisibility(View.VISIBLE);
+      this.currentPlayer = this.player2;
+    } else{
+      this.confirmButtonPlayer2.setVisibility(View.GONE);
+      this.confirmButtonPlayer1.setVisibility(View.VISIBLE);
+      this.currentPlayer = this.player1;
+    }
+
     this.confirmAction(this.cellX, this.cellY, this.isHorizontal);
     //this.updateScore();
     if(gameState.player1Points + gameState.player2Points == totalScore){
@@ -343,18 +364,6 @@ public class MultiplayerPlayScreen extends AppCompatActivity {
 
     this.gameState.runBoardCheck();
 
-    if(true){
-      System.out.println("BOARD STATE BEFORE DO MOVE: ");
-      System.out.println(this.gameState.currentBoardState);
-      this.gameState = player2.doMove(this.gameState);
-      String id = this.gameState.botLastMove.getButtonName();
-      System.out.println(id);
-      int resID = this.getResources().getIdentifier(id, "id", this.getPackageName());
-      Button AIButton = findViewById(resID);
-      AIButton.setBackgroundColor(getResources().getColor(R.color.fences));
-      AIButton.setVisibility(View.VISIBLE);
-      AIButton.setClickable(false);
-    }
 
   }
 

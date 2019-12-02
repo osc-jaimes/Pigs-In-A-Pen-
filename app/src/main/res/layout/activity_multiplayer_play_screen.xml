@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MultiplayerPlayScreen">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/pauseMenuLayout"
         android:layout_width="match_parent"
@@ -94,18 +95,13 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.645" />
 
-        <Button
-            android:id="@+id/confirmButtonPlayer2"
-            android:layout_width="124dp"
-            android:layout_height="46dp"
-            android:layout_marginBottom="56dp"
-            android:background="@color/dropdown"
-            android:onClick="onClickConfirmationButton"
-            android:text="@string/end_turn_button"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.529"
-            app:layout_constraintStart_toEndOf="@+id/pauseMenu" />
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="115dp"
+            android:layout_height="104dp"
+            app:srcCompat="@drawable/sheep"
+            tools:layout_editor_absoluteX="595dp"
+            tools:layout_editor_absoluteY="157dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -143,6 +139,20 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.3" />
+
+        <Button
+            android:id="@+id/confirmButtonPlayer2"
+            android:layout_width="124dp"
+            android:layout_height="46dp"
+            android:layout_marginTop="308dp"
+            android:layout_marginEnd="21dp"
+            android:layout_marginBottom="57dp"
+            android:background="@color/dropdown"
+            android:onClick="onClickConfirmationButton"
+            android:text="@string/end_turn_button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/pauseButton"
@@ -533,8 +543,8 @@
 
         <ImageView
             android:id="@+id/player1Pig"
-            android:layout_width="122dp"
-            android:layout_height="137dp"
+            android:layout_width="115dp"
+            android:layout_height="104dp"
             android:layout_marginTop="124dp"
             android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
