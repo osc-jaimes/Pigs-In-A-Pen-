@@ -18,6 +18,7 @@ public class EasyBotPlayer extends BotPlayer {
     boardHeight = height;
     boardWidth = width;
     possibleMoves = new LinkedList<>();
+    possibleCaptures = new LinkedList<>();
   }
 
   @Override
@@ -51,7 +52,7 @@ public class EasyBotPlayer extends BotPlayer {
 
   private void fillPossibleCapturesAndMoves(BoardState state) {
     WallCoordinate currentWall;
-    WallCoordinate wallHandOff;
+
     for (int yIndex = 0; yIndex < boardHeight; yIndex++) {
       for (int xIndex = 0; xIndex < boardWidth; xIndex++) {
         for (int wallIndex = 0; wallIndex < 4; wallIndex++) {
