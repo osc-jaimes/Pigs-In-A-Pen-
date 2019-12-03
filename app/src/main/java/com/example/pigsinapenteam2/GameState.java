@@ -1,3 +1,15 @@
+/**
+ * Jared Boonstra - 1572694
+ *
+ * GameState.java
+ *
+ * Stores values of the gameBoard for use by the game to adjust.
+ *
+ * public methods:
+ * GameState: GameState
+ *  Constructor for GameState object. Default + with the player who starts already decided.
+ * Bunch of getters for values that the GameState holds.
+ */
 package com.example.pigsinapenteam2;
 
 import java.util.Random;
@@ -16,7 +28,15 @@ public class GameState {
   public WallCoordinate botLastMove;
   //
 
-
+  /**
+   * GameState
+   *
+   * Default constructor for the GameState object. Still requires player1 + 2 and the currentBoardState. Selects random player to begin.
+   *
+   * @param currentBoardState
+   * @param player1
+   * @param player2
+   */
   public GameState(BoardState currentBoardState, Player player1, Player player2){
     this.player1 = player1;
     this.player2 = player2;
