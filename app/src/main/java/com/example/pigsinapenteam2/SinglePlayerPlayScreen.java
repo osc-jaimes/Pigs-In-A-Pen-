@@ -239,9 +239,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
 
   public void confirmAction(int cellX, int cellY, boolean isHorizontal){
 
-    int currentScore = this.gameState.player1Points;
 
-    int lastPlayer1Score = gameState.player1Points;
     this.gameState = player1.doMove(this.gameState, cellX, cellY, isHorizontal);
 
     cellCheckAndUpdate(cellX, cellY, PLAYERONEINT);
@@ -254,6 +252,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
       System.out.println(this.gameState.currentBoardState);
 
      this.gameState = player2.doMove(this.gameState);
+
 
      String id = this.gameState.botLastMove.getButtonName();
      System.out.println(id);

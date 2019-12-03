@@ -19,8 +19,8 @@ public class BoardCheck {
 
   public void boardChecker(){
 
-    for(int i = 0; i < currentBoard.getWidth() - 1; i++){
-      for(int j = 0; j < currentBoard.getHeight() - 1; j++){
+    for(int i = 0; i < currentBoard.getHeight(); i++){
+      for(int j = 0; j < currentBoard.getWidth(); j++){
 
         cellScoreCheck(i,j);
 
@@ -51,10 +51,7 @@ public class BoardCheck {
 
   }//cellScoreCheck
 
-  public void singularCellCheck(int row, int cols){
 
-
-  }//singularCellCheck
 
   public int getPlayerOneScore(){
 
