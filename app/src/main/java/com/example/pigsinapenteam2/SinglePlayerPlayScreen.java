@@ -327,7 +327,14 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
       }//if
     }//else if
 
+    else if(checkedCellY  > 0){
 
+      if(this.gameState.currentBoardState.isComplete(checkedCellX, checkedCellY - 1)){
+
+        this.gameState.currentBoardState.setCellState(checkedCellX, checkedCellY -1, playerInt);
+
+      }//if
+    }//else if
     else{
       System.out.println("isComplete was false");
     }
