@@ -55,14 +55,26 @@ public class WallCoordinate {
 
   }
 
+  public int getWallPosition() {
+    return wallPosition;
+  }
+
+  public void setWallPosition(int newWallPosition) {
+    wallPosition = newWallPosition;
+    validPos = false;
+    if ((-1 < wallPosition) && (wallPosition < 4)) {
+      validPos = true;
+    }
+  }
+
   public boolean isValidPosition() {
     return validPos;
   }
 
   public boolean isValidCell() {
     validCell = false;
-    if (x < boardWidth) {
-      if (y < boardHeight) {
+    if ((x < boardWidth) && (x > -1)) {
+      if ((y < boardHeight) && (y > -1)) {
         validCell = true;
       }
     }
@@ -92,18 +104,6 @@ public class WallCoordinate {
 
   public boolean isLeft() {
     return (wallPosition == 3);
-  }
-
-  public int getWallPosition() {
-    return wallPosition;
-  }
-
-  public void setWallPosition(int newWallPosition) {
-    wallPosition = newWallPosition;
-    validPos = false;
-    if ((-1 < wallPosition) && (wallPosition < 4)) {
-      validPos = true;
-    }
   }
 
   public int[] getIndexForm() {
@@ -203,5 +203,28 @@ public class WallCoordinate {
     otherSideWall = new WallCoordinate(newXCoord, newYCoord, newWallPos,
           boardHeight, boardWidth);
     return otherSideWall;
+  }
+
+  public int getStateOfThisWall(BoardState state) {
+    if (isValidCell()) {
+      return state.getWallAi(x,y,wallPosition);
+    } else {
+      WallCoordinate oppWall = getOtherSideCoordinate();
+      if (oppWall.isValidCell()) {
+        return state.getWallAi(oppWall.x,oppWall.y,oppWall.getWallPosition());
+      } else {
+        return 0;
+      }
+    }
+  }
+
+  public String toString() {
+    String outputString = "";
+    outputString += "x coord: " + x + "\n";
+    outputString += "y coord: " + y + "\n";
+    outputString += "wall position: " + wallPosition + "\n";
+    outputString += "board Height: " + boardHeight + "\n";
+    outputString += "board Width: " + boardWidth + "\n";
+    return outputString;
   }
 }

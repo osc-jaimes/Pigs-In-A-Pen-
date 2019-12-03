@@ -29,14 +29,26 @@ public class Chain {
     isHeadOpen = true;
     isTailSet = false;
     isHeadSet = false;
+    if (chainHead == null) {
+      throw new NullPointerException("Head cannot be initially null.");
+    }
+    if (chainTail == null) {
+      throw new NullPointerException("Tail cannot be initially null.");
+    }
   }
 
   public void addCellHead(WallCoordinate newHeadCoords) {
+    if (newHeadCoords == null) {
+      throw new NullPointerException("New head cannot be null.");
+    }
     length += 1;
     head = newHeadCoords;
   }
 
   public void addCellTail(WallCoordinate newTailCoords) {
+    if (newTailCoords == null) {
+      throw new NullPointerException("New tail cannot be null.");
+    }
     length += 1;
     tail = newTailCoords;
   }
@@ -65,6 +77,14 @@ public class Chain {
     } else {
       return isTailOpen;
     }
+  }
+
+  public String toString() {
+    String outputString = "";
+    outputString += "length: " + length + "\n";
+    outputString += "head: " + head + "\n";
+    outputString += "tail: " + tail + "\n";
+    return outputString;
   }
 
   private class ChainEndOpenFlagUnsetException extends Exception {
