@@ -2,36 +2,18 @@
  * Jared Boonstra - 1572694
  *
  * HumanPlayer.java
- *
  * public methods:
- * hasMoved: returns true or false if the player has moved or not.
- * doMove: changes the GameState according to the moves the player does
+ * doMove: GameState
+ *  changes the GameState according to the moves the player does
  */
 package com.example.pigsinapenteam2;
 
 
 public class HumanPlayer extends Player {
-// Variables
-    private boolean hasMoved;
-    //
 
 
     public HumanPlayer(){
-        this.hasMoved = false;
     }
-
-    /**
-     * getHasMoved
-     *
-     * A getter for the hasMoved variable.
-     *
-     * @return boolean hasMoved, true if player has moved, false if player has not
-     */
-    public boolean getHasMoved(){
-        return hasMoved;
-    }
-
-
 
     /**
      * doMove
