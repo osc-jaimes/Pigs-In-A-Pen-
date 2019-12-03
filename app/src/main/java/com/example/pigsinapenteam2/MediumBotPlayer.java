@@ -20,7 +20,7 @@ public class MediumBotPlayer extends BotPlayer {
   }
 
   public MediumBotPlayer(int height, int width) {
-    super(height, width, 1);
+    super(height, width);
     possibleCaptures = new LinkedList<>();
     possibleMovesNoConcede = new LinkedList<>();
     boardHeight = height;

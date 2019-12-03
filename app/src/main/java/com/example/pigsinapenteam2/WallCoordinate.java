@@ -55,6 +55,18 @@ public class WallCoordinate {
 
   }
 
+  public int getWallPosition() {
+    return wallPosition;
+  }
+
+  public void setWallPosition(int newWallPosition) {
+    wallPosition = newWallPosition;
+    validPos = false;
+    if ((-1 < wallPosition) && (wallPosition < 4)) {
+      validPos = true;
+    }
+  }
+
   public boolean isValidPosition() {
     return validPos;
   }
@@ -92,18 +104,6 @@ public class WallCoordinate {
 
   public boolean isLeft() {
     return (wallPosition == 3);
-  }
-
-  public int getWallPosition() {
-    return wallPosition;
-  }
-
-  public void setWallPosition(int newWallPosition) {
-    wallPosition = newWallPosition;
-    validPos = false;
-    if ((-1 < wallPosition) && (wallPosition < 4)) {
-      validPos = true;
-    }
   }
 
   public int[] getIndexForm() {
@@ -216,7 +216,6 @@ public class WallCoordinate {
         return 0;
       }
     }
-    //TODO: either switch how I use getWallAi or switch the function itself yx -> xy
   }
 
   public String toString() {
