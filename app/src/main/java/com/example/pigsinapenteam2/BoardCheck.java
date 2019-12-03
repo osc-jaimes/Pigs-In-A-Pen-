@@ -30,19 +30,19 @@ public class BoardCheck {
 
   private void cellScoreCheck(int xCoord, int yCoord){
 
-    int input = currentBoard.getCellState(xCoord, yCoord);
+    int input = this.currentBoard.getCellState(xCoord, yCoord);
     int checkedCell = 3;
 
     switch (input){
 
       case 1:
         playerOneScore += 1;
-        currentBoard.setCellState(xCoord, yCoord, checkedCell);
+        this.currentBoard.setCellState(xCoord, yCoord, checkedCell);
         break;
 
       case 2:
         playerTwoScore += 1;
-        currentBoard.setCellState(xCoord, yCoord, checkedCell);
+        this.currentBoard.setCellState(xCoord, yCoord, checkedCell);
         break;
 
       default:
@@ -50,6 +50,11 @@ public class BoardCheck {
     }//switch
 
   }//cellScoreCheck
+
+  public void singularCellCheck(int row, int cols){
+
+
+  }//singularCellCheck
 
   public int getPlayerOneScore(){
 
