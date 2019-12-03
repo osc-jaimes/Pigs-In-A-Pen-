@@ -25,6 +25,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
   Button confirmButton;
   Button pauseButton;
   View pauseMenuLayout;
+  TextView player1ScoreBoard;
   View gameButtons;
   int cellX;
   int cellY;
@@ -41,6 +42,8 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_single_player_play_screen);
     setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+    player1ScoreBoard = findViewById(R.id.player1Score);
+    player1ScoreBoard.setText("0");
 
     this.confirmButton = findViewById(R.id.confirmButtonPlayer1);
     //setting confirm button to invisible
@@ -65,7 +68,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
                     | View.SYSTEM_UI_FLAG_FULLSCREEN
                     | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
 
-    this.totalScore = (WIDTH * HEIGHT) / 2;
+    this.totalScore = WIDTH * HEIGHT;
   }
 
   /**
@@ -230,6 +233,10 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
     this.playerHasMoved = true;
     this.confirmButton.setVisibility(View.GONE);
     this.confirmAction(this.cellX, this.cellY, this.isHorizontal);
+    gameState.player1Points = 6;
+
+    System.out.println(gameState.player1Points + " " + gameState.player2Points);
+    System.out.println(totalScore);
     this.updateScore();
     if(gameState.player1Points + gameState.player2Points == totalScore){
       endGame();
@@ -296,8 +303,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
 
 
   public void updateScore() {
-    TextView tv = findViewById(R.id.player1Score);
-    tv.setText("" + this.gameState.player1Points);
+    player1ScoreBoard.setText("" + this.gameState.player1Points);
   }
 
 

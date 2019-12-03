@@ -32,10 +32,10 @@
             android:textSize="36sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.585"
+            app:layout_constraintHorizontal_bias="0.676"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.201" />
+            app:layout_constraintVertical_bias="0.198" />
 
         <TextView
             android:id="@+id/restartButton"
@@ -77,8 +77,8 @@
             android:id="@+id/playerWhoWon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="245dp"
-            android:layout_marginTop="90dp"
+            android:layout_marginStart="152dp"
+            android:layout_marginTop="76dp"
             android:text="@string/playerWhoWon"
             android:textColor="#000000"
             android:textSize="36sp"
