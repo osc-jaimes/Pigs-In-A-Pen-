@@ -200,6 +200,8 @@ public class BoardState {
     for(int i = 0; i < 4; i++){
 
       if(boardData[row][cols][i] == 0){
+
+        System.out.println("i is currently:" + i);
         return false;
 
       }//if statement
