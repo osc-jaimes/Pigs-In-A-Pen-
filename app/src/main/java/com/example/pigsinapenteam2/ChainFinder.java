@@ -43,6 +43,15 @@ public class ChainFinder {
         findLinksOfOneCell(state, xCoord, yCoord);
       }
     }
+
+    // for testing porpoises
+    for (int i = 0; i < cellAdjacencyList.length; i++) {
+      System.out.print(i + ": ");
+      for (int j = 0; j < cellAdjacencyList[i].length; j++) {
+        System.out.print(cellAdjacencyList[i][j] + " ");
+      }
+      System.out.println();
+    }
   }
 
   private void findLinksOfOneCell(BoardState state, int xCoord, int yCoord) {
@@ -94,8 +103,13 @@ public class ChainFinder {
       if (!visited[currentCellIndex] &&
           isCellAChainLink(currentCellIndex)) {
         visited[currentCellIndex] = true;
+
+
+        //THERE IS A PROBLEM HERE: we're getting null.
         chainHead = adjacentOpenWallByIndex[currentCellIndex][0];
         chainTail = adjacentOpenWallByIndex[currentCellIndex][1];
+
+
         currentChain = new Chain(chainHead, chainTail);
 
         //follow the chain down: head

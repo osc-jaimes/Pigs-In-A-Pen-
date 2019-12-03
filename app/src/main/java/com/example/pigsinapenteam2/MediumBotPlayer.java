@@ -37,7 +37,7 @@ public class MediumBotPlayer extends BotPlayer {
     fillPossibleMovesNoConcedeAndCaptures(state);
 
     //if endgame:
-    if (possibleMovesNoConcede.size() == 0) {
+    if ((possibleMovesNoConcede.size() == 0) && (possibleCaptures.size() == 0)) {
       //find links
       chainFinder.findLinks(state);
       //find chains
@@ -54,8 +54,8 @@ public class MediumBotPlayer extends BotPlayer {
         LinkedList<Chain> chains = chainFinder.getChains();
         Chain smallestChain = chains.getFirst();
         moveToDo = smallestChain.head;
-        System.out.println(moveToDo);
         System.out.println(1);
+        System.out.println(moveToDo);
       } else {
         Random random = new Random();
         moveToDo = possibleMovesNoConcede.get(random.nextInt(possibleMovesNoConcede.size()));
