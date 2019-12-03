@@ -233,9 +233,8 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
     this.playerHasMoved = true;
     this.confirmButton.setVisibility(View.GONE);
     this.confirmAction(this.cellX, this.cellY, this.isHorizontal);
-    gameState.player1Points = 6;
 
-    System.out.println(gameState.player1Points + " " + gameState.player2Points);
+    System.out.println(gameState.player1Points + ":" + gameState.player2Points);
     System.out.println(totalScore);
     this.updateScore();
     if(gameState.player1Points + gameState.player2Points == totalScore){
