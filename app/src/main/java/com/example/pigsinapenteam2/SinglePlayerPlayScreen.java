@@ -24,6 +24,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
   Button confirmButton;
   Button pauseButton;
   View pauseMenuLayout;
+  TextView player1ScoreBoard;
   View gameButtons;
   int cellX;
   int cellY;
@@ -40,6 +41,8 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_single_player_play_screen);
     setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+    player1ScoreBoard = findViewById(R.id.player1Score);
+    player1ScoreBoard.setText("0");
 
     this.confirmButton = findViewById(R.id.confirmButtonPlayer1);
     //setting confirm button to invisible
@@ -64,7 +67,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
                     | View.SYSTEM_UI_FLAG_FULLSCREEN
                     | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
 
-    this.totalScore = (WIDTH * HEIGHT) / 2;
+    this.totalScore = WIDTH * HEIGHT;
   }
 
   /**
@@ -229,9 +232,12 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
     this.playerHasMoved = true;
     this.confirmButton.setVisibility(View.GONE);
     this.confirmAction(this.cellX, this.cellY, this.isHorizontal);
+
+    System.out.println(gameState.player1Points + ":" + gameState.player2Points);
+    System.out.println(totalScore);
     this.updateScore();
     if(gameState.player1Points + gameState.player2Points == totalScore){
-      //endGame();
+      endGame();
     }
     System.out.println(this.gameState.currentBoardState);
   }
@@ -267,48 +273,37 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
     gameButtons.setVisibility(View.GONE);
     //Blur background -- TODO when mvp is done
   }
+
   public void resumeButton(View v){
     gameButtons.setVisibility(View.VISIBLE);
     pauseMenuLayout.setVisibility(View.GONE);
   }
+
   public void pauseToMainMenu(View v){
     Intent goToMainMenu = new Intent(getApplicationContext(), MainScreen.class);
     startActivity(goToMainMenu);
   }
+
   public void restartButton(View v){
     this.recreate();
   }
 
+   public void endGame(){
+    Intent goToWinScreen = new Intent(getApplicationContext(), VictoryScreen.class);
+    if(gameState.player2Points > gameState.player1Points){
+      goToWinScreen.putExtra("playerWhoWon", 1);
+     }
+    else if(gameState.player1Points > gameState.player2Points){
+      goToWinScreen.putExtra("playerWhoWon", 0);
+    }
+     startActivity(goToWinScreen);
+   }
+
 
 
   public void updateScore() {
-    TextView tv = (TextView) findViewById(R.id.player1Score);
-    tv.setText("" + this.gameState.player1Points);
+    player1ScoreBoard.setText("" + this.gameState.player1Points);
   }
-//NEEDS SCREENS - menu options.
-  /**public void endGame(){
-      if(gameState.player2Points > gameState.player1Points){
-        Intent goToLoseScreen = new Intent(getApplicationContext(), LoseScreen.class);
-        startActivity(goToLoseScreen);
-      }
-      Intent goToWinScreen = new Intent(getApplicationContext(), VictoryScreen.class);
-      startActivity(goToWinScreen);
-    }
-    public void onClickPause(View v){
-    pauseMenu.setVisibility(View.VISIBLE);
-    //Blur background -- TODO when mvp is done
-    }
-    public void resumeButton(View v){
-    pauseButton.setVisibility(View.GONE);
-    }
-    public void restartButton(View v){
-    this.recreate();
-    //Not sure if this works. If not, use startActivity.
-    }
-    public void mainMenuButton(View v){
-    Intent goToMainMenu = new Intent(getApplicationContext(), MainScreen.class);
-    startActivity(goToMainMenu);
-    }*/
 
 
   private void cellCheckAndUpdate(int cellX,int cellY, int playerInt){
