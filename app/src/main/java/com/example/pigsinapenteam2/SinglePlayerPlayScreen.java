@@ -334,6 +334,10 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
 
     cellCheckAndUpdate(cellX, cellY, PLAYERONEINT);
 
+    System.out.println("playerOne Score is: " + gameState.player1Points);
+    System.out.println("BOARD STATE BEFORE BoardCheck: ");
+    System.out.println(this.gameState.currentBoardState);
+
     this.gameState.runBoardCheck();
 
     if(true){
@@ -344,12 +348,18 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
      this.gameState = player2.doMove(this.gameState);
 
 
+
      String id = this.gameState.botLastMove.getButtonName();
      System.out.println(id);
 
+
      botButtonChecker(id);
+
+      System.out.println("BOARD STATE BEFORE AI do MOVE: ");
+      System.out.println(this.gameState.currentBoardState);
      this.gameState.runBoardCheck();
 
+     System.out.println("AI score is: " + this.gameState.player2Points);
      int resID = this.getResources().getIdentifier(id, "id", this.getPackageName());
      Button AIButton = findViewById(resID);
 
