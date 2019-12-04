@@ -197,14 +197,20 @@ public class BoardState {
   public boolean isComplete( int row, int cols) {
 
 
+    if(boardData[row][cols][cellState] == 3){
+
+      return false;
+
+    }//if statement
+
     for(int i = 0; i < 4; i++){
 
-      System.out.println(i);
       if((boardData[row][cols][i] == 0)){
 
         return false;
 
       }//if statement
+
 
     }//for loop
 

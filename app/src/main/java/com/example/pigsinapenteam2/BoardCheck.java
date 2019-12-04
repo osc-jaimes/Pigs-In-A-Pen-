@@ -78,8 +78,10 @@ public class BoardCheck {
 
     else if(checkedCellX > 0){
 
+      System.out.println("checkedCellX greater than ");
       if(this.currentBoard.isComplete(checkedCellX -1, checkedCellY)){
 
+        System.out.println("isComplete for checkedCellX happened");
         this.currentBoard.setCellState(checkedCellX -1,checkedCellY, playerInt);
 
       }//if
@@ -87,8 +89,10 @@ public class BoardCheck {
 
     else if(checkedCellY  > 0){
 
+      System.out.println("checkedCellY greater than 0");
       if(this.currentBoard.isComplete(checkedCellX, checkedCellY - 1)){
 
+        System.out.println("isComplete for checkedCellY happened");
         this.currentBoard.setCellState(checkedCellX, checkedCellY -1, playerInt);
 
       }//if
@@ -100,7 +104,8 @@ public class BoardCheck {
 
   private int cellXCheck(int cellX){
 
-    if(cellX >= currentBoard.getWidth()){
+    System.out.println("board width is: " + currentBoard.getWidth());
+    if(cellX >= currentBoard.getWidth() - 1){
 
       System.out.println("cellX was greater or equal to Height");
       System.out.println(cellX);
@@ -117,7 +122,8 @@ public class BoardCheck {
 
   private int cellYCheck(int cellY){
 
-    if(cellY >= currentBoard.getHeight()){
+    System.out.println("current height: " + currentBoard.getHeight());
+    if(cellY >= currentBoard.getHeight() - 1){
 
       System.out.println("cellY was greater or equal to Width");
       System.out.println(cellY);
