@@ -340,6 +340,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
 
     this.gameState.runBoardCheck();
 
+
     if(true){
 
       System.out.println("BOARD STATE BEFORE DO MOVE: ");

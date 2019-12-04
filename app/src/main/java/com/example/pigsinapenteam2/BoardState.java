@@ -183,14 +183,13 @@ public class BoardState {
       setRightWallState(row, cols -1);
       return;
     }//if statement
-    System.out.println("Before left wall");
+
     boardData[row][cols][leftWallState] = 1;
-    System.out.println("After left wall");
 
     if(cols > 0){
-      System.out.println("Before right wall");
+
       boardData[row][cols - 1][rightWallState] = 1;
-      System.out.println("After right wall");
+
     }//if statement
   }//setLeftWallState
 
@@ -206,6 +205,7 @@ public class BoardState {
         return false;
 
       }//if statement
+
     }//for loop
 
 

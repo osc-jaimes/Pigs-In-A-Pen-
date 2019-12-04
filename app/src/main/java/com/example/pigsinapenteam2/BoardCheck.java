@@ -68,7 +68,8 @@ public class BoardCheck {
       checkedCellY = cellY;
     }//else statement
 
-
+    System.out.println("cellX = " + cellX);
+    System.out.println("cellY = " + cellY);
     if(this.currentBoard.isComplete(checkedCellX, checkedCellY)){
 
       this.currentBoard.setCellState(checkedCellX, checkedCellY, playerInt);
@@ -162,7 +163,7 @@ public class BoardCheck {
 
       case "v3":
         cellX = 0;
-        cellY = 3;
+        cellY = 2;
 
         cellCheckAndUpdate(cellX, cellY, BOTPLAYERINT);
         break;
@@ -190,7 +191,7 @@ public class BoardCheck {
 
       case "v7":
         cellX = 1;
-        cellY = 3;
+        cellY = 2;
 
         cellCheckAndUpdate(cellX, cellY, BOTPLAYERINT);
         break;
@@ -217,39 +218,45 @@ public class BoardCheck {
         break;
 
       case "h3":
-        cellX = 0;
-        cellY = 3;
-
-        cellCheckAndUpdate(cellX, cellY, BOTPLAYERINT);
-        break;
-
-      case "h4":
         cellX = 1;
         cellY = 0;
 
         cellCheckAndUpdate(cellX, cellY, BOTPLAYERINT);
         break;
 
-      case "h5":
+      case "h4":
         cellX = 1;
         cellY = 1;
 
         cellCheckAndUpdate(cellX, cellY, BOTPLAYERINT);
         break;
 
-      case "h6":
+      case "h5":
         cellX = 1;
         cellY = 2;
 
         cellCheckAndUpdate(cellX, cellY, BOTPLAYERINT);
         break;
 
-      case "h7":
+      case "h6":
         cellX = 1;
-        cellY = 3;
+        cellY = 0;
 
         cellCheckAndUpdate(cellX, cellY, BOTPLAYERINT);
         break;
+
+      case "h7":
+        cellX = 1;
+        cellY = 1;
+
+        cellCheckAndUpdate(cellX, cellY, BOTPLAYERINT);
+        break;
+
+      case "h8":
+        cellX = 1;
+        cellY = 2;
+
+        cellCheckAndUpdate(cellX, cellY, BOTPLAYERINT);
     }
   }//botButtonChecker
 
