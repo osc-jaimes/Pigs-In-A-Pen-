@@ -14,6 +14,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class SinglePlayerPlayScreen extends AppCompatActivity {
+  //RH put this here
+  //take it out
+
+
   //Instance Variables
   GameState gameState;
   public final int WIDTH = 3;
@@ -289,6 +293,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
   }
 
    public void endGame(){
+    //Just a new comment to take out -- testing git
     Intent goToWinScreen = new Intent(getApplicationContext(), VictoryScreen.class);
     if(gameState.player2Points > gameState.player1Points){
       goToWinScreen.putExtra("playerWhoWon", 1);
