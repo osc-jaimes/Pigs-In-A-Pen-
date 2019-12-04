@@ -23,23 +23,17 @@ public class ChainFinder {
     cellAdjacencyList = new int[boardHeight * boardWidth][4];
     chains = new LinkedList<>();
     adjacentOpenWallByIndex = new WallCoordinate[boardHeight * boardWidth][4];
-    boolean[] visited = new boolean[boardWidth * boardHeight];
-    for (int i = 0; i < visited.length; i++) {
-      visited[i] = false;
-    }
+    visited = new boolean[boardWidth * boardHeight];
   }
 
   public ChainFinder(int height, int width) {
     boardWidth = width;
     boardHeight = height;
-    isCellAChainLinkArray = new boolean[boardWidth *boardHeight];
+    isCellAChainLinkArray = new boolean[boardWidth * boardHeight];
     cellAdjacencyList = new int[boardHeight * boardWidth][4];
     chains = new LinkedList<>();
     adjacentOpenWallByIndex = new WallCoordinate[boardHeight * boardWidth][4];
-    boolean[] visited = new boolean[boardWidth * boardHeight];
-    for (int i = 0; i < visited.length; i++) {
-      visited[i] = false;
-    }
+    visited = new boolean[boardWidth * boardHeight];
   }
 
   public void findLinks(BoardState state) {
@@ -48,6 +42,15 @@ public class ChainFinder {
       for (int xCoord = 0; xCoord < boardWidth; xCoord++) {
         findLinksOfOneCell(state, xCoord, yCoord);
       }
+    }
+
+    // for testing porpoises
+    for (int i = 0; i < cellAdjacencyList.length; i++) {
+      System.out.print(i + ": ");
+      for (int j = 0; j < cellAdjacencyList[i].length; j++) {
+        System.out.print(cellAdjacencyList[i][j] + " ");
+      }
+      System.out.println();
     }
   }
 
@@ -58,6 +61,7 @@ public class ChainFinder {
     WallCoordinate currentWallCoord;
     currentWallCoord = new WallCoordinate(0, 0, 0, boardHeight, boardWidth);
     WallCoordinate oppositeWallCoord;
+    WallCoordinate adjacentWallCoord;
 
     for (int wallPosition = 0; wallPosition < 4; wallPosition++) {
 
@@ -69,10 +73,12 @@ public class ChainFinder {
       //this is -1 if the wall's an edge
       indexOfAdjacentCell = coordsToIndex(oppositeWallCoord.x, oppositeWallCoord.y);
 
-      if (state.getWallAi(xCoord, yCoord, wallPosition) == 0) {
+      if (currentWallCoord.getStateOfThisWall(state) == 0) {
         cellAdjacencyList[indexOfCurrentCell][cellDegree] = indexOfAdjacentCell;
         cellDegree += 1;
-        adjacentOpenWallByIndex[indexOfCurrentCell][cellDegree] = currentWallCoord;
+        adjacentWallCoord = new WallCoordinate(currentWallCoord.x, currentWallCoord.y,
+                          currentWallCoord.getWallPosition(), boardHeight, boardWidth);
+        adjacentOpenWallByIndex[indexOfCurrentCell][cellDegree] = adjacentWallCoord;
       }
     }
     if (cellDegree == 2){
@@ -87,13 +93,23 @@ public class ChainFinder {
     WallCoordinate chainHead;
     WallCoordinate chainTail;
 
+    for (int i = 0; i < visited.length; i++) {
+      visited[i] = false;
+    }
+
     for (int currentCellIndex = 0;
          currentCellIndex < cellAdjacencyList.length;
          currentCellIndex++) {
-      if (!visited[currentCellIndex] && isCellAChainLink(currentCellIndex)) {
+      if (!visited[currentCellIndex] &&
+          isCellAChainLink(currentCellIndex)) {
         visited[currentCellIndex] = true;
+
+
+        //THERE IS A PROBLEM HERE: we're getting null.
         chainHead = adjacentOpenWallByIndex[currentCellIndex][0];
         chainTail = adjacentOpenWallByIndex[currentCellIndex][1];
+
+
         currentChain = new Chain(chainHead, chainTail);
 
         //follow the chain down: head
@@ -197,6 +213,10 @@ public class ChainFinder {
   }
 
   private boolean isCellAChainLink(int index) {
-    return isCellAChainLinkArray[index];
+    if (index < 0) {
+      return false;
+    } else {
+      return isCellAChainLinkArray[index];
+    }
   }
 }

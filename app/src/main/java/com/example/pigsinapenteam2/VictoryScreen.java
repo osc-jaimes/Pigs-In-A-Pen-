@@ -16,6 +16,7 @@ package com.example.pigsinapenteam2;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -27,6 +28,7 @@ public class VictoryScreen extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_victory_screen);
+    setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
     this.extras = getIntent().getExtras();
     fillInWinner();
   }
@@ -51,6 +53,7 @@ public class VictoryScreen extends AppCompatActivity {
     int playerWhoWon = extras.getInt("playerWhoWon");
     if(playerWhoWon == 0){
       playerText.setText("Player 1");
+      return;
     }
     playerText.setText("Player 2");
   }

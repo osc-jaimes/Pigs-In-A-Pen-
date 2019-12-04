@@ -4,18 +4,32 @@ package com.example.pigsinapenteam2;
 import java.util.LinkedList;
 
 /**
- * BotPlayer: plays the game, so you don't have to
+ * BotPlayer: plays the game, so you don't have to.
+ *    superclass for the actual bots. Contains common functions.
  *
  * doMove(GameState) -> GameState:
- *    Sets the location of the wall the bot wishes to play at to 2.
- *    Returns the new GameState.
+ *    returns the input unchanged.
+ *
+ * getHasMoved() -> boolean:
+ *    implemented for consistency with the human player.
+ *
+ * isWallACapture(BoardState, WallCoordinate) -> boolean:
+ *    states whether taking the wall will give you a point.
+ *
+ * isWallLegal(BoardState, WallCoordinate) -> boolean:
+ *    states whether taking the wall is a legal play.
+ *
+ * willWallConcedePoint(BoardState, WallCoordinate) -> boolean:
+ *    states whether placing at this location will give opponent an
+ *    opportunity to gain a point.
  */
 public class BotPlayer extends Player {
   private int boardWidth;
   private int boardHeight;
   private int numBoardCells;
-  private int difficulty;
-  protected LinkedList<WallCoordinate> possibleCaptures;
+
+  private final int NO_WALL = 0;
+  private final int WALL_PRESENT = 1;
 
   /**
    * default constructor.
@@ -24,25 +38,20 @@ public class BotPlayer extends Player {
     boardWidth = 0;
     boardHeight = 0;
     numBoardCells = 0;
-    difficulty = 0;
-    possibleCaptures = new LinkedList<>();
   }
 
   /**
-   * BotPlayer(int,int) -> void:
+   * BotPlayer(int,int):
    *    constructor.
    *
-   * @param height
-   * @param width
-   * @param botDifficulty: 0 for easy, 1 normal, 2 hard.
+   * @param height: height of the board
+   * @param width: width of the board
    */
-  public BotPlayer(int height, int width, int botDifficulty) {
+  public BotPlayer(int height, int width) {
     //option: make input arg just GameState? BoardState?
     boardWidth = width;
     boardHeight = height;
     numBoardCells = width * height;
-    difficulty = botDifficulty;
-    possibleCaptures = new LinkedList<>();
   }
 
   /**
@@ -50,108 +59,104 @@ public class BotPlayer extends Player {
    *    Sets the location of the wall the bot wishes to play at to 2.
    *    Returns the new GameState.
    *
-   * @param inputState
+   * @param inputState: initial GameState
    * @return: new GameState
    */
   public GameState doMove(GameState inputState) {
     return inputState;
   }
 
+  /**
+   * getHasMoved() -> boolean:
+   *    implemented for consistency with the human player.
+   * @return whether the BotPlayer is ready to have doMove called. (always true)
+   */
   public boolean getHasMoved() {
     return true;
   }
 
+  /**
+   * isWallACapture(BoardState, WallCoordinate) -> boolean:
+   *    states whether taking the wall will give you a point.
+   * @param state: current state of the board.
+   * @param coords: location of the wall.
+   * @return
+   */
   protected boolean isWallACapture(BoardState state, WallCoordinate coords) {
-    //IMPORTANT NOTE: only checks one cell. MAKE SEPARATE COORD OBJECT for the other
-    //side of the wall!
-    boolean allAreWalls = true;
+    int numWalls = 0;
     int xCoord = coords.x;
     int yCoord = coords.y;
-    int wallpos = coords.getWallPosition();
-    if (!coords.isTop()) {
-      if (state.getWallAi(xCoord, yCoord, 0) == 0) {
-        allAreWalls = false;
-      }
-    } else if (!coords.isRight()) {
-      if (state.getWallAi(xCoord, yCoord, 1) == 0) {
-        allAreWalls = false;
-      }
-    } else if (!coords.isBottom()) {
-      if (state.getWallAi(xCoord, yCoord, 2) == 0) {
-        allAreWalls = false;
-      }
-    } else if (!coords.isLeft()) {
-      if (state.getWallAi(xCoord, yCoord, 3) == 0) {
-        allAreWalls = false;
+
+    for (int i = 0; i < 4; i++) {
+      if (state.getWallAi(xCoord,yCoord,i) == WALL_PRESENT) {
+        numWalls += 1;
       }
     }
 
-    return allAreWalls;
-  }
-
-
-  protected boolean isWallLegal(BoardState state, WallCoordinate coords) {
-    int wallState = -1;
-
-    if (coords.isTop()) {
-      wallState = state.getWallAi(coords.x, coords.y,0);
-    } else if (coords.isRight()) {
-      wallState = state.getWallAi(coords.x, coords.y, 1);
-    } else if (coords.isBottom()) {
-      wallState = state.getWallAi(coords.x, coords.y, 2);
-    } else if (coords.isLeft()) {
-      wallState = state.getWallAi(coords.x, coords.y, 3);
-    }
-
-    return (wallState == 0);
-  }
-
-  protected boolean willWallConcedePoint(BoardState state, WallCoordinate coords) {
-    int cellDegree = 0;
-    int cellX = coords.x;
-    int cellY = coords.y;
-
-    //will be checking a pair of cells.
-    //first we correct so the first cell has the lower coords
-    if (coords.isTop()) {
-      cellY -= 1;
-    } else if (coords.isLeft()) {
-      cellX -= 1;
-    }
-
-    //check first cell
-    for (int wallPos = 0; wallPos < 4; wallPos++) {
-      if (state.getWallAi(cellX, cellY, wallPos) == 0) {
-        cellDegree += 1;
-      }
-    }
-
-    //if this will give other player a point get outa here
-    if (cellDegree == 2) {
-      return true;
-    }
-
-    //get second cell coords
-    if (coords.isHorizontal()) {
-      cellX += 1;
-    } else { //if vertical
-      cellY += 1;
-    }
-
-    //check second cell
-    cellDegree = 0;
-    for (int wallPos = 0; wallPos < 4; wallPos++) {
-      if (state.getWallAi(cellX, cellY, wallPos) == 0) {
-        cellDegree += 1;
-      }
-    }
-
-    //last check
-    if (cellDegree == 2) {
+    //if the cell can be captured in one move
+    if (numWalls == 3) {
       return true;
     } else {
       return false;
     }
+  }
+
+  /**
+   * isWallLegal(BoardState, WallCoordinate) -> boolean:
+   *    states whether taking the wall is a legal play.
+   * @param state: current state of the board.
+   * @param coords: location of the wall.
+   * @return
+   */
+  protected boolean isWallLegal(BoardState state, WallCoordinate coords) {
+    int wallState = coords.getStateOfThisWall(state);
+
+    return (wallState == NO_WALL);
+  }
+
+  /**
+   * willWallConcedePoint(BoardState, WallCoordinate) -> boolean:
+   *    states whether placing at this location will give opponent an
+   *    opportunity to gain a point.
+   * @param state: current state of the board
+   * @param coords: location of the wall
+   * @return
+   */
+  protected boolean willWallConcedePoint(BoardState state, WallCoordinate coords) {
+    int cellDegree = 0;
+    int xCoord = coords.x;
+    int yCoord = coords.y;
+    int wallpos = coords.getWallPosition();
+    WallCoordinate wallToCheck = new WallCoordinate(xCoord,yCoord,wallpos,
+                                                    state.getHeight(), state.getWidth());
+
+    for (int currentWallPos = 0; currentWallPos < 4; currentWallPos++) {
+      wallToCheck.setWallPosition(currentWallPos);
+      if (wallToCheck.getStateOfThisWall(state) == NO_WALL) {
+        cellDegree += 1;
+      }
+    }
+
+
+    if (cellDegree == 2) {
+      return true;
+    }
+
+    wallToCheck = coords.getOtherSideCoordinate();
+    cellDegree = 0;
+    for (int currentWallPos = 0; currentWallPos < 4; currentWallPos++) {
+      wallToCheck.setWallPosition(currentWallPos);
+      if (wallToCheck.getStateOfThisWall(state) == 0) {
+        cellDegree += 1;
+      }
+    }
+
+    //if placing a wall will make this cell capturable next turn
+    if (cellDegree == 2) {
+      return true;
+    }
+
+    return false;
   }
 }
 

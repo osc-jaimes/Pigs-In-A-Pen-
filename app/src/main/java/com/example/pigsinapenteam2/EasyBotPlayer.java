@@ -9,15 +9,16 @@ import java.util.Random;
 public class EasyBotPlayer extends BotPlayer {
   private int boardHeight;
   private int boardWidth;
-
+  private LinkedList<WallCoordinate> possibleCaptures;
   private LinkedList<WallCoordinate> possibleMoves;
 
 
   public EasyBotPlayer(int height, int width) {
-    super(height,width,0);
+    super(height,width);
     boardHeight = height;
     boardWidth = width;
     possibleMoves = new LinkedList<>();
+    possibleCaptures = new LinkedList<>();
   }
 
   @Override
@@ -51,7 +52,7 @@ public class EasyBotPlayer extends BotPlayer {
 
   private void fillPossibleCapturesAndMoves(BoardState state) {
     WallCoordinate currentWall;
-    WallCoordinate wallHandOff;
+
     for (int yIndex = 0; yIndex < boardHeight; yIndex++) {
       for (int xIndex = 0; xIndex < boardWidth; xIndex++) {
         for (int wallIndex = 0; wallIndex < 4; wallIndex++) {

@@ -20,7 +20,7 @@ public class MediumBotPlayer extends BotPlayer {
   }
 
   public MediumBotPlayer(int height, int width) {
-    super(height, width, 1);
+    super(height, width);
     possibleCaptures = new LinkedList<>();
     possibleMovesNoConcede = new LinkedList<>();
     boardHeight = height;
@@ -34,10 +34,10 @@ public class MediumBotPlayer extends BotPlayer {
 
     //get legal moves (without conceding a point)
     //get possible captures
-    fillPossibleCapturesAndMovesNoConcede(state);
+    fillPossibleMovesNoConcedeAndCaptures(state);
 
     //if endgame:
-    if (possibleMovesNoConcede.size() == 0) {
+    if ((possibleMovesNoConcede.size() == 0) && (possibleCaptures.size() == 0)) {
       //find links
       chainFinder.findLinks(state);
       //find chains
@@ -51,17 +51,24 @@ public class MediumBotPlayer extends BotPlayer {
 
     if (possibleCaptures.size() == 0) {
       if (possibleMovesNoConcede.size() == 0) {
-        isEndgame = true;
-        Chain smallestChain = chainFinder.getChains().get(0);
+        LinkedList<Chain> chains = chainFinder.getChains();
+        Chain smallestChain = chains.getFirst();
         moveToDo = smallestChain.head;
+        System.out.println(1);
+        System.out.println(moveToDo);
       } else {
         Random random = new Random();
         moveToDo = possibleMovesNoConcede.get(random.nextInt(possibleMovesNoConcede.size()));
+        System.out.println(2);
       }
     } else {
       Random random = new Random();
       moveToDo = possibleCaptures.get(random.nextInt(possibleCaptures.size()));
+      System.out.println(3);
     }
+
+    possibleCaptures.clear();
+    possibleMovesNoConcede.clear();
 
     int[] coordsOfMove = moveToDo.getIndexForm();
     state.setWallAi(coordsOfMove[0], coordsOfMove[1], coordsOfMove[2]);
@@ -71,22 +78,20 @@ public class MediumBotPlayer extends BotPlayer {
     return super.doMove(inputState);
   }
 
-  private void fillPossibleCapturesAndMovesNoConcede(BoardState state) {
-    WallCoordinate currentWall = new WallCoordinate();
+  private void fillPossibleMovesNoConcedeAndCaptures(BoardState state) {
+    WallCoordinate currentWall;
 
     for (int yIndex = 0; yIndex < boardHeight; yIndex++) {
       for (int xIndex = 0; xIndex < boardWidth; xIndex++) {
         for (int wallIndex = 0; wallIndex < 4; wallIndex++) {
-          currentWall.x = xIndex;
-          currentWall.y = yIndex;
-          currentWall.setWallPosition(wallIndex);
+          currentWall = new WallCoordinate(xIndex,yIndex,wallIndex,boardHeight,boardWidth);
 
           if (super.isWallLegal(state, currentWall)) {
             if (!super.willWallConcedePoint(state, currentWall)) {
               possibleMovesNoConcede.add(currentWall);
-              if (super.isWallACapture(state, currentWall)) {
+            }
+            if (super.isWallACapture(state, currentWall)) {
                 possibleCaptures.add(currentWall);
-              }
             }
           }
         }
