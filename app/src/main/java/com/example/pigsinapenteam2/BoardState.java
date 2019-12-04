@@ -200,7 +200,8 @@ public class BoardState {
 
     for(int i = 0; i < 4; i++){
 
-      if((boardData[row][cols][i] == 0) || boardData[row][cols][i] == 3){
+      System.out.println(i);
+      if((boardData[row][cols][i] == 0)){
 
         return false;
 
