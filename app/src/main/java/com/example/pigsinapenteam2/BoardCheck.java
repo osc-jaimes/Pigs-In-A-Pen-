@@ -55,87 +55,15 @@ public class BoardCheck {
 
   public void cellCheckAndUpdate(int cellX,int cellY, int playerInt){
 
-    int checkedCellX;
-    int checkedCellY;
 
-    if(playerInt == 1) {
-
-       checkedCellX = cellXCheck(cellX);
-       checkedCellY = cellYCheck(cellY);
-    }//if statement
-    else{
-      checkedCellX = cellX;
-      checkedCellY = cellY;
-    }//else statement
-
-    System.out.println("cellX = " + cellX);
-    System.out.println("cellY = " + cellY);
-    if(this.currentBoard.isComplete(checkedCellX, checkedCellY)){
-
-      this.currentBoard.setCellState(checkedCellX, checkedCellY, playerInt);
-
-    }//if statement
-
-    else if(checkedCellX > 0){
-
-      System.out.println("checkedCellX greater than ");
-      if(this.currentBoard.isComplete(checkedCellX -1, checkedCellY)){
-
-        System.out.println("isComplete for checkedCellX happened");
-        this.currentBoard.setCellState(checkedCellX -1,checkedCellY, playerInt);
-
-      }//if
-    }//else if
-
-    else if(checkedCellY  > 0){
-
-      System.out.println("checkedCellY greater than 0");
-      if(this.currentBoard.isComplete(checkedCellX, checkedCellY - 1)){
-
-        System.out.println("isComplete for checkedCellY happened");
-        this.currentBoard.setCellState(checkedCellX, checkedCellY -1, playerInt);
-
-      }//if
-    }//else if
-    else{
-      System.out.println("isComplete was false");
-    }
   }//cellCheckAndUpdate
 
   private int cellXCheck(int cellX){
 
-    System.out.println("board width is: " + currentBoard.getWidth());
-    if(cellX >= currentBoard.getWidth() - 1){
-
-      System.out.println("cellX was greater or equal to Height");
-      System.out.println(cellX);
-      return cellX - 1;
-
-    }//if statement
-
-    else{
-
-      return cellX;
-
-    }//else statement
   }//cellXCheck
 
   private int cellYCheck(int cellY){
 
-    System.out.println("current height: " + currentBoard.getHeight());
-    if(cellY >= currentBoard.getHeight() - 1){
-
-      System.out.println("cellY was greater or equal to Width");
-      System.out.println(cellY);
-      return cellY - 1;
-
-    }//if statement
-
-    else{
-
-      return cellY;
-
-    }//else statement
   }//cellYCheck
 
   public void botButtonChecker(String buttonName){
