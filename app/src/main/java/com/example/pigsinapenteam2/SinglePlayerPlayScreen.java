@@ -335,13 +335,14 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
 
     this.gameState = player1.doMove(this.gameState, cellX, cellY, isHorizontal);
 
-    cellCheckAndUpdate(cellX, cellY, PLAYERONEINT);
+    this.gameState.currentBoardCheck.cellCheckAndUpdate(cellX, cellY, PLAYERONEINT);
 
     System.out.println("playerOne Score is: " + gameState.player1Points);
     System.out.println("BOARD STATE BEFORE BoardCheck: ");
     System.out.println(this.gameState.currentBoardState);
 
     this.gameState.runBoardCheck();
+
 
     if(true){
 
@@ -356,7 +357,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
      System.out.println(id);
 
 
-     botButtonChecker(id);
+     this.gameState.currentBoardCheck.botButtonChecker(id);
 
       System.out.println("BOARD STATE BEFORE AI do MOVE: ");
       System.out.println(this.gameState.currentBoardState);
@@ -411,195 +412,4 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
     player1ScoreBoard.setText("" + this.gameState.player1Points);
   }
 
-
-  private void cellCheckAndUpdate(int cellX,int cellY, int playerInt){
-
-    System.out.println("hit cellCheckAndUpdate");
-
-    int checkedCellX = cellXCheck(cellX);
-    int checkedCellY = cellYCheck(cellY);
-
-    if(this.gameState.currentBoardState.isComplete(checkedCellX, checkedCellY)){
-
-      this.gameState.currentBoardState.setCellState(checkedCellX, checkedCellY, playerInt);
-
-    }//if statement
-
-    else if(checkedCellX > 0){
-
-      if(this.gameState.currentBoardState.isComplete(checkedCellX -1, checkedCellY)){
-
-        this.gameState.currentBoardState.setCellState(checkedCellX -1,checkedCellY, playerInt);
-
-      }//if
-    }//else if
-
-    else if(checkedCellY  > 0){
-
-      if(this.gameState.currentBoardState.isComplete(checkedCellX, checkedCellY - 1)){
-
-        this.gameState.currentBoardState.setCellState(checkedCellX, checkedCellY -1, playerInt);
-
-      }//if
-    }//else if
-    else{
-      System.out.println("isComplete was false");
-    }
-  }//cellCheckAndUpdate
-
-  private int cellXCheck(int cellX){
-
-    if(cellX >= HEIGHT){
-
-      System.out.println("cellX was greater or equal to Height");
-      System.out.println(cellX);
-      return cellX - 1;
-
-    }//if statement
-
-    else{
-
-      return cellX;
-
-    }//else statement
-  }//cellXCheck
-
-  private int cellYCheck(int cellY){
-
-    if(cellY >= WIDTH){
-
-      System.out.println("cellY was greater or equal to Width");
-      System.out.println(cellY);
-      return cellY - 1;
-
-    }//if statement
-
-    else{
-
-      return cellY;
-
-    }//else statement
-  }//cellYCheck
-
-  public void botButtonChecker(String buttonName){
-
-
-    int cellX;
-    int cellY;
-
-    switch (buttonName){
-
-      case "v0":
-        cellX = 0;
-        cellY = 0;
-
-        cellCheckAndUpdate(cellX, cellY,PLAYERTWOINT);
-        break;
-
-      case "v1":
-        cellX = 0;
-        cellY = 1;
-
-        cellCheckAndUpdate(cellX, cellY, PLAYERTWOINT);
-        break;
-
-      case "v2":
-        cellX = 0;
-        cellY = 2;
-
-        cellCheckAndUpdate(cellX, cellY, PLAYERTWOINT);
-        break;
-
-      case "v3":
-        cellX = 0;
-        cellY = 3;
-
-        cellCheckAndUpdate(cellX, cellY, PLAYERTWOINT);
-        break;
-
-      case "v4":
-        cellX = 1;
-        cellY = 0;
-
-        cellCheckAndUpdate(cellX, cellY, PLAYERTWOINT);
-        break;
-
-      case "v5":
-        cellX = 1;
-        cellY = 1;
-
-        cellCheckAndUpdate(cellX, cellY, PLAYERTWOINT);
-        break;
-
-      case "v6":
-        cellX = 1;
-        cellY = 2;
-
-        cellCheckAndUpdate(cellX, cellY, PLAYERTWOINT);
-        break;
-
-      case "v7":
-        cellX = 1;
-        cellY = 3;
-
-        cellCheckAndUpdate(cellX, cellY, PLAYERTWOINT);
-        break;
-
-      case "h0":
-        cellX = 0;
-        cellY = 0;
-
-        cellCheckAndUpdate(cellX, cellY, PLAYERTWOINT);
-        break;
-
-      case "h1":
-        cellX = 0;
-        cellY = 1;
-
-        cellCheckAndUpdate(cellX, cellY, PLAYERTWOINT);
-        break;
-
-      case "h2":
-        cellX = 0;
-        cellY = 2;
-
-        cellCheckAndUpdate(cellX, cellY, PLAYERTWOINT);
-        break;
-
-      case "h3":
-        cellX = 0;
-        cellY = 3;
-
-        cellCheckAndUpdate(cellX, cellY, PLAYERTWOINT);
-        break;
-
-      case "h4":
-        cellX = 1;
-        cellY = 0;
-
-        cellCheckAndUpdate(cellX, cellY, PLAYERTWOINT);
-        break;
-
-      case "h5":
-        cellX = 1;
-        cellY = 1;
-
-        cellCheckAndUpdate(cellX, cellY, PLAYERTWOINT);
-        break;
-
-      case "h6":
-        cellX = 1;
-        cellY = 2;
-
-        cellCheckAndUpdate(cellX, cellY, PLAYERTWOINT);
-        break;
-
-      case "h7":
-        cellX = 1;
-        cellY = 3;
-
-        cellCheckAndUpdate(cellX, cellY, PLAYERTWOINT);
-        break;
-    }
-  }//botButtonChecker
 }//singlePlayerPlayScreen
