@@ -330,9 +330,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
 
   public void confirmAction(int cellX, int cellY, boolean isHorizontal){
 
-    int currentScore = this.gameState.player1Points;
 
-    int lastPlayer1Score = gameState.player1Points;
     this.gameState = player1.doMove(this.gameState, cellX, cellY, isHorizontal);
 
     cellCheckAndUpdate(cellX, cellY, PLAYERONEINT);
@@ -340,11 +338,16 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
     this.gameState.runBoardCheck();
 
     if(true){
+
       System.out.println("BOARD STATE BEFORE DO MOVE: ");
       System.out.println(this.gameState.currentBoardState);
+
      this.gameState = player2.doMove(this.gameState);
+
+
      String id = this.gameState.botLastMove.getButtonName();
      System.out.println(id);
+
      int resID = this.getResources().getIdentifier(id, "id", this.getPackageName());
      Button AIButton = findViewById(resID);
      AIButton.setBackgroundColor(getResources().getColor(R.color.fences));
@@ -404,6 +407,8 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
 
   private void cellCheckAndUpdate(int cellX,int cellY, int playerInt){
 
+    System.out.println("hit cellCheckAndUpdate");
+
     int checkedCellX = cellXCheck(cellX);
     int checkedCellY = cellYCheck(cellY);
 
@@ -412,12 +417,35 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
       this.gameState.currentBoardState.setCellState(checkedCellX, checkedCellY, playerInt);
 
     }//if statement
+
+    else if(checkedCellX > 0){
+
+      if(this.gameState.currentBoardState.isComplete(checkedCellX -1, checkedCellY)){
+
+        this.gameState.currentBoardState.setCellState(checkedCellX -1,checkedCellY, playerInt);
+
+      }//if
+    }//else if
+
+    else if(checkedCellY  > 0){
+
+      if(this.gameState.currentBoardState.isComplete(checkedCellX, checkedCellY - 1)){
+
+        this.gameState.currentBoardState.setCellState(checkedCellX, checkedCellY -1, playerInt);
+
+      }//if
+    }//else if
+    else{
+      System.out.println("isComplete was false");
+    }
   }//cellCheckAndUpdate
 
   private int cellXCheck(int cellX){
 
     if(cellX >= HEIGHT){
 
+      System.out.println("cellX was greater or equal to Height");
+      System.out.println(cellX);
       return cellX - 1;
 
     }//if statement
@@ -433,6 +461,8 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
 
     if(cellY >= WIDTH){
 
+      System.out.println("cellY was greater or equal to Width");
+      System.out.println(cellY);
       return cellY - 1;
 
     }//if statement
