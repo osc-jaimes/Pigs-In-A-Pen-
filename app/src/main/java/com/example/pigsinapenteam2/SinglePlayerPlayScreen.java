@@ -330,7 +330,6 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
 
   public void confirmAction(int cellX, int cellY, boolean isHorizontal){
 
-
     this.gameState = player1.doMove(this.gameState, cellX, cellY, isHorizontal);
 
     cellCheckAndUpdate(cellX, cellY, PLAYERONEINT);
@@ -348,8 +347,14 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
      String id = this.gameState.botLastMove.getButtonName();
      System.out.println(id);
 
+     botButtonChecker(id);
+     this.gameState.runBoardCheck();
+
      int resID = this.getResources().getIdentifier(id, "id", this.getPackageName());
      Button AIButton = findViewById(resID);
+
+
+
      AIButton.setBackgroundColor(getResources().getColor(R.color.fences));
      AIButton.setVisibility(View.VISIBLE);
      AIButton.setClickable(false);
@@ -473,4 +478,126 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
 
     }//else statement
   }//cellYCheck
+
+  public void botButtonChecker(String buttonName){
+
+
+    int cellX;
+    int cellY;
+
+    switch (buttonName){
+
+      case "v0":
+        cellX = 0;
+        cellY = 0;
+
+        cellCheckAndUpdate(cellX, cellY,PLAYERTWOINT);
+        break;
+
+      case "v1":
+        cellX = 0;
+        cellY = 1;
+
+        cellCheckAndUpdate(cellX, cellY, PLAYERTWOINT);
+        break;
+
+      case "v2":
+        cellX = 0;
+        cellY = 2;
+
+        cellCheckAndUpdate(cellX, cellY, PLAYERTWOINT);
+        break;
+
+      case "v3":
+        cellX = 0;
+        cellY = 3;
+
+        cellCheckAndUpdate(cellX, cellY, PLAYERTWOINT);
+        break;
+
+      case "v4":
+        cellX = 1;
+        cellY = 0;
+
+        cellCheckAndUpdate(cellX, cellY, PLAYERTWOINT);
+        break;
+
+      case "v5":
+        cellX = 1;
+        cellY = 1;
+
+        cellCheckAndUpdate(cellX, cellY, PLAYERTWOINT);
+        break;
+
+      case "v6":
+        cellX = 1;
+        cellY = 2;
+
+        cellCheckAndUpdate(cellX, cellY, PLAYERTWOINT);
+        break;
+
+      case "v7":
+        cellX = 1;
+        cellY = 3;
+
+        cellCheckAndUpdate(cellX, cellY, PLAYERTWOINT);
+        break;
+
+      case "h0":
+        cellX = 0;
+        cellY = 0;
+
+        cellCheckAndUpdate(cellX, cellY, PLAYERTWOINT);
+        break;
+
+      case "h1":
+        cellX = 0;
+        cellY = 1;
+
+        cellCheckAndUpdate(cellX, cellY, PLAYERTWOINT);
+        break;
+
+      case "h2":
+        cellX = 0;
+        cellY = 2;
+
+        cellCheckAndUpdate(cellX, cellY, PLAYERTWOINT);
+        break;
+
+      case "h3":
+        cellX = 0;
+        cellY = 3;
+
+        cellCheckAndUpdate(cellX, cellY, PLAYERTWOINT);
+        break;
+
+      case "h4":
+        cellX = 1;
+        cellY = 0;
+
+        cellCheckAndUpdate(cellX, cellY, PLAYERTWOINT);
+        break;
+
+      case "h5":
+        cellX = 1;
+        cellY = 1;
+
+        cellCheckAndUpdate(cellX, cellY, PLAYERTWOINT);
+        break;
+
+      case "h6":
+        cellX = 1;
+        cellY = 2;
+
+        cellCheckAndUpdate(cellX, cellY, PLAYERTWOINT);
+        break;
+
+      case "h7":
+        cellX = 1;
+        cellY = 3;
+
+        cellCheckAndUpdate(cellX, cellY, PLAYERTWOINT);
+        break;
+    }
+  }//botButtonChecker
 }//singlePlayerPlayScreen
