@@ -53,10 +53,12 @@ public class MultiplayerPlayScreen extends AppCompatActivity {
     ScreenLogic.fullScreen(this);
     this.confirmButtonPlayer1 = findViewById(R.id.confirmButtonPlayer1);
     this.confirmButtonPlayer2 = findViewById(R.id.confirmButtonPlayer2);
+    this.confirmButtonPlayer2.setVisibility(View.GONE);
     this.pauseMenuLayout = findViewById(R.id.pauseMenuLayout);
     this.gameButtons = findViewById(R.id.gameButtons);
 
     this.pauseMenuLayout.setVisibility(View.GONE);
+    confirmButtonPlayer1.setVisibility(View.VISIBLE);
 
     this.player1 = new HumanPlayer();
     this.player2 = new HumanPlayer();
