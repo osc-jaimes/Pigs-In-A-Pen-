@@ -24,12 +24,12 @@ public class MainScreen extends AppCompatActivity {
   }
 
   public void pressSinglePlayerButton(View v){
-    Intent goToSinglePlayerScreen = new Intent(getApplicationContext(), SinglePlayerScreen.class);
+    Intent goToSinglePlayerScreen = new Intent(getApplicationContext(), SinglePlayerSetupScreen.class);
     startActivity(goToSinglePlayerScreen);
   }
 
   public void pressMultiPlayerButton(View v){
-    Intent goToMultiPlayerScreen = new Intent(getApplicationContext(), MultiPlayerScreen.class);
+    Intent goToMultiPlayerScreen = new Intent(getApplicationContext(), MultiplayerSetupScreen.class);
     startActivity(goToMultiPlayerScreen);
   }
 }

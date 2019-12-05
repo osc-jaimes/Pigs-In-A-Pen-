@@ -9,10 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".VictoryScreen"></activity>
+        <activity android:name=".MultiplayerPlayScreen"></activity>
+        <activity android:name=".MultiplayerSetupScreen" />
+        <activity android:name=".victoryScreen" />
         <activity android:name=".SinglePlayerPlayScreen" />
         <activity android:name=".MultiPlayerScreen" />
-        <activity android:name=".SinglePlayerScreen" />
+        <activity android:name=".SinglePlayerSetupScreen" />
         <activity android:name=".MainScreen" />
         <activity android:name=".OpenScreen">
             <intent-filter>
