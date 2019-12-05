@@ -1,8 +1,6 @@
 package com.example.pigsinapenteam2;
 
 
-import java.util.LinkedList;
-
 /**
  * BotPlayer: plays the game, so you don't have to.
  *    superclass for the actual bots. Contains common functions.
@@ -22,6 +20,10 @@ import java.util.LinkedList;
  * willWallConcedePoint(BoardState, WallCoordinate) -> boolean:
  *    states whether placing at this location will give opponent an
  *    opportunity to gain a point.
+ *
+ * willWallConcedePointOneSided(BoardState, WallCoordinate) -> boolean:
+ *    states whether placing at this location will give opponent an
+ *    opportunity to gain a point, relative to one side.
  */
 public class BotPlayer extends Player {
   private int boardWidth;
@@ -48,7 +50,6 @@ public class BotPlayer extends Player {
    * @param width: width of the board
    */
   public BotPlayer(int height, int width) {
-    //option: make input arg just GameState? BoardState?
     boardWidth = width;
     boardHeight = height;
     numBoardCells = width * height;
@@ -93,7 +94,7 @@ public class BotPlayer extends Player {
       }
     }
 
-    //if the cell can be captured in one move
+    //if the cell can be captured in one move:
     if (numWalls == 3) {
       return true;
     } else {
@@ -123,12 +124,30 @@ public class BotPlayer extends Player {
    * @return
    */
   protected boolean willWallConcedePoint(BoardState state, WallCoordinate coords) {
+    WallCoordinate otherSide = coords.getOtherSideCoordinate();
+    boolean willConcede;
+
+    willConcede = willWallConcedePointOneSided(state, coords);
+    willConcede = willConcede || willWallConcedePointOneSided(state, otherSide);
+
+    return willConcede;
+  }
+
+  /**
+   * willWallConcedePointOneSided(BoardState, WallCoordinate) -> boolean:
+   *    states whether placing at this location will give opponent an
+   *    opportunity to gain a point, relative to one side.
+   * @param state: current state of the board
+   * @param coords: location of the wall
+   * @return
+   */
+  private boolean willWallConcedePointOneSided(BoardState state, WallCoordinate coords) {
     int cellDegree = 0;
     int xCoord = coords.x;
     int yCoord = coords.y;
     int wallpos = coords.getWallPosition();
     WallCoordinate wallToCheck = new WallCoordinate(xCoord,yCoord,wallpos,
-                                                    state.getHeight(), state.getWidth());
+        state.getHeight(), state.getWidth());
 
     for (int currentWallPos = 0; currentWallPos < 4; currentWallPos++) {
       wallToCheck.setWallPosition(currentWallPos);
@@ -137,26 +156,11 @@ public class BotPlayer extends Player {
       }
     }
 
-
     if (cellDegree == 2) {
       return true;
+    } else {
+      return false;
     }
-
-    wallToCheck = coords.getOtherSideCoordinate();
-    cellDegree = 0;
-    for (int currentWallPos = 0; currentWallPos < 4; currentWallPos++) {
-      wallToCheck.setWallPosition(currentWallPos);
-      if (wallToCheck.getStateOfThisWall(state) == 0) {
-        cellDegree += 1;
-      }
-    }
-
-    //if placing a wall will make this cell capturable next turn
-    if (cellDegree == 2) {
-      return true;
-    }
-
-    return false;
   }
 }
 
