@@ -32,4 +32,9 @@ public class MainScreen extends AppCompatActivity {
     Intent goToMultiPlayerScreen = new Intent(getApplicationContext(), MultiplayerSetupScreen.class);
     startActivity(goToMultiPlayerScreen);
   }
+
+  public void quickPlay(View V){
+    Intent quickPlay = new Intent(getApplicationContext(), SinglePlayerPlayScreen.class);
+    startActivity(quickPlay);
+  }
 }
