@@ -32,6 +32,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
   //Views (Relative Views)
   public View pauseMenuLayout;
   public View gameButtons;
+  TextView player1ScoreBoard;
 
   //Ints
   public int cellX;
@@ -52,6 +53,8 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_single_player_play_screen);
     setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+    player1ScoreBoard = findViewById(R.id.player1Score);
+    player1ScoreBoard.setText("0");
     //===== Confirm Button ===========
     this.confirmButton = findViewById(R.id.confirmButtonPlayer1);
     confirmButton.setVisibility(View.GONE);
@@ -323,7 +326,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
     this.confirmAction(this.cellX, this.cellY, this.isHorizontal);
     this.updateScore();
     if(gameState.player1Points + gameState.player2Points == totalScore){
-      //endGame();
+      endGame();
     }
     System.out.println(this.gameState.currentBoardState);
   }
@@ -332,13 +335,14 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
 
     this.gameState = player1.doMove(this.gameState, cellX, cellY, isHorizontal);
 
-    cellCheckAndUpdate(cellX, cellY, PLAYERONEINT);
+    this.gameState.currentBoardCheck.cellCheckAndUpdate(cellX, cellY, PLAYERONEINT);
 
     System.out.println("playerOne Score is: " + gameState.player1Points);
     System.out.println("BOARD STATE BEFORE BoardCheck: ");
     System.out.println(this.gameState.currentBoardState);
 
     this.gameState.runBoardCheck();
+
 
     if(true){
 
@@ -353,7 +357,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
      System.out.println(id);
 
 
-     botButtonChecker(id);
+     this.gameState.currentBoardCheck.botButtonChecker(id);
 
       System.out.println("BOARD STATE BEFORE AI do MOVE: ");
       System.out.println(this.gameState.currentBoardState);
@@ -376,238 +380,36 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
     gameButtons.setVisibility(View.GONE);
     //Blur background -- TODO when mvp is done
   }
+
   public void resumeButton(View v){
     gameButtons.setVisibility(View.VISIBLE);
     pauseMenuLayout.setVisibility(View.GONE);
   }
+
   public void pauseToMainMenu(View v){
     Intent goToMainMenu = new Intent(getApplicationContext(), MainScreen.class);
     startActivity(goToMainMenu);
   }
+
   public void restartButton(View v){
     this.recreate();
   }
 
+   public void endGame(){
+    Intent goToWinScreen = new Intent(getApplicationContext(), VictoryScreen.class);
+    if(gameState.player2Points > gameState.player1Points){
+      goToWinScreen.putExtra("playerWhoWon", 1);
+     }
+    else if(gameState.player1Points > gameState.player2Points){
+      goToWinScreen.putExtra("playerWhoWon", 0);
+    }
+     startActivity(goToWinScreen);
+   }
+
 
 
   public void updateScore() {
-    TextView tv = (TextView) findViewById(R.id.player1Score);
-    tv.setText("" + this.gameState.player1Points);
+    player1ScoreBoard.setText("" + this.gameState.player1Points);
   }
-//NEEDS SCREENS - menu options.
-  /**public void endGame(){
-      if(gameState.player2Points > gameState.player1Points){
-        Intent goToLoseScreen = new Intent(getApplicationContext(), LoseScreen.class);
-        startActivity(goToLoseScreen);
-      }
-      Intent goToWinScreen = new Intent(getApplicationContext(), VictoryScreen.class);
-      startActivity(goToWinScreen);
-    }
-    public void onClickPause(View v){
-    pauseMenu.setVisibility(View.VISIBLE);
-    //Blur background -- TODO when mvp is done
-    }
-    public void resumeButton(View v){
-    pauseButton.setVisibility(View.GONE);
-    }
-    public void restartButton(View v){
-    this.recreate();
-    //Not sure if this works. If not, use startActivity.
-    }
-    public void mainMenuButton(View v){
-    Intent goToMainMenu = new Intent(getApplicationContext(), MainScreen.class);
-    startActivity(goToMainMenu);
-    }*/
 
-
-  private void cellCheckAndUpdate(int cellX,int cellY, int playerInt){
-
-    System.out.println("hit cellCheckAndUpdate");
-
-    int checkedCellX = cellXCheck(cellX);
-    int checkedCellY = cellYCheck(cellY);
-
-    if(this.gameState.currentBoardState.isComplete(checkedCellX, checkedCellY)){
-
-      this.gameState.currentBoardState.setCellState(checkedCellX, checkedCellY, playerInt);
-
-    }//if statement
-
-    else if(checkedCellX > 0){
-
-      if(this.gameState.currentBoardState.isComplete(checkedCellX -1, checkedCellY)){
-
-        this.gameState.currentBoardState.setCellState(checkedCellX -1,checkedCellY, playerInt);
-
-      }//if
-    }//else if
-
-    else if(checkedCellY  > 0){
-
-      if(this.gameState.currentBoardState.isComplete(checkedCellX, checkedCellY - 1)){
-
-        this.gameState.currentBoardState.setCellState(checkedCellX, checkedCellY -1, playerInt);
-
-      }//if
-    }//else if
-    else{
-      System.out.println("isComplete was false");
-    }
-  }//cellCheckAndUpdate
-
-  private int cellXCheck(int cellX){
-
-    if(cellX >= HEIGHT){
-
-      System.out.println("cellX was greater or equal to Height");
-      System.out.println(cellX);
-      return cellX - 1;
-
-    }//if statement
-
-    else{
-
-      return cellX;
-
-    }//else statement
-  }//cellXCheck
-
-  private int cellYCheck(int cellY){
-
-    if(cellY >= WIDTH){
-
-      System.out.println("cellY was greater or equal to Width");
-      System.out.println(cellY);
-      return cellY - 1;
-
-    }//if statement
-
-    else{
-
-      return cellY;
-
-    }//else statement
-  }//cellYCheck
-
-  public void botButtonChecker(String buttonName){
-
-
-    int cellX;
-    int cellY;
-
-    switch (buttonName){
-
-      case "v0":
-        cellX = 0;
-        cellY = 0;
-
-        cellCheckAndUpdate(cellX, cellY,PLAYERTWOINT);
-        break;
-
-      case "v1":
-        cellX = 0;
-        cellY = 1;
-
-        cellCheckAndUpdate(cellX, cellY, PLAYERTWOINT);
-        break;
-
-      case "v2":
-        cellX = 0;
-        cellY = 2;
-
-        cellCheckAndUpdate(cellX, cellY, PLAYERTWOINT);
-        break;
-
-      case "v3":
-        cellX = 0;
-        cellY = 3;
-
-        cellCheckAndUpdate(cellX, cellY, PLAYERTWOINT);
-        break;
-
-      case "v4":
-        cellX = 1;
-        cellY = 0;
-
-        cellCheckAndUpdate(cellX, cellY, PLAYERTWOINT);
-        break;
-
-      case "v5":
-        cellX = 1;
-        cellY = 1;
-
-        cellCheckAndUpdate(cellX, cellY, PLAYERTWOINT);
-        break;
-
-      case "v6":
-        cellX = 1;
-        cellY = 2;
-
-        cellCheckAndUpdate(cellX, cellY, PLAYERTWOINT);
-        break;
-
-      case "v7":
-        cellX = 1;
-        cellY = 3;
-
-        cellCheckAndUpdate(cellX, cellY, PLAYERTWOINT);
-        break;
-
-      case "h0":
-        cellX = 0;
-        cellY = 0;
-
-        cellCheckAndUpdate(cellX, cellY, PLAYERTWOINT);
-        break;
-
-      case "h1":
-        cellX = 0;
-        cellY = 1;
-
-        cellCheckAndUpdate(cellX, cellY, PLAYERTWOINT);
-        break;
-
-      case "h2":
-        cellX = 0;
-        cellY = 2;
-
-        cellCheckAndUpdate(cellX, cellY, PLAYERTWOINT);
-        break;
-
-      case "h3":
-        cellX = 0;
-        cellY = 3;
-
-        cellCheckAndUpdate(cellX, cellY, PLAYERTWOINT);
-        break;
-
-      case "h4":
-        cellX = 1;
-        cellY = 0;
-
-        cellCheckAndUpdate(cellX, cellY, PLAYERTWOINT);
-        break;
-
-      case "h5":
-        cellX = 1;
-        cellY = 1;
-
-        cellCheckAndUpdate(cellX, cellY, PLAYERTWOINT);
-        break;
-
-      case "h6":
-        cellX = 1;
-        cellY = 2;
-
-        cellCheckAndUpdate(cellX, cellY, PLAYERTWOINT);
-        break;
-
-      case "h7":
-        cellX = 1;
-        cellY = 3;
-
-        cellCheckAndUpdate(cellX, cellY, PLAYERTWOINT);
-        break;
-    }
-  }//botButtonChecker
 }//singlePlayerPlayScreen
