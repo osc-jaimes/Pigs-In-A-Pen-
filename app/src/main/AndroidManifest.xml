@@ -11,7 +11,7 @@
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity android:name=".MultiplayerPlayScreen"></activity>
         <activity android:name=".MultiplayerSetupScreen" />
-        <activity android:name=".victoryScreen" />
+        <activity android:name=".VictoryScreen" />
         <activity android:name=".SinglePlayerPlayScreen" />
         <activity android:name=".MultiPlayerScreen" />
         <activity android:name=".SinglePlayerSetupScreen" />

@@ -319,28 +319,30 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
    * @param v
    */
   public void onClickConfirmationButton(View v) {
+    System.out.println("Player 1: " + gameState.player1Points + ": " + gameState.player2Points);
+    System.out.println(this.gameState.currentBoardState);
     this.currentButton.setClickable(false);
     this.currentButton = null;
     this.playerHasMoved = true;
     this.confirmButton.setVisibility(View.GONE);
     this.confirmAction(this.cellX, this.cellY, this.isHorizontal);
-    this.updateScore();
-    if(gameState.player1Points + gameState.player2Points == totalScore){
-      endGame();
-    }
-    System.out.println(this.gameState.currentBoardState);
   }
 
   public void confirmAction(int cellX, int cellY, boolean isHorizontal){
 
     this.gameState = player1.doMove(this.gameState, cellX, cellY, PLAYERONEINT, isHorizontal);
-
+    System.out.println(this.gameState.currentBoardState);
 
     System.out.println("playerOne Score is: " + gameState.player1Points);
     System.out.println("BOARD STATE BEFORE BoardCheck: ");
     System.out.println(this.gameState.currentBoardState);
 
     this.gameState.runBoardCheck();
+
+    this.updateScore();
+    if (gameState.player1Points + gameState.player2Points == totalScore) {
+      endGame();
+    }
 
 
     if(true){
