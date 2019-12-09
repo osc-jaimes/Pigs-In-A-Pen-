@@ -15,14 +15,18 @@ public class BoardCheck {
     this.currentBoard = instanceBoard;
     this.BOTPLAYERINT = 2;
 
-    boardChecker();
 
   }//BoardCheckConstructor
 
-  public void boardChecker(){
+  public void boardChecker(int playerMarker){
 
     for(int i = 0; i < currentBoard.getHeight(); i++){
       for(int j = 0; j < currentBoard.getWidth(); j++){
+
+        if(currentBoard.isComplete(i,j)){
+          currentBoard.setCellState(i, j, playerMarker);
+
+        }//if statement
 
         cellScoreCheck(i,j);
 
@@ -30,21 +34,21 @@ public class BoardCheck {
     }//for loop
   }//boardChecker
 
-  private void cellScoreCheck(int xCoord, int yCoord){
+  private void cellScoreCheck(int row, int cols){
 
-    int input = this.currentBoard.getCellState(xCoord, yCoord);
+    int input = this.currentBoard.getCellState(row, cols);
     int checkedCell = 3;
 
     switch (input){
 
       case 1:
         playerOneScore += 1;
-        this.currentBoard.setCellState(xCoord, yCoord, checkedCell);
+        this.currentBoard.setCellState(row, cols, checkedCell);
         break;
 
       case 2:
         playerTwoScore += 1;
-        this.currentBoard.setCellState(xCoord, yCoord, checkedCell);
+        this.currentBoard.setCellState(row, cols, checkedCell);
         break;
 
       default:
@@ -53,146 +57,8 @@ public class BoardCheck {
 
   }//cellScoreCheck
 
-  public void cellCheckAndUpdate(int cellX,int cellY, int playerInt){
 
 
-  }//cellCheckAndUpdate
-
-  private int cellXCheck(int cellX){
-
-  }//cellXCheck
-
-  private int cellYCheck(int cellY){
-
-  }//cellYCheck
-
-  public void botButtonChecker(String buttonName){
-
-
-    int cellX;
-    int cellY;
-
-    switch (buttonName){
-
-      case "v0":
-        cellX = 0;
-        cellY = 0;
-
-        cellCheckAndUpdate(cellX, cellY, BOTPLAYERINT);
-        break;
-
-      case "v1":
-        cellX = 0;
-        cellY = 1;
-
-        cellCheckAndUpdate(cellX, cellY, BOTPLAYERINT);
-        break;
-
-      case "v2":
-        cellX = 0;
-        cellY = 2;
-
-        cellCheckAndUpdate(cellX, cellY, BOTPLAYERINT);
-        break;
-
-      case "v3":
-        cellX = 0;
-        cellY = 2;
-
-        cellCheckAndUpdate(cellX, cellY, BOTPLAYERINT);
-        break;
-
-      case "v4":
-        cellX = 1;
-        cellY = 0;
-
-        cellCheckAndUpdate(cellX, cellY, BOTPLAYERINT);
-        break;
-
-      case "v5":
-        cellX = 1;
-        cellY = 1;
-
-        cellCheckAndUpdate(cellX, cellY, BOTPLAYERINT);
-        break;
-
-      case "v6":
-        cellX = 1;
-        cellY = 2;
-
-        cellCheckAndUpdate(cellX, cellY, BOTPLAYERINT);
-        break;
-
-      case "v7":
-        cellX = 1;
-        cellY = 2;
-
-        cellCheckAndUpdate(cellX, cellY, BOTPLAYERINT);
-        break;
-
-      case "h0":
-        cellX = 0;
-        cellY = 0;
-
-        cellCheckAndUpdate(cellX, cellY, BOTPLAYERINT);
-        break;
-
-      case "h1":
-        cellX = 0;
-        cellY = 1;
-
-        cellCheckAndUpdate(cellX, cellY, BOTPLAYERINT);
-        break;
-
-      case "h2":
-        cellX = 0;
-        cellY = 2;
-
-        cellCheckAndUpdate(cellX, cellY, BOTPLAYERINT);
-        break;
-
-      case "h3":
-        cellX = 1;
-        cellY = 0;
-
-        cellCheckAndUpdate(cellX, cellY, BOTPLAYERINT);
-        break;
-
-      case "h4":
-        cellX = 1;
-        cellY = 1;
-
-        cellCheckAndUpdate(cellX, cellY, BOTPLAYERINT);
-        break;
-
-      case "h5":
-        cellX = 1;
-        cellY = 2;
-
-        cellCheckAndUpdate(cellX, cellY, BOTPLAYERINT);
-        break;
-
-      case "h6":
-        cellX = 1;
-        cellY = 0;
-
-        cellCheckAndUpdate(cellX, cellY, BOTPLAYERINT);
-        break;
-
-      case "h7":
-        cellX = 1;
-        cellY = 1;
-
-        cellCheckAndUpdate(cellX, cellY, BOTPLAYERINT);
-        break;
-
-      case "h8":
-        cellX = 1;
-        cellY = 2;
-
-        cellCheckAndUpdate(cellX, cellY, BOTPLAYERINT);
-    }
-  }//botButtonChecker
 
   public int getPlayerOneScore(){
 
