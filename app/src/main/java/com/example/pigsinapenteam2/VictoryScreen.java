@@ -31,6 +31,7 @@ public class VictoryScreen extends AppCompatActivity {
     setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
     this.extras = getIntent().getExtras();
     fillInWinner();
+    ScreenLogic.fullScreen(this);
   }
 
   public void menuButton(View v){

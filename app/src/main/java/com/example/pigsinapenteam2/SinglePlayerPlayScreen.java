@@ -33,6 +33,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
   public View pauseMenuLayout;
   public View gameButtons;
   TextView player1ScoreBoard;
+  TextView player2ScoreBoard;
 
   //Ints
   public int cellX;
@@ -55,6 +56,8 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
     setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
     player1ScoreBoard = findViewById(R.id.player1Score);
     player1ScoreBoard.setText("0");
+    player2ScoreBoard = findViewById(R.id.player2Score);
+    player2ScoreBoard.setText("0");
     //===== Confirm Button ===========
     this.confirmButton = findViewById(R.id.confirmButtonPlayer1);
     confirmButton.setVisibility(View.GONE);
@@ -343,6 +346,11 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
 
       this.gameState.runBoardCheck();
 
+    this.updateScore();
+    if (gameState.player1Points + gameState.player2Points == totalScore) {
+      endGame();
+      return;
+    }
       this.updateScore();
       if (gameState.player1Points + gameState.player2Points == totalScore) {
         endGame();
@@ -376,6 +384,13 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
         String id = this.gameState.botLastMove.getButtonName();
 
 
+      System.out.println("BOARD STATE BEFORE AI do MOVE: ");
+      System.out.println(this.gameState.currentBoardState);
+     this.gameState.runBoardCheck();
+      this.updateScore();
+      if (gameState.player1Points + gameState.player2Points == totalScore) {
+        endGame();
+      }
         System.out.println("BOARD STATE BEFORE AI do MOVE: ");
         System.out.println(this.gameState.currentBoardState);
         this.gameState.runBoardCheck();
@@ -435,6 +450,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
 
   public void updateScore() {
     player1ScoreBoard.setText("" + this.gameState.player1Points);
+    player2ScoreBoard.setText("" + this.gameState.player2Points);
   }
 
 }//singlePlayerPlayScreen
