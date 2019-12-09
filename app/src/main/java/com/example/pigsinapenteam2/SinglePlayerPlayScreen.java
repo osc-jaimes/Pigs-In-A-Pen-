@@ -378,7 +378,6 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
   public void onClickPause(View v){
     pauseMenuLayout.setVisibility(View.VISIBLE);
     gameButtons.setVisibility(View.GONE);
-    //Blur background -- TODO when mvp is done
   }
 
   public void resumeButton(View v){
