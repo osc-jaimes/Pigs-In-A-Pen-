@@ -1,3 +1,7 @@
+/**
+ * Class for the multi-player play screen.
+ * Controls button clicks on fences as well as logic for controlling the current turns.
+ */
 package com.example.pigsinapenteam2;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -310,19 +314,38 @@ public class MultiplayerPlayScreen extends AppCompatActivity {
     isHorizontal = true;
   }
 
+  /**
+   * On click method to pause the game
+   * @param v the button that is being pressed
+   */
   public void onClickPause(View v){
     pauseMenuLayout.setVisibility(View.VISIBLE);
     gameButtons.setVisibility(View.GONE);
     //Blur background -- TODO when mvp is done
   }
+
+  /**
+   * Method for the resume button being clicked
+   * @param v the button that is clicked
+   */
   public void resumeButton(View v){
     gameButtons.setVisibility(View.VISIBLE);
     pauseMenuLayout.setVisibility(View.GONE);
   }
+
+  /**
+   * Method that goes to the main menu when the menu button is clicked in the pause menu.
+   * @param v the button that is clicked
+   */
   public void pauseToMainMenu(View v){
     Intent goToMainMenu = new Intent(getApplicationContext(), MainScreen.class);
     startActivity(goToMainMenu);
   }
+
+  /**
+   * Restarts the current game
+   * @param v the button that is clicked
+   */
   public void restartButton(View v){
     this.recreate();
   }
@@ -331,7 +354,7 @@ public class MultiplayerPlayScreen extends AppCompatActivity {
 
   /**
    * Confirms the current chosen fence button and processes the move in the backend.
-   * @param v
+   * @param v the confirmation button pressed
    */
   public void onClickConfirmationButton(View v) {
     this.currentButton.setClickable(false);
@@ -355,63 +378,26 @@ public class MultiplayerPlayScreen extends AppCompatActivity {
     System.out.println(this.gameState.currentBoardState);
   }
 
+  /**
+   * Confrims the action of the player and sends respective x and y values of fence clicked to doMove().
+   * @param cellX - the x position of the fence clicked
+   * @param cellY - the y position of the fence clicked
+   * @param isHorizontal - If the fence clicked is horizontal
+   */
   public void confirmAction(int cellX, int cellY, boolean isHorizontal){
-
     int currentScore = this.gameState.player1Points;
 
     int lastPlayer1Score = gameState.player1Points;
-    this.gameState = player1.doMove(this.gameState, cellX, cellY, isHorizontal);
+    this.gameState = player1.doMove(this.gameState, cellX, cellY, PLAYERONEINT ,isHorizontal);
 
-    cellCheckAndUpdate(cellX, cellY, PLAYERONEINT);
+
 
     this.gameState.runBoardCheck();
-
 
   }
 
 
 
-  private void cellCheckAndUpdate(int cellX,int cellY, int playerInt){
-
-    int checkedCellX = cellXCheck(cellX);
-    int checkedCellY = cellYCheck(cellY);
-
-    if(this.gameState.currentBoardState.isComplete(checkedCellX, checkedCellY)){
-
-      this.gameState.currentBoardState.setCellState(checkedCellX, checkedCellY, playerInt);
-
-    }//if statement
-  }//cellCheckAndUpdate
-
-  private int cellXCheck(int cellX){
-
-    if(cellX >= HEIGHT){
-
-      return cellX - 1;
-
-    }//if statement
-
-    else{
-
-      return cellX;
-
-    }//else statement
-  }//cellXCheck
-
-  private int cellYCheck(int cellY){
-
-    if(cellY >= WIDTH){
-
-      return cellY - 1;
-
-    }//if statement
-
-    else{
-
-      return cellY;
-
-    }//else statement
-  }//cellYCheck
 
 
 }

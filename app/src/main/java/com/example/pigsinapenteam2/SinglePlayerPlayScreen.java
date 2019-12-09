@@ -333,9 +333,8 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
 
   public void confirmAction(int cellX, int cellY, boolean isHorizontal){
 
-    this.gameState = player1.doMove(this.gameState, cellX, cellY, isHorizontal);
+    this.gameState = player1.doMove(this.gameState, cellX, cellY, PLAYERONEINT, isHorizontal);
 
-    this.gameState.currentBoardCheck.cellCheckAndUpdate(cellX, cellY, PLAYERONEINT);
 
     System.out.println("playerOne Score is: " + gameState.player1Points);
     System.out.println("BOARD STATE BEFORE BoardCheck: ");
@@ -354,10 +353,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
 
 
      String id = this.gameState.botLastMove.getButtonName();
-     System.out.println(id);
 
-
-     this.gameState.currentBoardCheck.botButtonChecker(id);
 
       System.out.println("BOARD STATE BEFORE AI do MOVE: ");
       System.out.println(this.gameState.currentBoardState);

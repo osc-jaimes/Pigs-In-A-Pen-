@@ -11,12 +11,16 @@ public class MediumBotPlayer extends BotPlayer {
   private int boardHeight;
   private int boardWidth;
 
+  //edit by benjamin
+  private int botMark;
+
   public MediumBotPlayer() {
     super();
     possibleMovesNoConcede = new LinkedList<>();
     possibleCaptures = new LinkedList<>();
     boardHeight = 0;
     boardWidth = 0;
+    botMark = 2;
   }
 
   public MediumBotPlayer(int height, int width) {
@@ -25,6 +29,7 @@ public class MediumBotPlayer extends BotPlayer {
     possibleMovesNoConcede = new LinkedList<>();
     boardHeight = height;
     boardWidth = width;
+    botMark = 2;
   }
 
   @Override
@@ -74,6 +79,9 @@ public class MediumBotPlayer extends BotPlayer {
     state.setWallAi(coordsOfMove[0], coordsOfMove[1], coordsOfMove[2]);
     inputState.currentBoardState = state;
     inputState.botLastMove = moveToDo;
+
+    //edit by Benjamin
+    inputState.currentBoardCheck.boardChecker(botMark);
 
     return super.doMove(inputState);
   }
