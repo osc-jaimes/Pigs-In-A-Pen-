@@ -345,6 +345,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
     this.updateScore();
     if (gameState.player1Points + gameState.player2Points == totalScore) {
       endGame();
+      return;
     }
 
 
