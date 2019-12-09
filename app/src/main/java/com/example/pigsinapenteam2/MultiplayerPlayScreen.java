@@ -360,9 +360,9 @@ public class MultiplayerPlayScreen extends AppCompatActivity {
     int currentScore = this.gameState.player1Points;
 
     int lastPlayer1Score = gameState.player1Points;
-    this.gameState = player1.doMove(this.gameState, cellX, cellY, isHorizontal);
+    this.gameState = player1.doMove(this.gameState, cellX, cellY, PLAYERONEINT ,isHorizontal);
 
-    cellCheckAndUpdate(cellX, cellY, PLAYERONEINT);
+
 
     this.gameState.runBoardCheck();
 
@@ -371,47 +371,6 @@ public class MultiplayerPlayScreen extends AppCompatActivity {
 
 
 
-  private void cellCheckAndUpdate(int cellX,int cellY, int playerInt){
-
-    int checkedCellX = cellXCheck(cellX);
-    int checkedCellY = cellYCheck(cellY);
-
-    if(this.gameState.currentBoardState.isComplete(checkedCellX, checkedCellY)){
-
-      this.gameState.currentBoardState.setCellState(checkedCellX, checkedCellY, playerInt);
-
-    }//if statement
-  }//cellCheckAndUpdate
-
-  private int cellXCheck(int cellX){
-
-    if(cellX >= HEIGHT){
-
-      return cellX - 1;
-
-    }//if statement
-
-    else{
-
-      return cellX;
-
-    }//else statement
-  }//cellXCheck
-
-  private int cellYCheck(int cellY){
-
-    if(cellY >= WIDTH){
-
-      return cellY - 1;
-
-    }//if statement
-
-    else{
-
-      return cellY;
-
-    }//else statement
-  }//cellYCheck
 
 
 }

@@ -12,6 +12,9 @@ public class EasyBotPlayer extends BotPlayer {
   private LinkedList<WallCoordinate> possibleCaptures;
   private LinkedList<WallCoordinate> possibleMoves;
 
+  //edit by Benjamin
+  private int botMark;
+
 
   public EasyBotPlayer(int height, int width) {
     super(height,width);
@@ -19,6 +22,7 @@ public class EasyBotPlayer extends BotPlayer {
     boardWidth = width;
     possibleMoves = new LinkedList<>();
     possibleCaptures = new LinkedList<>();
+    botMark = 2;
   }
 
   @Override
@@ -38,6 +42,10 @@ public class EasyBotPlayer extends BotPlayer {
 
     //TEST THIS: do we need this line? (yes)
     inputGameState.currentBoardState = state;
+
+    //edit by Benjamin
+    inputGameState.currentBoardCheck.boardChecker(botMark);
+
     return inputGameState;
   }
 
