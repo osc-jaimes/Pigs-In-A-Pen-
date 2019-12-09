@@ -408,6 +408,9 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
     else if(gameState.player1Points > gameState.player2Points){
       goToWinScreen.putExtra("playerWhoWon", 0);
     }
+    else if(gameState.player1Points == gameState.player2Points){
+      goToWinScreen.putExtra("playerWhoWon", 2);
+    }
      startActivity(goToWinScreen);
    }
 

@@ -56,6 +56,10 @@ public class VictoryScreen extends AppCompatActivity {
       playerText.setText("Player 1");
       return;
     }
-    playerText.setText("Player 2");
+    else if(playerWhoWon == 1) {
+      playerText.setText("Player 2");
+      return;
+    }
+    playerText.setText("No One");
   }
 }
