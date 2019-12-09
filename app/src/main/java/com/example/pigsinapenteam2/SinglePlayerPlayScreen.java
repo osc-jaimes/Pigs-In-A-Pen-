@@ -333,52 +333,87 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
 
   public void confirmAction(int cellX, int cellY, boolean isHorizontal){
 
-    this.gameState = player1.doMove(this.gameState, cellX, cellY, PLAYERONEINT, isHorizontal);
-    System.out.println(this.gameState.currentBoardState);
+    while(true) {
 
-    System.out.println("playerOne Score is: " + gameState.player1Points);
-    System.out.println("BOARD STATE BEFORE BoardCheck: ");
-    System.out.println(this.gameState.currentBoardState);
+      int tempScore = this.gameState.player1Points;
 
-    this.gameState.runBoardCheck();
+      this.gameState = player1.doMove(this.gameState, cellX, cellY, PLAYERONEINT, isHorizontal);
+      System.out.println(this.gameState.currentBoardState);
+
+      System.out.println("playerOne Score is: " + gameState.player1Points);
+      System.out.println("BOARD STATE BEFORE BoardCheck: ");
+      System.out.println(this.gameState.currentBoardState);
+
+      this.gameState.runBoardCheck();
 
     this.updateScore();
     if (gameState.player1Points + gameState.player2Points == totalScore) {
       endGame();
       return;
     }
+      this.updateScore();
+      if (gameState.player1Points + gameState.player2Points == totalScore) {
+        endGame();
+        return;
+      }//if
+
+      if(tempScore == this.gameState.player1Points){
+
+        break;
+
+      }//if
+
+      else{
+
+        return;
+
+      }
+    }//while loop
+
+    while (true) {
+
+      int tempScorePlayer2 = this.gameState.player2Points;
+
+      if (true) {
 
 
-    if(true){
 
-      System.out.println("BOARD STATE BEFORE DO MOVE: ");
-      System.out.println(this.gameState.currentBoardState);
-
-     this.gameState = player2.doMove(this.gameState);
+        this.gameState = player2.doMove(this.gameState);
 
 
-
-     String id = this.gameState.botLastMove.getButtonName();
+        String id = this.gameState.botLastMove.getButtonName();
 
 
       System.out.println("BOARD STATE BEFORE AI do MOVE: ");
       System.out.println(this.gameState.currentBoardState);
      this.gameState.runBoardCheck();
       this.updateScore();
+
+
+
+        System.out.println("BOARD STATE BEFORE AI do MOVE: ");
+        System.out.println(this.gameState.currentBoardState);
+        this.gameState.runBoardCheck();
+
+        System.out.println("AI score is: " + this.gameState.player2Points);
+        int resID = this.getResources().getIdentifier(id, "id", this.getPackageName());
+        Button AIButton = findViewById(resID);
+
+
+        AIButton.setBackgroundColor(getResources().getColor(R.color.fences));
+        AIButton.setVisibility(View.VISIBLE);
+        AIButton.setClickable(false);
+      }//if statement
+
       if (gameState.player1Points + gameState.player2Points == totalScore) {
         endGame();
-      }
+        return;
+      }//if
 
-     System.out.println("AI score is: " + this.gameState.player2Points);
-     int resID = this.getResources().getIdentifier(id, "id", this.getPackageName());
-     Button AIButton = findViewById(resID);
-
-
-
-     AIButton.setBackgroundColor(getResources().getColor(R.color.fences));
-     AIButton.setVisibility(View.VISIBLE);
-     AIButton.setClickable(false);
-    }
+      if(tempScorePlayer2 == this.gameState.player2Points){
+        break;
+      }//if statement
+    }//while loop
 
   }
   public void onClickPause(View v){
