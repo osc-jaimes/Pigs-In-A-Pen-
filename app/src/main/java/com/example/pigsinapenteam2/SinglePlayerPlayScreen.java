@@ -388,9 +388,9 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
       System.out.println(this.gameState.currentBoardState);
      this.gameState.runBoardCheck();
       this.updateScore();
-      if (gameState.player1Points + gameState.player2Points == totalScore) {
-        endGame();
-      }
+
+
+
         System.out.println("BOARD STATE BEFORE AI do MOVE: ");
         System.out.println(this.gameState.currentBoardState);
         this.gameState.runBoardCheck();
