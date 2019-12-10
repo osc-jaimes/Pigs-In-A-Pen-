@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 /**
  * @author Oscar Jaimes
@@ -40,6 +41,9 @@ public class MultiplayerPlayScreen extends AppCompatActivity {
   public View pauseMenuLayout;
   public View gameButtons;
 
+  TextView player1ScoreBoard;
+  TextView player2ScoreBoard;
+
 
 
   private boolean isHorizontal;
@@ -61,6 +65,11 @@ public class MultiplayerPlayScreen extends AppCompatActivity {
     this.pauseMenuLayout = findViewById(R.id.pauseMenuLayout);
     this.gameButtons = findViewById(R.id.gameButtons);
 
+    this.player1ScoreBoard = findViewById(R.id.player1score);
+    this.player2ScoreBoard = findViewById(R.id.player2score);
+
+
+
     this.pauseMenuLayout.setVisibility(View.GONE);
     confirmButtonPlayer1.setVisibility(View.VISIBLE);
 
@@ -75,6 +84,8 @@ public class MultiplayerPlayScreen extends AppCompatActivity {
 
     BoardState boardState = new BoardState(WIDTH,HEIGHT);
     this.gameState = new GameState(boardState, this.player1, this.player2,0);
+    this.gameState.player1Points = 0;
+    this.gameState.player2Points = 0;
   }
 
 
@@ -361,16 +372,20 @@ public class MultiplayerPlayScreen extends AppCompatActivity {
     this.currentButton = null;
     this.playerHasMoved = true;
     if(this.currentPlayer == player1) {
+
       this.confirmButtonPlayer1.setVisibility(View.GONE);
       this.confirmButtonPlayer2.setVisibility(View.VISIBLE);
       this.currentPlayer = this.player2;
+      this.confirmAction(this.cellX, this.cellY, this.isHorizontal);
     } else{
+      this.confirmAction(this.cellX, this.cellY, this.isHorizontal);
       this.confirmButtonPlayer2.setVisibility(View.GONE);
       this.confirmButtonPlayer1.setVisibility(View.VISIBLE);
       this.currentPlayer = this.player1;
+      this.confirmAction(this.cellX, this.cellY, this.isHorizontal);
     }
 
-    this.confirmAction(this.cellX, this.cellY, this.isHorizontal);
+
     //this.updateScore();
     if(gameState.player1Points + gameState.player2Points == totalScore){
       //endGame();
@@ -390,30 +405,42 @@ public class MultiplayerPlayScreen extends AppCompatActivity {
       System.out.println("Player 1 Points: " + this.gameState.player1Points);
       int tempScore = this.gameState.player1Points;
       this.gameState = player1.doMove(this.gameState, cellX, cellY, PLAYERONEINT, isHorizontal);
+      this.gameState.runBoardCheck();
+      this.updateScore();
+      this.currentPlayer = this.player2;
       if(this.gameState.player1Points > tempScore){
         this.currentPlayer = this.player1;
         this.confirmButtonPlayer2.setVisibility(View.GONE);
         this.confirmButtonPlayer1.setVisibility(View.VISIBLE);
         return;
       }
-      this.currentPlayer = this.player2;
+
     }else{
       System.out.println("Player 2 Points: " + this.gameState.player2Points);
       int tempScore = this.gameState.player2Points;
       this.gameState = player2.doMove(this.gameState, cellX, cellY, PLAYERONEINT, isHorizontal);
+      this.gameState.runBoardCheck();
+      this.updateScore();
+      this.currentPlayer = this.player1;
       if(this.gameState.player2Points > tempScore){
         this.currentPlayer = this.player2;
         this.confirmButtonPlayer1.setVisibility(View.GONE);
         this.confirmButtonPlayer2.setVisibility(View.VISIBLE);
         return;
       }
-      this.currentPlayer = this.player1;
+
     }
 
 
 
     this.gameState.runBoardCheck();
 
+  }
+
+
+  public void updateScore() {
+    player1ScoreBoard.setText("" + this.gameState.player1Points);
+    player2ScoreBoard.setText("" + this.gameState.player2Points);
   }
 
 
