@@ -385,10 +385,30 @@ public class MultiplayerPlayScreen extends AppCompatActivity {
    * @param isHorizontal - If the fence clicked is horizontal
    */
   public void confirmAction(int cellX, int cellY, boolean isHorizontal){
-    int currentScore = this.gameState.player1Points;
 
-    int lastPlayer1Score = gameState.player1Points;
-    this.gameState = player1.doMove(this.gameState, cellX, cellY, PLAYERONEINT ,isHorizontal);
+    if(this.currentPlayer == this.player1) {
+      System.out.println("Player 1 Points: " + this.gameState.player1Points);
+      int tempScore = this.gameState.player1Points;
+      this.gameState = player1.doMove(this.gameState, cellX, cellY, PLAYERONEINT, isHorizontal);
+      if(this.gameState.player1Points > tempScore){
+        this.currentPlayer = this.player1;
+        this.confirmButtonPlayer2.setVisibility(View.GONE);
+        this.confirmButtonPlayer1.setVisibility(View.VISIBLE);
+        return;
+      }
+      this.currentPlayer = this.player2;
+    }else{
+      System.out.println("Player 2 Points: " + this.gameState.player2Points);
+      int tempScore = this.gameState.player2Points;
+      this.gameState = player2.doMove(this.gameState, cellX, cellY, PLAYERONEINT, isHorizontal);
+      if(this.gameState.player2Points > tempScore){
+        this.currentPlayer = this.player2;
+        this.confirmButtonPlayer1.setVisibility(View.GONE);
+        this.confirmButtonPlayer2.setVisibility(View.VISIBLE);
+        return;
+      }
+      this.currentPlayer = this.player1;
+    }
 
 
 

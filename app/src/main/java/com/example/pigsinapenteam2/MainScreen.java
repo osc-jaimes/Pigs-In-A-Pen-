@@ -37,4 +37,9 @@ public class MainScreen extends AppCompatActivity {
     Intent quickPlay = new Intent(getApplicationContext(), SinglePlayerPlayScreen.class);
     startActivity(quickPlay);
   }
+
+  public void instructions(View V){
+    Intent instructions = new Intent(getApplicationContext(), InstructionsScreen.class);
+    startActivity(instructions);
+  }
 }

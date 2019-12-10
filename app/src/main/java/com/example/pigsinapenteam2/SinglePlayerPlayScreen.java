@@ -371,13 +371,8 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
     }//while loop
 
     while (true) {
-
       int tempScorePlayer2 = this.gameState.player2Points;
-
       if (true) {
-
-
-
         this.gameState = player2.doMove(this.gameState);
 
 
