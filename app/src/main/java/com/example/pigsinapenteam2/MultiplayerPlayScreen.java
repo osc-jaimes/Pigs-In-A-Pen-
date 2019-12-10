@@ -96,15 +96,20 @@ public class MultiplayerPlayScreen extends AppCompatActivity {
    * @param V the button that is pressed.
    */
   public void buttonClicked(View V){
-    if(this.currentButton == null){
-      int buttonId = V.getId();
-      Button currentButton = findViewById(buttonId);
-      this.currentButton = currentButton;
-      //this.confirmButtonPlayer1.setVisibility(View.VISIBLE);
-      currentButton.setBackgroundColor(getResources().getColor(R.color.fences));
-    } else{
-      //if there already is a fence button chosen
-      this.changeChoice(V);
+
+    try {
+      if (this.currentButton == null) {
+        int buttonId = V.getId();
+        Button currentButton = findViewById(buttonId);
+        this.currentButton = currentButton;
+        //this.confirmButtonPlayer1.setVisibility(View.VISIBLE);
+        currentButton.setBackgroundColor(getResources().getColor(R.color.fences));
+      } else {
+        //if there already is a fence button chosen
+        this.changeChoice(V);
+      }
+    }catch(Exception e){
+      return;
     }
 
 
@@ -368,14 +373,25 @@ public class MultiplayerPlayScreen extends AppCompatActivity {
    * Confirms the current chosen fence button and processes the move in the backend.
    * @param v the confirmation button pressed
    */
-  public void onClickConfirmationButton(View v) {
-    this.currentButton.setClickable(false);
-    this.currentButton = null;
-    this.playerHasMoved = true;
-    this.confirmAction(this.cellX, this.cellY, this.isHorizontal);
+  public void onClickConfirmationButton(View v) throws InterruptedException {
+    try {
+      this.currentButton.setClickable(false);
+      this.currentButton = null;
+      this.playerHasMoved = true;
+      this.confirmAction(this.cellX, this.cellY, this.isHorizontal);
 
-    if(this.gameState.player1Points + this.gameState.player2Points == this.totalScore){
-      endGame();
+      if (this.currentPlayer == this.player1) {
+        this.confirmButtonPlayer1.setVisibility(View.VISIBLE);
+        this.confirmButtonPlayer2.setVisibility(View.GONE);
+      } else {
+        this.confirmButtonPlayer2.setVisibility(View.VISIBLE);
+        this.confirmButtonPlayer1.setVisibility(View.GONE);
+      }
+      if (this.gameState.player1Points + this.gameState.player2Points == this.totalScore) {
+        endGame();
+      }
+    }catch(Exception e){
+      return;
     }
 
   }
@@ -386,7 +402,7 @@ public class MultiplayerPlayScreen extends AppCompatActivity {
    * @param cellY - the y position of the fence clicked
    * @param isHorizontal - If the fence clicked is horizontal
    */
-  public void confirmAction(int cellX, int cellY, boolean isHorizontal){
+  public void confirmAction(int cellX, int cellY, boolean isHorizontal) throws InterruptedException{
 
     if(this.currentPlayer == this.player1) {
       System.out.println("Player 1 Points: " + this.gameState.player1Points);
@@ -397,7 +413,7 @@ public class MultiplayerPlayScreen extends AppCompatActivity {
       if(this.gameState.player1Points > tempScore){
         this.currentPlayer = this.player1;
         this.confirmButtonPlayer2.setVisibility(View.GONE);
-        this.confirmButtonPlayer1.setVisibility(View.VISIBLE);
+        this.confirmButtonPlayer1.setVisibility(View.GONE);
         return;
       }
       this.currentPlayer = this.player2;
@@ -407,13 +423,13 @@ public class MultiplayerPlayScreen extends AppCompatActivity {
     }else{
       System.out.println("Player 2 Points: " + this.gameState.player2Points);
       int tempScore = this.gameState.player2Points;
-      this.gameState = player2.doMove(this.gameState, cellX, cellY, PLAYERONEINT, isHorizontal);
+      this.gameState = player2.doMove(this.gameState, cellX, cellY, PLAYERTWOINT, isHorizontal);
       this.gameState.runBoardCheck();
       this.updateScore();
       if(this.gameState.player2Points > tempScore){
         this.currentPlayer = this.player2;
         this.confirmButtonPlayer1.setVisibility(View.GONE);
-        this.confirmButtonPlayer2.setVisibility(View.VISIBLE);
+        this.confirmButtonPlayer2.setVisibility(View.GONE);
         return;
       }
       this.currentPlayer = this.player1;
