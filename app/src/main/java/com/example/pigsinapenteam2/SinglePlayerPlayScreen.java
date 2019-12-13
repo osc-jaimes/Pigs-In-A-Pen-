@@ -21,7 +21,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
 
   //Final Variables
   public final int WIDTH = 3;
-  public final int HEIGHT = 2;
+  public final int HEIGHT = 3;
   public final int PLAYERONEINT = 1;
   public final int PLAYERTWOINT = 2;
 
@@ -209,6 +209,39 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
   }
 
   /**
+   * Highlights the vertical fence button at position 1,3
+   * and updates instance variables needed for backend logic
+   * @param v
+   */
+  public void onClickVertical9(View v) {
+    this.buttonClicked(v);
+    cellX = 2;
+    cellY = 0;
+    isHorizontal = false;
+  }
+
+  public void onClickVertical10(View v) {
+    this.buttonClicked(v);
+    cellX = 2;
+    cellY = 1;
+    isHorizontal = false;
+  }
+
+  public void onClickVertical11(View v) {
+    this.buttonClicked(v);
+    cellX = 2;
+    cellY = 2;
+    isHorizontal = false;
+  }
+
+  public void onClickVertical12(View v) {
+    this.buttonClicked(v);
+    cellX = 2;
+    cellY = 3;
+    isHorizontal = false;
+  }
+
+  /**
    * Highlights the horizontal fence button at position 0,0
    * and updates instance variables needed for backend logic
    * @param v
@@ -312,6 +345,27 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
   public void onClickHorizontal9(View v) {
     this.buttonClicked(v);
     cellX = 2;
+    cellY = 2;
+    isHorizontal = true;
+  }
+
+  public void onClickHorizontal10(View v) {
+    this.buttonClicked(v);
+    cellX = 3;
+    cellY = 0;
+    isHorizontal = true;
+  }
+
+  public void onClickHorizontal11(View v) {
+    this.buttonClicked(v);
+    cellX = 3;
+    cellY = 1;
+    isHorizontal = true;
+  }
+
+  public void onClickHorizontal12(View v) {
+    this.buttonClicked(v);
+    cellX = 3;
     cellY = 2;
     isHorizontal = true;
   }
