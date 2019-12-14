@@ -69,7 +69,31 @@ public class BoardType {
 
   private void hillMapSetup(int boardSize){
 
+    switch (boardSize){
+
+      case 0:
+        smallHillMapSetup();
+        break;
+
+      case 1:
+        mediumHillMapSetup();
+        break;
+
+      case 2:
+        largeHillMapSetup();
+        break;
+
+    }//switch
   }//hillMapSetup
+
+  private void smallHillMapSetup(){
+
+    int voidedCell = 3;
+
+    inputtedState.setCellState(0, 1, voidedCell);
+    inputtedState.setCellState(1, 1, voidedCell);
+
+  }//smallHillMapSetup
 
 
 }
