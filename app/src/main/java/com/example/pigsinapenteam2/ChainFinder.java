@@ -9,7 +9,7 @@ import java.util.LinkedList;
 public class ChainFinder {
   private LinkedList<Chain> chains;
   private ChainMap chainMap;
-
+  private final int NUMBER_OF_DIRECTIONS = 4;
   
 
   public ChainFinder() {
@@ -26,8 +26,8 @@ public class ChainFinder {
     //WIP
     ChainMapCell currentCell;
     Chain currentChain;
-    WallCoordinate currentChainHead;
-    WallCoordinate currentChainTail;
+    WallCoordinate[] connections;
+
     for (int y = 0; y < chainMap.boardHeight; y++) {
       for (int x = 0; x < chainMap.boardWidth; x++) {
 
@@ -35,8 +35,11 @@ public class ChainFinder {
 
         if (!currentCell.isVisited() && currentCell.isChainSegment()) {
           currentCell.visit();
+
           //make new chain
-          currentChain = new Chain()
+          connections = getConnectionsOfCell(currentCell);
+          assert (connections.length == 2): "chain segment is not a chain segment!";
+          currentChain = new Chain(connections[0], connections[1]);
 
           //grow chain
         }
@@ -110,6 +113,23 @@ public class ChainFinder {
         chains.set(i + 1, keyChain);
       }
     }
+  }
+
+  private WallCoordinate[] getConnectionsOfCell(ChainMapCell cell) {
+    WallCoordinate[] connections = new WallCoordinate[cell.getDegree()];
+
+    int currentConnectionIndex = 0;
+    int x = cell.getX();
+    int y = cell.getY();
+
+    for (int direction = 0; direction < NUMBER_OF_DIRECTIONS; direction++) {
+      if (cell.isConnectedToNeighbor(direction)) {
+        connections[currentConnectionIndex] = chainMap.getCoordOfCellWall(x,y,direction);
+        currentConnectionIndex += 1;
+      }
+    }
+
+    return connections;
   }
 
   public LinkedList<Chain> getChains() {

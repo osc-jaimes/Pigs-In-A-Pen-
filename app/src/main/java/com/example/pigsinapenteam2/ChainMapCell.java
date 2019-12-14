@@ -66,6 +66,10 @@ public class ChainMapCell {
     return y;
   }
 
+  public int getDegree() {
+    return degree;
+  }
+
   public boolean isChainSegment() {
     return isDegreeTwo;
   }
