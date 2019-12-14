@@ -20,8 +20,6 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
   public BotPlayer player2;
 
   //Final Variables
-  public final int WIDTH = 3;
-  public final int HEIGHT = 2;
   public final int PLAYERONEINT = 1;
   public final int PLAYERTWOINT = 2;
 
@@ -32,6 +30,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
   //Views (Relative Views)
   public View pauseMenuLayout;
   public View gameButtons;
+  public View smallGameButtons;
   TextView player1ScoreBoard;
   TextView player2ScoreBoard;
 
@@ -39,6 +38,8 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
   public int cellX;
   public int cellY;
   public int totalScore;
+  public int width;
+  public int height;
 
   //Booleans
   public boolean playerHasMoved;
@@ -54,6 +55,26 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_single_player_play_screen);
     setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+
+    if(SinglePlayerSetupScreen.boardSize == 0){
+      this.width = 3;
+      this.height = 2;
+      System.out.println("GOTEM");
+      //this.gameButtons = findViewById(R.id.smallGameButtons); //smallButtons
+
+    } else if (SinglePlayerSetupScreen.boardSize == 1) {
+
+      this.width = 4;
+      this.height = 3;
+      //this.gameButtons = findViewById(R.id.mediumGameButtons); //mediumButtons
+    }
+    else if(SinglePlayerSetupScreen.boardSize == 2){
+      this.width = 5;
+      this.height = 4;
+      //this.gameButtons = findViewById(R.id.largeGameButtons); //largeButtons
+    }
+    System.out.println(width + " " + height);
+
     player1ScoreBoard = findViewById(R.id.player1Score);
     player1ScoreBoard.setText("0");
     player2ScoreBoard = findViewById(R.id.player2Score);
@@ -65,20 +86,20 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
     this.pauseMenuLayout = findViewById(R.id.pauseMenuLayout);
     this.pauseMenuLayout.setVisibility(View.GONE);
     //===== Game Buttons Layout ======
-    this.gameButtons = findViewById(R.id.gameButtons);
+    this.gameButtons = findViewById(R.id.gameButtons); //this'll need to go after the sizes are all made
     //===== Players in game =======
     this.player1 = new HumanPlayer();
-    this.player2 = new EasyBotPlayer(HEIGHT,WIDTH);
+    this.player2 = new EasyBotPlayer(height,width);
     this.currentPlayer = player1;
     this.playerHasMoved = false;
     //===== Current Chosen 'Fence' Button =======
     this.currentButton = null;
     //===== Board State & Game State ======
-    BoardState boardState = new BoardState(WIDTH,HEIGHT);
+    BoardState boardState = new BoardState(width,height);
     this.gameState = new GameState(boardState, this.player1, this.player2,0);
     //===== Full Screen =====
     ScreenLogic.fullScreen(this);
-    this.totalScore = (WIDTH * HEIGHT) ;
+    this.totalScore = (width * height) ;
   }
 
   /**
