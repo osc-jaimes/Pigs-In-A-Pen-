@@ -82,6 +82,31 @@ public class ChainMapCell {
     return isNeighborConnected[neighborDirection];
   }
 
+  public int[] getNeighborCoords(int direction) {
+    int[] neighborCoords = new int[2];
+    switch (direction){
+      case 0:
+        neighborCoords[0] = x;
+        neighborCoords[1] = y - 1;
+        break;
+      case 1:
+        neighborCoords[0] = x + 1;
+        neighborCoords[1] = y;
+        break;
+      case 2:
+        neighborCoords[0] = x;
+        neighborCoords[1] = y + 1;
+        break;
+      case 3:
+        neighborCoords[0] = x - 1;
+        neighborCoords[1] = y;
+        break;
+      default:
+        assert (false) : "direction is INVALID";
+    }
+    return neighborCoords;
+  }
+
   public String toString() {
     String outputString = "";
     outputString += "is part of a chain: " + isChainSegment() + "\n";
