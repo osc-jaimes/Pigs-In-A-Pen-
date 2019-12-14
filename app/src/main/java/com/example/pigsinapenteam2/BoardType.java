@@ -2,14 +2,15 @@ package com.example.pigsinapenteam2;
 
 public class BoardType {
 
-
+  private BoardState inputtedState;
   private int width;
   private int height;
 
   //=======================================================================================
 
-  public BoardType(BoardState inputtedState, int boardID, String boardSize){
+  public BoardType(BoardState inputtedState, int boardID, int boardSize){
 
+    this.inputtedState = inputtedState;
     this.width = inputtedState.getWidth();
     this.height = inputtedState.getHeight();
 
@@ -37,15 +38,16 @@ public class BoardType {
     }//switch
   }//constructor
 
-  private void wallsMapSetup(String boardSize){
+  private void wallsMapSetup(int boardSize){
+
 
   }//wallsMapSetup
 
-  private void gardenMapSetup(String boardSize){
+  private void gardenMapSetup(int boardSize){
 
   }//gardenMapSetup
 
-  private void hillMapSetup(String boardSize){
+  private void hillMapSetup(int boardSize){
 
   }//hillMapSetup
 
