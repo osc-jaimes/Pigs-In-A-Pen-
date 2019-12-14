@@ -32,4 +32,20 @@ public class ChainMapCell {
        isDegreeTwo = true;
     }
   }
+
+  public boolean isChainSegment() {
+    return isDegreeTwo;
+  }
+
+  public boolean isVisited() {
+    return visited;
+  }
+
+  public void visit() {
+    visited = true;
+  }
+
+  public boolean isConnectedToNeighbor(int neighborDirection) {
+    return isNeighborConnected[neighborDirection];
+  }
 }
