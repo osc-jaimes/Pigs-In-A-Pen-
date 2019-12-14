@@ -31,4 +31,18 @@ public class ChainMap {
       }
     }
   }
+
+  public ChainMapCell getCellXY(int x, int y) {
+    return cells[x][y];
+  }
+
+  public boolean isCellOnBoard(int x, int y) {
+    boolean xCoordValid = ((0 <= x) && (x < boardWidth));
+    boolean yCoordValid = ((0 <= y) && (y < boardHeight));
+    return (xCoordValid && yCoordValid);
+  }
+
+  public boolean isCellOnBoard(ChainMapCell cell) {
+    return isCellOnBoard(cell.getX(), cell.getY());
+  }
 }
