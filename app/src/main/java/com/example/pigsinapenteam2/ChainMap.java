@@ -2,8 +2,8 @@ package com.example.pigsinapenteam2;
 
 public class ChainMap {
   private ChainMapCell[][] cells;
-  private int boardHeight;
-  private int boardWidth;
+  public int boardHeight;
+  public int boardWidth;
 
   private final int NUMBER_OF_DIRECTIONS = 4;
 
@@ -34,6 +34,11 @@ public class ChainMap {
 
   public ChainMapCell getCellXY(int x, int y) {
     return cells[x][y];
+  }
+
+  public WallCoordinate getCoordOfCellWall(int x, int y, int direction) {
+    WallCoordinate wall = new WallCoordinate(x, y, direction, boardHeight, boardWidth);
+    return wall;
   }
 
   public boolean isCellOnBoard(int x, int y) {

@@ -23,6 +23,28 @@ public class ChainFinder {
   }
 
   public void findChains() {
+    //WIP
+    ChainMapCell currentCell;
+    Chain currentChain;
+    WallCoordinate currentChainHead;
+    WallCoordinate currentChainTail;
+    for (int y = 0; y < chainMap.boardHeight; y++) {
+      for (int x = 0; x < chainMap.boardWidth; x++) {
+
+        currentCell = chainMap.getCellXY(x,y);
+
+        if (!currentCell.isVisited() && currentCell.isChainSegment()) {
+          currentCell.visit();
+          //make new chain
+          currentChain = new Chain()
+
+          //grow chain
+        }
+
+
+      }
+    }
+
 
   }
 
