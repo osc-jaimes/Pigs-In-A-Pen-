@@ -36,19 +36,20 @@ public class ChainFinder {
         if (!currentCell.isVisited() && currentCell.isChainSegment()) {
           currentCell.visit();
 
-          //make new chain
           connections = getConnectionsOfCell(currentCell);
           assert (connections.length == 2): "chain segment is not a chain segment!";
           currentChain = new Chain(connections[0], connections[1]);
 
-          //grow chain
+          growChainHead(currentChain);
+          growChainHead(currentChain);
+
+          //TODO: mark if head/tail are open/closed
+
+          chains.add(currentChain);
         }
-
-
       }
     }
-
-
+    sortChains();
   }
 
   private void growChainHead(Chain chain) {
