@@ -27,11 +27,29 @@ public class ChainFinder {
   }
 
   private void growChainHead(Chain chain) {
+    int[] previousCell = new int[2];
+    int[] currentCell = new int[2];
+    previousCell[0] = chain.head.x;
+    previousCell[1] = chain.head.y;
 
+    WallCoordinate newCellWall = chain.head.getOtherSideCoordinate();
+    currentCell[0] = newCellWall.x;
+    currentCell[1] = newCellWall.y;
+
+    growChainHeadRecursive(chain, currentCell, previousCell);
   }
 
   private void growChainTail(Chain chain) {
+    int[] previousCell = new int[2];
+    int[] currentCell = new int[2];
+    previousCell[0] = chain.tail.x;
+    previousCell[1] = chain.tail.y;
 
+    WallCoordinate newCellWall = chain.tail.getOtherSideCoordinate();
+    currentCell[0] = newCellWall.x;
+    currentCell[1] = newCellWall.y;
+
+    growChainTailRecursive(chain, currentCell, previousCell);
   }
 
   private void growChainHeadRecursive(Chain toGrow, int[] currentCell, int[] previousCell) {

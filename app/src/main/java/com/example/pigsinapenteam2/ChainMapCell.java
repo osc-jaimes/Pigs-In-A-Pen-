@@ -109,6 +109,8 @@ public class ChainMapCell {
 
   public String toString() {
     String outputString = "";
+    outputString += "x: " + x + "\n";
+    outputString += "y: " + y + "\n";
     outputString += "is part of a chain: " + isChainSegment() + "\n";
     outputString += "visited: " + visited + "\n";
     outputString += "neighbors: ";
