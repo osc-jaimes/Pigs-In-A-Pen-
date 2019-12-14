@@ -49,20 +49,34 @@ public class BoardType {
 
     //sets corners as void
     inputtedState.setCellState(0, width, voidedCell);
+    inputtedState.setTopWallState(0, width);
+    inputtedState.setRightWallState(0, width);
     inputtedState.setCellState(height, 0, voidedCell);
+    inputtedState.setBottomWallState(height, 0);
+    inputtedState.setLeftWallState(height, 0);
+
+
 
     //if boardsize is not Small
     if(boardSize > 0){
 
       inputtedState.setCellState(1, width, voidedCell);
+      inputtedState.setTopWallState(1, width);
+      inputtedState.setRightWallState(1, width);
       inputtedState.setCellState(height - 1, 0, voidedCell);
+      inputtedState.setBottomWallState(height - 1, 0);
+      inputtedState.setLeftWallState(height - 1, 0);
 
     }//if statement
 
     if(boardSize > 1){
 
       inputtedState.setCellState(0, width -1, voidedCell);
+      inputtedState.setTopWallState(0, width -1);
+      inputtedState.setRightWallState(0, width - 1);
       inputtedState.setCellState(height, 1, voidedCell);
+      inputtedState.setBottomWallState(height, 1);
+      inputtedState.setLeftWallState(height, 1);
 
     }//if statement
   }//gardenMapSetup
@@ -94,6 +108,13 @@ public class BoardType {
     inputtedState.setCellState(1, 1, voidedCell);
 
   }//smallHillMapSetup
+
+  private void mediumHillMapSetup(){
+
+    int voidedCell = 3;
+
+    inputtedState.setCellState();
+  }
 
 
 }
