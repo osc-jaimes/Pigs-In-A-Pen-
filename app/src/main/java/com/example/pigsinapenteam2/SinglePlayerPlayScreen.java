@@ -1,49 +1,23 @@
 package com.example.pigsinapenteam2;
 
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
-public class SinglePlayerPlayScreen extends AppCompatActivity {
+public class SinglePlayerPlayScreen extends PlayScreen {
   //==== Instance Variables =====
 
   //Game State
-  public GameState gameState;
 
   //Players
-  public HumanPlayer player1;
   public BotPlayer player2;
 
   //Final Variables
-  public final int PLAYERONEINT = 1;
   public final int PLAYERTWOINT = 2;
-
-  //Buttons
-  public Button confirmButton;
-  public Button currentButton;
-
-  //Views (Relative Views)
-  public View pauseMenuLayout;
-  public View gameButtons;
-  public View smallGameButtons;
-  TextView player1ScoreBoard;
-  TextView player2ScoreBoard;
-
-  //Ints
-  public int cellX;
-  public int cellY;
-  public int totalScore;
-  public int width;
-  public int height;
-
   //Booleans
-  public boolean playerHasMoved;
-  public boolean isHorizontal;
 
 
 
@@ -55,40 +29,15 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_single_player_play_screen);
     setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+    this.isMultiplayer = false;
 
-    if(SinglePlayerSetupScreen.boardSize == 0){
-      this.width = 3;
-      this.height = 2;
-      System.out.println("GOTEM");
-      //this.gameButtons = findViewById(R.id.smallGameButtons); //smallButtons
+   boardSizeSetter();
+   scoreBoardDefaulter();
+   startGameButtonsGone();
 
-    } else if (SinglePlayerSetupScreen.boardSize == 1) {
-
-      this.width = 4;
-      this.height = 3;
-      //this.gameButtons = findViewById(R.id.mediumGameButtons); //mediumButtons
-    }
-    else if(SinglePlayerSetupScreen.boardSize == 2){
-      this.width = 5;
-      this.height = 4;
-      //this.gameButtons = findViewById(R.id.largeGameButtons); //largeButtons
-    }
-    System.out.println(width + " " + height);
-
-    player1ScoreBoard = findViewById(R.id.player1Score);
-    player1ScoreBoard.setText("0");
-    player2ScoreBoard = findViewById(R.id.player2Score);
-    player2ScoreBoard.setText("0");
-    //===== Confirm Button ===========
-    this.confirmButton = findViewById(R.id.confirmButtonPlayer1);
-    confirmButton.setVisibility(View.GONE);
-    //===== Pause Button ========
-    this.pauseMenuLayout = findViewById(R.id.pauseMenuLayout);
-    this.pauseMenuLayout.setVisibility(View.GONE);
     //===== Game Buttons Layout ======
     this.gameButtons = findViewById(R.id.gameButtons); //this'll need to go after the sizes are all made
     //===== Players in game =======
-    this.player1 = new HumanPlayer();
     this.player2 = new EasyBotPlayer(height,width);
     this.currentPlayer = player1;
     this.playerHasMoved = false;
@@ -102,36 +51,6 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
     this.totalScore = (width * height) ;
   }
 
-  /**
-   * Highlights the fence button last clicked and displays the confirm button.
-   * @param V the button that is pressed.
-   */
-  public void buttonClicked(View V){
-    if(this.currentButton == null){
-      int buttonId = V.getId();
-      Button currentButton = findViewById(buttonId);
-      this.currentButton = currentButton;
-      this.confirmButton.setVisibility(View.VISIBLE);
-      currentButton.setBackgroundColor(getResources().getColor(R.color.fences));
-    } else{
-      //if there already is a fence button chosen
-      this.changeChoice(V);
-    }
-
-
-  }
-
-  /**
-   * Changes the fence selection from currentButton to button V.
-   * @param V the button that is pressed.
-   */
-  public void changeChoice(View V){
-    int buttonId = V.getId();
-    Button buttonClicked = findViewById(buttonId);
-    this.currentButton.setBackgroundColor(getResources().getColor(R.color.transparent));
-    buttonClicked.setBackgroundColor(getResources().getColor(R.color.fences));
-    this.currentButton = buttonClicked;
-  }
 
   /**
    * Highlights the vertical fence button at position 0,0
@@ -432,10 +351,8 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
     }//while loop
 
   }
-  public void onClickPause(View v){
-    pauseMenuLayout.setVisibility(View.VISIBLE);
-    gameButtons.setVisibility(View.GONE);
-  }
+
+
 
   public void resumeButton(View v){
     gameButtons.setVisibility(View.VISIBLE);

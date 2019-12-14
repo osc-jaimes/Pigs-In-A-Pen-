@@ -7,6 +7,7 @@ package com.example.pigsinapenteam2;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -15,7 +16,7 @@ import android.widget.TextView;
 /**
  * @author Oscar Jaimes
  */
-public class MultiplayerPlayScreen extends AppCompatActivity {
+public class MultiplayerPlayScreen extends PlayScreen {
 
   public Button currentButton;
   public Button confirmButtonPlayer1;
@@ -58,15 +59,18 @@ public class MultiplayerPlayScreen extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_multiplayer_play_screen);
+    setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
     ScreenLogic.fullScreen(this);
+
+    this.isMultiplayer = true;
     this.confirmButtonPlayer1 = findViewById(R.id.confirmButtonPlayer1);
     this.confirmButtonPlayer2 = findViewById(R.id.confirmButtonPlayer2);
     this.confirmButtonPlayer2.setVisibility(View.GONE);
     this.pauseMenuLayout = findViewById(R.id.pauseMenuLayout);
     this.gameButtons = findViewById(R.id.gameButtons);
 
-    this.player1ScoreBoard = findViewById(R.id.player1score);
-    this.player2ScoreBoard = findViewById(R.id.player2score);
+    this.player1ScoreBoard = findViewById(R.id.player1Score);
+    this.player2ScoreBoard = findViewById(R.id.player2Score);
 
 
 
@@ -458,7 +462,6 @@ public class MultiplayerPlayScreen extends AppCompatActivity {
     }
     startActivity(goToWinScreen);
   }
-
 
 
 
