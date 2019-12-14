@@ -48,4 +48,18 @@ public class ChainMapCell {
   public boolean isConnectedToNeighbor(int neighborDirection) {
     return isNeighborConnected[neighborDirection];
   }
+
+  public String toString() {
+    String outputString = "";
+    outputString += "is chain: " + isChainSegment() + "\n";
+    outputString += "visited: " + visited + "\n";
+    outputString += "neighbors: ";
+    for (int i = 0; i < isNeighborConnected.length; i++) {
+      outputString += isNeighborConnected[i] + " ";
+    }
+    outputString += "\n";
+    outputString += "degree: " + degree + "\n";
+
+    return outputString;
+  }
 }
