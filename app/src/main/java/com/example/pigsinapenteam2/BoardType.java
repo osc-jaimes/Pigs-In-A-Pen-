@@ -11,8 +11,8 @@ public class BoardType {
   public BoardType(BoardState inputtedState, int boardID, int boardSize){
 
     this.inputtedState = inputtedState;
-    this.width = inputtedState.getWidth();
-    this.height = inputtedState.getHeight();
+    this.width = inputtedState.getWidth() - 1;
+    this.height = inputtedState.getHeight() - 1;
 
 
     switch (boardID){
@@ -45,6 +45,26 @@ public class BoardType {
 
   private void gardenMapSetup(int boardSize){
 
+    int voidedCell = 3;
+
+    //sets corners as void
+    inputtedState.setCellState(0, width, voidedCell);
+    inputtedState.setCellState(height, 0, voidedCell);
+
+    //if boardsize is not Small
+    if(boardSize > 0){
+
+      inputtedState.setCellState(1, width, voidedCell);
+      inputtedState.setCellState(height - 1, 0, voidedCell);
+
+    }//if statement
+
+    if(boardSize > 1){
+
+      inputtedState.setCellState(0, width -1, voidedCell);
+      inputtedState.setCellState(height, 1, voidedCell);
+
+    }//if statement
   }//gardenMapSetup
 
   private void hillMapSetup(int boardSize){
