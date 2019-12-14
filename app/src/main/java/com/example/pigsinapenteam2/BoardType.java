@@ -36,4 +36,18 @@ public class BoardType {
         break;
     }//switch
   }//constructor
+
+  private void wallsMapSetup(String boardSize){
+
+  }//wallsMapSetup
+
+  private void gardenMapSetup(String boardSize){
+
+  }//gardenMapSetup
+
+  private void hillMapSetup(String boardSize){
+
+  }//hillMapSetup
+
+
 }
