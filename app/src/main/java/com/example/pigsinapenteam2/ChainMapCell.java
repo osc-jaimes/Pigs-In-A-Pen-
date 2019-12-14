@@ -15,4 +15,21 @@ public class ChainMapCell {
     }
     isDegreeTwo = false;
   }
+
+  public ChainMapCell(boolean[] neighborConnected) {
+    assert (neighborConnected.length == 4);
+    visited = false;
+    isNeighborConnected = neighborConnected;
+
+    degree = 0;
+    for (int i = 0; i < isNeighborConnected.length; i++) {
+      if (isNeighborConnected[i]) {
+        degree += 1;
+      }
+    }
+
+    if (degree == 2) {
+       isDegreeTwo = true;
+    }
+  }
 }
