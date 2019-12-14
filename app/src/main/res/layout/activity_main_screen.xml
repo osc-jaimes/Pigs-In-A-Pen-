@@ -8,13 +8,13 @@
 
     <ImageView
         android:id="@+id/main_screen_background"
-        android:scaleType="fitXY"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:contentDescription="@string/main_screen_background"
+        android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
@@ -63,6 +63,21 @@
         app:layout_constraintTop_toBottomOf="@+id/singlePlayerButton"
         app:layout_constraintVertical_bias="0.096" />
 
+    <Button
+        android:id="@+id/quickplaybutton"
+        android:layout_width="203dp"
+        android:layout_height="47dp"
+        android:background="@color/buttonColor"
+        android:onClick="quickPlay"
+        android:text="Quickplay"
+        android:textColor="@color/buttonTextColor"
+        app:layout_constraintBottom_toBottomOf="@+id/main_screen_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/singlePlayerButton"
+        app:layout_constraintVertical_bias="0.457" />
+
     <ImageView
         android:id="@+id/pigMainScreen"
         android:layout_width="147dp"
@@ -75,4 +90,21 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.895"
         app:srcCompat="@drawable/pig" />
+
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="135dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="346dp"
+        android:layout_marginEnd="580dp"
+        android:layout_marginBottom="16dp"
+        android:background="@color/buttonColor"
+        android:onClick="instructions"
+        android:text="Instructions"
+        android:textColor="@color/buttonTextColor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

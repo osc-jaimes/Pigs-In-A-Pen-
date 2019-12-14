@@ -1,3 +1,7 @@
+/**
+ * Class for the multi-player play screen.
+ * Controls button clicks on fences as well as logic for controlling the current turns.
+ */
 package com.example.pigsinapenteam2;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -6,6 +10,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 /**
  * @author Oscar Jaimes
@@ -36,6 +41,9 @@ public class MultiplayerPlayScreen extends AppCompatActivity {
   public View pauseMenuLayout;
   public View gameButtons;
 
+  TextView player1ScoreBoard;
+  TextView player2ScoreBoard;
+
 
 
   private boolean isHorizontal;
@@ -57,6 +65,11 @@ public class MultiplayerPlayScreen extends AppCompatActivity {
     this.pauseMenuLayout = findViewById(R.id.pauseMenuLayout);
     this.gameButtons = findViewById(R.id.gameButtons);
 
+    this.player1ScoreBoard = findViewById(R.id.player1score);
+    this.player2ScoreBoard = findViewById(R.id.player2score);
+
+
+
     this.pauseMenuLayout.setVisibility(View.GONE);
     confirmButtonPlayer1.setVisibility(View.VISIBLE);
 
@@ -71,6 +84,9 @@ public class MultiplayerPlayScreen extends AppCompatActivity {
 
     BoardState boardState = new BoardState(WIDTH,HEIGHT);
     this.gameState = new GameState(boardState, this.player1, this.player2,0);
+    this.gameState.player1Points = 0;
+    this.gameState.player2Points = 0;
+    this.totalScore = 6;
   }
 
 
@@ -80,15 +96,20 @@ public class MultiplayerPlayScreen extends AppCompatActivity {
    * @param V the button that is pressed.
    */
   public void buttonClicked(View V){
-    if(this.currentButton == null){
-      int buttonId = V.getId();
-      Button currentButton = findViewById(buttonId);
-      this.currentButton = currentButton;
-      //this.confirmButtonPlayer1.setVisibility(View.VISIBLE);
-      currentButton.setBackgroundColor(getResources().getColor(R.color.fences));
-    } else{
-      //if there already is a fence button chosen
-      this.changeChoice(V);
+
+    try {
+      if (this.currentButton == null) {
+        int buttonId = V.getId();
+        Button currentButton = findViewById(buttonId);
+        this.currentButton = currentButton;
+        //this.confirmButtonPlayer1.setVisibility(View.VISIBLE);
+        currentButton.setBackgroundColor(getResources().getColor(R.color.fences));
+      } else {
+        //if there already is a fence button chosen
+        this.changeChoice(V);
+      }
+    }catch(Exception e){
+      return;
     }
 
 
@@ -310,19 +331,38 @@ public class MultiplayerPlayScreen extends AppCompatActivity {
     isHorizontal = true;
   }
 
+  /**
+   * On click method to pause the game
+   * @param v the button that is being pressed
+   */
   public void onClickPause(View v){
     pauseMenuLayout.setVisibility(View.VISIBLE);
     gameButtons.setVisibility(View.GONE);
     //Blur background -- TODO when mvp is done
   }
+
+  /**
+   * Method for the resume button being clicked
+   * @param v the button that is clicked
+   */
   public void resumeButton(View v){
     gameButtons.setVisibility(View.VISIBLE);
     pauseMenuLayout.setVisibility(View.GONE);
   }
+
+  /**
+   * Method that goes to the main menu when the menu button is clicked in the pause menu.
+   * @param v the button that is clicked
+   */
   public void pauseToMainMenu(View v){
     Intent goToMainMenu = new Intent(getApplicationContext(), MainScreen.class);
     startActivity(goToMainMenu);
   }
+
+  /**
+   * Restarts the current game
+   * @param v the button that is clicked
+   */
   public void restartButton(View v){
     this.recreate();
   }
@@ -331,87 +371,96 @@ public class MultiplayerPlayScreen extends AppCompatActivity {
 
   /**
    * Confirms the current chosen fence button and processes the move in the backend.
-   * @param v
+   * @param v the confirmation button pressed
    */
-  public void onClickConfirmationButton(View v) {
-    this.currentButton.setClickable(false);
-    this.currentButton = null;
-    this.playerHasMoved = true;
-    if(this.currentPlayer == player1) {
+  public void onClickConfirmationButton(View v) throws InterruptedException {
+    try {
+      this.currentButton.setClickable(false);
+      this.currentButton = null;
+      this.playerHasMoved = true;
+      this.confirmAction(this.cellX, this.cellY, this.isHorizontal);
+
+      if (this.currentPlayer == this.player1) {
+        this.confirmButtonPlayer1.setVisibility(View.VISIBLE);
+        this.confirmButtonPlayer2.setVisibility(View.GONE);
+      } else {
+        this.confirmButtonPlayer2.setVisibility(View.VISIBLE);
+        this.confirmButtonPlayer1.setVisibility(View.GONE);
+      }
+      if (this.gameState.player1Points + this.gameState.player2Points == this.totalScore) {
+        endGame();
+      }
+    }catch(Exception e){
+      return;
+    }
+
+  }
+
+  /**
+   * Confrims the action of the player and sends respective x and y values of fence clicked to doMove().
+   * @param cellX - the x position of the fence clicked
+   * @param cellY - the y position of the fence clicked
+   * @param isHorizontal - If the fence clicked is horizontal
+   */
+  public void confirmAction(int cellX, int cellY, boolean isHorizontal) throws InterruptedException{
+
+    if(this.currentPlayer == this.player1) {
+      System.out.println("Player 1 Points: " + this.gameState.player1Points);
+      int tempScore = this.gameState.player1Points;
+      this.gameState = player1.doMove(this.gameState, cellX, cellY, PLAYERONEINT, isHorizontal);
+      this.gameState.runBoardCheck();
+      this.updateScore();
+      if(this.gameState.player1Points > tempScore){
+        this.currentPlayer = this.player1;
+        this.confirmButtonPlayer2.setVisibility(View.GONE);
+        this.confirmButtonPlayer1.setVisibility(View.GONE);
+        return;
+      }
+      this.currentPlayer = this.player2;
       this.confirmButtonPlayer1.setVisibility(View.GONE);
       this.confirmButtonPlayer2.setVisibility(View.VISIBLE);
-      this.currentPlayer = this.player2;
-    } else{
+
+    }else{
+      System.out.println("Player 2 Points: " + this.gameState.player2Points);
+      int tempScore = this.gameState.player2Points;
+      this.gameState = player2.doMove(this.gameState, cellX, cellY, PLAYERTWOINT, isHorizontal);
+      this.gameState.runBoardCheck();
+      this.updateScore();
+      if(this.gameState.player2Points > tempScore){
+        this.currentPlayer = this.player2;
+        this.confirmButtonPlayer1.setVisibility(View.GONE);
+        this.confirmButtonPlayer2.setVisibility(View.GONE);
+        return;
+      }
+      this.currentPlayer = this.player1;
       this.confirmButtonPlayer2.setVisibility(View.GONE);
       this.confirmButtonPlayer1.setVisibility(View.VISIBLE);
-      this.currentPlayer = this.player1;
+
     }
-
-    this.confirmAction(this.cellX, this.cellY, this.isHorizontal);
-    //this.updateScore();
-    if(gameState.player1Points + gameState.player2Points == totalScore){
-      //endGame();
-    }
-    System.out.println(this.gameState.currentBoardState);
-  }
-
-  public void confirmAction(int cellX, int cellY, boolean isHorizontal){
-
-    int currentScore = this.gameState.player1Points;
-
-    int lastPlayer1Score = gameState.player1Points;
-    this.gameState = player1.doMove(this.gameState, cellX, cellY, isHorizontal);
-
-    cellCheckAndUpdate(cellX, cellY, PLAYERONEINT);
-
-    this.gameState.runBoardCheck();
-
-
   }
 
 
+  public void updateScore() {
+    player1ScoreBoard.setText("" + this.gameState.player1Points);
+    player2ScoreBoard.setText("" + this.gameState.player2Points);
+  }
 
-  private void cellCheckAndUpdate(int cellX,int cellY, int playerInt){
+  public void endGame(){
+    Intent goToWinScreen = new Intent(getApplicationContext(), VictoryScreen.class);
+    if(gameState.player2Points > gameState.player1Points){
+      goToWinScreen.putExtra("playerWhoWon", 1);
+    }
+    else if(gameState.player1Points > gameState.player2Points){
+      goToWinScreen.putExtra("playerWhoWon", 0);
+    }
+    else if(gameState.player1Points == gameState.player2Points){
+      goToWinScreen.putExtra("playerWhoWon", 2);
+    }
+    startActivity(goToWinScreen);
+  }
 
-    int checkedCellX = cellXCheck(cellX);
-    int checkedCellY = cellYCheck(cellY);
 
-    if(this.gameState.currentBoardState.isComplete(checkedCellX, checkedCellY)){
 
-      this.gameState.currentBoardState.setCellState(checkedCellX, checkedCellY, playerInt);
-
-    }//if statement
-  }//cellCheckAndUpdate
-
-  private int cellXCheck(int cellX){
-
-    if(cellX >= HEIGHT){
-
-      return cellX - 1;
-
-    }//if statement
-
-    else{
-
-      return cellX;
-
-    }//else statement
-  }//cellXCheck
-
-  private int cellYCheck(int cellY){
-
-    if(cellY >= WIDTH){
-
-      return cellY - 1;
-
-    }//if statement
-
-    else{
-
-      return cellY;
-
-    }//else statement
-  }//cellYCheck
 
 
 }

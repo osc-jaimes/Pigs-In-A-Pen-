@@ -26,9 +26,11 @@ public class HumanPlayer extends Player {
      * @return an output gameState with the updated value for a wall.
      */
 
-   public GameState doMove(GameState inputState, int cellX, int cellY, boolean isHorizontal){
+   public GameState doMove(GameState inputState, int cellX, int cellY,
+                           int playerMark, boolean isHorizontal){
 
        inputState.currentBoardState.setWall(cellX, cellY, isHorizontal);
+       inputState.currentBoardCheck.boardChecker(playerMark);
 
 
         return inputState;

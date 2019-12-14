@@ -122,7 +122,6 @@ public class GameState {
   }
   public void runBoardCheck(){
 
-    currentBoardCheck.boardChecker();
     this.player1Points = currentBoardCheck.getPlayerOneScore();
     this.player2Points = currentBoardCheck.getPlayerTwoScore();
 
