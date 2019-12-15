@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class HardBotPlayer extends BotPlayer {
   private ChainFinder chainFinder;
-  private LinkedList<WallCoordinate> possibleMovesNoConcede;
+  private LinkedList<WallCoordinate> possibleMovesNoConcedeNoCapture;
   private LinkedList<WallCoordinate> possibleCaptures;
   private boolean isEndgame;
   private int boardHeight;
@@ -16,7 +16,7 @@ public class HardBotPlayer extends BotPlayer {
 
   public HardBotPlayer() {
     super();
-    possibleMovesNoConcede = new LinkedList<>();
+    possibleMovesNoConcedeNoCapture = new LinkedList<>();
     possibleCaptures = new LinkedList<>();
     boardHeight = 0;
     boardWidth = 0;
@@ -26,7 +26,7 @@ public class HardBotPlayer extends BotPlayer {
   public HardBotPlayer(int height, int width) {
     super(height, width);
     possibleCaptures = new LinkedList<>();
-    possibleMovesNoConcede = new LinkedList<>();
+    possibleMovesNoConcedeNoCapture = new LinkedList<>();
     boardHeight = height;
     boardWidth = width;
     botMark = 2;
@@ -42,7 +42,9 @@ public class HardBotPlayer extends BotPlayer {
     fillPossibleMovesNoConcedeAndCaptures(state);
 
     if (!isEndgame) {
-      isEndgame = (possibleMovesNoConcede.size() == 0) && (possibleCaptures.size() == 0);
+      //CHANGE THIS CONDITION TO:
+      // (every move gives someone a point): DONE
+      isEndgame = (possibleMovesNoConcedeNoCapture.size() == 0);
     }
 
     boolean smallFirstChain = false;
@@ -99,13 +101,13 @@ public class HardBotPlayer extends BotPlayer {
       }
     } else {
       if (possibleCaptures.size() == 0) {
-        if (possibleMovesNoConcede.size() == 0) {
+        if (possibleMovesNoConcedeNoCapture.size() == 0) {
           LinkedList<Chain> chains = chainFinder.getChains();
           Chain smallestChain = chains.getFirst();
           moveToDo = smallestChain.head;
         } else {
           Random random = new Random();
-          moveToDo = possibleMovesNoConcede.get(random.nextInt(possibleMovesNoConcede.size()));
+          moveToDo = possibleMovesNoConcedeNoCapture.get(random.nextInt(possibleMovesNoConcedeNoCapture.size()));
         }
       } else {
         Random random = new Random();
@@ -114,7 +116,7 @@ public class HardBotPlayer extends BotPlayer {
     }
 
     possibleCaptures.clear();
-    possibleMovesNoConcede.clear();
+    possibleMovesNoConcedeNoCapture.clear();
 
     int[] coordsOfMove = moveToDo.getIndexForm();
     state.setWallAi(coordsOfMove[0], coordsOfMove[1], coordsOfMove[2]);
@@ -136,11 +138,10 @@ public class HardBotPlayer extends BotPlayer {
           currentWall = new WallCoordinate(xIndex, yIndex, wallIndex, boardHeight, boardWidth);
 
           if (super.isWallLegal(state, currentWall)) {
-            if (!super.willWallConcedePoint(state, currentWall)) {
-              possibleMovesNoConcede.add(currentWall);
-            }
             if (super.isWallACapture(state, currentWall)) {
               possibleCaptures.add(currentWall);
+            } else if (!super.willWallConcedePoint(state, currentWall)) {
+              possibleMovesNoConcedeNoCapture.add(currentWall);
             }
           }
         }
