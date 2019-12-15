@@ -15,8 +15,6 @@ public class Chain {
     length = 0;
     head = new WallCoordinate();
     tail = new WallCoordinate();
-    isHeadOpen = true;
-    isTailOpen = true;
     isHeadSet = false;
     isTailSet = false;
   }
@@ -25,8 +23,6 @@ public class Chain {
     length = 1;
     head = chainHead;
     tail = chainTail;
-    isTailOpen = true;
-    isHeadOpen = true;
     isTailSet = false;
     isHeadSet = false;
     if (chainHead == null) {
@@ -63,20 +59,12 @@ public class Chain {
     isHeadOpen = headIsOpen;
   }
 
-  public boolean getHeadOpen() throws ChainEndOpenFlagUnsetException {
-    if (!isHeadSet) {
-      throw new ChainEndOpenFlagUnsetException("Head flag not yet set.");
-    } else {
-      return isHeadOpen;
-    }
+  public boolean getHeadOpen() {
+    return isHeadOpen;
   }
 
-  public boolean getTailOpen() throws ChainEndOpenFlagUnsetException {
-    if (!isTailSet) {
-      throw new ChainEndOpenFlagUnsetException("Tail flag not yet set.");
-    } else {
-      return isTailOpen;
-    }
+  public boolean getTailOpen() {
+    return isTailOpen;
   }
 
   public String toString() {
@@ -85,13 +73,6 @@ public class Chain {
     outputString += " : " + length + " : ";
     outputString += tail.x + " " + tail.y + "]";
     return outputString;
-  }
-
-  private class ChainEndOpenFlagUnsetException extends Exception {
-    public ChainEndOpenFlagUnsetException(String message){
-      super(message);
-    }
-    public ChainEndOpenFlagUnsetException(){}
   }
 }
 
