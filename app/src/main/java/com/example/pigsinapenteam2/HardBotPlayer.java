@@ -46,8 +46,10 @@ public class HardBotPlayer extends BotPlayer {
     }
 
     boolean smallFirstChain = false;
-    boolean smallChainOpenTailDirection = false;
-    boolean smallChainOpenHeadDirection = false;
+    boolean firstChainOpenTailDirection = false;
+    boolean firstChainOpenHeadDirection = false;
+    WallCoordinate firstChainHead = new WallCoordinate();
+    WallCoordinate firstChainTail = new WallCoordinate();
 
     if (isEndgame) {
       chainFinder.findChains();
@@ -56,7 +58,10 @@ public class HardBotPlayer extends BotPlayer {
       smallFirstChain = (firstChain.length == 1);
       boolean chainHeadOpen = firstChain.getHeadOpen();
       boolean chainTailOpen = firstChain.getTailOpen();
-      smallChainOpenHeadDirection = (firstChain.getHeadOpen() &&)
+      firstChainOpenHeadDirection = (chainHeadOpen && !chainTailOpen);
+      firstChainOpenTailDirection = (chainTailOpen && !chainHeadOpen);
+      firstChainHead = firstChain.head;
+      firstChainTail = firstChain.tail;
     }
 
     WallCoordinate moveToDo;
@@ -64,8 +69,15 @@ public class HardBotPlayer extends BotPlayer {
 
 
 
-    if (true) {
-
+    if (smallFirstChain && (firstChainOpenHeadDirection || firstChainOpenTailDirection)) {
+      if (firstChainOpenHeadDirection) {
+        moveToDo = firstChainHead;
+      } else if (firstChainOpenTailDirection) {
+        moveToDo = firstChainTail;
+      } else {
+        assert (false): "LOGIC ERROR.";
+        moveToDo = new WallCoordinate();
+      }
     } else {
       if (possibleCaptures.size() == 0) {
         if (possibleMovesNoConcede.size() == 0) {
