@@ -51,31 +51,50 @@ public class HardBotPlayer extends BotPlayer {
     WallCoordinate firstChainHead = new WallCoordinate();
     WallCoordinate firstChainTail = new WallCoordinate();
 
+    boolean shouldDoGambit = false;
+
     if (isEndgame) {
       chainFinder.findChains();
       LinkedList<Chain> chains = chainFinder.getChains();
-      Chain firstChain = chains.getFirst();
-      smallFirstChain = (firstChain.length == 1);
-      boolean chainHeadOpen = firstChain.getHeadOpen();
-      boolean chainTailOpen = firstChain.getTailOpen();
-      firstChainOpenHeadDirection = (chainHeadOpen && !chainTailOpen);
-      firstChainOpenTailDirection = (chainTailOpen && !chainHeadOpen);
-      firstChainHead = firstChain.head;
-      firstChainTail = firstChain.tail;
+      if (chains.size() > 0) {
+        Chain firstChain = chains.getFirst();
+        smallFirstChain = (firstChain.length == 1);
+        boolean chainHeadOpen = firstChain.getHeadOpen();
+        boolean chainTailOpen = firstChain.getTailOpen();
+        firstChainOpenHeadDirection = (chainHeadOpen && !chainTailOpen);
+        firstChainOpenTailDirection = (chainTailOpen && !chainHeadOpen);
+        firstChainHead = firstChain.head;
+        firstChainTail = firstChain.tail;
+
+        int yourExpectedPoints = 0;
+        int theirExpectedPoints = 0;
+        for (int i = 0; i < chains.size(); i++) {
+          if (i % 2 == 0) {
+            yourExpectedPoints += chains.get(i).pointValue();
+          } else if (i % 2 == 1) {
+            theirExpectedPoints += chains.get(i).pointValue();
+          } else {
+            assert (false) : "ALGEBRA ERROR.";
+          }
+        }
+        shouldDoGambit = (yourExpectedPoints < theirExpectedPoints);
+      }
     }
 
     WallCoordinate moveToDo;
     //make move decision
 
+    boolean canDoGambit = smallFirstChain &&
+        (firstChainOpenHeadDirection || firstChainOpenTailDirection);
 
 
-    if (smallFirstChain && (firstChainOpenHeadDirection || firstChainOpenTailDirection)) {
+    if (canDoGambit && shouldDoGambit) {
       if (firstChainOpenHeadDirection) {
         moveToDo = firstChainHead;
       } else if (firstChainOpenTailDirection) {
         moveToDo = firstChainTail;
       } else {
-        assert (false): "LOGIC ERROR.";
+        assert (false) : "LOGIC ERROR.";
         moveToDo = new WallCoordinate();
       }
     } else {
@@ -114,7 +133,7 @@ public class HardBotPlayer extends BotPlayer {
     for (int yIndex = 0; yIndex < boardHeight; yIndex++) {
       for (int xIndex = 0; xIndex < boardWidth; xIndex++) {
         for (int wallIndex = 0; wallIndex < 4; wallIndex++) {
-          currentWall = new WallCoordinate(xIndex,yIndex,wallIndex,boardHeight,boardWidth);
+          currentWall = new WallCoordinate(xIndex, yIndex, wallIndex, boardHeight, boardWidth);
 
           if (super.isWallLegal(state, currentWall)) {
             if (!super.willWallConcedePoint(state, currentWall)) {

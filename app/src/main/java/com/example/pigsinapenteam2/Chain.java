@@ -15,6 +15,8 @@ public class Chain {
     length = 0;
     head = new WallCoordinate();
     tail = new WallCoordinate();
+    isHeadOpen = true;
+    isTailOpen = true;
     isHeadSet = false;
     isTailSet = false;
   }
@@ -23,6 +25,8 @@ public class Chain {
     length = 1;
     head = chainHead;
     tail = chainTail;
+    isHeadOpen = true;
+    isTailOpen = true;
     isTailSet = false;
     isHeadSet = false;
     if (chainHead == null) {
@@ -65,6 +69,17 @@ public class Chain {
 
   public boolean getTailOpen() {
     return isTailOpen;
+  }
+
+  public int pointValue() {
+    int pointsReceived = length;
+    if (!isHeadOpen) {
+      pointsReceived += 1;
+    }
+    if (!isTailOpen) {
+      pointsReceived += 1;
+    }
+    return pointsReceived;
   }
 
   public String toString() {
