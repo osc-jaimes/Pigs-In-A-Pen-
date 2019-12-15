@@ -98,7 +98,8 @@ public class ChainFinder {
               || (possibleNewCellWall.y != previousCellCoords[1])) {
 
             toGrow.addCellHead(connections[i]);
-            previousCellCoords = currentCellCoords;
+            previousCellCoords[0] = currentCellCoords[0];
+            previousCellCoords[1] = currentCellCoords[1];
             currentCellCoords[0] = possibleNewCellWall.x;
             currentCellCoords[1] = possibleNewCellWall.y;
 
@@ -132,7 +133,8 @@ public class ChainFinder {
               || (possibleNewCellWall.y != previousCellCoords[1])) {
 
             toGrow.addCellTail(connections[i]);
-            previousCellCoords = currentCellCoords;
+            previousCellCoords[0] = currentCellCoords[0];
+            previousCellCoords[1] = currentCellCoords[1];
             currentCellCoords[0] = possibleNewCellWall.x;
             currentCellCoords[1] = possibleNewCellWall.y;
 
