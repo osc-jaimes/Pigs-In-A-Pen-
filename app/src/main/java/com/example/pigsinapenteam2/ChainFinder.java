@@ -78,12 +78,73 @@ public class ChainFinder {
     growChainTailRecursive(chain, currentCell, previousCell);
   }
 
-  private void growChainHeadRecursive(Chain toGrow, int[] currentCell, int[] previousCell) {
+  private void growChainHeadRecursive(Chain toGrow, int[] currentCellCoords,
+                                      int[] previousCellCoords) {
 
+    if (!chainMap.isCellOnBoard(currentCellCoords[0],currentCellCoords[1])) {
+      return;
+    } else {
+      ChainMapCell currentCell = chainMap.getCellXY(currentCellCoords[0],currentCellCoords[1]);
+
+      if (!currentCell.isVisited() && currentCell.isChainSegment()) {
+        currentCell.visit();
+        WallCoordinate[] connections = getConnectionsOfCell(currentCell);
+
+        WallCoordinate possibleNewCellWall;
+        for (int i = 0; i < connections.length; i++) {
+          possibleNewCellWall = connections[i].getOtherSideCoordinate();
+
+          if ((possibleNewCellWall.x != previousCellCoords[0])
+              || (possibleNewCellWall.y != previousCellCoords[1])) {
+
+            toGrow.addCellHead(connections[i]);
+            previousCellCoords = currentCellCoords;
+            currentCellCoords[0] = possibleNewCellWall.x;
+            currentCellCoords[1] = possibleNewCellWall.y;
+
+            growChainHeadRecursive(toGrow,currentCellCoords,previousCellCoords);
+            return;
+          }
+        }
+
+      } else {
+        return;
+      }
+    }
   }
 
-  private void growChainTailRecursive(Chain toGrow, int[] currentCell, int[] previousCell) {
+  private void growChainTailRecursive(Chain toGrow, int[] currentCellCoords,
+                                      int[] previousCellCoords) {
+    if (!chainMap.isCellOnBoard(currentCellCoords[0],currentCellCoords[1])) {
+      return;
+    } else {
+      ChainMapCell currentCell = chainMap.getCellXY(currentCellCoords[0],currentCellCoords[1]);
 
+      if (!currentCell.isVisited() && currentCell.isChainSegment()) {
+        currentCell.visit();
+        WallCoordinate[] connections = getConnectionsOfCell(currentCell);
+
+        WallCoordinate possibleNewCellWall;
+        for (int i = 0; i < connections.length; i++) {
+          possibleNewCellWall = connections[i].getOtherSideCoordinate();
+
+          if ((possibleNewCellWall.x != previousCellCoords[0])
+              || (possibleNewCellWall.y != previousCellCoords[1])) {
+
+            toGrow.addCellTail(connections[i]);
+            previousCellCoords = currentCellCoords;
+            currentCellCoords[0] = possibleNewCellWall.x;
+            currentCellCoords[1] = possibleNewCellWall.y;
+
+            growChainTailRecursive(toGrow,currentCellCoords,previousCellCoords);
+            return;
+          }
+        }
+
+      } else {
+        return;
+      }
+    }
   }
 
   private void setChainHeadOpenOrClosed(Chain chain) {
