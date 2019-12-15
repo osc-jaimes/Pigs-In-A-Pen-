@@ -81,9 +81,9 @@ public class Chain {
 
   public String toString() {
     String outputString = "";
-    outputString += "length: " + length + "\n";
-    outputString += "head: " + head + "\n";
-    outputString += "tail: " + tail + "\n";
+    outputString += "[" + head.x + " " + head.y;
+    outputString += " : " + length + " : ";
+    outputString += tail.x + " " + tail.y + "]";
     return outputString;
   }
 
