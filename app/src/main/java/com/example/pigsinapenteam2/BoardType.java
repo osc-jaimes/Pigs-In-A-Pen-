@@ -105,6 +105,9 @@ public class BoardType {
     int voidedCell = 3;
 
     inputtedState.setCellState(0, 1, voidedCell);
+    inputtedState.setTopWallState(0,1);
+    inputtedState.setBottomWallState(0,1);
+    inputtedState.setBottomWallState(1,1);
     inputtedState.setCellState(1, 1, voidedCell);
 
   }//smallHillMapSetup
