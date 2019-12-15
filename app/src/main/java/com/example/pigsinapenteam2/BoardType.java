@@ -1,5 +1,7 @@
 package com.example.pigsinapenteam2;
 
+import java.util.Random;
+
 public class BoardType {
 
   private BoardState inputtedState;
@@ -40,6 +42,19 @@ public class BoardType {
 
   private void wallsMapSetup(int boardSize){
 
+    Random randomGenerator = new Random();
+    int randomWallNumber = randomGenerator.nextInt(4);
+
+    randomWallNumber = randomWallNumber + width * 2;
+
+    while(randomWallNumber > 0){
+      int randomRow = randomGenerator.nextInt(height + 1);
+      int randomCols = randomGenerator.nextInt(width + 1);
+      int random
+
+
+      randomWallNumber -= 1;
+    }//while loop
 
   }//wallsMapSetup
 
