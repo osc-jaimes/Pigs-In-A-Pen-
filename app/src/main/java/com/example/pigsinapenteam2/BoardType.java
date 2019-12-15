@@ -116,8 +116,21 @@ public class BoardType {
 
     int voidedCell = 3;
 
-    inputtedState.setCellState();
-  }
+    inputtedState.setCellState(1,1, voidedCell);
+    inputtedState.setRightWallState(1,1);
+    inputtedState.setCellState(1,2, voidedCell);
+
+  }//mediumHillMapSetup
+
+  private void largeHillMapSetup(){
+
+    int voidedCell = 3;
+
+    inputtedState.setCellState(1, 2, voidedCell);
+    inputtedState.setBottomWallState(1,2);
+    inputtedState.setCellState(2,2, voidedCell);
+
+  }//largeHillMapSetup
 
 
 }
