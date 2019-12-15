@@ -149,20 +149,28 @@ public class ChainFinder {
 
   private void setChainHeadOpenOrClosed(Chain chain) {
     WallCoordinate headWall = chain.head.getOtherSideCoordinate();
-    ChainMapCell headCell = chainMap.getCellXY(headWall.x, headWall.y);
-    int headDegree = headCell.getDegree();
-    assert (headDegree != 2): "should not set head open/closed when chain is not grown!";
-    boolean headOpen = (headDegree > 2);
-    chain.setHeadOpen(headOpen);
+    if (chainMap.isCellOnBoard(headWall.x,headWall.y)) {
+      ChainMapCell headCell = chainMap.getCellXY(headWall.x, headWall.y);
+      int headDegree = headCell.getDegree();
+      assert (headDegree != 2) : "should not set head open/closed when chain is not grown!";
+      boolean headOpen = (headDegree > 2);
+      chain.setHeadOpen(headOpen);
+    } else {
+      chain.setHeadOpen(true);
+    }
   }
 
   private void setChainTailOpenOrClosed(Chain chain) {
     WallCoordinate tailWall = chain.tail.getOtherSideCoordinate();
-    ChainMapCell tailCell = chainMap.getCellXY(tailWall.x, tailWall.y);
-    int tailDegree = tailCell.getDegree();
-    assert (tailDegree != 2): "should not set tail open/closed when chain is not grown!";
-    boolean tailOpen = (tailDegree > 2);
-    chain.setTailOpen(tailOpen);
+    if (chainMap.isCellOnBoard(tailWall.x,tailWall.y)) {
+      ChainMapCell tailCell = chainMap.getCellXY(tailWall.x, tailWall.y);
+      int tailDegree = tailCell.getDegree();
+      assert (tailDegree != 2): "should not set tail open/closed when chain is not grown!";
+      boolean tailOpen = (tailDegree > 2);
+      chain.setTailOpen(tailOpen);
+    } else {
+      chain.setTailOpen(true);
+    }
   }
 
   /**
