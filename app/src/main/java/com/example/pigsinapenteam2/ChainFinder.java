@@ -50,6 +50,10 @@ public class ChainFinder {
       }
     }
     sortChains();
+    System.out.println("FINDCHAINS CALLED. CHAINS:");
+    for (int i = 0; i < chains.size(); i++) {
+      System.out.println(chains.get(i));
+    }
   }
 
   private void growChainHead(Chain chain) {
