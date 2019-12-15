@@ -10,7 +10,7 @@ public class ChainFinder {
   private LinkedList<Chain> chains;
   private ChainMap chainMap;
   private final int NUMBER_OF_DIRECTIONS = 4;
-  
+
 
   public ChainFinder() {
     chains = new LinkedList<>();
@@ -40,7 +40,7 @@ public class ChainFinder {
           currentChain = new Chain(connections[0], connections[1]);
 
           growChainHead(currentChain);
-          growChainHead(currentChain);
+          growChainTail(currentChain);
 
           setChainHeadOpenOrClosed(currentChain);
           setChainTailOpenOrClosed(currentChain);
