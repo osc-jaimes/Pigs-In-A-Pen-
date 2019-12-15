@@ -23,7 +23,6 @@ public class ChainFinder {
   }
 
   public void findChains() {
-    //WIP
     ChainMapCell currentCell;
     Chain currentChain;
     WallCoordinate[] connections;
@@ -43,7 +42,8 @@ public class ChainFinder {
           growChainHead(currentChain);
           growChainHead(currentChain);
 
-          //TODO: mark if head/tail are open/closed
+          setChainHeadOpenOrClosed(currentChain);
+          setChainTailOpenOrClosed(currentChain);
 
           chains.add(currentChain);
         }
@@ -84,6 +84,24 @@ public class ChainFinder {
 
   private void growChainTailRecursive(Chain toGrow, int[] currentCell, int[] previousCell) {
 
+  }
+
+  private void setChainHeadOpenOrClosed(Chain chain) {
+    WallCoordinate headWall = chain.head.getOtherSideCoordinate();
+    ChainMapCell headCell = chainMap.getCellXY(headWall.x, headWall.y);
+    int headDegree = headCell.getDegree();
+    assert (headDegree != 2): "should not set head open/closed when chain is not grown!";
+    boolean headOpen = (headDegree > 2);
+    chain.setHeadOpen(headOpen);
+  }
+
+  private void setChainTailOpenOrClosed(Chain chain) {
+    WallCoordinate tailWall = chain.tail.getOtherSideCoordinate();
+    ChainMapCell tailCell = chainMap.getCellXY(tailWall.x, tailWall.y);
+    int tailDegree = tailCell.getDegree();
+    assert (tailDegree != 2): "should not set tail open/closed when chain is not grown!";
+    boolean tailOpen = (tailDegree > 2);
+    chain.setTailOpen(tailOpen);
   }
 
   /**
