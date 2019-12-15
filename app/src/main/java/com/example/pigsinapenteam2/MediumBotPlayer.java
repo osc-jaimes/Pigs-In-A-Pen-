@@ -35,41 +35,31 @@ public class MediumBotPlayer extends BotPlayer {
   @Override
   public GameState doMove(GameState inputState) {
     BoardState state = inputState.getBoardState();
-    chainFinder = new ChainFinder(boardHeight, boardWidth);
+    chainFinder = new ChainFinder(state);
 
     //get legal moves (without conceding a point)
     //get possible captures
     fillPossibleMovesNoConcedeAndCaptures(state);
 
-    //if endgame:
-    if ((possibleMovesNoConcede.size() == 0) && (possibleCaptures.size() == 0)) {
-      //find links
-      chainFinder.findLinks(state);
-      //find chains
+    boolean isEndgame = (possibleMovesNoConcede.size() == 0) && (possibleCaptures.size() == 0);
+    if (isEndgame) {
       chainFinder.findChains();
     }
 
     WallCoordinate moveToDo;
-
     //make move decision
-
-
     if (possibleCaptures.size() == 0) {
       if (possibleMovesNoConcede.size() == 0) {
         LinkedList<Chain> chains = chainFinder.getChains();
         Chain smallestChain = chains.getFirst();
         moveToDo = smallestChain.head;
-        System.out.println(1);
-        System.out.println(moveToDo);
       } else {
         Random random = new Random();
         moveToDo = possibleMovesNoConcede.get(random.nextInt(possibleMovesNoConcede.size()));
-        System.out.println(2);
       }
     } else {
       Random random = new Random();
       moveToDo = possibleCaptures.get(random.nextInt(possibleCaptures.size()));
-      System.out.println(3);
     }
 
     possibleCaptures.clear();
@@ -83,7 +73,7 @@ public class MediumBotPlayer extends BotPlayer {
     //edit by Benjamin
     inputState.currentBoardCheck.boardChecker(botMark);
 
-    return super.doMove(inputState);
+    return inputState;
   }
 
   private void fillPossibleMovesNoConcedeAndCaptures(BoardState state) {
