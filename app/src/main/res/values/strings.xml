@@ -26,6 +26,9 @@
     <string name="menuButton">Menu</string>
     <string name="victoryText">Wins!</string>
     <string name="playerWhoWon"></string>
+    <string name="Player1WinnerText">Player    1</string>
+    <string name="Player2WinnerText">Player    2</string>
+    <string name="NoOneWinnerText">No    One</string>
 
     <string-array name="board_size_options">
         <item>Small</item>
