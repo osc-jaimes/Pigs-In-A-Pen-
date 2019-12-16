@@ -37,6 +37,7 @@ public class PlayScreen extends AppCompatActivity {
   public int width;
   public int height;
 
+
   //Bools
   public boolean playerHasMoved;
   public boolean isHorizontal;
