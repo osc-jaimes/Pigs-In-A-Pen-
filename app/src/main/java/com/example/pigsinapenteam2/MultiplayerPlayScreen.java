@@ -37,8 +37,7 @@ public class MultiplayerPlayScreen extends PlayScreen {
     confirmButtonPlayer2 = findViewById(R.id.confirmButtonPlayer2);
     confirmButtonPlayer2.setVisibility(View.GONE);
     this.pauseMenuLayout = findViewById(R.id.pauseMenuLayout);
-    this.gameButtons = findViewById(R.id.smallGameButtons);
-
+    gameButtons.setVisibility(View.VISIBLE);
 
     pauseMenuLayout.setVisibility(View.GONE);
     confirmButtonPlayer1.setVisibility(View.VISIBLE);
@@ -174,7 +173,7 @@ public class MultiplayerPlayScreen extends PlayScreen {
 
       width = 4;
       height = 3;
-      //this.gameButtons = findViewById(R.id.mediumGameButtons); //mediumButtons
+      this.gameButtons = findViewById(R.id.mediumGameButtons); //mediumButtons
     } else if (MultiplayerSetupScreen.boardSize == 2) {
       width = 5;
       height = 4;

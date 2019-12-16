@@ -116,15 +116,12 @@ public class PlayScreen extends AppCompatActivity {
   public void endGame(){
     Intent goToWinScreen = new Intent(getApplicationContext(), VictoryScreen.class);
     if(gameState.player2Points > gameState.player1Points){
-      System.out.println("a");
       goToWinScreen.putExtra("playerWhoWon", 1);
     }
     else if(gameState.player1Points > gameState.player2Points){
-      System.out.println("b");
       goToWinScreen.putExtra("playerWhoWon", 0);
     }
     else if(gameState.player1Points == gameState.player2Points){
-      System.out.println("c");
       goToWinScreen.putExtra("playerWhoWon", 2);
     }
     startActivity(goToWinScreen);
