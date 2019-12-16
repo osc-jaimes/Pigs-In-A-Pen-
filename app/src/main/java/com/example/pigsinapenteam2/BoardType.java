@@ -21,7 +21,7 @@ public class BoardType {
 
       case 1:
 
-        wallsMapSetup(boardSize);
+        wallsMapSetup();
         break;
 
       case 2:
@@ -40,7 +40,7 @@ public class BoardType {
     }//switch
   }//constructor
 
-  private void wallsMapSetup(int boardSize){
+  private void wallsMapSetup(){
 
     Random randomGenerator = new Random();
     int randomWallNumber = randomGenerator.nextInt(4);
@@ -50,10 +50,20 @@ public class BoardType {
     while(randomWallNumber > 0){
       int randomRow = randomGenerator.nextInt(height + 1);
       int randomCols = randomGenerator.nextInt(width + 1);
-      int random
+      int randomWall = randomGenerator.nextInt(4);
+
+      if(inputtedState.getBoardData()[randomRow][randomCols][randomWall] == 1){
+        //do nothing
+      }
+      else{
+
+        inputtedState.getBoardData()[randomRow][randomCols][randomWall] = 1;
+
+        randomWallNumber -= 1;
+      }
 
 
-      randomWallNumber -= 1;
+
     }//while loop
 
   }//wallsMapSetup

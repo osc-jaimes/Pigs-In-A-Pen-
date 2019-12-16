@@ -54,6 +54,12 @@ public class BoardState {
   }//getHeight
 
   //=======================================================================================
+
+  public int[][][] getBoardData(){
+
+    return boardData;
+
+  }
   /**
    * gets data from the saved cell data at the specified coordinates
    * @param row
