@@ -1,3 +1,10 @@
+/**
+ * Jared Boonstra - 1572694
+ *
+ * SinglePlayerPlayScreen.java
+ *
+ * Sets up the board and calls functions from PlayScreen and this class to play the game.
+ */
 package com.example.pigsinapenteam2;
 
 
@@ -7,19 +14,10 @@ import android.view.View;
 import android.widget.Button;
 
 public class SinglePlayerPlayScreen extends PlayScreen {
-  //==== Instance Variables =====
 
-  //Game State
 
   //Players
   public BotPlayer player2;
-
-  //Final Variables
-  //Booleans
-
-
-
-
   private Player currentPlayer;
 
   @Override
@@ -63,8 +61,6 @@ public class SinglePlayerPlayScreen extends PlayScreen {
   }
 
   public void confirmAction(int cellX, int cellY, boolean isHorizontal){
-    System.out.println(totalScore);
-    System.out.println(gameState.player1Points + " " + gameState.player2Points);
     while(true) {
 
       int tempScore = gameState.player1Points;
@@ -122,6 +118,12 @@ public class SinglePlayerPlayScreen extends PlayScreen {
     }//while loop
 
   }
+
+  /**
+   * boardSizeSetter
+   *
+   * Sets the correct board size on the screen to play
+   */
   public void boardSizeSetter() {
     if (SinglePlayerSetupScreen.boardSize == 0) {
       width = 3;
@@ -137,6 +139,13 @@ public class SinglePlayerPlayScreen extends PlayScreen {
       width = 5;
       height = 4;
       //this.gameButtons = findViewById(R.id.largeGameButtons); //largeButtons
+    }
+  }
+  public void residentSleeper(){
+    try {
+      Thread.sleep(1000);
+    }catch (InterruptedException e){
+      return;
     }
   }
 }//singlePlayerPlayScreen
