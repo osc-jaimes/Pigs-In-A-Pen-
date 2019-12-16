@@ -113,6 +113,7 @@ public class SinglePlayerPlayScreen extends PlayScreen {
 
       if (gameState.player1Points + gameState.player2Points == totalScore) {
         endGame();
+        return;
       }//if
 
       if(tempScorePlayer2 == gameState.player2Points){
