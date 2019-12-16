@@ -351,42 +351,4 @@ public class SinglePlayerPlayScreen extends PlayScreen {
     }//while loop
 
   }
-
-
-
-  public void resumeButton(View v){
-    gameButtons.setVisibility(View.VISIBLE);
-    pauseMenuLayout.setVisibility(View.GONE);
-  }
-
-  public void pauseToMainMenu(View v){
-    Intent goToMainMenu = new Intent(getApplicationContext(), MainScreen.class);
-    startActivity(goToMainMenu);
-  }
-
-  public void restartButton(View v){
-    this.recreate();
-  }
-
-   public void endGame(){
-    Intent goToWinScreen = new Intent(getApplicationContext(), VictoryScreen.class);
-    if(gameState.player2Points > gameState.player1Points){
-      goToWinScreen.putExtra("playerWhoWon", 1);
-     }
-    else if(gameState.player1Points > gameState.player2Points){
-      goToWinScreen.putExtra("playerWhoWon", 0);
-    }
-    else if(gameState.player1Points == gameState.player2Points){
-      goToWinScreen.putExtra("playerWhoWon", 2);
-    }
-     startActivity(goToWinScreen);
-   }
-
-
-
-  public void updateScore() {
-    player1ScoreBoard.setText("" + this.gameState.player1Points);
-    player2ScoreBoard.setText("" + this.gameState.player2Points);
-  }
-
 }//singlePlayerPlayScreen

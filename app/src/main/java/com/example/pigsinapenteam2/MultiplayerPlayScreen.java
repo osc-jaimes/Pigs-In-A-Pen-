@@ -448,22 +448,4 @@ public class MultiplayerPlayScreen extends PlayScreen {
     player1ScoreBoard.setText("" + this.gameState.player1Points);
     player2ScoreBoard.setText("" + this.gameState.player2Points);
   }
-
-  public void endGame(){
-    Intent goToWinScreen = new Intent(getApplicationContext(), VictoryScreen.class);
-    if(gameState.player2Points > gameState.player1Points){
-      goToWinScreen.putExtra("playerWhoWon", 1);
-    }
-    else if(gameState.player1Points > gameState.player2Points){
-      goToWinScreen.putExtra("playerWhoWon", 0);
-    }
-    else if(gameState.player1Points == gameState.player2Points){
-      goToWinScreen.putExtra("playerWhoWon", 2);
-    }
-    startActivity(goToWinScreen);
-  }
-
-
-
-
 }
