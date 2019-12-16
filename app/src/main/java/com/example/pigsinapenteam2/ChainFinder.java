@@ -7,159 +7,181 @@ import java.util.LinkedList;
  *  and provides helper functions for counting/measuring/finding them.
  */
 public class ChainFinder {
-  private final int boardHeight;
-  private  final int boardWidth;
-  private boolean[] isCellAChainLinkArray;
-  private int[][] cellAdjacencyList;
   private LinkedList<Chain> chains;
-  private WallCoordinate[][] adjacentOpenWallByIndex;
-  private boolean[] visited;
-  
+  private ChainMap chainMap;
+  private final int NUMBER_OF_DIRECTIONS = 4;
+
 
   public ChainFinder() {
-    boardWidth = 0;
-    boardHeight = 0;
-    isCellAChainLinkArray = new boolean[boardWidth * boardHeight];
-    cellAdjacencyList = new int[boardHeight * boardWidth][4];
     chains = new LinkedList<>();
-    adjacentOpenWallByIndex = new WallCoordinate[boardHeight * boardWidth][4];
-    visited = new boolean[boardWidth * boardHeight];
+    chainMap = new ChainMap();
   }
 
-  public ChainFinder(int height, int width) {
-    boardWidth = width;
-    boardHeight = height;
-    isCellAChainLinkArray = new boolean[boardWidth * boardHeight];
-    cellAdjacencyList = new int[boardHeight * boardWidth][4];
+  public ChainFinder(BoardState state) {
     chains = new LinkedList<>();
-    adjacentOpenWallByIndex = new WallCoordinate[boardHeight * boardWidth][4];
-    visited = new boolean[boardWidth * boardHeight];
-  }
-
-  public void findLinks(BoardState state) {
-    //loop through all cells
-    for (int yCoord = 0; yCoord < boardHeight; yCoord++) {
-      for (int xCoord = 0; xCoord < boardWidth; xCoord++) {
-        findLinksOfOneCell(state, xCoord, yCoord);
-      }
-    }
-
-    // for testing porpoises
-    for (int i = 0; i < cellAdjacencyList.length; i++) {
-      System.out.print(i + ": ");
-      for (int j = 0; j < cellAdjacencyList[i].length; j++) {
-        System.out.print(cellAdjacencyList[i][j] + " ");
-      }
-      System.out.println();
-    }
-  }
-
-  private void findLinksOfOneCell(BoardState state, int xCoord, int yCoord) {
-    int cellDegree = 0;
-    int indexOfCurrentCell = coordsToIndex(xCoord,yCoord);
-    int indexOfAdjacentCell;
-    WallCoordinate currentWallCoord;
-    currentWallCoord = new WallCoordinate(0, 0, 0, boardHeight, boardWidth);
-    WallCoordinate oppositeWallCoord;
-    WallCoordinate adjacentWallCoord;
-
-    for (int wallPosition = 0; wallPosition < 4; wallPosition++) {
-
-      currentWallCoord.x = xCoord;
-      currentWallCoord.y = yCoord;
-      currentWallCoord.setWallPosition(wallPosition);
-      oppositeWallCoord = currentWallCoord.getOtherSideCoordinate();
-
-      //this is -1 if the wall's an edge
-      indexOfAdjacentCell = coordsToIndex(oppositeWallCoord.x, oppositeWallCoord.y);
-
-      if (currentWallCoord.getStateOfThisWall(state) == 0) {
-        cellAdjacencyList[indexOfCurrentCell][cellDegree] = indexOfAdjacentCell;
-        cellDegree += 1;
-        adjacentWallCoord = new WallCoordinate(currentWallCoord.x, currentWallCoord.y,
-                          currentWallCoord.getWallPosition(), boardHeight, boardWidth);
-        adjacentOpenWallByIndex[indexOfCurrentCell][cellDegree] = adjacentWallCoord;
-      }
-    }
-    if (cellDegree == 2){
-      isCellAChainLinkArray[indexOfCurrentCell] = true;
-    } else {
-      isCellAChainLinkArray[indexOfCurrentCell] = false;
-    }
+    chainMap = new ChainMap(state);
   }
 
   public void findChains() {
+    ChainMapCell currentCell;
     Chain currentChain;
-    WallCoordinate chainHead;
-    WallCoordinate chainTail;
+    WallCoordinate[] connections;
 
-    for (int i = 0; i < visited.length; i++) {
-      visited[i] = false;
-    }
+    for (int y = 0; y < chainMap.boardHeight; y++) {
+      for (int x = 0; x < chainMap.boardWidth; x++) {
 
-    for (int currentCellIndex = 0;
-         currentCellIndex < cellAdjacencyList.length;
-         currentCellIndex++) {
-      if (!visited[currentCellIndex] &&
-          isCellAChainLink(currentCellIndex)) {
-        visited[currentCellIndex] = true;
+        currentCell = chainMap.getCellXY(x,y);
 
+        if (!currentCell.isVisited() && currentCell.isChainSegment()) {
+          currentCell.visit();
 
-        //THERE IS A PROBLEM HERE: we're getting null.
-        chainHead = adjacentOpenWallByIndex[currentCellIndex][0];
-        chainTail = adjacentOpenWallByIndex[currentCellIndex][1];
+          connections = getConnectionsOfCell(currentCell);
+          assert (connections.length == 2): "chain segment is not a chain segment!";
+          currentChain = new Chain(connections[0], connections[1]);
 
+          growChainHead(currentChain);
+          growChainTail(currentChain);
 
-        currentChain = new Chain(chainHead, chainTail);
+          setChainHeadOpenOrClosed(currentChain);
+          setChainTailOpenOrClosed(currentChain);
 
-        //follow the chain down: head
-        currentChain = followChainHead(currentChain, currentCellIndex);
-
-        //follow the chain down: tail
-        currentChain = followChainTail(currentChain, currentCellIndex);
-        chains.add(currentChain);
+          chains.add(currentChain);
+        }
       }
     }
-
     sortChains();
+    System.out.println("FINDCHAINS CALLED. CHAINS:");
+    for (int i = 0; i < chains.size(); i++) {
+      System.out.println(chains.get(i));
+    }
   }
 
-  private Chain followChainHead(Chain chain, int headCellIndex) {
-    WallCoordinate chainHead;
-    int newCellIndex = cellAdjacencyList[headCellIndex][0];
-    while (isCellAChainLink(newCellIndex) && !visited[newCellIndex]) {
-      visited[newCellIndex] = true;
-      if (cellAdjacencyList[newCellIndex][0] != headCellIndex) {
-        chainHead = adjacentOpenWallByIndex[newCellIndex][0];
-        chain.addCellHead(chainHead);
-        newCellIndex = cellAdjacencyList[newCellIndex][0];
+  private void growChainHead(Chain chain) {
+    int[] previousCell = new int[2];
+    int[] currentCell = new int[2];
+    previousCell[0] = chain.head.x;
+    previousCell[1] = chain.head.y;
+
+    WallCoordinate newCellWall = chain.head.getOtherSideCoordinate();
+    currentCell[0] = newCellWall.x;
+    currentCell[1] = newCellWall.y;
+
+    growChainHeadRecursive(chain, currentCell, previousCell);
+  }
+
+  private void growChainTail(Chain chain) {
+    int[] previousCell = new int[2];
+    int[] currentCell = new int[2];
+    previousCell[0] = chain.tail.x;
+    previousCell[1] = chain.tail.y;
+
+    WallCoordinate newCellWall = chain.tail.getOtherSideCoordinate();
+    currentCell[0] = newCellWall.x;
+    currentCell[1] = newCellWall.y;
+
+    growChainTailRecursive(chain, currentCell, previousCell);
+  }
+
+  private void growChainHeadRecursive(Chain toGrow, int[] currentCellCoords,
+                                      int[] previousCellCoords) {
+
+    if (!chainMap.isCellOnBoard(currentCellCoords[0],currentCellCoords[1])) {
+      return;
+    } else {
+      ChainMapCell currentCell = chainMap.getCellXY(currentCellCoords[0],currentCellCoords[1]);
+
+      if (!currentCell.isVisited() && currentCell.isChainSegment()) {
+        currentCell.visit();
+        WallCoordinate[] connections = getConnectionsOfCell(currentCell);
+
+        WallCoordinate possibleNewCellWall;
+        for (int i = 0; i < connections.length; i++) {
+          possibleNewCellWall = connections[i].getOtherSideCoordinate();
+
+          if ((possibleNewCellWall.x != previousCellCoords[0])
+              || (possibleNewCellWall.y != previousCellCoords[1])) {
+
+            toGrow.addCellHead(connections[i]);
+            previousCellCoords[0] = currentCellCoords[0];
+            previousCellCoords[1] = currentCellCoords[1];
+            currentCellCoords[0] = possibleNewCellWall.x;
+            currentCellCoords[1] = possibleNewCellWall.y;
+
+            growChainHeadRecursive(toGrow,currentCellCoords,previousCellCoords);
+            return;
+          }
+        }
+
       } else {
-        chainHead = adjacentOpenWallByIndex[newCellIndex][1];
-        chain.addCellHead(chainHead);
-        newCellIndex = cellAdjacencyList[newCellIndex][1];
+        return;
       }
     }
-    return chain;
   }
 
-  private Chain followChainTail(Chain chain, int tailCellIndex) {
-    WallCoordinate chainTail;
-    int newCellIndex = cellAdjacencyList[tailCellIndex][1];
-    while (isCellAChainLink(newCellIndex) && !visited[newCellIndex]) {
-      visited[newCellIndex] = true;
-      if (cellAdjacencyList[newCellIndex][0] != tailCellIndex) {
-        chainTail = adjacentOpenWallByIndex[newCellIndex][0];
-        chain.addCellHead(chainTail);
-        newCellIndex = cellAdjacencyList[newCellIndex][0];
+  private void growChainTailRecursive(Chain toGrow, int[] currentCellCoords,
+                                      int[] previousCellCoords) {
+    if (!chainMap.isCellOnBoard(currentCellCoords[0],currentCellCoords[1])) {
+      return;
+    } else {
+      ChainMapCell currentCell = chainMap.getCellXY(currentCellCoords[0],currentCellCoords[1]);
+
+      if (!currentCell.isVisited() && currentCell.isChainSegment()) {
+        currentCell.visit();
+        WallCoordinate[] connections = getConnectionsOfCell(currentCell);
+
+        WallCoordinate possibleNewCellWall;
+        for (int i = 0; i < connections.length; i++) {
+          possibleNewCellWall = connections[i].getOtherSideCoordinate();
+
+          if ((possibleNewCellWall.x != previousCellCoords[0])
+              || (possibleNewCellWall.y != previousCellCoords[1])) {
+
+            toGrow.addCellTail(connections[i]);
+            previousCellCoords[0] = currentCellCoords[0];
+            previousCellCoords[1] = currentCellCoords[1];
+            currentCellCoords[0] = possibleNewCellWall.x;
+            currentCellCoords[1] = possibleNewCellWall.y;
+
+            growChainTailRecursive(toGrow,currentCellCoords,previousCellCoords);
+            return;
+          }
+        }
+
       } else {
-        chainTail = adjacentOpenWallByIndex[newCellIndex][1];
-        chain.addCellHead(chainTail);
-        newCellIndex = cellAdjacencyList[newCellIndex][1];
+        return;
       }
     }
-    return chain;
   }
 
+  private void setChainHeadOpenOrClosed(Chain chain) {
+    WallCoordinate headWall = chain.head.getOtherSideCoordinate();
+    if (chainMap.isCellOnBoard(headWall.x,headWall.y)) {
+      ChainMapCell headCell = chainMap.getCellXY(headWall.x, headWall.y);
+      int headDegree = headCell.getDegree();
+      assert (headDegree != 2) : "should not set head open/closed when chain is not grown!";
+      boolean headOpen = (headDegree > 2);
+      chain.setHeadOpen(headOpen);
+    } else {
+      chain.setHeadOpen(true);
+    }
+  }
+
+  private void setChainTailOpenOrClosed(Chain chain) {
+    WallCoordinate tailWall = chain.tail.getOtherSideCoordinate();
+    if (chainMap.isCellOnBoard(tailWall.x,tailWall.y)) {
+      ChainMapCell tailCell = chainMap.getCellXY(tailWall.x, tailWall.y);
+      int tailDegree = tailCell.getDegree();
+      assert (tailDegree != 2): "should not set tail open/closed when chain is not grown!";
+      boolean tailOpen = (tailDegree > 2);
+      chain.setTailOpen(tailOpen);
+    } else {
+      chain.setTailOpen(true);
+    }
+  }
+
+  /**
+   * sortChains(): uses insertion sort to sort chains in ascending order by length.
+   */
   private void sortChains() {
     //implements insertion sort
     Chain keyChain;
@@ -187,36 +209,24 @@ public class ChainFinder {
     }
   }
 
+  private WallCoordinate[] getConnectionsOfCell(ChainMapCell cell) {
+    WallCoordinate[] connections = new WallCoordinate[cell.getDegree()];
+
+    int currentConnectionIndex = 0;
+    int x = cell.getX();
+    int y = cell.getY();
+
+    for (int direction = 0; direction < NUMBER_OF_DIRECTIONS; direction++) {
+      if (cell.isConnectedToNeighbor(direction)) {
+        connections[currentConnectionIndex] = chainMap.getCoordOfCellWall(x,y,direction);
+        currentConnectionIndex += 1;
+      }
+    }
+
+    return connections;
+  }
+
   public LinkedList<Chain> getChains() {
     return chains;
-  }
-
-  private int coordsToIndex(int xCoord, int yCoord) {
-    if (xCoord >= boardWidth) {
-      return -1;
-    } else if (yCoord >= boardHeight) {
-      return -1;
-    } else {
-      return (yCoord * boardWidth + xCoord);
-    }
-  }
-
-  private int[] indexToCoords(int index) {
-    int[] coords = new int[2];
-    coords[0] = index % boardWidth;
-    coords[1] = index / boardWidth;
-    return coords;
-  }
-
-  private boolean isCellAChainLink(int x, int y) {
-    return isCellAChainLinkArray[coordsToIndex(x,y)];
-  }
-
-  private boolean isCellAChainLink(int index) {
-    if (index < 0) {
-      return false;
-    } else {
-      return isCellAChainLinkArray[index];
-    }
   }
 }
