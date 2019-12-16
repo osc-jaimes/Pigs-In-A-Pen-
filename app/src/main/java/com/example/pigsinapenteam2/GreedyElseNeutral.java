@@ -9,10 +9,15 @@ public class GreedyElseNeutral extends Strategy {
     WallCoordinate moveToDo;
     Random random = new Random();
 
+
     if (flags.doCapturesExist) {
       moveToDo = board.captures.get(random.nextInt(board.captures.size()));
     } else {
-      moveToDo = board.neutralMoves.get(random.nextInt(board.neutralMoves.size()));
+      if (!flags.isEndgame) {
+        moveToDo = board.neutralMoves.get(random.nextInt(board.neutralMoves.size()));
+      } else {
+        moveToDo = board.chains.getFirst().head;
+      }
     }
 
     return moveToDo;
