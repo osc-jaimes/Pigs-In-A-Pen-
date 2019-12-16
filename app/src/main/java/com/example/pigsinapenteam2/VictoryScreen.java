@@ -70,4 +70,8 @@ public class VictoryScreen extends AppCompatActivity {
     }
     playerText.setText("No One");
   }
+  public void onBackPressed(){
+    return;
+  }
+
 }

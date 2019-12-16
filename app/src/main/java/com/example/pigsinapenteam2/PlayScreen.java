@@ -346,5 +346,8 @@ public class PlayScreen extends AppCompatActivity {
     cellY = 2;
     isHorizontal = true;
   }
+  public void onBackPressed(){
+    return;
+  }
 
 }
