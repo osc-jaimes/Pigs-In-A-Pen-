@@ -11,8 +11,11 @@ import android.widget.Spinner;
 public class SinglePlayerSetupScreen extends AppCompatActivity {
 
   Spinner gameBoardSizeSpinner;
+  Spinner difficultySpinner;
   public static int boardSize;
+  public static int gameDifficulty;
   protected String sizeText;
+  protected String difficulty;
 
 
   @Override
@@ -24,6 +27,7 @@ public class SinglePlayerSetupScreen extends AppCompatActivity {
 
 
     gameBoardSizeSpinner = findViewById(R.id.board_size_drop_down);
+    difficultySpinner = findViewById(R.id.board_size_drop_down_difficulty);
   }
 
   public void pressStartGameButton(View V){
@@ -38,7 +42,21 @@ public class SinglePlayerSetupScreen extends AppCompatActivity {
       boardSize = 2;
     }
 
+
     Intent goToSinglePlayerPlayScreen = new Intent(getApplicationContext(), SinglePlayerPlayScreen.class);
     startActivity(goToSinglePlayerPlayScreen);
   }
+
+  public void onClickEasy(View v){
+    gameDifficulty = 0;
+  }
+
+  public void onClickMedium(View v){
+    gameDifficulty = 1;
+  }
+
+  public void onClickHard(View v){
+    gameDifficulty = 2;
+  }
+
 }
