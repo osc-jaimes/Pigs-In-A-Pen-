@@ -61,8 +61,6 @@ public class SinglePlayerPlayScreen extends PlayScreen {
   }
 
   public void confirmAction(int cellX, int cellY, boolean isHorizontal){
-    System.out.println(totalScore);
-    System.out.println(gameState.player1Points + " " + gameState.player2Points);
     while(true) {
 
       int tempScore = gameState.player1Points;
@@ -141,6 +139,13 @@ public class SinglePlayerPlayScreen extends PlayScreen {
       width = 5;
       height = 4;
       //this.gameButtons = findViewById(R.id.largeGameButtons); //largeButtons
+    }
+  }
+  public void residentSleeper(){
+    try {
+      Thread.sleep(1000);
+    }catch (InterruptedException e){
+      return;
     }
   }
 }//singlePlayerPlayScreen
