@@ -6,8 +6,6 @@ public class Chain {
   public WallCoordinate tail;
   private boolean isHeadOpen;
   private boolean isTailOpen;
-  private boolean isHeadSet;
-  private boolean isTailSet;
   //a tail or head would be "closed" if you can place a wall there
   //   and immediately get a point.
 
@@ -17,8 +15,6 @@ public class Chain {
     tail = new WallCoordinate();
     isHeadOpen = true;
     isTailOpen = true;
-    isHeadSet = false;
-    isTailSet = false;
   }
 
   public Chain(WallCoordinate chainHead, WallCoordinate chainTail) {
@@ -27,8 +23,6 @@ public class Chain {
     tail = chainTail;
     isHeadOpen = true;
     isTailOpen = true;
-    isTailSet = false;
-    isHeadSet = false;
     if (chainHead == null) {
       throw new NullPointerException("Head cannot be initially null.");
     }
@@ -54,12 +48,10 @@ public class Chain {
   }
 
   public void setTailOpen(boolean tailIsOpen) {
-    isTailSet = true;
     isTailOpen = tailIsOpen;
   }
 
   public void setHeadOpen(boolean headIsOpen) {
-    isHeadSet = true;
     isHeadOpen = headIsOpen;
   }
 
@@ -80,6 +72,17 @@ public class Chain {
       pointsReceived += 1;
     }
     return pointsReceived;
+  }
+
+  public Chain copy() {
+    Chain copyChain = new Chain(head,tail);
+    while (copyChain.length > length) {
+      copyChain.addCellHead(head);
+    }
+    copyChain.setHeadOpen(isHeadOpen);
+    copyChain.setTailOpen(isTailOpen);
+
+    return copyChain;
   }
 
   public String toString() {

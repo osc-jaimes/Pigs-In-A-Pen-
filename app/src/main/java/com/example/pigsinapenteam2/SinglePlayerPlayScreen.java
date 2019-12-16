@@ -89,7 +89,7 @@ public class SinglePlayerPlayScreen extends AppCompatActivity {
     this.gameButtons = findViewById(R.id.gameButtons); //this'll need to go after the sizes are all made
     //===== Players in game =======
     this.player1 = new HumanPlayer();
-    this.player2 = new EasyBotPlayer();
+    this.player2 = new HardBotPlayer();
     this.currentPlayer = player1;
     this.playerHasMoved = false;
     //===== Current Chosen 'Fence' Button =======

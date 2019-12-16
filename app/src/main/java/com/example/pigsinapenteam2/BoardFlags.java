@@ -1,5 +1,7 @@
 package com.example.pigsinapenteam2;
 
+import java.util.LinkedList;
+
 public class BoardFlags {
   public boolean doCapturesExist;
   public boolean doNeutralMovesExist;
@@ -39,11 +41,28 @@ public class BoardFlags {
 
       int yourExpectedPoints = 0;
       int theirExpectedPoints = 0;
+
+      boolean currentHeadOpen;
+      boolean currentTailOpen;
+      LinkedList<Chain> unmarkedChains = new LinkedList<>();
       for (int i = 0; i < simpleBoard.chains.size(); i++) {
+        unmarkedChains.add(simpleBoard.chains.get(i).copy());
+      }
+
+      for (int i = 0; i < unmarkedChains.size(); i++) {
+        currentHeadOpen = unmarkedChains.get(i).getHeadOpen();
+        currentTailOpen = unmarkedChains.get(i).getTailOpen();
+        if (!currentHeadOpen || !currentTailOpen) {
+          yourExpectedPoints += unmarkedChains.get(i).pointValue();
+          unmarkedChains.remove(i);
+        }
+      }
+
+      for (int i = 0; i < unmarkedChains.size(); i++) {
         if (i % 2 == 0) {
-          yourExpectedPoints += simpleBoard.chains.get(i).pointValue();
+          theirExpectedPoints += unmarkedChains.get(i).pointValue();
         } else {
-          theirExpectedPoints += simpleBoard.chains.get(i).pointValue();
+          yourExpectedPoints += unmarkedChains.get(i).pointValue();
         }
       }
 
