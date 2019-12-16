@@ -20,11 +20,13 @@ import android.content.pm.ActivityInfo;
 import android.net.wifi.p2p.WifiP2pManager;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class VictoryScreen extends AppCompatActivity {
   protected Bundle extras;
-
+  ImageView demonPig;
+  boolean demonized = false;
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -75,4 +77,17 @@ public class VictoryScreen extends AppCompatActivity {
     return;
   }
 
+  public void demonize(View v){
+    demonPig = findViewById(R.id.demonPigEasterEgg);
+    if(!demonized) {
+      demonPig.setMaxHeight(100);
+      demonPig.setMaxWidth(100);
+      demonized = true;
+    }
+    else if(demonized){
+      demonPig.setMaxHeight(30);
+      demonPig.setMaxHeight(24);
+      demonized = false;
+    }
+  }
 }
