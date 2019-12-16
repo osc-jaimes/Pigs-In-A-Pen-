@@ -54,7 +54,6 @@ public class ChainFinder {
     for (int i = 0; i < chains.size(); i++) {
       System.out.println(chains.get(i));
     }
-    System.out.println("FINDCHAINS COMPLETE");
   }
 
   private void growChainHead(Chain chain) {
