@@ -6,7 +6,7 @@ public class SimplifiedBoard {
   public LinkedList<Chain> chains;
   public LinkedList<WallCoordinate> legalMoves;
   public LinkedList<WallCoordinate> captures;
-  public LinkedList<WallCoordinate> safeMoves;
+  public LinkedList<WallCoordinate> neutralMoves;
   public int height;
   public int width;
 
@@ -17,7 +17,7 @@ public class SimplifiedBoard {
     chains = new LinkedList<>();
     legalMoves = new LinkedList<>();
     captures = new LinkedList<>();
-    safeMoves = new LinkedList<>();
+    neutralMoves = new LinkedList<>();
     height = 0;
     width = 0;
   }
@@ -32,7 +32,7 @@ public class SimplifiedBoard {
 
     legalMoves = new LinkedList<>(); // you can move here
     captures = new LinkedList<>();   // point gained by moving here
-    safeMoves = new LinkedList<>();  // no one gets a point from this move
+    neutralMoves = new LinkedList<>();  // no one gets a point from this move
 
     WallCoordinate currentWall;
 
@@ -46,7 +46,7 @@ public class SimplifiedBoard {
             if (isWallACapture(board, currentWall)) {
               captures.add(currentWall);
             } else if (!willWallConcedePoint(board, currentWall)) {
-              safeMoves.add(currentWall);
+              neutralMoves.add(currentWall);
             }
           }
         }
