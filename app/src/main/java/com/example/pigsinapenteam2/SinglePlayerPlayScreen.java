@@ -131,7 +131,7 @@ public class SinglePlayerPlayScreen extends PlayScreen {
 
       width = 4;
       height = 3;
-      //this.gameButtons = findViewById(R.id.mediumGameButtons); //mediumButtons
+      this.gameButtons = findViewById(R.id.mediumGameButtons); //mediumButtons
     } else if (SinglePlayerSetupScreen.boardSize == 2) {
       width = 5;
       height = 4;
