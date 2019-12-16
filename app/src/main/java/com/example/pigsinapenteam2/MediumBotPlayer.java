@@ -1,5 +1,11 @@
 package com.example.pigsinapenteam2;
 
+/**
+ *  MediumBotPlayer: plays the game at medium difficulty.
+ *
+ *  doMove(GameState) -> GameState:
+ *    picks the move to do and applies it.
+ */
 public class MediumBotPlayer extends BotPlayer {
   private Strategy strategy;
 
@@ -10,6 +16,13 @@ public class MediumBotPlayer extends BotPlayer {
     strategy = new GreedyElseNeutral();
   }
 
+  /**
+   * doMove(GameState) -> GameState:
+   *    picks the move to do and applies it.
+   *
+   * @param inputGameState: starting game state.
+   * @return: new game state.
+   */
   @Override
   public GameState doMove(GameState inputGameState) {
     //new and improved version
