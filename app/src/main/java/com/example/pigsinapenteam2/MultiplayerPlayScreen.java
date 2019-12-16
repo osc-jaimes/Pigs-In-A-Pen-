@@ -4,14 +4,10 @@
  */
 package com.example.pigsinapenteam2;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
 /**
  * @author Oscar Jaimes
@@ -40,7 +36,7 @@ public class MultiplayerPlayScreen extends PlayScreen {
     confirmButtonPlayer2 = findViewById(R.id.confirmButtonPlayer2);
     confirmButtonPlayer2.setVisibility(View.GONE);
     this.pauseMenuLayout = findViewById(R.id.pauseMenuLayout);
-    this.gameButtons = findViewById(R.id.gameButtons);
+    this.gameButtons = findViewById(R.id.smallGameButtons);
 
 
 

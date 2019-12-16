@@ -6,8 +6,6 @@ public class Chain {
   public WallCoordinate tail;
   private boolean isHeadOpen;
   private boolean isTailOpen;
-  private boolean isHeadSet;
-  private boolean isTailSet;
   //a tail or head would be "closed" if you can place a wall there
   //   and immediately get a point.
 
@@ -17,18 +15,14 @@ public class Chain {
     tail = new WallCoordinate();
     isHeadOpen = true;
     isTailOpen = true;
-    isHeadSet = false;
-    isTailSet = false;
   }
 
   public Chain(WallCoordinate chainHead, WallCoordinate chainTail) {
     length = 1;
     head = chainHead;
     tail = chainTail;
-    isTailOpen = true;
     isHeadOpen = true;
-    isTailSet = false;
-    isHeadSet = false;
+    isTailOpen = true;
     if (chainHead == null) {
       throw new NullPointerException("Head cannot be initially null.");
     }
@@ -54,44 +48,49 @@ public class Chain {
   }
 
   public void setTailOpen(boolean tailIsOpen) {
-    isTailSet = true;
     isTailOpen = tailIsOpen;
   }
 
   public void setHeadOpen(boolean headIsOpen) {
-    isHeadSet = true;
     isHeadOpen = headIsOpen;
   }
 
-  public boolean getHeadOpen() throws ChainEndOpenFlagUnsetException {
-    if (!isHeadSet) {
-      throw new ChainEndOpenFlagUnsetException("Head flag not yet set.");
-    } else {
-      return isHeadOpen;
-    }
+  public boolean getHeadOpen() {
+    return isHeadOpen;
   }
 
-  public boolean getTailOpen() throws ChainEndOpenFlagUnsetException {
-    if (!isTailSet) {
-      throw new ChainEndOpenFlagUnsetException("Tail flag not yet set.");
-    } else {
-      return isTailOpen;
+  public boolean getTailOpen() {
+    return isTailOpen;
+  }
+
+  public int pointValue() {
+    int pointsReceived = length;
+    if (!isHeadOpen) {
+      pointsReceived += 1;
     }
+    if (!isTailOpen) {
+      pointsReceived += 1;
+    }
+    return pointsReceived;
+  }
+
+  public Chain copy() {
+    Chain copyChain = new Chain(head,tail);
+    while (copyChain.length > length) {
+      copyChain.addCellHead(head);
+    }
+    copyChain.setHeadOpen(isHeadOpen);
+    copyChain.setTailOpen(isTailOpen);
+
+    return copyChain;
   }
 
   public String toString() {
     String outputString = "";
-    outputString += "length: " + length + "\n";
-    outputString += "head: " + head + "\n";
-    outputString += "tail: " + tail + "\n";
+    outputString += "[" + head.x + " " + head.y;
+    outputString += " : " + length + " : ";
+    outputString += tail.x + " " + tail.y + "]";
     return outputString;
-  }
-
-  private class ChainEndOpenFlagUnsetException extends Exception {
-    public ChainEndOpenFlagUnsetException(String message){
-      super(message);
-    }
-    public ChainEndOpenFlagUnsetException(){}
   }
 }
 

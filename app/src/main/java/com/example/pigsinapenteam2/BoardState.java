@@ -54,6 +54,12 @@ public class BoardState {
   }//getHeight
 
   //=======================================================================================
+
+  public int[][][] getBoardData(){
+
+    return boardData;
+
+  }
   /**
    * gets data from the saved cell data at the specified coordinates
    * @param row
@@ -99,7 +105,7 @@ public class BoardState {
    * @param cols                                           |          |
    * @param                                                *----------*
    */
-  private void setTopWallState(int row, int cols){
+  public void setTopWallState(int row, int cols){
 
     if(row >= height){
 
@@ -138,7 +144,7 @@ public class BoardState {
    * @param cols                                          |          |
    *                                                      *----------*
    */
-  private void setRightWallState(int row, int cols){
+  public void setRightWallState(int row, int cols){
 
     boardData[row][cols][rightWallState] = 1;
 
@@ -157,7 +163,7 @@ public class BoardState {
   }//getBottomWallState
 
   //=======================================================================================
-  private void setBottomWallState(int row, int cols){
+  public void setBottomWallState(int row, int cols){
 
     boardData[row][cols][bottomWallState] = 1;
 
@@ -176,7 +182,7 @@ public class BoardState {
   }//getLeftWallState
 
   //=======================================================================================
-  private void setLeftWallState(int row, int cols){
+  public void setLeftWallState(int row, int cols){
 
     if(cols >= width){
 

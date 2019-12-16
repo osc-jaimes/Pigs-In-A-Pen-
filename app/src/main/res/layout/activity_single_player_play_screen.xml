@@ -129,7 +129,7 @@
         app:srcCompat="@drawable/grass_background" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/gameButtons"
+        android:id="@+id/smallGameButtons"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:visibility="gone"
@@ -535,7 +535,7 @@
         android:id="@+id/mediumGameButtons"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="visible"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
