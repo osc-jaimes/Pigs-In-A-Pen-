@@ -36,19 +36,19 @@ public class SinglePlayerPlayScreen extends PlayScreen {
    startGameButtonsGone();
 
     //===== Game Buttons Layout ======
-    this.gameButtons = findViewById(R.id.gameButtons); //this'll need to go after the sizes are all made
+    gameButtons = findViewById(R.id.gameButtons); //this'll need to go after the sizes are all made
     //===== Players in game =======
-    this.player2 = new EasyBotPlayer(height,width);
-    this.currentPlayer = player1;
-    this.playerHasMoved = false;
+    player2 = new EasyBotPlayer(height,width);
+    currentPlayer = player1;
+    playerHasMoved = false;
     //===== Current Chosen 'Fence' Button =======
-    this.currentButton = null;
+    currentButton = null;
     //===== Board State & Game State ======
     BoardState boardState = new BoardState(width,height);
-    this.gameState = new GameState(boardState, this.player1, this.player2,0);
+    gameState = new GameState(boardState, player1, player2,0);
     //===== Full Screen =====
     ScreenLogic.fullScreen(this);
-    this.totalScore = (width * height) ;
+    totalScore = (width * height) ;
   }
 
 
@@ -262,42 +262,34 @@ public class SinglePlayerPlayScreen extends PlayScreen {
    * @param v
    */
   public void onClickConfirmationButton(View v) {
-    System.out.println("Player 1: " + gameState.player1Points + ": " + gameState.player2Points);
-    System.out.println(this.gameState.currentBoardState);
-    this.currentButton.setClickable(false);
-    this.currentButton = null;
-    this.playerHasMoved = true;
-    this.confirmButton.setVisibility(View.GONE);
-    this.confirmAction(this.cellX, this.cellY, this.isHorizontal);
+    currentButton.setClickable(false);
+    currentButton = null;
+    playerHasMoved = true;
+    confirmButton.setVisibility(View.GONE);
+    confirmAction(cellX, cellY, isHorizontal);
   }
 
   public void confirmAction(int cellX, int cellY, boolean isHorizontal){
 
     while(true) {
 
-      int tempScore = this.gameState.player1Points;
+      int tempScore = gameState.player1Points;
+      gameState = player1.doMove(gameState, cellX, cellY, PLAYERONEINT, isHorizontal);
+      gameState.runBoardCheck();
+      updateScore();
 
-      this.gameState = player1.doMove(this.gameState, cellX, cellY, PLAYERONEINT, isHorizontal);
-      System.out.println(this.gameState.currentBoardState);
-
-      System.out.println("playerOne Score is: " + gameState.player1Points);
-      System.out.println("BOARD STATE BEFORE BoardCheck: ");
-      System.out.println(this.gameState.currentBoardState);
-
-      this.gameState.runBoardCheck();
-
-    this.updateScore();
     if (gameState.player1Points + gameState.player2Points == totalScore) {
       endGame();
       return;
     }
+
       this.updateScore();
       if (gameState.player1Points + gameState.player2Points == totalScore) {
         endGame();
         return;
       }//if
 
-      if(tempScore == this.gameState.player1Points){
+      if(tempScore == gameState.player1Points){
 
         break;
 
@@ -311,30 +303,15 @@ public class SinglePlayerPlayScreen extends PlayScreen {
     }//while loop
 
     while (true) {
-      int tempScorePlayer2 = this.gameState.player2Points;
+      int tempScorePlayer2 = gameState.player2Points;
       if (true) {
-        this.gameState = player2.doMove(this.gameState);
-
-
-        String id = this.gameState.botLastMove.getButtonName();
-
-
-      System.out.println("BOARD STATE BEFORE AI do MOVE: ");
-      System.out.println(this.gameState.currentBoardState);
-     this.gameState.runBoardCheck();
-      this.updateScore();
-
-
-
-        System.out.println("BOARD STATE BEFORE AI do MOVE: ");
-        System.out.println(this.gameState.currentBoardState);
-        this.gameState.runBoardCheck();
-
-        System.out.println("AI score is: " + this.gameState.player2Points);
+        gameState = player2.doMove(gameState);
+        String id = gameState.botLastMove.getButtonName();
+        gameState.runBoardCheck();
+        updateScore();
+        gameState.runBoardCheck();
         int resID = this.getResources().getIdentifier(id, "id", this.getPackageName());
         Button AIButton = findViewById(resID);
-
-
         AIButton.setBackgroundColor(getResources().getColor(R.color.fences));
         AIButton.setVisibility(View.VISIBLE);
         AIButton.setClickable(false);
@@ -345,7 +322,7 @@ public class SinglePlayerPlayScreen extends PlayScreen {
         return;
       }//if
 
-      if(tempScorePlayer2 == this.gameState.player2Points){
+      if(tempScorePlayer2 == gameState.player2Points){
         break;
       }//if statement
     }//while loop
