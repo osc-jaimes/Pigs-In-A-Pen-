@@ -30,7 +30,10 @@ public class SimplifiedBoard {
     chainFinder.findChains();
     chains = chainFinder.getChains();
 
-    /*
+    legalMoves = new LinkedList<>(); // you can move here
+    captures = new LinkedList<>();   // point gained by moving here
+    safeMoves = new LinkedList<>();  // no one gets a point from this move
+
     WallCoordinate currentWall;
 
     for (int yIndex = 0; yIndex < height; yIndex++) {
@@ -38,20 +41,17 @@ public class SimplifiedBoard {
         for (int wallIndex = 0; wallIndex < 4; wallIndex++) {
           currentWall = new WallCoordinate(xIndex, yIndex, wallIndex, height, width);
 
-          if (super.isWallLegal(state, currentWall)) {
-            if (super.isWallACapture(state, currentWall)) {
-              possibleCaptures.add(currentWall);
-            } else if (!super.willWallConcedePoint(state, currentWall)) {
-              possibleMovesNoConcedeNoCapture.add(currentWall);
+          if (isWallLegal(board, currentWall)) {
+            legalMoves.add(currentWall);
+            if (isWallACapture(board, currentWall)) {
+              captures.add(currentWall);
+            } else if (!willWallConcedePoint(board, currentWall)) {
+              safeMoves.add(currentWall);
             }
           }
         }
       }
-    }*/
-
-    legalMoves = new LinkedList<>();
-    captures = new LinkedList<>();
-    safeMoves = new LinkedList<>();
+    }
   }
 
   /**
