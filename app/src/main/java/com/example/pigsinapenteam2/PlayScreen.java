@@ -559,20 +559,6 @@ public class PlayScreen extends AppCompatActivity {
     isHorizontal = true;
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   public void onBackPressed(){
     return;
   }
