@@ -26,7 +26,6 @@ public class PlayScreen extends AppCompatActivity {
   //Views
   public View pauseMenuLayout;
   public View gameButtons;
-  public View smallGameButtons; //for when sizes are in - also need normal + large
   TextView player1ScoreBoard;
   TextView player2ScoreBoard;
 
@@ -46,8 +45,8 @@ public class PlayScreen extends AppCompatActivity {
 
   public void scoreBoardDefaulter(){
     player1ScoreBoard = findViewById(R.id.player1Score);
-    player1ScoreBoard.setText("0");
     player2ScoreBoard = findViewById(R.id.player2Score);
+    player1ScoreBoard.setText("0");
     player2ScoreBoard.setText("0");
   }
 
