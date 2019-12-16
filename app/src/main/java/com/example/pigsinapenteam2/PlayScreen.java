@@ -42,23 +42,7 @@ public class PlayScreen extends AppCompatActivity {
   public boolean isHorizontal;
   public static boolean isMultiplayer;
 
-  public void boardSizeSetter() {
-    if (SinglePlayerSetupScreen.boardSize == 0) {
-      width = 3;
-      height = 2;
-      this.gameButtons = findViewById(R.id.smallGameButtons); //smallButtons
 
-    } else if (SinglePlayerSetupScreen.boardSize == 1) {
-
-      width = 4;
-      height = 3;
-      //this.gameButtons = findViewById(R.id.mediumGameButtons); //mediumButtons
-    } else if (SinglePlayerSetupScreen.boardSize == 2) {
-      width = 5;
-      height = 4;
-      //this.gameButtons = findViewById(R.id.largeGameButtons); //largeButtons
-    }
-  }
   public void scoreBoardDefaulter(){
     player1ScoreBoard = findViewById(R.id.player1Score);
     player1ScoreBoard.setText("0");
