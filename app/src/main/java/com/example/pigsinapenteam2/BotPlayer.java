@@ -162,5 +162,11 @@ public class BotPlayer extends Player {
       return false;
     }
   }
+
+  protected BoardState applyMove(WallCoordinate moveToDo, BoardState board) {
+    int[] coordsOfMove = moveToDo.getIndexForm();
+    board.setWallAi(coordsOfMove[0], coordsOfMove[1], coordsOfMove[2]);
+    return board;
+  }
 }
 
