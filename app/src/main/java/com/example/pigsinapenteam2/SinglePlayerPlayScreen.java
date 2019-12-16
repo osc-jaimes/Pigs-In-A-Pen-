@@ -16,7 +16,6 @@ public class SinglePlayerPlayScreen extends PlayScreen {
   public BotPlayer player2;
 
   //Final Variables
-  public final int PLAYERTWOINT = 2;
   //Booleans
 
 
@@ -48,7 +47,7 @@ public class SinglePlayerPlayScreen extends PlayScreen {
     gameState = new GameState(boardState, player1, player2,0);
     //===== Full Screen =====
     ScreenLogic.fullScreen(this);
-    totalScore = (width * height) ;
+    totalScore = (width * height);
   }
 
 
@@ -114,7 +113,6 @@ public class SinglePlayerPlayScreen extends PlayScreen {
 
       if (gameState.player1Points + gameState.player2Points == totalScore) {
         endGame();
-        return;
       }//if
 
       if(tempScorePlayer2 == gameState.player2Points){

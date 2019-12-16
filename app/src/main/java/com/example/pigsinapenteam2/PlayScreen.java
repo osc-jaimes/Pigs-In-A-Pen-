@@ -16,6 +16,8 @@ public class PlayScreen extends AppCompatActivity {
   public HumanPlayer player1 = new HumanPlayer();
 
   public final int PLAYERONEINT = 1;
+  public final int PLAYERTWOINT = 2;
+
 
   //Buttons
   public Button confirmButton;
@@ -128,14 +130,20 @@ public class PlayScreen extends AppCompatActivity {
   }
 
   public void endGame(){
+    System.out.println("YEEET");
+    System.out.println(gameState.player1Points + " " + gameState.player2Points);
     Intent goToWinScreen = new Intent(getApplicationContext(), VictoryScreen.class);
     if(gameState.player2Points > gameState.player1Points){
+      System.out.println("a");
       goToWinScreen.putExtra("playerWhoWon", 1);
     }
     else if(gameState.player1Points > gameState.player2Points){
+      System.out.println("b");
       goToWinScreen.putExtra("playerWhoWon", 0);
     }
     else if(gameState.player1Points == gameState.player2Points){
+      System.out.println("c");
+
       goToWinScreen.putExtra("playerWhoWon", 2);
     }
     startActivity(goToWinScreen);
@@ -155,7 +163,7 @@ public class PlayScreen extends AppCompatActivity {
    * @param v
    */
   public void onClickVertical2(View v) {
-    this.buttonClicked(v);
+    buttonClicked(v);
     cellX = 0;
     cellY = 1;
     isHorizontal = false;
@@ -167,7 +175,7 @@ public class PlayScreen extends AppCompatActivity {
    * @param v
    */
   public void onClickVertical3(View v) {
-    this.buttonClicked(v);
+    buttonClicked(v);
     cellX = 0;
     cellY = 2;
     isHorizontal = false;
@@ -179,7 +187,7 @@ public class PlayScreen extends AppCompatActivity {
    * @param v
    */
   public void onClickVertical4(View v) {
-    this.buttonClicked(v);
+    buttonClicked(v);
     cellX = 0;
     cellY = 3;
     isHorizontal = false;
@@ -191,7 +199,7 @@ public class PlayScreen extends AppCompatActivity {
    * @param v
    */
   public void onClickVertical5(View v) {
-    this.buttonClicked(v);
+    buttonClicked(v);
     cellX = 1;
     cellY = 0;
     isHorizontal = false;
@@ -203,7 +211,7 @@ public class PlayScreen extends AppCompatActivity {
    * @param v
    */
   public void onClickVertical6(View v) {
-    this.buttonClicked(v);
+    buttonClicked(v);
     cellX = 1;
     cellY = 1;
     isHorizontal = false;
@@ -215,7 +223,7 @@ public class PlayScreen extends AppCompatActivity {
    * @param v
    */
   public void onClickVertical7(View v) {
-    this.buttonClicked(v);
+    buttonClicked(v);
     cellX = 1;
     cellY = 2;
     isHorizontal = false;
@@ -227,7 +235,7 @@ public class PlayScreen extends AppCompatActivity {
    * @param v
    */
   public void onClickVertical8(View v) {
-    this.buttonClicked(v);
+    buttonClicked(v);
     cellX = 1;
     cellY = 3;
     isHorizontal = false;
@@ -239,7 +247,7 @@ public class PlayScreen extends AppCompatActivity {
    * @param v
    */
   public void onClickHorizontal1(View v) {
-    this.buttonClicked(v);
+    buttonClicked(v);
     cellX = 0;
     cellY = 0;
     isHorizontal = true;
@@ -251,7 +259,7 @@ public class PlayScreen extends AppCompatActivity {
    * @param v
    */
   public void onClickHorizontal2(View v) {
-    this.buttonClicked(v);
+    buttonClicked(v);
     cellX = 0;
     cellY = 1;
     isHorizontal = true;
@@ -263,7 +271,7 @@ public class PlayScreen extends AppCompatActivity {
    * @param v
    */
   public void onClickHorizontal3(View v) {
-    this.buttonClicked(v);
+    buttonClicked(v);
     cellX = 0;
     cellY = 2;
     isHorizontal = true;
@@ -275,7 +283,7 @@ public class PlayScreen extends AppCompatActivity {
    * @param v
    */
   public void onClickHorizontal4(View v) {
-    this.buttonClicked(v);
+    buttonClicked(v);
     cellX = 1;
     cellY = 0;
     isHorizontal = true;
@@ -287,7 +295,7 @@ public class PlayScreen extends AppCompatActivity {
    * @param v
    */
   public void onClickHorizontal5(View v) {
-    this.buttonClicked(v);
+    buttonClicked(v);
     cellX = 1;
     cellY = 1;
     isHorizontal = true;
@@ -299,7 +307,7 @@ public class PlayScreen extends AppCompatActivity {
    * @param v
    */
   public void onClickHorizontal6(View v) {
-    this.buttonClicked(v);
+    buttonClicked(v);
     cellX = 1;
     cellY = 2;
     isHorizontal = true;
@@ -311,7 +319,7 @@ public class PlayScreen extends AppCompatActivity {
    * @param v
    */
   public void onClickHorizontal7(View v) {
-    this.buttonClicked(v);
+    buttonClicked(v);
     cellX = 2;
     cellY = 0;
     isHorizontal = true;
@@ -323,7 +331,7 @@ public class PlayScreen extends AppCompatActivity {
    * @param v
    */
   public void onClickHorizontal8(View v) {
-    this.buttonClicked(v);
+    buttonClicked(v);
     cellX = 2;
     cellY = 1;
     isHorizontal = true;
@@ -335,7 +343,7 @@ public class PlayScreen extends AppCompatActivity {
    * @param v
    */
   public void onClickHorizontal9(View v) {
-    this.buttonClicked(v);
+    buttonClicked(v);
     cellX = 2;
     cellY = 2;
     isHorizontal = true;
