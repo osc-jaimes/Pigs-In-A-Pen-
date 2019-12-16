@@ -2,6 +2,21 @@ package com.example.pigsinapenteam2;
 
 import java.util.LinkedList;
 
+/**
+ * isWallACapture(BoardState, WallCoordinate) -> boolean:
+ *    states whether taking the wall will give you a point.
+ *
+ * isWallLegal(BoardState, WallCoordinate) -> boolean:
+ *    states whether taking the wall is a legal play.
+ *
+ * willWallConcedePoint(BoardState, WallCoordinate) -> boolean:
+ *    states whether placing at this location will give opponent an
+ *    opportunity to gain a point.
+ *
+ * willWallConcedePointOneSided(BoardState, WallCoordinate) -> boolean:
+ *    states whether placing at this location will give opponent an
+ *    opportunity to gain a point, relative to one side.
+ */
 public class SimplifiedBoard {
   public LinkedList<Chain> chains;
   public LinkedList<WallCoordinate> legalMoves;

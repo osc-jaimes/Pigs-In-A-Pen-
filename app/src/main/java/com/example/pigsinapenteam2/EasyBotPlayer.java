@@ -1,8 +1,5 @@
 package com.example.pigsinapenteam2;
 
-import java.util.LinkedList;
-import java.util.Random;
-
 /**
  * EasyBotPlayer: (easy mode) plays so you don't have to.
  */
@@ -13,9 +10,7 @@ public class EasyBotPlayer extends BotPlayer {
   private final int BOT_MARK = 2;
 
 
-  public EasyBotPlayer(int height, int width) {
-    super(height,width);
-
+  public EasyBotPlayer() {
     strategy = new GreedyElseRandom();
   }
 
