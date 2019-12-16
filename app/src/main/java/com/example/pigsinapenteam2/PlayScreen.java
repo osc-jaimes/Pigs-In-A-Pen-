@@ -1,3 +1,9 @@
+/**
+ * Jared Boonstra - 1572694
+ * PlayScreen.java
+ *
+ * Holds functions + info that both the multiplayer and singleplayer screen have. Passes them on to both of them.
+ */
 package com.example.pigsinapenteam2;
 
 import android.content.Intent;
@@ -14,9 +20,6 @@ public class PlayScreen extends AppCompatActivity {
 
   //players
   public HumanPlayer player1 = new HumanPlayer();
-
-  public final int PLAYERONEINT = 1;
-  public final int PLAYERTWOINT = 2;
 
 
   //Buttons
@@ -35,6 +38,8 @@ public class PlayScreen extends AppCompatActivity {
   public int totalScore;
   public int width;
   public int height;
+  public final int PLAYERONEINT = 1;
+  public final int PLAYERTWOINT = 2;
 
 
   //Bools
@@ -42,7 +47,11 @@ public class PlayScreen extends AppCompatActivity {
   public boolean isHorizontal;
   public static boolean isMultiplayer;
 
-
+  /**
+   * ScoreBoardDefaulter
+   *
+   * Sets the scoreBoard to the correct view and sets them to 0.
+   */
   public void scoreBoardDefaulter(){
     player1ScoreBoard = findViewById(R.id.player1Score);
     player2ScoreBoard = findViewById(R.id.player2Score);
@@ -50,6 +59,11 @@ public class PlayScreen extends AppCompatActivity {
     player2ScoreBoard.setText("0");
   }
 
+  /**
+   * startGameButtonsGone
+   *
+   * Finds the views of the confirm button for player one (Which both single and multiplayer share), and the view of the pause menu layout. Makes them GONE for now
+   */
   public void startGameButtonsGone(){
     //===== Confirm Button ===========
     confirmButton = findViewById(R.id.confirmButtonPlayer1);
@@ -113,6 +127,11 @@ public class PlayScreen extends AppCompatActivity {
     player2ScoreBoard.setText("" + gameState.player2Points);
   }
 
+  /**
+   * endGame
+   *
+   * Compares scores of two players then sends an int corresponding to that player to the winner screen
+   */
   public void endGame(){
     Intent goToWinScreen = new Intent(getApplicationContext(), VictoryScreen.class);
     if(gameState.player2Points > gameState.player1Points){
@@ -556,7 +575,7 @@ public class PlayScreen extends AppCompatActivity {
     isHorizontal = true;
   }
 
-  public void onBackPressed(){
+  public void onBackPressed(){//so they can't use the back button during a game. CHEATERS
     return;
   }
 

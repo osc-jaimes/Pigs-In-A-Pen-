@@ -11,6 +11,7 @@ import android.widget.Button;
 
 /**
  * @author Oscar Jaimes
+ * edited by Jared Boonstra
  */
 public class MultiplayerPlayScreen extends PlayScreen {
 

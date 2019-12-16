@@ -1,3 +1,10 @@
+/**
+ * Jared Boonstra + Osccar Jaimes
+ *
+ * MultiplayerSetupScreen
+ *
+ * Does the stuff that sets the settings for the multiplayer game to run off of.
+ */
 package com.example.pigsinapenteam2;
 
 import androidx.appcompat.app.AppCompatActivity;
