@@ -112,7 +112,7 @@
         app:srcCompat="@drawable/grass_background" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/gameButtons"
+        android:id="@+id/smallGameButtons"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -149,7 +149,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/player2Score"
+            android:id="@+id/player2score"
             android:layout_width="93dp"
             android:layout_height="34dp"
             android:layout_marginStart="395dp"

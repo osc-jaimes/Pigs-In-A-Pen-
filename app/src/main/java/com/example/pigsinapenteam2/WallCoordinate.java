@@ -150,7 +150,7 @@ public class WallCoordinate {
     return (xCorrect && yCorrect);
   }
 
-  public String getButtonName() {
+  public String getButtonName(int mapSize) {
     String buttonName = "";
     if (isHorizontal()) {
       buttonName += "h";
@@ -170,6 +170,36 @@ public class WallCoordinate {
         cellNum += 1;
       }
     }
+
+    int smallMapCode = 0;
+    int mediumMapCode = 1;
+    int largeMapCode = 2;
+
+    int smallMapWidth = 3;
+    int smallMapHeight = 2;
+    int mediumMapWidth = 4;
+    int mediumMapHeight = 3;
+    int smallMapHorizontalWalls = smallMapWidth * (smallMapHeight + 1);
+    int smallMapVerticalWalls = (smallMapWidth + 1) * smallMapHeight;
+    int mediumMapHorizontalWalls = mediumMapWidth * (mediumMapHeight + 1);
+    int mediumMapVerticalWalls = (mediumMapWidth + 1) * mediumMapHeight;
+
+    if (isHorizontal()) {
+      if (mapSize == mediumMapCode) {
+        cellNum += smallMapHorizontalWalls;
+      }
+      if (mapSize == largeMapCode) {
+        cellNum += mediumMapHorizontalWalls;
+      }
+    } else {
+      if (mapSize == mediumMapCode) {
+        cellNum += smallMapVerticalWalls;
+      }
+      if (mapSize == largeMapCode) {
+        cellNum += mediumMapVerticalWalls;
+      }
+    }
+
 
     buttonName += cellNum;
 

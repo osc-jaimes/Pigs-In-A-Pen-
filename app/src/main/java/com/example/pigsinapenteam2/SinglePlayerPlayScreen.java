@@ -1,7 +1,6 @@
 package com.example.pigsinapenteam2;
 
 
-import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
@@ -28,16 +27,16 @@ public class SinglePlayerPlayScreen extends PlayScreen {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_single_player_play_screen);
     setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-    this.isMultiplayer = false;
+    isMultiplayer = false;
 
    boardSizeSetter();
    scoreBoardDefaulter();
    startGameButtonsGone();
 
     //===== Game Buttons Layout ======
-    gameButtons = findViewById(R.id.gameButtons); //this'll need to go after the sizes are all made
+    gameButtons.setVisibility(View.VISIBLE);
     //===== Players in game =======
-    player2 = new EasyBotPlayer(height,width);
+    player2 = new EasyBotPlayer();
     currentPlayer = player1;
     playerHasMoved = false;
     //===== Current Chosen 'Fence' Button =======
@@ -64,7 +63,8 @@ public class SinglePlayerPlayScreen extends PlayScreen {
   }
 
   public void confirmAction(int cellX, int cellY, boolean isHorizontal){
-
+    System.out.println(totalScore);
+    System.out.println(gameState.player1Points + " " + gameState.player2Points);
     while(true) {
 
       int tempScore = gameState.player1Points;
@@ -100,7 +100,7 @@ public class SinglePlayerPlayScreen extends PlayScreen {
       int tempScorePlayer2 = gameState.player2Points;
       if (true) {
         gameState = player2.doMove(gameState);
-        String id = gameState.botLastMove.getButtonName();
+        String id = gameState.botLastMove.getButtonName(SinglePlayerSetupScreen.boardSize);
         gameState.runBoardCheck();
         updateScore();
         gameState.runBoardCheck();
@@ -113,6 +113,7 @@ public class SinglePlayerPlayScreen extends PlayScreen {
 
       if (gameState.player1Points + gameState.player2Points == totalScore) {
         endGame();
+        return;
       }//if
 
       if(tempScorePlayer2 == gameState.player2Points){
@@ -120,5 +121,22 @@ public class SinglePlayerPlayScreen extends PlayScreen {
       }//if statement
     }//while loop
 
+  }
+  public void boardSizeSetter() {
+    if (SinglePlayerSetupScreen.boardSize == 0) {
+      width = 3;
+      height = 2;
+      this.gameButtons = findViewById(R.id.smallGameButtons); //smallButtons
+
+    } else if (SinglePlayerSetupScreen.boardSize == 1) {
+
+      width = 4;
+      height = 3;
+      this.gameButtons = findViewById(R.id.mediumGameButtons); //mediumButtons
+    } else if (SinglePlayerSetupScreen.boardSize == 2) {
+      width = 5;
+      height = 4;
+      //this.gameButtons = findViewById(R.id.largeGameButtons); //largeButtons
+    }
   }
 }//singlePlayerPlayScreen
