@@ -12,8 +12,10 @@ public class EasyBotPlayer extends BotPlayer {
   private LinkedList<WallCoordinate> possibleCaptures;
   private LinkedList<WallCoordinate> possibleMoves;
 
+  Strategy strategy;
+
   //edit by Benjamin
-  private int botMark;
+  private final int BOT_MARK = 2;
 
 
   public EasyBotPlayer(int height, int width) {
@@ -22,11 +24,13 @@ public class EasyBotPlayer extends BotPlayer {
     boardWidth = width;
     possibleMoves = new LinkedList<>();
     possibleCaptures = new LinkedList<>();
-    botMark = 2;
+
+    strategy = new GreedyElseRandom();
   }
 
   @Override
   public GameState doMove(GameState inputGameState) {
+    /*
     BoardState state = inputGameState.currentBoardState;
     WallCoordinate moveToDo;
 
@@ -44,7 +48,21 @@ public class EasyBotPlayer extends BotPlayer {
     inputGameState.currentBoardState = state;
 
     //edit by Benjamin
-    inputGameState.currentBoardCheck.boardChecker(botMark);
+    inputGameState.currentBoardCheck.boardChecker(BOT_MARK);
+
+    return inputGameState;
+     */
+
+    //new and improved version
+    BoardState oldBoard = inputGameState.currentBoardState;
+    SimplifiedBoard simpleBoard = new SimplifiedBoard(oldBoard);
+    BoardFlags flags = new BoardFlags(simpleBoard);
+
+    WallCoordinate moveToDo = strategy.chooseMove(flags, simpleBoard);
+    BoardState newBoard = super.applyMove(moveToDo, oldBoard);
+    inputGameState.currentBoardState = newBoard;
+
+    inputGameState.currentBoardCheck.boardChecker(BOT_MARK);
 
     return inputGameState;
   }
