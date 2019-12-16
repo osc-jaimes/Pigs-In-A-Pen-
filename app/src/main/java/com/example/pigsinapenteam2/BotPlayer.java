@@ -26,21 +26,13 @@ package com.example.pigsinapenteam2;
  *    opportunity to gain a point, relative to one side.
  */
 public class BotPlayer extends Player {
-  private int boardWidth;
-  private int boardHeight;
-  private int numBoardCells;
-
   private final int NO_WALL = 0;
   private final int WALL_PRESENT = 1;
 
   /**
    * default constructor.
    */
-  public BotPlayer() {
-    boardWidth = 0;
-    boardHeight = 0;
-    numBoardCells = 0;
-  }
+  public BotPlayer() {}
 
   /**
    * BotPlayer(int,int):
@@ -49,11 +41,7 @@ public class BotPlayer extends Player {
    * @param height: height of the board
    * @param width: width of the board
    */
-  public BotPlayer(int height, int width) {
-    boardWidth = width;
-    boardHeight = height;
-    numBoardCells = width * height;
-  }
+  public BotPlayer(int height, int width) {}
 
   /**
    * doMove(GameState) -> GameState:
