@@ -46,7 +46,7 @@ public class PlayScreen extends AppCompatActivity {
     if (SinglePlayerSetupScreen.boardSize == 0) {
       width = 3;
       height = 2;
-      //this.gameButtons = findViewById(R.id.smallGameButtons); //smallButtons
+      this.gameButtons = findViewById(R.id.smallGameButtons); //smallButtons
 
     } else if (SinglePlayerSetupScreen.boardSize == 1) {
 
@@ -136,12 +136,11 @@ public class PlayScreen extends AppCompatActivity {
       goToWinScreen.putExtra("playerWhoWon", 1);
     }
     else if(gameState.player1Points > gameState.player2Points){
-      System.out.println("b");
+      System.out.println("b")
       goToWinScreen.putExtra("playerWhoWon", 0);
     }
     else if(gameState.player1Points == gameState.player2Points){
       System.out.println("c");
-
       goToWinScreen.putExtra("playerWhoWon", 2);
     }
     startActivity(goToWinScreen);
