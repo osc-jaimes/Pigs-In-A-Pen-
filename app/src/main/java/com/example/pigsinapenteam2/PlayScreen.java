@@ -42,18 +42,18 @@ public class PlayScreen extends AppCompatActivity {
 
   public void boardSizeSetter() {
     if (SinglePlayerSetupScreen.boardSize == 0) {
-      this.width = 3;
-      this.height = 2;
+      width = 3;
+      height = 2;
       //this.gameButtons = findViewById(R.id.smallGameButtons); //smallButtons
 
     } else if (SinglePlayerSetupScreen.boardSize == 1) {
 
-      this.width = 4;
-      this.height = 3;
+      width = 4;
+      height = 3;
       //this.gameButtons = findViewById(R.id.mediumGameButtons); //mediumButtons
     } else if (SinglePlayerSetupScreen.boardSize == 2) {
-      this.width = 5;
-      this.height = 4;
+      width = 5;
+      height = 4;
       //this.gameButtons = findViewById(R.id.largeGameButtons); //largeButtons
     }
   }
@@ -66,11 +66,11 @@ public class PlayScreen extends AppCompatActivity {
 
   public void startGameButtonsGone(){
     //===== Confirm Button ===========
-    this.confirmButton = findViewById(R.id.confirmButtonPlayer1);
+    confirmButton = findViewById(R.id.confirmButtonPlayer1);
     confirmButton.setVisibility(View.GONE);
     //===== Pause Button ========
-    this.pauseMenuLayout = findViewById(R.id.pauseMenuLayout);
-    this.pauseMenuLayout.setVisibility(View.GONE);
+    pauseMenuLayout = findViewById(R.id.pauseMenuLayout);
+    pauseMenuLayout.setVisibility(View.GONE);
   }
 
   public void onClickPause(View v){
@@ -96,15 +96,15 @@ public class PlayScreen extends AppCompatActivity {
    * @param V the button that is pressed.
    */
   public void buttonClicked(View V){
-    if(this.currentButton == null){
+    if(currentButton == null){
       int buttonId = V.getId();
       Button currentButton = findViewById(buttonId);
       this.currentButton = currentButton;
-      this.confirmButton.setVisibility(View.VISIBLE);
+      confirmButton.setVisibility(View.VISIBLE);
       currentButton.setBackgroundColor(getResources().getColor(R.color.fences));
     } else{
       //if there already is a fence button chosen
-      this.changeChoice(V);
+      changeChoice(V);
     }
 
 
@@ -119,11 +119,11 @@ public class PlayScreen extends AppCompatActivity {
     Button buttonClicked = findViewById(buttonId);
     this.currentButton.setBackgroundColor(getResources().getColor(R.color.transparent));
     buttonClicked.setBackgroundColor(getResources().getColor(R.color.fences));
-    this.currentButton = buttonClicked;
+    currentButton = buttonClicked;
   }
 
   public void updateScore() {
-    player1ScoreBoard.setText("" + this.gameState.player1Points);
+    player1ScoreBoard.setText("" + gameState.player1Points);
     player2ScoreBoard.setText("" + this.gameState.player2Points);
   }
   public void endGame(){
