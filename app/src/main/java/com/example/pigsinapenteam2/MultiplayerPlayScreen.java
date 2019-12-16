@@ -165,10 +165,4 @@ public class MultiplayerPlayScreen extends PlayScreen {
 
     }
   }
-
-
-  public void updateScore() {
-    player1ScoreBoard.setText("" + this.gameState.player1Points);
-    player2ScoreBoard.setText("" + this.gameState.player2Points);
-  }
 }
