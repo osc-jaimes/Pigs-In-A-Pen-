@@ -2,6 +2,8 @@ package com.example.pigsinapenteam2;
 
 /**
  *  MediumBotPlayer: plays the game at medium difficulty.
+ *    Captures if possible, else avoids giving you a point.
+ *    If must give the player a point, gives the player the smallest 'Chain'.
  *
  *  doMove(GameState) -> GameState:
  *    picks the move to do and applies it.
@@ -12,6 +14,10 @@ public class MediumBotPlayer extends BotPlayer {
   //edit by benjamin
   private final int BOT_MARK = 2;
 
+  /**
+   * MediumBotPlayer():
+   *    constructor.
+   */
   public MediumBotPlayer() {
     strategy = new GreedyElseNeutral();
   }
