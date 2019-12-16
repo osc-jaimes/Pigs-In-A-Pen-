@@ -2,8 +2,7 @@ package com.example.pigsinapenteam2;
 
 /**
  *  MediumBotPlayer: plays the game at medium difficulty.
- *    Captures if possible, else avoids giving you a point.
- *    If must give the player a point, gives the player the smallest 'Chain'.
+ *    Uses the 'Greedy Else Neutral' algorithm (see GreedyElseNeutral)
  *
  *  doMove(GameState) -> GameState:
  *    picks the move to do and applies it.

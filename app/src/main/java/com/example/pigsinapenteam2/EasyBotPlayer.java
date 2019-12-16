@@ -2,7 +2,7 @@ package com.example.pigsinapenteam2;
 
 /**
  *  EasyBotPlayer: plays the game at easy difficulty.
- *    Captures if possible, otherwise goes randomly.
+ *    Uses the 'Greedy Else Random' algorithm (see GreedyElseRandom)
  *
  *  doMove(GameState) -> GameState:
  *    picks the move to do and applies it.
