@@ -9,6 +9,8 @@ import android.view.View;
 
 public class SinglePlayerSetupScreen extends AppCompatActivity {
 
+
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -27,4 +29,6 @@ public class SinglePlayerSetupScreen extends AppCompatActivity {
     Intent goToSinglePlayerPlayScreen = new Intent(getApplicationContext(), SinglePlayerPlayScreen.class);
     startActivity(goToSinglePlayerPlayScreen);
   }
+
+
 }
