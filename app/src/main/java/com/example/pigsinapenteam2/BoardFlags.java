@@ -8,7 +8,7 @@ public class BoardFlags {
   public boolean isFirstChainSizeOne;
   public boolean mayDoGambitHeadDirection;
   public boolean mayDoGambitTailDirection;
-  public boolean canDoGambit;
+  public boolean couldDoGambit;
   public boolean shouldDoGambit;
 
   public BoardFlags() {
@@ -19,7 +19,7 @@ public class BoardFlags {
     isFirstChainSizeOne = false;
     mayDoGambitHeadDirection = false;
     mayDoGambitTailDirection = false;
-    canDoGambit = false;
+    couldDoGambit = false;
     shouldDoGambit = false;
   }
 
@@ -47,7 +47,7 @@ public class BoardFlags {
         }
       }
 
-      canDoGambit = (isFirstChainSizeOne &&
+      couldDoGambit = (isFirstChainSizeOne &&
           (mayDoGambitTailDirection || mayDoGambitHeadDirection));
       shouldDoGambit = (yourExpectedPoints < theirExpectedPoints);
 
@@ -55,7 +55,7 @@ public class BoardFlags {
       isFirstChainSizeOne = false;
       mayDoGambitTailDirection = false;
       mayDoGambitTailDirection = false;
-      canDoGambit = false;
+      couldDoGambit = false;
       shouldDoGambit = false;
     }
 
