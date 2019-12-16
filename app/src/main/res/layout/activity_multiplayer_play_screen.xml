@@ -142,6 +142,7 @@
             android:layout_marginEnd="396dp"
             android:layout_marginBottom="338dp"
             android:editable="true"
+            android:textColor="#00000000"
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -149,7 +150,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/player2score"
+            android:id="@+id/player2Score"
             android:layout_width="93dp"
             android:layout_height="34dp"
             android:layout_marginStart="395dp"
@@ -157,6 +158,7 @@
             android:layout_marginEnd="243dp"
             android:layout_marginBottom="338dp"
             android:editable="true"
+            android:textColor="#00000000"
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
