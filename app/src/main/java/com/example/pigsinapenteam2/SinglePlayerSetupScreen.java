@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Spinner;
 
 public class SinglePlayerSetupScreen extends AppCompatActivity {
@@ -17,6 +18,10 @@ public class SinglePlayerSetupScreen extends AppCompatActivity {
   protected String sizeText;
   protected String difficulty;
 
+  Button easyDif;
+  Button mediumDif;
+  Button hardDif;
+
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +30,9 @@ public class SinglePlayerSetupScreen extends AppCompatActivity {
     setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
     ScreenLogic.fullScreen(this);
 
+    easyDif = findViewById(R.id.easyDif);
+    mediumDif = findViewById(R.id.mediumDif);
+    hardDif = findViewById(R.id.hardDif);
 
     gameBoardSizeSpinner = findViewById(R.id.board_size_drop_down);
     difficultySpinner = findViewById(R.id.board_size_drop_down_difficulty);
@@ -49,14 +57,23 @@ public class SinglePlayerSetupScreen extends AppCompatActivity {
 
   public void onClickEasy(View v){
     gameDifficulty = 0;
+    easyDif.setBackgroundColor(getResources().getColor(R.color.buttonColor));
+    mediumDif.setBackgroundColor(getResources().getColor(R.color.dropdown));
+    hardDif.setBackgroundColor(getResources().getColor(R.color.dropdown));
   }
 
   public void onClickMedium(View v){
     gameDifficulty = 1;
+    easyDif.setBackgroundColor(getResources().getColor(R.color.dropdown));
+    mediumDif.setBackgroundColor(getResources().getColor(R.color.buttonColor));
+    hardDif.setBackgroundColor(getResources().getColor(R.color.dropdown));
   }
 
   public void onClickHard(View v){
     gameDifficulty = 2;
+    easyDif.setBackgroundColor(getResources().getColor(R.color.dropdown));
+    mediumDif.setBackgroundColor(getResources().getColor(R.color.dropdown));
+    hardDif.setBackgroundColor(getResources().getColor(R.color.buttonColor));
   }
 
 }
