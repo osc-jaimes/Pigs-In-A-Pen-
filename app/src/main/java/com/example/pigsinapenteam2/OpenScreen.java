@@ -4,10 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 
 public class OpenScreen extends AppCompatActivity {
+
+  MediaPlayer mediaPlayer;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -15,6 +18,22 @@ public class OpenScreen extends AppCompatActivity {
     setContentView(R.layout.activity_open_screen);
     setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
     ScreenLogic.fullScreen(this);
+
+
+    mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.mexicanwallmart);
+
+    mediaPlayer.start();
+  }
+
+
+  @Override
+  protected void onPause() {
+    super.onPause();
+    if(mediaPlayer.isPlaying()){
+      mediaPlayer.stop();
+      mediaPlayer.release();
+    }
+
   }
 
   public void pressStartButton(View V){

@@ -35,6 +35,7 @@ public class VictoryScreen extends AppCompatActivity {
     ScreenLogic.fullScreen(this);
   }
 
+
   public void menuButton(View v){
     Intent goToMainMenu = new Intent(getApplicationContext(), MainScreen.class);
     startActivity(goToMainMenu);
@@ -61,14 +62,14 @@ public class VictoryScreen extends AppCompatActivity {
     TextView playerText = findViewById(R.id.playerWhoWon);
     int playerWhoWon = extras.getInt("playerWhoWon");
     if(playerWhoWon == 0){
-      playerText.setText("Player 1");
+      playerText.setText("Player  1");
       return;
     }
     else if(playerWhoWon == 1) {
-      playerText.setText("Player 2");
+      playerText.setText("Player  2");
       return;
     }
-    playerText.setText("No One");
+    playerText.setText("No  One");
   }
   public void onBackPressed(){
     return;
