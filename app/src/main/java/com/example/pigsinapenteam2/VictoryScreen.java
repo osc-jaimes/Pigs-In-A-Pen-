@@ -78,6 +78,7 @@ public class VictoryScreen extends AppCompatActivity {
   }
 
   public void demonize(View v){
+    System.out.print(demonized + "YEET");
     demonPig = findViewById(R.id.demonPigEasterEgg);
     if(!demonized) {
       demonPig.setMaxHeight(100);
