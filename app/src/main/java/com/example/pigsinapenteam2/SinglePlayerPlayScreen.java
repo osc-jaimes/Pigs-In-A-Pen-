@@ -28,13 +28,14 @@ public class SinglePlayerPlayScreen extends PlayScreen {
     isMultiplayer = false;
 
    boardSizeSetter();
+    difficultySetter();
    scoreBoardDefaulter();
    startGameButtonsGone();
 
     //===== Game Buttons Layout ======
     gameButtons.setVisibility(View.VISIBLE);
     //===== Players in game =======
-    player2 = new EasyBotPlayer();
+    //player2 = new EasyBotPlayer();
     currentPlayer = player1;
     playerHasMoved = false;
     //===== Current Chosen 'Fence' Button =======
@@ -141,6 +142,21 @@ public class SinglePlayerPlayScreen extends PlayScreen {
       //this.gameButtons = findViewById(R.id.largeGameButtons); //largeButtons
     }
   }
+
+  public void difficultySetter(){
+    if(SinglePlayerSetupScreen.gameDifficulty == 0){
+      this.player2 = new EasyBotPlayer();
+    } else if(SinglePlayerSetupScreen.gameDifficulty == 1){
+      this.player2 = new MediumBotPlayer();
+    } else{
+      this.player2 = new HardBotPlayer();
+    }
+  }
+
+
+
+
+
   public void residentSleeper(){
     try {
       Thread.sleep(1000);
