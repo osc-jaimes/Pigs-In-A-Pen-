@@ -74,6 +74,8 @@ public class SinglePlayerPlayScreen extends PlayScreen {
       gameState = player1.doMove(gameState, cellX, cellY, PLAYERONEINT, isHorizontal);
       gameState.runBoardCheck();
       updateScore();
+      leftIndicator.setVisibility(View.GONE);
+      rightIndicator.setVisibility(View.VISIBLE);
 
     if (gameState.player1Points + gameState.player2Points == totalScore) {
       endGame();
@@ -112,6 +114,8 @@ public class SinglePlayerPlayScreen extends PlayScreen {
         AIButton.setBackgroundColor(getResources().getColor(R.color.fences));
         AIButton.setVisibility(View.VISIBLE);
         AIButton.setClickable(false);
+        rightIndicator.setVisibility(View.GONE);
+        leftIndicator.setVisibility(View.VISIBLE);
       }//if statement
 
       if (gameState.player1Points + gameState.player2Points == totalScore) {
