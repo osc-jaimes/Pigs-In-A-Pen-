@@ -575,6 +575,76 @@ public class PlayScreen extends AppCompatActivity {
     isHorizontal = true;
   }
 
+  public void onClickHorizontal26(View v){
+    buttonClicked(v);
+    cellX = 0;
+    cellY = 0;
+    isHorizontal = true;
+  }
+
+  public void onClickHorizontal27(View v){
+    buttonClicked(v);
+    cellX = 0;
+    cellY = 1;
+    isHorizontal = true;
+  }
+
+  public void onClickHorizontal28(View v){
+    buttonClicked(v);
+    cellX = 0;
+    cellY = 2;
+    isHorizontal = true;
+  }
+
+  public void onClickHorizontal29(View v){
+    buttonClicked(v);
+    cellX = 0;
+    cellY = 3;
+    isHorizontal = true;
+  }
+
+  public void onClickHorizontal30(View v){
+    buttonClicked(v);
+    cellX = 0;
+    cellY = 4;
+    isHorizontal = true;
+  }
+
+  public void onClickHorizontal31(View v){
+    buttonClicked(v);
+    cellX = 1;
+    cellY = 0;
+    isHorizontal = true;
+  }
+
+  public void onClickHorizontal32(View v){
+    buttonClicked(v);
+    cellX = 1;
+    cellY = 1;
+    isHorizontal = true;
+  }
+
+  public void onClickHorizontal33(View v){
+    buttonClicked(v);
+    cellX = 1;
+    cellY = 2;
+    isHorizontal = true;
+  }
+
+  public void onClickHorizontal34(View v){
+    buttonClicked(v);
+    cellX = 1;
+    cellY = 3;
+    isHorizontal = true;
+  }
+
+  public void onClickHorizontal35(View v){
+    buttonClicked(v);
+    cellX = 1;
+    cellY = 4;
+    isHorizontal = true;
+  }
+
   public void onBackPressed(){//so they can't use the back button during a game. CHEATERS
     return;
   }
