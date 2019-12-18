@@ -190,7 +190,10 @@ public class SinglePlayerPlayScreen extends PlayScreen {
         garden2Right.setBackgroundColor(getResources().getColor(R.color.fences));
 
 
-      }
+      }//small gardens
+      else if(SinglePlayerSetupScreen.boardType == 3){
+
+      }//hill map small
     }
   }
 
