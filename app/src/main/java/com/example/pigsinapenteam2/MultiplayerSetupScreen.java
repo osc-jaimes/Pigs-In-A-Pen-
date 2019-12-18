@@ -50,4 +50,8 @@ public class MultiplayerSetupScreen extends AppCompatActivity {
     Intent goToPlayScreen = new Intent(getApplicationContext(), MultiplayerPlayScreen.class);
     startActivity(goToPlayScreen);
   }
+  protected void onResume(){
+    super.onResume();
+    ScreenLogic.fullScreen(this);
+  }
 }
