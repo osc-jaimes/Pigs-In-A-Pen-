@@ -346,6 +346,12 @@ public class PlayScreen extends AppCompatActivity {
     isHorizontal = false;
   }
 
+  public void onClickVertical24(View v){
+    buttonClicked(v);
+    cellX = 0;
+    cellY = 0;
+  }
+
 
 
 
@@ -644,6 +650,117 @@ public class PlayScreen extends AppCompatActivity {
     cellY = 4;
     isHorizontal = true;
   }
+
+  public void onClickHorizontal36(View v){
+    buttonClicked(v);
+    cellX = 2;
+    cellY = 0;
+    isHorizontal = true;
+  }
+
+  public void onClickHorizontal37(View v){
+    buttonClicked(v);
+    cellX = 2;
+    cellY = 1;
+    isHorizontal = true;
+  }
+
+  public void onClickHorizontal38(View v){
+    buttonClicked(v);
+    cellX = 2;
+    cellY = 2;
+    isHorizontal = true;
+  }
+
+  public void onClickHorizontal39(View v){
+    buttonClicked(v);
+    cellX = 2;
+    cellY = 3;
+    isHorizontal = true;
+  }
+
+  public void onClickHorizontal40(View v){
+    buttonClicked(v);
+    cellX = 2;
+    cellY = 4;
+    isHorizontal = true;
+  }
+
+  public void onClickHorizontal41(View v){
+    buttonClicked(v);
+    cellX = 3;
+    cellY = 0;
+    isHorizontal = true;
+  }
+
+  public void onClickHorizontal42(View v){
+    buttonClicked(v);
+    cellX = 3;
+    cellY = 1;
+    isHorizontal = true;
+  }
+
+  public void onClickHorizontal43(View v){
+    buttonClicked(v);
+    cellX = 3;
+    cellY = 2;
+    isHorizontal = true;
+  }
+
+  public void onClickHorizontal44(View v){
+    buttonClicked(v);
+    cellX = 3;
+    cellY = 3;
+    isHorizontal = true;
+  }
+
+  public void onClickHorizontal45(View v){
+    buttonClicked(v);
+    cellX = 3;
+    cellY = 4;
+    isHorizontal = true;
+  }
+
+  public void onClickHorizontal46(View v){
+    buttonClicked(v);
+    cellX = 4;
+    cellY = 0;
+    isHorizontal = true;
+  }
+
+  public void onClickHorizontal47(View v){
+    buttonClicked(v);
+    cellX = 4;
+    cellY = 1;
+    isHorizontal = true;
+  }
+
+  public void onClickHorizontal48(View v){
+    buttonClicked(v);
+    cellX = 4;
+    cellY = 2;
+    isHorizontal = true;
+  }
+
+  public void onClickHorizontal49(View v){
+    buttonClicked(v);
+    cellX = 4;
+    cellY = 3;
+    isHorizontal = true;
+  }
+
+  public void onClickHorizontal50(View v){
+    buttonClicked(v);
+    cellX = 4;
+    cellY = 4;
+    isHorizontal = true;
+  }
+
+
+
+
+
+
 
   public void onBackPressed(){//so they can't use the back button during a game. CHEATERS
     return;
