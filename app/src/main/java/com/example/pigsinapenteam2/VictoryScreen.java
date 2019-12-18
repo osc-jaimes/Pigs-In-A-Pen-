@@ -72,4 +72,9 @@ public class VictoryScreen extends AppCompatActivity {
   public void onBackPressed(){
     return;
   }
+
+  public void onResume(){
+    super.onResume();
+    ScreenLogic.fullScreen(this);
+  }
 }

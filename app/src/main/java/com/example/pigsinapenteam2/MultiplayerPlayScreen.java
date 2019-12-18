@@ -181,4 +181,8 @@ public class MultiplayerPlayScreen extends PlayScreen {
       //this.gameButtons = findViewById(R.id.largeGameButtons); //largeButtons
     }
   }
+  public void onResume(){
+    super.onResume();
+    ScreenLogic.fullScreen(this);
+  }
 }

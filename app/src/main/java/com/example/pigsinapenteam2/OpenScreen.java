@@ -25,30 +25,8 @@ public class OpenScreen extends AppCompatActivity {
     mediaPlayer.start();
     mediaPlayer.setLooping(true);
   }
-
-  @Override
-  protected void onPause() {
-    super.onPause();
-    try {
-      if(mediaPlayer.isPlaying()) {
-        mediaPlayer.pause();
-      }
-    }catch(Exception e){
-      e.printStackTrace();
-    }
-
-
-  }
-
-  @Override
-  protected void onResume(){
+  public void onResume(){
     super.onResume();
-    try {
-      mediaPlayer.start();
-    }catch(Exception e){
-      e.printStackTrace();
-    }
-    mediaPlayer.release();
     ScreenLogic.fullScreen(this);
   }
   public void pressStartButton(View V){

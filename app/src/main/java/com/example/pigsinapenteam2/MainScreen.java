@@ -40,4 +40,8 @@ public class MainScreen extends AppCompatActivity {
     Intent instructions = new Intent(getApplicationContext(), InstructionsScreen.class);
     startActivity(instructions);
   }
+  public void onResume(){
+    super.onResume();
+    ScreenLogic.fullScreen(this);
+  }
 }
