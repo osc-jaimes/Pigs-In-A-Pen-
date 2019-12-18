@@ -27,10 +27,10 @@ public class SinglePlayerPlayScreen extends PlayScreen {
     setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
     isMultiplayer = false;
 
-   boardSizeSetter();
+    boardSizeSetter();
     difficultySetter();
-   scoreBoardDefaulter();
-   startGameButtonsGone();
+    scoreBoardDefaulter();
+    startGameButtonsGone();
 
     //===== Game Buttons Layout ======
     gameButtons.setVisibility(View.VISIBLE);
@@ -92,6 +92,12 @@ public class SinglePlayerPlayScreen extends PlayScreen {
 
       }
     }//while loop
+
+    try {
+      Thread.sleep(150);
+    } catch (Exception e) {
+      System.out.println(e.getMessage());
+    }
 
     while (true) {
       int tempScorePlayer2 = gameState.player2Points;
