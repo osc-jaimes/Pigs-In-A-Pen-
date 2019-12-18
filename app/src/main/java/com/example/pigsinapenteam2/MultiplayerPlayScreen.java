@@ -23,14 +23,18 @@ public class MultiplayerPlayScreen extends PlayScreen {
 
   public BoardState boardState;
 
-
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_multiplayer_play_screen);
     setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
     ScreenLogic.fullScreen(this);
+
+
+
     boardSizeSetter();
+
+    gameButtons.setVisibility(View.VISIBLE);
 
     scoreBoardDefaulter();
     isMultiplayer = true;
@@ -38,7 +42,6 @@ public class MultiplayerPlayScreen extends PlayScreen {
     confirmButtonPlayer2 = findViewById(R.id.confirmButtonPlayer2);
     confirmButtonPlayer2.setVisibility(View.GONE);
     this.pauseMenuLayout = findViewById(R.id.pauseMenuLayout);
-    gameButtons.setVisibility(View.VISIBLE);
     rightIndicator = findViewById(R.id.RightIndicator);
     leftIndicator = findViewById(R.id.LeftIndicator);
     rightIndicator.setVisibility(View.GONE);

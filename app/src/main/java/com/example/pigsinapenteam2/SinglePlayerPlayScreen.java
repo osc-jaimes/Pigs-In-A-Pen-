@@ -32,7 +32,6 @@ public class SinglePlayerPlayScreen extends PlayScreen {
     boardSize = SinglePlayerSetupScreen.boardSize;
     boardType = SinglePlayerSetupScreen.boardType;
 
-
    boardSizeSetter();
    difficultySetter();
    scoreBoardDefaulter();

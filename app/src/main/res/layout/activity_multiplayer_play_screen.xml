@@ -6,6 +6,30 @@
     android:layout_height="match_parent"
     tools:context=".MultiplayerPlayScreen">
 
+    <Button
+        android:id="@+id/confirmButtonPlayer2"
+        android:layout_width="124dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="303dp"
+        android:layout_marginEnd="16dp"
+        android:background="@color/dropdown"
+        android:onClick="onClickConfirmationButton"
+        android:text="@string/end_turn_button"
+        app:layout_constraintEnd_toEndOf="@+id/background"
+        app:layout_constraintTop_toTopOf="@+id/background" />
+
+    <Button
+        android:id="@+id/confirmButtonPlayer1"
+        android:layout_width="124dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="303dp"
+        android:background="@color/dropdown"
+        android:onClick="onClickConfirmationButton"
+        android:text="@string/end_turn_button"
+        app:layout_constraintStart_toStartOf="@+id/background"
+        app:layout_constraintTop_toTopOf="@+id/background" />
+
     <ImageView
         android:id="@+id/player1Pig"
         android:layout_width="115dp"
@@ -57,6 +81,7 @@
         android:id="@+id/smallGameButtons"
         android:layout_width="0dp"
         android:layout_height="match_parent"
+        android:elevation="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -75,20 +100,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.3" />
-
-        <Button
-            android:id="@+id/confirmButtonPlayer2"
-            android:layout_width="124dp"
-            android:layout_height="46dp"
-            android:layout_marginTop="308dp"
-            android:layout_marginEnd="21dp"
-            android:layout_marginBottom="57dp"
-            android:background="@color/dropdown"
-            android:onClick="onClickConfirmationButton"
-            android:text="@string/end_turn_button"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/button16"
@@ -445,22 +456,6 @@
             app:layout_constraintVertical_bias="0.6" />
 
 
-        <Button
-            android:id="@+id/confirmButtonPlayer1"
-            android:layout_width="124dp"
-            android:layout_height="46dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginBottom="60dp"
-            android:background="@color/dropdown"
-            android:onClick="onClickConfirmationButton"
-            android:text="@string/end_turn_button"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
@@ -493,6 +488,7 @@
         android:id="@+id/largeGameButtons"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:elevation="10dp"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -1666,6 +1662,7 @@
         android:id="@+id/mediumGameButtons"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:elevation="10dp"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -2411,7 +2408,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:elevation="10dp"
-        android:visibility="visible">
+        android:visibility="gone">
 
         <ImageView
             android:id="@+id/LeftIndicator"
