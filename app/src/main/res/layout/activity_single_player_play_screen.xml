@@ -575,7 +575,7 @@
         android:id="@+id/mediumGameButtons"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -722,7 +722,7 @@
             app:srcCompat="@color/transparent" />
 
         <ImageView
-            android:id="@+id/mediumCellClaimed12"
+            android:id="@+id/mediumCellClaimed11"
             android:layout_width="87dp"
             android:layout_height="44dp"
             app:layout_constraintBottom_toTopOf="@+id/h24"

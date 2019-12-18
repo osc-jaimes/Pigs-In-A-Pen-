@@ -44,7 +44,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:elevation="3dp"
-        android:visibility="visible">
+        android:visibility="gone">
 
         <ImageView
             android:id="@+id/pauseMenu"
@@ -340,6 +340,68 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.4" />
+
+        <ImageView
+            android:id="@+id/smallCellClaimed0"
+            android:layout_width="75dp"
+            android:layout_height="39dp"
+            app:layout_constraintBottom_toTopOf="@+id/h3"
+            app:layout_constraintEnd_toStartOf="@+id/v1"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/v0"
+            app:layout_constraintTop_toBottomOf="@+id/h0"
+            app:layout_constraintVertical_bias="1.0"
+            app:srcCompat="@color/transparent" />
+
+        <ImageView
+            android:id="@+id/smallCellClaimed1"
+            android:layout_width="75dp"
+            android:layout_height="39dp"
+            app:layout_constraintBottom_toTopOf="@+id/h4"
+            app:layout_constraintEnd_toStartOf="@+id/v2"
+            app:layout_constraintStart_toEndOf="@+id/v1"
+            app:layout_constraintTop_toBottomOf="@+id/h1"
+            app:srcCompat="@color/transparent" />
+
+        <ImageView
+            android:id="@+id/smallCellClaimed2"
+            android:layout_width="75dp"
+            android:layout_height="39dp"
+            app:layout_constraintBottom_toTopOf="@+id/h5"
+            app:layout_constraintEnd_toStartOf="@+id/v3"
+            app:layout_constraintStart_toEndOf="@+id/v2"
+            app:layout_constraintTop_toBottomOf="@+id/h2"
+            app:srcCompat="@color/transparent" />
+
+        <ImageView
+            android:id="@+id/smallCellClaimed3"
+            android:layout_width="75dp"
+            android:layout_height="39dp"
+            app:layout_constraintBottom_toTopOf="@+id/h6"
+            app:layout_constraintEnd_toStartOf="@+id/v5"
+            app:layout_constraintStart_toEndOf="@+id/v4"
+            app:layout_constraintTop_toBottomOf="@+id/h3"
+            app:srcCompat="@color/transparent" />
+
+        <ImageView
+            android:id="@+id/smallCellClaimed4"
+            android:layout_width="75dp"
+            android:layout_height="39dp"
+            app:layout_constraintBottom_toTopOf="@+id/h7"
+            app:layout_constraintEnd_toStartOf="@+id/v6"
+            app:layout_constraintStart_toEndOf="@+id/v5"
+            app:layout_constraintTop_toBottomOf="@+id/h4"
+            app:srcCompat="@color/transparent" />
+
+        <ImageView
+            android:id="@+id/smallCellClaimed5"
+            android:layout_width="75dp"
+            android:layout_height="39dp"
+            app:layout_constraintBottom_toTopOf="@+id/h8"
+            app:layout_constraintEnd_toStartOf="@+id/v7"
+            app:layout_constraintStart_toEndOf="@+id/v6"
+            app:layout_constraintTop_toBottomOf="@+id/h5"
+            app:srcCompat="@color/transparent" />
 
         <Button
             android:id="@+id/v2"
