@@ -53,9 +53,6 @@ public class SinglePlayerSetupScreen extends AppCompatActivity {
     }
 
     if(boardLayout.equals("Normal")){
-      boardType = 0;
-    }
-    else if(boardLayout.equals("Walls")){
       boardType = 1;
     }
     else if(boardLayout.equals("Garden")){
@@ -90,7 +87,7 @@ public class SinglePlayerSetupScreen extends AppCompatActivity {
     mediumDif.setBackgroundColor(getResources().getColor(R.color.dropdown));
     hardDif.setBackgroundColor(getResources().getColor(R.color.buttonColor));
   }
-  public void onResume(){
+  protected void onResume(){
     super.onResume();
     ScreenLogic.fullScreen(this);
   }

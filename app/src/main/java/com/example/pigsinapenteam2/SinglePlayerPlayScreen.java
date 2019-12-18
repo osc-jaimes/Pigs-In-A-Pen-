@@ -12,6 +12,7 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 public class SinglePlayerPlayScreen extends PlayScreen {
 
@@ -32,10 +33,11 @@ public class SinglePlayerPlayScreen extends PlayScreen {
     boardType = SinglePlayerSetupScreen.boardType;
 
 
-    boardSizeSetter();
-    difficultySetter();
-    scoreBoardDefaulter();
-    startGameButtonsGone();
+   boardSizeSetter();
+   difficultySetter();
+   scoreBoardDefaulter();
+   layoutSetter();
+   startGameButtonsGone();
 
     //===== Game Buttons Layout ======
     gameButtons.setVisibility(View.VISIBLE);
@@ -47,7 +49,7 @@ public class SinglePlayerPlayScreen extends PlayScreen {
     currentButton = null;
     //===== Board State & Game State ======
     BoardState boardState = new BoardState(width,height);
-    BoardType boardLayout = new BoardType(boardState,boardSize, boardType);
+    BoardType boardLayout = new BoardType(boardState,boardType, boardSize);
     gameState = new GameState(boardState, player1, player2,0);
     //===== Full Screen =====
     ScreenLogic.fullScreen(this);
@@ -74,6 +76,8 @@ public class SinglePlayerPlayScreen extends PlayScreen {
       gameState = player1.doMove(gameState, cellX, cellY, PLAYERONEINT, isHorizontal);
       gameState.runBoardCheck();
       updateScore();
+      leftIndicator.setVisibility(View.GONE);
+      rightIndicator.setVisibility(View.VISIBLE);
 
     if (gameState.player1Points + gameState.player2Points == totalScore) {
       endGame();
@@ -99,12 +103,6 @@ public class SinglePlayerPlayScreen extends PlayScreen {
       }
     }//while loop
 
-    try {
-      Thread.sleep(150);
-    } catch (Exception e) {
-      System.out.println(e.getMessage());
-    }
-
     while (true) {
       int tempScorePlayer2 = gameState.player2Points;
       if (true) {
@@ -118,6 +116,8 @@ public class SinglePlayerPlayScreen extends PlayScreen {
         AIButton.setBackgroundColor(getResources().getColor(R.color.fences));
         AIButton.setVisibility(View.VISIBLE);
         AIButton.setClickable(false);
+        rightIndicator.setVisibility(View.GONE);
+        leftIndicator.setVisibility(View.VISIBLE);
       }//if statement
 
       if (gameState.player1Points + gameState.player2Points == totalScore) {
@@ -142,16 +142,14 @@ public class SinglePlayerPlayScreen extends PlayScreen {
       width = 3;
       height = 2;
       this.gameButtons = findViewById(R.id.smallGameButtons); //smallButtons
-
     } else if (SinglePlayerSetupScreen.boardSize == 1) {
-
       width = 4;
       height = 3;
       this.gameButtons = findViewById(R.id.mediumGameButtons); //mediumButtons
     } else if (SinglePlayerSetupScreen.boardSize == 2) {
       width = 5;
       height = 4;
-      //this.gameButtons = findViewById(R.id.largeGameButtons); //largeButtons
+      this.gameButtons = findViewById(R.id.largeGameButtons); //largeButtons
     }
   }
 
@@ -162,6 +160,41 @@ public class SinglePlayerPlayScreen extends PlayScreen {
       this.player2 = new MediumBotPlayer();
     } else{
       this.player2 = new HardBotPlayer();
+    }
+  }
+
+  public void layoutSetter(){
+    if(SinglePlayerSetupScreen.boardSize == 0){
+      if(SinglePlayerSetupScreen.boardType == 1){
+        return;
+      } else if(SinglePlayerSetupScreen.boardType == 2){
+        ImageView garden1 = findViewById(R.id.garden1);
+        garden1.setVisibility(View.VISIBLE);
+        ImageView garden2 = findViewById(R.id.garden2);
+        garden2.setVisibility(View.VISIBLE);
+
+        Button garden1Top = findViewById(R.id.h2);
+        garden1Top.setClickable(false);
+        garden1Top.setBackgroundColor(getResources().getColor(R.color.fences));
+
+        Button garden1Right = findViewById(R.id.v3);
+        garden1Right.setClickable(false);
+        garden1Right.setBackgroundColor(getResources().getColor(R.color.fences));
+
+
+      }
+    }
+  }
+
+
+
+
+
+  public void residentSleeper(){
+    try {
+      Thread.sleep(1000);
+    }catch (InterruptedException e){
+      return;
     }
   }
 }//singlePlayerPlayScreen
