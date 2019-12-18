@@ -2460,12 +2460,12 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageView
-        android:id="@+id/imageView6"
+        android:id="@+id/Sheep"
         android:layout_width="78dp"
         android:layout_height="114dp"
         android:layout_marginStart="640dp"
-        android:layout_marginTop="163dp"
-        android:layout_marginEnd="13dp"
+        android:layout_marginTop="170dp"
+        android:layout_marginEnd="24dp"
         android:layout_marginBottom="135dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -2544,7 +2544,7 @@
         android:id="@+id/player1Pig"
         android:layout_width="74dp"
         android:layout_height="128dp"
-        android:layout_marginStart="23dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="170dp"
         android:layout_marginEnd="634dp"
         android:layout_marginBottom="113dp"
@@ -2554,5 +2554,35 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/pig" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/TurnIndicators"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/LeftIndicator"
+            android:layout_width="66dp"
+            android:layout_height="26dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="120dp"
+            android:elevation="10dp"
+            android:rotation="90"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/blueturn" />
+
+        <ImageView
+            android:id="@+id/RightIndicator"
+            android:layout_width="66dp"
+            android:layout_height="26dp"
+            android:layout_marginTop="120dp"
+            android:layout_marginEnd="24dp"
+            android:elevation="10dp"
+            android:rotation="90"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/blueturn" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

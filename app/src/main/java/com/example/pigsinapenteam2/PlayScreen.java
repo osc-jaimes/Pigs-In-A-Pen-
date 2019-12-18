@@ -32,6 +32,8 @@ public class PlayScreen extends AppCompatActivity {
   public View gameButtons;
   TextView player1ScoreBoard;
   TextView player2ScoreBoard;
+  public View leftIndicator;
+  public View rightIndicator;
 
   //Ints
   public int cellX;
@@ -72,6 +74,10 @@ public class PlayScreen extends AppCompatActivity {
     //===== Pause Button ========
     pauseMenuLayout = findViewById(R.id.pauseMenuLayout);
     pauseMenuLayout.setVisibility(View.GONE);
+    //====== Turn Indicators ===== //
+    leftIndicator = findViewById(R.id.LeftIndicator);
+    rightIndicator = findViewById(R.id.RightIndicator);
+    rightIndicator.setVisibility(View.GONE);
   }
 
   public void onClickPause(View v){
