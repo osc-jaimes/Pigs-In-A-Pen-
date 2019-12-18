@@ -53,9 +53,6 @@ public class SinglePlayerSetupScreen extends AppCompatActivity {
     }
 
     if(boardLayout.equals("Normal")){
-      boardType = 0;
-    }
-    else if(boardLayout.equals("Walls")){
       boardType = 1;
     }
     else if(boardLayout.equals("Garden")){
