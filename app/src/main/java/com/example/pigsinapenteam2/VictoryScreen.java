@@ -23,7 +23,6 @@ import android.widget.TextView;
 
 public class VictoryScreen extends AppCompatActivity {
   protected Bundle extras;
-
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -34,14 +33,22 @@ public class VictoryScreen extends AppCompatActivity {
     ScreenLogic.fullScreen(this);
   }
 
+
   public void menuButton(View v){
     Intent goToMainMenu = new Intent(getApplicationContext(), MainScreen.class);
     startActivity(goToMainMenu);
   }
 
   public void restartButton(View v){
-    Intent goToGameStart = new Intent(getApplicationContext(), SinglePlayerPlayScreen.class);
-    startActivity(goToGameStart);
+    if(PlayScreen.isMultiplayer){
+      Intent goToGameStart = new Intent(getApplicationContext(), MultiplayerPlayScreen.class);
+      startActivity(goToGameStart);
+    }
+    else if(!PlayScreen.isMultiplayer) {
+
+      Intent goToGameStart = new Intent(getApplicationContext(), SinglePlayerPlayScreen.class);
+      startActivity(goToGameStart);
+    }
   }
 
   /**
@@ -53,13 +60,16 @@ public class VictoryScreen extends AppCompatActivity {
     TextView playerText = findViewById(R.id.playerWhoWon);
     int playerWhoWon = extras.getInt("playerWhoWon");
     if(playerWhoWon == 0){
-      playerText.setText("Player 1");
+      playerText.setText("Player  1");
       return;
     }
     else if(playerWhoWon == 1) {
-      playerText.setText("Player 2");
+      playerText.setText("Player  2");
       return;
     }
-    playerText.setText("No One");
+    playerText.setText("No  One");
+  }
+  public void onBackPressed(){
+    return;
   }
 }

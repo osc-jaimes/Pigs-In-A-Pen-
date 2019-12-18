@@ -6,13 +6,21 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Spinner;
 
 public class SinglePlayerSetupScreen extends AppCompatActivity {
 
   Spinner gameBoardSizeSpinner;
+  Spinner difficultySpinner;
   public static int boardSize;
+  public static int gameDifficulty;
   protected String sizeText;
+  protected String difficulty;
+
+  Button easyDif;
+  Button mediumDif;
+  Button hardDif;
 
 
   @Override
@@ -20,16 +28,14 @@ public class SinglePlayerSetupScreen extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_single_player_setup_screen);
     setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-    this.getWindow().getDecorView().setSystemUiVisibility(
-            View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                    | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                    | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                    | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                    | View.SYSTEM_UI_FLAG_FULLSCREEN
-                    | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+    ScreenLogic.fullScreen(this);
 
+    easyDif = findViewById(R.id.easyDif);
+    mediumDif = findViewById(R.id.mediumDif);
+    hardDif = findViewById(R.id.hardDif);
 
     gameBoardSizeSpinner = findViewById(R.id.board_size_drop_down);
+    difficultySpinner = findViewById(R.id.board_size_drop_down_difficulty);
   }
 
   public void pressStartGameButton(View V){
@@ -44,7 +50,30 @@ public class SinglePlayerSetupScreen extends AppCompatActivity {
       boardSize = 2;
     }
 
+
     Intent goToSinglePlayerPlayScreen = new Intent(getApplicationContext(), SinglePlayerPlayScreen.class);
     startActivity(goToSinglePlayerPlayScreen);
   }
+
+  public void onClickEasy(View v){
+    gameDifficulty = 0;
+    easyDif.setBackgroundColor(getResources().getColor(R.color.buttonColor));
+    mediumDif.setBackgroundColor(getResources().getColor(R.color.dropdown));
+    hardDif.setBackgroundColor(getResources().getColor(R.color.dropdown));
+  }
+
+  public void onClickMedium(View v){
+    gameDifficulty = 1;
+    easyDif.setBackgroundColor(getResources().getColor(R.color.dropdown));
+    mediumDif.setBackgroundColor(getResources().getColor(R.color.buttonColor));
+    hardDif.setBackgroundColor(getResources().getColor(R.color.dropdown));
+  }
+
+  public void onClickHard(View v){
+    gameDifficulty = 2;
+    easyDif.setBackgroundColor(getResources().getColor(R.color.dropdown));
+    mediumDif.setBackgroundColor(getResources().getColor(R.color.dropdown));
+    hardDif.setBackgroundColor(getResources().getColor(R.color.buttonColor));
+  }
+
 }
