@@ -19,6 +19,8 @@ public class SinglePlayerPlayScreen extends PlayScreen {
   //Players
   public BotPlayer player2;
   private Player currentPlayer;
+  private int boardSize;
+  private int boardType;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +28,9 @@ public class SinglePlayerPlayScreen extends PlayScreen {
     setContentView(R.layout.activity_single_player_play_screen);
     setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
     isMultiplayer = false;
+    boardSize = SinglePlayerSetupScreen.boardSize;
+    boardType = SinglePlayerSetupScreen.boardType;
+
 
    boardSizeSetter();
     difficultySetter();
@@ -42,6 +47,7 @@ public class SinglePlayerPlayScreen extends PlayScreen {
     currentButton = null;
     //===== Board State & Game State ======
     BoardState boardState = new BoardState(width,height);
+    BoardType boardLayout = new BoardType(boardState,boardSize, boardType);
     gameState = new GameState(boardState, player1, player2,0);
     //===== Full Screen =====
     ScreenLogic.fullScreen(this);
