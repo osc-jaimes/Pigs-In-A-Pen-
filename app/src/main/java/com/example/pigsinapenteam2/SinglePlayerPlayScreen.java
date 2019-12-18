@@ -181,6 +181,14 @@ public class SinglePlayerPlayScreen extends PlayScreen {
         garden1Right.setClickable(false);
         garden1Right.setBackgroundColor(getResources().getColor(R.color.fences));
 
+        Button garden2Top = findViewById(R.id.h6);
+        garden2Top.setClickable(false);
+        garden2Top.setBackgroundColor(getResources().getColor(R.color.fences));
+
+        Button garden2Right = findViewById(R.id.v4);
+        garden2Right.setClickable(false);
+        garden2Right.setBackgroundColor(getResources().getColor(R.color.fences));
+
 
       }
     }
