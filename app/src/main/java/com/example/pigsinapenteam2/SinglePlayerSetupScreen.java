@@ -15,6 +15,7 @@ public class SinglePlayerSetupScreen extends AppCompatActivity {
   Spinner difficultySpinner;
   public static int boardSize;
   public static int gameDifficulty;
+  public static int boardType;
   protected String sizeText;
   protected String difficulty;
 
