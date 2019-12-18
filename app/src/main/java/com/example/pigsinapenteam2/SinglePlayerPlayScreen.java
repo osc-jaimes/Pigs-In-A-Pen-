@@ -32,8 +32,9 @@ public class SinglePlayerPlayScreen extends PlayScreen {
     boardType = SinglePlayerSetupScreen.boardType;
 
 
-   boardSizeSetter();
-    difficultySetter();
+
+    boardSizeSetter();
+   difficultySetter();
    scoreBoardDefaulter();
    startGameButtonsGone();
 
@@ -46,7 +47,7 @@ public class SinglePlayerPlayScreen extends PlayScreen {
     //===== Current Chosen 'Fence' Button =======
     currentButton = null;
     //===== Board State & Game State ======
-    BoardState boardState = new BoardState(width,height);
+    boardState = new BoardState(width,height);
     BoardType boardLayout = new BoardType(boardState,boardSize, boardType);
     gameState = new GameState(boardState, player1, player2,0);
     //===== Full Screen =====
@@ -60,6 +61,7 @@ public class SinglePlayerPlayScreen extends PlayScreen {
    * @param v
    */
   public void onClickConfirmationButton(View v) {
+    System.out.println(boardState.toString());
     currentButton.setClickable(false);
     currentButton = null;
     playerHasMoved = true;
