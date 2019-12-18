@@ -42,8 +42,9 @@
 
     <string-array name="board_type_options">
         <item>Normal</item>
-        <item>Hardened</item>
-        <item>Extreme</item>
+        <item>Walls</item>
+        <item>Garden</item>
+        <item>Hill</item>
     </string-array>
 
 </resources>
