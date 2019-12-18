@@ -50,4 +50,5 @@ public class MultiplayerSetupScreen extends AppCompatActivity {
     Intent goToPlayScreen = new Intent(getApplicationContext(), MultiplayerPlayScreen.class);
     startActivity(goToPlayScreen);
   }
+
 }

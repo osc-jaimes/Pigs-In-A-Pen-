@@ -25,24 +25,10 @@ public class OpenScreen extends AppCompatActivity {
     mediaPlayer.start();
     mediaPlayer.setLooping(true);
   }
-
-
- /* @Override
-  protected void onPause() {
-    super.onPause();
-
-    mediaPlayer.pause();
-
-
-  }
-
-  @Override
-  protected void onResume(){
+  public void onResume(){
     super.onResume();
-
-    mediaPlayer.release();
+    ScreenLogic.fullScreen(this);
   }
-*/
   public void pressStartButton(View V){
     Intent goToMainScreen = new Intent(getApplicationContext(), MainScreen.class);
     startActivity(goToMainScreen);

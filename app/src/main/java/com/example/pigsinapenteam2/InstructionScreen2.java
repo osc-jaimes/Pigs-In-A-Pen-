@@ -25,4 +25,8 @@ public class InstructionScreen2 extends AppCompatActivity {
   public void nextPage(View V){
 
   }
+  public void onResume(){
+    super.onResume();
+    ScreenLogic.fullScreen(this);
+  }
 }
