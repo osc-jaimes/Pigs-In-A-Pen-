@@ -185,7 +185,7 @@ public class MultiplayerPlayScreen extends PlayScreen {
     } else if (MultiplayerSetupScreen.boardSize == 2) {
       width = 5;
       height = 4;
-      //this.gameButtons = findViewById(R.id.largeGameButtons); //largeButtons
+      this.gameButtons = findViewById(R.id.largeGameButtons); //largeButtons
     }
   }
   public void onResume(){
