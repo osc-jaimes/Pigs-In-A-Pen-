@@ -352,6 +352,42 @@ public class PlayScreen extends AppCompatActivity {
     cellY = 0;
   }
 
+  public void onClickVertical25(View v){
+    buttonClicked(v);
+    cellX = 0;
+    cellY = 1;
+  }
+
+  public void onClickVertical26(View v){
+    buttonClicked(v);
+    cellX = 0;
+    cellY = 2;
+  }
+
+  public void onClickVertical27(View v){
+    buttonClicked(v);
+    cellX = 0;
+    cellY = 3;
+  }
+
+  public void onClickVertical28(View v){
+    buttonClicked(v);
+    cellX = 0;
+    cellY = 4;
+  }
+
+  public void onClickVertical29(View v){
+    buttonClicked(v);
+    cellX = 0;
+    cellY = 5;
+  }
+
+  public void onClickVertical30(View v){
+    buttonClicked(v);
+    cellX = 0;
+    cellY = 6;
+  }
+
 
 
 
