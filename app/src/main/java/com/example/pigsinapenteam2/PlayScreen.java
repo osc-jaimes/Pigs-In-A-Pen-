@@ -17,6 +17,7 @@ public class PlayScreen extends AppCompatActivity {
 
   //Game State
   public GameState gameState;
+  public BoardState boardState;
 
   //players
   public HumanPlayer player1 = new HumanPlayer();
@@ -31,6 +32,8 @@ public class PlayScreen extends AppCompatActivity {
   public View gameButtons;
   TextView player1ScoreBoard;
   TextView player2ScoreBoard;
+  public View leftIndicator;
+  public View rightIndicator;
 
   //Ints
   public int cellX;
@@ -71,6 +74,10 @@ public class PlayScreen extends AppCompatActivity {
     //===== Pause Button ========
     pauseMenuLayout = findViewById(R.id.pauseMenuLayout);
     pauseMenuLayout.setVisibility(View.GONE);
+    //====== Turn Indicators ===== //
+    leftIndicator = findViewById(R.id.LeftIndicator);
+    rightIndicator = findViewById(R.id.RightIndicator);
+    rightIndicator.setVisibility(View.GONE);
   }
 
   public void onClickPause(View v){
@@ -345,6 +352,177 @@ public class PlayScreen extends AppCompatActivity {
     cellY = 4;
     isHorizontal = false;
   }
+
+  public void onClickVertical24(View v){
+    buttonClicked(v);
+    cellX = 0;
+    cellY = 0;
+    isHorizontal = false;
+  }
+
+  public void onClickVertical25(View v){
+    buttonClicked(v);
+    cellX = 0;
+    cellY = 1;
+    isHorizontal = false;
+  }
+
+  public void onClickVertical26(View v){
+    buttonClicked(v);
+    cellX = 0;
+    cellY = 2;
+    isHorizontal = false;
+  }
+
+  public void onClickVertical27(View v){
+    buttonClicked(v);
+    cellX = 0;
+    cellY = 3;
+    isHorizontal = false;
+  }
+
+  public void onClickVertical28(View v){
+    buttonClicked(v);
+    cellX = 0;
+    cellY = 4;
+    isHorizontal = false;
+  }
+
+  public void onClickVertical29(View v){
+    buttonClicked(v);
+    cellX = 0;
+    cellY = 5;
+    isHorizontal = false;
+  }
+
+  public void onClickVertical30(View v){
+    buttonClicked(v);
+    cellX = 1;
+    cellY = 0;
+    isHorizontal = false;
+  }
+
+  public void onClickVertical31(View v){
+    buttonClicked(v);
+    cellX = 1;
+    cellY = 1;
+    isHorizontal = false;
+  }
+
+  public void onClickVertical32(View v){
+    buttonClicked(v);
+    cellX = 1;
+    cellY = 2;
+    isHorizontal = false;
+  }
+
+  public void onClickVertical33(View v){
+    buttonClicked(v);
+    cellX = 1;
+    cellY = 3;
+    isHorizontal = false;
+  }
+
+  public void onClickVertical34(View v){
+    buttonClicked(v);
+    cellX = 1;
+    cellY = 4;
+    isHorizontal = false;
+  }
+
+  public void onClickVertical35(View v){
+    buttonClicked(v);
+    cellX = 1;
+    cellY = 6;
+    isHorizontal = false;
+  }
+
+  public void onClickVertical36(View v){
+    buttonClicked(v);
+    cellX = 2;
+    cellY = 0;
+    isHorizontal = false;
+  }
+
+  public void onClickVertical37(View v){
+    buttonClicked(v);
+    cellX = 2;
+    cellY = 1;
+    isHorizontal = false;
+  }
+
+  public void onClickVertical38(View v){
+    buttonClicked(v);
+    cellX = 2;
+    cellY = 2;
+    isHorizontal = false;
+  }
+
+  public void onClickVertical39(View v){
+    buttonClicked(v);
+    cellX = 2;
+    cellY = 3;
+    isHorizontal = false;
+  }
+
+  public void onClickVertical40(View v){
+    buttonClicked(v);
+    cellX = 2;
+    cellY = 4;
+    isHorizontal = false;
+  }
+
+  public void onClickVertical41(View v){
+    buttonClicked(v);
+    cellX = 2;
+    cellY = 5;
+    isHorizontal = false;
+  }
+
+  public void onClickVertical42(View v){
+    buttonClicked(v);
+    cellX = 3;
+    cellY = 0;
+    isHorizontal = false;
+  }
+
+  public void onClickVertical43(View v){
+    buttonClicked(v);
+    cellX = 3;
+    cellY = 1;
+    isHorizontal = false;
+  }
+
+  public void onClickVertical44(View v){
+    buttonClicked(v);
+    cellX = 3;
+    cellY = 2;
+    isHorizontal = false;
+  }
+
+  public void onClickVertical45(View v){
+    buttonClicked(v);
+    cellX = 3;
+    cellY = 3;
+    isHorizontal = false;
+  }
+
+  public void onClickVertical46(View v){
+    buttonClicked(v);
+    cellX = 3;
+    cellY = 4;
+    isHorizontal = false;
+  }
+
+  public void onClickVertical47(View v){
+    buttonClicked(v);
+    cellX = 3;
+    cellY = 5;
+    isHorizontal = false;
+  }
+
+
+
 
 
 
@@ -645,8 +823,123 @@ public class PlayScreen extends AppCompatActivity {
     isHorizontal = true;
   }
 
+  public void onClickHorizontal36(View v){
+    buttonClicked(v);
+    cellX = 2;
+    cellY = 0;
+    isHorizontal = true;
+  }
+
+  public void onClickHorizontal37(View v){
+    buttonClicked(v);
+    cellX = 2;
+    cellY = 1;
+    isHorizontal = true;
+  }
+
+  public void onClickHorizontal38(View v){
+    buttonClicked(v);
+    cellX = 2;
+    cellY = 2;
+    isHorizontal = true;
+  }
+
+  public void onClickHorizontal39(View v){
+    buttonClicked(v);
+    cellX = 2;
+    cellY = 3;
+    isHorizontal = true;
+  }
+
+  public void onClickHorizontal40(View v){
+    buttonClicked(v);
+    cellX = 2;
+    cellY = 4;
+    isHorizontal = true;
+  }
+
+  public void onClickHorizontal41(View v){
+    buttonClicked(v);
+    cellX = 3;
+    cellY = 0;
+    isHorizontal = true;
+  }
+
+  public void onClickHorizontal42(View v){
+    buttonClicked(v);
+    cellX = 3;
+    cellY = 1;
+    isHorizontal = true;
+  }
+
+  public void onClickHorizontal43(View v){
+    buttonClicked(v);
+    cellX = 3;
+    cellY = 2;
+    isHorizontal = true;
+  }
+
+  public void onClickHorizontal44(View v){
+    buttonClicked(v);
+    cellX = 3;
+    cellY = 3;
+    isHorizontal = true;
+  }
+
+  public void onClickHorizontal45(View v){
+    buttonClicked(v);
+    cellX = 3;
+    cellY = 4;
+    isHorizontal = true;
+  }
+
+  public void onClickHorizontal46(View v){
+    buttonClicked(v);
+    cellX = 4;
+    cellY = 0;
+    isHorizontal = true;
+  }
+
+  public void onClickHorizontal47(View v){
+    buttonClicked(v);
+    cellX = 4;
+    cellY = 1;
+    isHorizontal = true;
+  }
+
+  public void onClickHorizontal48(View v){
+    buttonClicked(v);
+    cellX = 4;
+    cellY = 2;
+    isHorizontal = true;
+  }
+
+  public void onClickHorizontal49(View v){
+    buttonClicked(v);
+    cellX = 4;
+    cellY = 3;
+    isHorizontal = true;
+  }
+
+  public void onClickHorizontal50(View v){
+    buttonClicked(v);
+    cellX = 4;
+    cellY = 4;
+    isHorizontal = true;
+  }
+
+
+
+
+
+
+
   public void onBackPressed(){//so they can't use the back button during a game. CHEATERS
     return;
+  }
+  protected void onResume(){
+    super.onResume();
+    ScreenLogic.fullScreen(this);
   }
 
 }

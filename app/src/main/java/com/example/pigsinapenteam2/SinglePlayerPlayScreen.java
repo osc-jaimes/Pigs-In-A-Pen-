@@ -19,6 +19,8 @@ public class SinglePlayerPlayScreen extends PlayScreen {
   //Players
   public BotPlayer player2;
   private Player currentPlayer;
+  private int boardSize;
+  private int boardType;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -26,11 +28,14 @@ public class SinglePlayerPlayScreen extends PlayScreen {
     setContentView(R.layout.activity_single_player_play_screen);
     setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
     isMultiplayer = false;
+    boardSize = SinglePlayerSetupScreen.boardSize;
+    boardType = SinglePlayerSetupScreen.boardType;
 
-    boardSizeSetter();
-    difficultySetter();
-    scoreBoardDefaulter();
-    startGameButtonsGone();
+
+   boardSizeSetter();
+   difficultySetter();
+   scoreBoardDefaulter();
+   startGameButtonsGone();
 
     //===== Game Buttons Layout ======
     gameButtons.setVisibility(View.VISIBLE);
@@ -42,6 +47,7 @@ public class SinglePlayerPlayScreen extends PlayScreen {
     currentButton = null;
     //===== Board State & Game State ======
     BoardState boardState = new BoardState(width,height);
+    BoardType boardLayout = new BoardType(boardState,boardType, boardSize);
     gameState = new GameState(boardState, player1, player2,0);
     //===== Full Screen =====
     ScreenLogic.fullScreen(this);
@@ -68,6 +74,8 @@ public class SinglePlayerPlayScreen extends PlayScreen {
       gameState = player1.doMove(gameState, cellX, cellY, PLAYERONEINT, isHorizontal);
       gameState.runBoardCheck();
       updateScore();
+      leftIndicator.setVisibility(View.GONE);
+      rightIndicator.setVisibility(View.VISIBLE);
 
     if (gameState.player1Points + gameState.player2Points == totalScore) {
       endGame();
@@ -93,12 +101,6 @@ public class SinglePlayerPlayScreen extends PlayScreen {
       }
     }//while loop
 
-    try {
-      Thread.sleep(150);
-    } catch (Exception e) {
-      System.out.println(e.getMessage());
-    }
-
     while (true) {
       int tempScorePlayer2 = gameState.player2Points;
       if (true) {
@@ -112,6 +114,8 @@ public class SinglePlayerPlayScreen extends PlayScreen {
         AIButton.setBackgroundColor(getResources().getColor(R.color.fences));
         AIButton.setVisibility(View.VISIBLE);
         AIButton.setClickable(false);
+        rightIndicator.setVisibility(View.GONE);
+        leftIndicator.setVisibility(View.VISIBLE);
       }//if statement
 
       if (gameState.player1Points + gameState.player2Points == totalScore) {
@@ -145,7 +149,7 @@ public class SinglePlayerPlayScreen extends PlayScreen {
     } else if (SinglePlayerSetupScreen.boardSize == 2) {
       width = 5;
       height = 4;
-      //this.gameButtons = findViewById(R.id.largeGameButtons); //largeButtons
+      this.gameButtons = findViewById(R.id.largeGameButtons); //largeButtons
     }
   }
 
@@ -156,6 +160,18 @@ public class SinglePlayerPlayScreen extends PlayScreen {
       this.player2 = new MediumBotPlayer();
     } else{
       this.player2 = new HardBotPlayer();
+    }
+  }
+
+
+
+
+
+  public void residentSleeper(){
+    try {
+      Thread.sleep(1000);
+    }catch (InterruptedException e){
+      return;
     }
   }
 }//singlePlayerPlayScreen

@@ -17,7 +17,7 @@ public class SinglePlayerSetupScreen extends AppCompatActivity {
   public static int gameDifficulty;
   public static int boardType;
   protected String sizeText;
-  protected String difficulty;
+  protected String boardLayout;
 
   Button easyDif;
   Button mediumDif;
@@ -41,6 +41,7 @@ public class SinglePlayerSetupScreen extends AppCompatActivity {
 
   public void pressStartGameButton(View V){
     sizeText = gameBoardSizeSpinner.getSelectedItem().toString();
+    boardLayout = difficultySpinner.getSelectedItem().toString();
     if(sizeText.equals("Small")){
       boardSize = 0;
     }
@@ -49,6 +50,19 @@ public class SinglePlayerSetupScreen extends AppCompatActivity {
     }
     else if(sizeText.equals("Large")){
       boardSize = 2;
+    }
+
+    if(boardLayout.equals("Normal")){
+      boardType = 0;
+    }
+    else if(boardLayout.equals("Walls")){
+      boardType = 1;
+    }
+    else if(boardLayout.equals("Garden")){
+      boardType = 2;
+    }
+    else if(boardLayout.equals("Hill")){
+      boardType = 3;
     }
 
 
@@ -75,6 +89,10 @@ public class SinglePlayerSetupScreen extends AppCompatActivity {
     easyDif.setBackgroundColor(getResources().getColor(R.color.dropdown));
     mediumDif.setBackgroundColor(getResources().getColor(R.color.dropdown));
     hardDif.setBackgroundColor(getResources().getColor(R.color.buttonColor));
+  }
+  protected void onResume(){
+    super.onResume();
+    ScreenLogic.fullScreen(this);
   }
 
 }

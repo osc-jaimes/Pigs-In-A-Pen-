@@ -39,6 +39,9 @@ public class MultiplayerPlayScreen extends PlayScreen {
     confirmButtonPlayer2.setVisibility(View.GONE);
     this.pauseMenuLayout = findViewById(R.id.pauseMenuLayout);
     gameButtons.setVisibility(View.VISIBLE);
+    rightIndicator = findViewById(R.id.RightIndicator);
+    leftIndicator = findViewById(R.id.LeftIndicator);
+    rightIndicator.setVisibility(View.GONE);
 
     pauseMenuLayout.setVisibility(View.GONE);
     confirmButtonPlayer1.setVisibility(View.VISIBLE);
@@ -106,9 +109,13 @@ public class MultiplayerPlayScreen extends PlayScreen {
       confirmAction(cellX, cellY, isHorizontal);
 
       if (currentPlayer == player1) {
+        rightIndicator.setVisibility(View.GONE);
+        leftIndicator.setVisibility(View.VISIBLE);
         confirmButtonPlayer1.setVisibility(View.VISIBLE);
         confirmButtonPlayer2.setVisibility(View.GONE);
       } else {
+        leftIndicator.setVisibility(View.GONE);
+        rightIndicator.setVisibility(View.VISIBLE);
         confirmButtonPlayer2.setVisibility(View.VISIBLE);
         confirmButtonPlayer1.setVisibility(View.GONE);
       }
@@ -180,5 +187,9 @@ public class MultiplayerPlayScreen extends PlayScreen {
       height = 4;
       //this.gameButtons = findViewById(R.id.largeGameButtons); //largeButtons
     }
+  }
+  public void onResume(){
+    super.onResume();
+    ScreenLogic.fullScreen(this);
   }
 }

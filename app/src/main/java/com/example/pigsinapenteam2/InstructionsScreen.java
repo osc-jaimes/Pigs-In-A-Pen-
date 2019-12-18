@@ -26,4 +26,8 @@ public class InstructionsScreen extends AppCompatActivity {
     Intent goHome = new Intent(getApplicationContext(), MainScreen.class);
     startActivity(goHome);
   }
+  public void onResume(){
+    super.onResume();
+    ScreenLogic.fullScreen(this);
+  }
 }
