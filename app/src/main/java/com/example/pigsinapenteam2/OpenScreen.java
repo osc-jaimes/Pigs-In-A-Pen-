@@ -26,12 +26,16 @@ public class OpenScreen extends AppCompatActivity {
     mediaPlayer.setLooping(true);
   }
 
-
- /* @Override
+  @Override
   protected void onPause() {
     super.onPause();
-
-    mediaPlayer.pause();
+    try {
+      if(mediaPlayer.isPlaying()) {
+        mediaPlayer.pause();
+      }
+    }catch(Exception e){
+      e.printStackTrace();
+    }
 
 
   }
@@ -39,10 +43,14 @@ public class OpenScreen extends AppCompatActivity {
   @Override
   protected void onResume(){
     super.onResume();
-
+    try {
+      mediaPlayer.start();
+    }catch(Exception e){
+      e.printStackTrace();
+    }
     mediaPlayer.release();
+    ScreenLogic.fullScreen(this);
   }
-*/
   public void pressStartButton(View V){
     Intent goToMainScreen = new Intent(getApplicationContext(), MainScreen.class);
     startActivity(goToMainScreen);
