@@ -12,6 +12,7 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 public class SinglePlayerPlayScreen extends PlayScreen {
 
@@ -35,6 +36,7 @@ public class SinglePlayerPlayScreen extends PlayScreen {
    boardSizeSetter();
    difficultySetter();
    scoreBoardDefaulter();
+   layoutSetter();
    startGameButtonsGone();
 
     //===== Game Buttons Layout ======
@@ -140,9 +142,7 @@ public class SinglePlayerPlayScreen extends PlayScreen {
       width = 3;
       height = 2;
       this.gameButtons = findViewById(R.id.smallGameButtons); //smallButtons
-
     } else if (SinglePlayerSetupScreen.boardSize == 1) {
-
       width = 4;
       height = 3;
       this.gameButtons = findViewById(R.id.mediumGameButtons); //mediumButtons
@@ -160,6 +160,29 @@ public class SinglePlayerPlayScreen extends PlayScreen {
       this.player2 = new MediumBotPlayer();
     } else{
       this.player2 = new HardBotPlayer();
+    }
+  }
+
+  public void layoutSetter(){
+    if(SinglePlayerSetupScreen.boardSize == 0){
+      if(SinglePlayerSetupScreen.boardType == 1){
+        return;
+      } else if(SinglePlayerSetupScreen.boardType == 2){
+        ImageView garden1 = findViewById(R.id.garden1);
+        garden1.setVisibility(View.VISIBLE);
+        ImageView garden2 = findViewById(R.id.garden2);
+        garden2.setVisibility(View.VISIBLE);
+
+        Button garden1Top = findViewById(R.id.h2);
+        garden1Top.setClickable(false);
+        garden1Top.setBackgroundColor(getResources().getColor(R.color.fences));
+
+        Button garden1Right = findViewById(R.id.v3);
+        garden1Right.setClickable(false);
+        garden1Right.setBackgroundColor(getResources().getColor(R.color.fences));
+
+
+      }
     }
   }
 

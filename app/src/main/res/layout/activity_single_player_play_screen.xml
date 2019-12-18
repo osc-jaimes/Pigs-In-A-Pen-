@@ -132,13 +132,11 @@
         android:id="@+id/smallGameButtons"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:visibility="gone"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toTopOf="parent">
 
         <Button
             android:id="@+id/button14"
@@ -244,6 +242,7 @@
             android:layout_width="31dp"
             android:layout_height="40dp"
             android:background="@color/transparent"
+            android:elevation="5dp"
             android:onClick="onClickVertical3"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -397,6 +396,7 @@
             android:layout_width="75dp"
             android:layout_height="35dp"
             android:background="@color/transparent"
+            android:elevation="5dp"
             android:onClick="onClickHorizontal6"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -486,6 +486,7 @@
             android:layout_width="31dp"
             android:layout_height="44dp"
             android:background="@color/transparent"
+            android:elevation="5dp"
             android:onClick="onClickVertical5"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -505,6 +506,38 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.321" />
+
+        <ImageView
+            android:id="@+id/garden1"
+            android:layout_width="136dp"
+            android:layout_height="73dp"
+            android:layout_marginStart="400dp"
+            android:layout_marginTop="122dp"
+            android:layout_marginEnd="195dp"
+            android:layout_marginBottom="216dp"
+            android:elevation="2dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/field" />
+
+        <ImageView
+            android:id="@+id/garden2"
+            android:layout_width="136dp"
+            android:layout_height="73dp"
+            android:layout_marginStart="190dp"
+            android:layout_marginTop="233dp"
+            android:layout_marginEnd="405dp"
+            android:layout_marginBottom="105dp"
+            android:elevation="2dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/field" />
 
         <ImageView
             android:id="@+id/smallCellClaimed0"
@@ -2832,7 +2865,6 @@
         android:layout_marginBottom="300dp"
         android:contentDescription="@string/score_board"
         android:elevation="1dp"
-        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
