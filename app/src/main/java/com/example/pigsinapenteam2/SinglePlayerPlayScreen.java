@@ -33,7 +33,7 @@ public class SinglePlayerPlayScreen extends PlayScreen {
 
 
    boardSizeSetter();
-    difficultySetter();
+   difficultySetter();
    scoreBoardDefaulter();
    startGameButtonsGone();
 

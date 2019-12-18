@@ -90,7 +90,7 @@ public class SinglePlayerSetupScreen extends AppCompatActivity {
     mediumDif.setBackgroundColor(getResources().getColor(R.color.dropdown));
     hardDif.setBackgroundColor(getResources().getColor(R.color.buttonColor));
   }
-  public void onResume(){
+  protected void onResume(){
     super.onResume();
     ScreenLogic.fullScreen(this);
   }
