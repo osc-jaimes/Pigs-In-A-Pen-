@@ -28,7 +28,7 @@ public class SinglePlayerPlayScreen extends PlayScreen {
     isMultiplayer = false;
 
    boardSizeSetter();
-    difficultySetter();
+   difficultySetter();
    scoreBoardDefaulter();
    startGameButtonsGone();
 
@@ -41,7 +41,7 @@ public class SinglePlayerPlayScreen extends PlayScreen {
     //===== Current Chosen 'Fence' Button =======
     currentButton = null;
     //===== Board State & Game State ======
-    BoardState boardState = new BoardState(width,height);
+    boardState = new BoardState(width,height);
     gameState = new GameState(boardState, player1, player2,0);
     //===== Full Screen =====
     ScreenLogic.fullScreen(this);
@@ -54,6 +54,7 @@ public class SinglePlayerPlayScreen extends PlayScreen {
    * @param v
    */
   public void onClickConfirmationButton(View v) {
+    System.out.print(boardState);
     currentButton.setClickable(false);
     currentButton = null;
     playerHasMoved = true;

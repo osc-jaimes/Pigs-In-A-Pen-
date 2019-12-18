@@ -17,6 +17,7 @@ public class PlayScreen extends AppCompatActivity {
 
   //Game State
   public GameState gameState;
+  public BoardState boardState;
 
   //players
   public HumanPlayer player1 = new HumanPlayer();
@@ -800,6 +801,10 @@ public class PlayScreen extends AppCompatActivity {
 
   public void onBackPressed(){//so they can't use the back button during a game. CHEATERS
     return;
+  }
+  protected void onResume(){
+    super.onResume();
+    ScreenLogic.fullScreen(this);
   }
 
 }
