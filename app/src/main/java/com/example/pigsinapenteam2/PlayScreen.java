@@ -17,6 +17,7 @@ public class PlayScreen extends AppCompatActivity {
 
   //Game State
   public GameState gameState;
+  public BoardState boardState;
 
   //players
   public HumanPlayer player1 = new HumanPlayer();
