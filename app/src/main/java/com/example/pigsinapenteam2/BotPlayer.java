@@ -28,7 +28,14 @@ public class BotPlayer extends Player {
    * @param inputState: initial GameState
    * @return: new GameState
    */
-  public GameState doMove(GameState inputState) {
+  public GameState doMove(GameState inputState)
+  {
+    try {
+      Thread.sleep(300);
+    } catch (Exception e) {
+      System.out.println(e.getMessage());
+    }
+    System.out.println("doMove Called.");
     return inputState;
   }
 

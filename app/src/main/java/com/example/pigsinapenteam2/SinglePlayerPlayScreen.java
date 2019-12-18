@@ -152,16 +152,4 @@ public class SinglePlayerPlayScreen extends PlayScreen {
       this.player2 = new HardBotPlayer();
     }
   }
-
-
-
-
-
-  public void residentSleeper(){
-    try {
-      Thread.sleep(1000);
-    }catch (InterruptedException e){
-      return;
-    }
-  }
 }//singlePlayerPlayScreen

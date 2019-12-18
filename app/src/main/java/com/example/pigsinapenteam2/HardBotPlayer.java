@@ -43,6 +43,6 @@ public class HardBotPlayer extends BotPlayer {
     inputGameState.botLastMove = moveToDo;
     inputGameState.currentBoardCheck.boardChecker(BOT_MARK);
 
-    return inputGameState;
+    return super.doMove(inputGameState);
   }
 }
