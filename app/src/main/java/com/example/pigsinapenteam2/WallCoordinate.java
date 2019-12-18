@@ -189,6 +189,7 @@ public class WallCoordinate {
         cellNum += smallMapHorizontalWalls;
       }
       if (mapSize == largeMapCode) {
+        cellNum += smallMapHorizontalWalls;
         cellNum += mediumMapHorizontalWalls;
       }
     } else {
@@ -196,6 +197,7 @@ public class WallCoordinate {
         cellNum += smallMapVerticalWalls;
       }
       if (mapSize == largeMapCode) {
+        cellNum += smallMapVerticalWalls;
         cellNum += mediumMapVerticalWalls;
       }
     }
