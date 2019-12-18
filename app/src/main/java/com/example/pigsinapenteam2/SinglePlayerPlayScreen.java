@@ -32,10 +32,10 @@ public class SinglePlayerPlayScreen extends PlayScreen {
     boardType = SinglePlayerSetupScreen.boardType;
 
 
-   boardSizeSetter();
+    boardSizeSetter();
     difficultySetter();
-   scoreBoardDefaulter();
-   startGameButtonsGone();
+    scoreBoardDefaulter();
+    startGameButtonsGone();
 
     //===== Game Buttons Layout ======
     gameButtons.setVisibility(View.VISIBLE);
@@ -99,6 +99,12 @@ public class SinglePlayerPlayScreen extends PlayScreen {
       }
     }//while loop
 
+    try {
+      Thread.sleep(150);
+    } catch (Exception e) {
+      System.out.println(e.getMessage());
+    }
+
     while (true) {
       int tempScorePlayer2 = gameState.player2Points;
       if (true) {
@@ -156,18 +162,6 @@ public class SinglePlayerPlayScreen extends PlayScreen {
       this.player2 = new MediumBotPlayer();
     } else{
       this.player2 = new HardBotPlayer();
-    }
-  }
-
-
-
-
-
-  public void residentSleeper(){
-    try {
-      Thread.sleep(1000);
-    }catch (InterruptedException e){
-      return;
     }
   }
 }//singlePlayerPlayScreen

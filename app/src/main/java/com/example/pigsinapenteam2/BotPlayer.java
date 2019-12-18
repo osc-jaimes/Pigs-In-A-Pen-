@@ -28,9 +28,7 @@ public class BotPlayer extends Player {
    * @param inputState: initial GameState
    * @return: new GameState
    */
-  public GameState doMove(GameState inputState) {
-    return inputState;
-  }
+  public GameState doMove(GameState inputState) { return inputState; }
 
   /**
    * getHasMoved() -> boolean:
