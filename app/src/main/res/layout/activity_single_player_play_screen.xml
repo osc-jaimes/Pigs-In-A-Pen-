@@ -561,7 +561,7 @@
         android:id="@+id/mediumGameButtons"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -1324,6 +1324,7 @@
             android:layout_marginEnd="118dp"
             android:layout_marginBottom="151dp"
             android:elevation="4dp"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -1339,6 +1340,7 @@
             android:layout_marginEnd="500dp"
             android:layout_marginBottom="99dp"
             android:elevation="4dp"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -1354,11 +1356,42 @@
             android:layout_marginEnd="500dp"
             android:layout_marginBottom="47dp"
             android:elevation="4dp"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/field" />
+
+        <ImageView
+            android:id="@+id/hill3"
+            android:layout_width="138dp"
+            android:layout_height="51dp"
+            android:layout_marginStart="243dp"
+            android:layout_marginTop="206dp"
+            android:layout_marginEnd="350dp"
+            android:layout_marginBottom="154dp"
+            android:elevation="4dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/mountain" />
+
+        <ImageView
+            android:id="@+id/hill4"
+            android:layout_width="138dp"
+            android:layout_height="51dp"
+            android:layout_marginStart="343dp"
+            android:layout_marginTop="206dp"
+            android:layout_marginEnd="250dp"
+            android:layout_marginBottom="154dp"
+            android:elevation="4dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/mountain" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
