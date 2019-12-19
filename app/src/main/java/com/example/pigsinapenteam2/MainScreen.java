@@ -1,10 +1,14 @@
+/**
+ * MainScreen.java
+ *
+ * This is the main menu of the app, holding the buttons which go to all of the play screens and instructions
+ */
 package com.example.pigsinapenteam2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 

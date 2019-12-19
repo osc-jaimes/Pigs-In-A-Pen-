@@ -1,3 +1,8 @@
+/**
+ * InstructionsScreen.java
+ *
+ * This class holds the xml and the methods of an instructions page to help user understand how to use app
+ */
 package com.example.pigsinapenteam2;
 
 import androidx.appcompat.app.AppCompatActivity;

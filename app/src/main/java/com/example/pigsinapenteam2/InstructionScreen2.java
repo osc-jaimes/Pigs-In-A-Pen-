@@ -1,3 +1,8 @@
+/**
+ * InstructionsScreen2.java
+ *
+ * Holds methods and activity to help user understand the app
+ */
 package com.example.pigsinapenteam2;
 
 import androidx.appcompat.app.AppCompatActivity;

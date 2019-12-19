@@ -159,6 +159,11 @@ public class SinglePlayerPlayScreen extends PlayScreen {
     }
   }
 
+  /**
+   * LayoutSetter
+   *
+   * sets the map for the game from garden, as well as other maps
+   */
   public void layoutSetter(){
     if(SinglePlayerSetupScreen.boardSize == 0){
       if(SinglePlayerSetupScreen.boardType == 1){
@@ -193,15 +198,4 @@ public class SinglePlayerPlayScreen extends PlayScreen {
     }
   }
 
-
-
-
-
-  public void residentSleeper(){
-    try {
-      Thread.sleep(1000);
-    }catch (InterruptedException e){
-      return;
-    }
-  }
 }//singlePlayerPlayScreen
