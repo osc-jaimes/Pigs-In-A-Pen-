@@ -214,7 +214,7 @@ public class MultiplayerPlayScreen extends PlayScreen {
       playerOnePic.setImageResource(R.drawable.cow);
     } else if(MultiplayerSetupScreen.player1Animal.equals("pig")){
       playerOnePic.setImageResource(R.drawable.pig);
-    }else{
+    }else if(MultiplayerSetupScreen.player1Animal.isEmpty()){
       playerOnePic.setImageResource(R.drawable.pig);
     }
 
@@ -226,6 +226,8 @@ public class MultiplayerPlayScreen extends PlayScreen {
       playerTwoPic.setImageResource(R.drawable.sheep);
     } else if(MultiplayerSetupScreen.player2Animal.equals("pig")){
       playerTwoPic.setImageResource(R.drawable.pig);
+    } else if(MultiplayerSetupScreen.player2Animal.isEmpty()){
+      playerTwoPic.setImageResource(R.drawable.sheep);
     }
   }
   public void onResume(){
