@@ -11,4 +11,6 @@
     <color name ="fencePost">#654321</color>
     <color name ="fences">#C69D08</color>
     <color name = "transparentMenu">#E69CA383</color>
+    <color name="Player1Color">#3F51B5</color>
+    <color name="Player2Color">#C62828</color>
 </resources>
