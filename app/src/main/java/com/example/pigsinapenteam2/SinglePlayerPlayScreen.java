@@ -215,6 +215,22 @@ public class SinglePlayerPlayScreen extends PlayScreen {
         garden2Right.setClickable(false);
         garden2Right.setBackgroundColor(getResources().getColor(R.color.fences));
 
+        Button garden3Top = findViewById(R.id.v2);
+        garden3Top.setClickable(false);
+        garden3Top.setBackgroundColor(getResources().getColor(R.color.fences));
+
+        Button garden3right = findViewById(R.id.v5);
+        garden3right.setClickable(false);
+        garden3right.setBackgroundColor(getResources().getColor(R.color.fences));
+
+        Button h5 = findViewById(R.id.h5);
+        h5.setClickable(false);
+        h5.setBackgroundColor(getResources().getColor(R.color.fences));
+
+        Button h3 = findViewById(R.id.h3);
+        h3.setClickable(false);
+        h3.setBackgroundColor(getResources().getColor(R.color.fences));
+
 
       }//small gardens
       else if(SinglePlayerSetupScreen.boardType == 3){
@@ -279,9 +295,33 @@ public class SinglePlayerPlayScreen extends PlayScreen {
         garden4Top.setClickable(false);
         garden4Top.setBackgroundColor(getResources().getColor(R.color.fences));
 
-        Button garden4Right = findViewById(R.id.v18);
-        garden4Right.setClickable(false);
-        garden4Right.setBackgroundColor(getResources().getColor(R.color.fences));
+        Button v18 = findViewById(R.id.v18);
+        v18.setClickable(false);
+        v18.setBackgroundColor(getResources().getColor(R.color.fences));
+
+        Button v11 = findViewById(R.id.v11);
+        v11.setClickable(false);
+        v11.setBackgroundColor(getResources().getColor(R.color.fences));
+
+        Button v14 = findViewById(R.id.v14);
+        v14.setClickable(false);
+        v14.setBackgroundColor(getResources().getColor(R.color.fences));
+
+        Button v16 = findViewById(R.id.v16);
+        v16.setClickable(false);
+        v16.setBackgroundColor(getResources().getColor(R.color.fences));
+
+        Button v19 = findViewById(R.id.v19);
+        v19.setClickable(false);
+        v19.setBackgroundColor(getResources().getColor(R.color.fences));
+
+        Button h13 = findViewById(R.id.h13);
+        h13.setClickable(false);
+        h13.setBackgroundColor(getResources().getColor(R.color.fences));
+
+        Button h20 = findViewById(R.id.h20);
+        h20.setClickable(false);
+        h20.setBackgroundColor(getResources().getColor(R.color.fences));
 
       }//medium garden map
 
@@ -359,12 +399,46 @@ public class SinglePlayerPlayScreen extends PlayScreen {
         garden6Right.setClickable(false);
         garden6Right.setBackgroundColor(getResources().getColor(R.color.fences));
 
+        Button v26 = findViewById(R.id.v26);
+        v26.setClickable(false);
+        v26.setBackgroundColor(getResources().getColor(R.color.fences));
+        Button v33 = findViewById(R.id.v33);
+        v33.setClickable(false);
+        v33.setBackgroundColor(getResources().getColor(R.color.fences));
+        Button v36 = findViewById(R.id.v36);
+        v36.setClickable(false);
+        v36.setBackgroundColor(getResources().getColor(R.color.fences));
+        Button v43 = findViewById(R.id.v43);
+        v43.setClickable(false);
+        v43.setBackgroundColor(getResources().getColor(R.color.fences));
 
-
-
+        Button h33 = findViewById(R.id.h33);
+        h33.setClickable(false);
+        h33.setBackgroundColor(getResources().getColor(R.color.fences));
+        Button h35 = findViewById(R.id.h35);
+        h35.setClickable(false);
+        h35.setBackgroundColor(getResources().getColor(R.color.fences));
+        Button h39 = findViewById(R.id.h39);
+        h39.setClickable(false);
+        h39.setBackgroundColor(getResources().getColor(R.color.fences));
+        Button h41 = findViewById(R.id.h41);
+        h41.setClickable(false);
+        h41.setBackgroundColor(getResources().getColor(R.color.fences));
 
 
       }//garden large board
+      else if(SinglePlayerSetupScreen.boardType == 3) {
+        ImageView hill5 = findViewById(R.id.hill5);
+        hill5.setVisibility(View.VISIBLE);
+        ImageView hill6 = findViewById(R.id.hill6);
+        hill6.setVisibility(View.VISIBLE);
+
+        Button hill3Top = findViewById(R.id.h37);
+        hill3Top.setClickable(false);
+        hill3Top.setBackgroundColor(getResources().getColor(R.color.fences));
+
+
+      }//medium hill map
     }
   }
 
