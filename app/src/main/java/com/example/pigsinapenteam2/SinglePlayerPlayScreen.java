@@ -110,6 +110,7 @@ public class SinglePlayerPlayScreen extends PlayScreen {
       int tempScorePlayer2 = gameState.player2Points;
       if (true) {
         gameState = player2.doMove(gameState);
+        System.out.println(gameState.currentBoardState);
         updateClaimedCells(gameState.currentBoardState,boardSize);
         gameState.currentBoardCheck.scoreCheck();
         String id = gameState.botLastMove.getButtonName(SinglePlayerSetupScreen.boardSize);
