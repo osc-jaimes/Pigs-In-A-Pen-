@@ -32,7 +32,7 @@ public class SinglePlayerPlayScreen extends PlayScreen {
     isMultiplayer = false;
     boardSize = SinglePlayerSetupScreen.boardSize;
     boardType = SinglePlayerSetupScreen.boardType;
-    playerOnePicture = findViewById(R.id.player1);
+    playerOnePicture = findViewById(R.id.playerOne);
 
    boardSizeSetter();
    difficultySetter();
