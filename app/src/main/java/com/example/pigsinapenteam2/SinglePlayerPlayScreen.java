@@ -166,11 +166,7 @@ public class SinglePlayerPlayScreen extends PlayScreen {
     }
   }
 
-  /**
-   * LayoutSetter
-   *
-   * sets the map for the game from garden, as well as other maps
-   */
+
   public void animalSetter(){
     if(SinglePlayerSetupScreen.animal.equals("dog")){
       playerOnePicture.setImageResource(R.drawable.dog);
@@ -180,9 +176,17 @@ public class SinglePlayerPlayScreen extends PlayScreen {
       playerOnePicture.setImageResource(R.drawable.cow);
     }else if(SinglePlayerSetupScreen.animal.equals("pig")){
       playerOnePicture.setImageResource(R.drawable.pig);
+    }else{
+      playerOnePicture.setImageResource(R.drawable.pig);
     }
   }
 
+
+  /**
+   * LayoutSetter
+   *
+   * sets the map for the game from garden, as well as other maps
+   */
   public void layoutSetter(){
     if(SinglePlayerSetupScreen.boardSize == 0){
       if(SinglePlayerSetupScreen.boardType == 1){

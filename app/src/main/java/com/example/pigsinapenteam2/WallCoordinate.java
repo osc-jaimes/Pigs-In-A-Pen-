@@ -3,6 +3,8 @@ package com.example.pigsinapenteam2;
 /**
  *  WallCoordinate: for storing wall positions easily.
  *
+ *  By Luke Rostad, 2019
+ *
  *  getWallPosition() -> int:
  *    returns the position of the wall: 0 up, 1 right, 2 down, 3 left.
  *  setWallPosition(int):
