@@ -8,6 +8,7 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 /**
  * @author Oscar Jaimes
@@ -23,16 +24,21 @@ public class MultiplayerPlayScreen extends PlayScreen {
 
   public BoardState boardState;
 
+  ImageView playerOnePic;
+  ImageView playerTwoPic;
+
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_multiplayer_play_screen);
     setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
     ScreenLogic.fullScreen(this);
-
-
+    playerOnePic = findViewById(R.id.player1);
+    playerTwoPic = findViewById(R.id.player2);
 
     boardSizeSetter();
+    characterSetter();
 
     gameButtons.setVisibility(View.VISIBLE);
 
@@ -193,6 +199,30 @@ public class MultiplayerPlayScreen extends PlayScreen {
       width = 5;
       height = 4;
       this.gameButtons = findViewById(R.id.largeGameButtons); //largeButtons
+    }
+  }
+
+  public void characterSetter(){
+    if(MultiplayerSetupScreen.player1Animal.equals("dog")){
+      playerOnePic.setImageResource(R.drawable.dog);
+    } else if(MultiplayerSetupScreen.player1Animal.equals("cat")){
+      playerOnePic.setImageResource(R.drawable.cat);
+    } else if(MultiplayerSetupScreen.player1Animal.equals("cow")){
+      playerOnePic.setImageResource(R.drawable.cow);
+    } else if(MultiplayerSetupScreen.player1Animal.equals("pig")){
+      playerOnePic.setImageResource(R.drawable.pig);
+    }else{
+      playerOnePic.setImageResource(R.drawable.pig);
+    }
+
+    if(MultiplayerSetupScreen.player2Animal.equals("rooster")){
+      playerTwoPic.setImageResource(R.drawable.rooster);
+    } else if(MultiplayerSetupScreen.player2Animal.equals("horse")){
+      playerTwoPic.setImageResource(R.drawable.horse);
+    } else if(MultiplayerSetupScreen.player2Animal.equals("sheep")){
+      playerTwoPic.setImageResource(R.drawable.sheep);
+    } else if(MultiplayerSetupScreen.player2Animal.equals("pig")){
+      playerTwoPic.setImageResource(R.drawable.pig);
     }
   }
   public void onResume(){
