@@ -40,7 +40,10 @@ public class MultiplayerPlayScreen extends PlayScreen {
     ScreenLogic.fullScreen(this);
     playerOnePic = findViewById(R.id.player1);
     playerTwoPic = findViewById(R.id.player2);
-    boardType = MultiplayerSetupScreen.boardType;
+    System.out.println("setup: " + MultiplayerSetupScreen.boardSize);
+    this.boardType = MultiplayerSetupScreen.boardType;
+    int temp = this.boardType;
+    System.out.println("FIRST: " + this.boardType);
 
 
     boardSizeSetter();
@@ -69,9 +72,13 @@ public class MultiplayerPlayScreen extends PlayScreen {
 
 
     boardState = new BoardState(width, height);
-    BoardType boardLayout = new BoardType(boardState,boardType,boardSize);
+    BoardType boardLayout = new BoardType(boardState,MultiplayerSetupScreen.boardType,boardSize);
+    this.boardState = boardLayout.getBoardState();
     gameState = new GameState(boardState, player1, player2, 0);
-    totalScore = totalScoreCalculator();
+    this.boardType = temp;
+    System.out.println("bet: " + temp);
+    totalScore = super.totalScoreCalculator(this.boardType, MultiplayerSetupScreen.boardSize);
+    System.out.println(totalScore);
   }
 
 
@@ -163,15 +170,24 @@ public class MultiplayerPlayScreen extends PlayScreen {
       gameState.currentBoardCheck.scoreCheck();
       gameState.runBoardCheck();
       updateScore();
+      if (gameState.player1Points + gameState.player2Points == totalScore) {
+        endGame();
+      }
       if (gameState.player1Points > tempScore) {
         currentPlayer = player1;
         confirmButtonPlayer2.setVisibility(View.GONE);
         confirmButtonPlayer1.setVisibility(View.GONE);
+        if (gameState.player1Points + gameState.player2Points == totalScore) {
+          endGame();
+        }
         return;
       }
       currentPlayer = player2;
       confirmButtonPlayer1.setVisibility(View.GONE);
       confirmButtonPlayer2.setVisibility(View.VISIBLE);
+      if (gameState.player1Points + gameState.player2Points == totalScore) {
+        endGame();
+      }
 
     } else {
       int tempScore = gameState.player2Points;
@@ -388,7 +404,7 @@ public class MultiplayerPlayScreen extends PlayScreen {
       }//medium garden map
 
 
-      else if(SinglePlayerSetupScreen.boardType == 3) {
+      else if(MultiplayerSetupScreen.boardType == 3) {
         ImageView hill3 = findViewById(R.id.hill3);
         hill3.setVisibility(View.VISIBLE);
         ImageView hill4 = findViewById(R.id.hill4);

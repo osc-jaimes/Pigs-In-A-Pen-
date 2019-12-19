@@ -55,7 +55,7 @@ public class SinglePlayerPlayScreen extends PlayScreen {
     ScreenLogic.fullScreen(this);
 
 
-    totalScore = totalScoreCalculator();
+    totalScore = totalScoreCalculator(boardType, boardSize);
   }
 
 

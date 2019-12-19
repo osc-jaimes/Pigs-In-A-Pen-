@@ -37,7 +37,9 @@ public class BoardType {
   }//constructor
 
 
-
+  public BoardState getBoardState(){
+    return this.inputtedState;
+  }
   private void gardenMapSetup(int boardSize){
 
     int voidedCell = 3;

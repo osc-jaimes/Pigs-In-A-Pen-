@@ -999,24 +999,31 @@ public class PlayScreen extends AppCompatActivity {
       }
     }
   }
-  public int totalScoreCalculator(){
-    if(boardType == 1){
+  public int totalScoreCalculator(int type, int size){
+    System.out.println("second: " + type);
+    System.out.println(width);
+    System.out.println(height);
+    boardType = type;
+
+    if(type == 1){
       return width * height;
     }
-    else if(boardType == 2){
-      if(boardSize == 0){
+    if(type == 2){
+      if(size == 0){
         return width * height - 2;
       }
-      else if(boardSize == 1){
+      if(size == 1){
         return width * height - 4;
       }
-      else if(boardSize == 2){
+       if(size == 2){
         return width * height - 6;
       }
     }
-    else if(boardType == 3){
+
+    if(type == 3){
       return width * height - 2;
     }
+
     return width * height;
   }
 }
