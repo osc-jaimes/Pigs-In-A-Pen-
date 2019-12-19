@@ -1,7 +1,11 @@
 package com.example.pigsinapenteam2;
 
 /**
- * EasyBotPlayer: (easy mode) plays so you don't have to.
+ *  EasyBotPlayer: plays the game at easy difficulty.
+ *    Uses the 'Greedy Else Random' algorithm (see GreedyElseRandom)
+ *
+ *  doMove(GameState) -> GameState:
+ *    picks the move to do and applies it.
  */
 public class EasyBotPlayer extends BotPlayer {
   Strategy strategy;
@@ -10,10 +14,21 @@ public class EasyBotPlayer extends BotPlayer {
   private final int BOT_MARK = 2;
 
 
+  /**
+   * EasyBotPlayer():
+   *    constructor.
+   */
   public EasyBotPlayer() {
     strategy = new GreedyElseRandom();
   }
 
+  /**
+   * doMove(GameState) -> GameState:
+   *    picks the move to do and applies it.
+   *
+   * @param inputGameState: staring game state.
+   * @return: new game state.
+   */
   @Override
   public GameState doMove(GameState inputGameState) {
     //new and improved version
@@ -28,6 +43,6 @@ public class EasyBotPlayer extends BotPlayer {
     inputGameState.botLastMove = moveToDo;
     inputGameState.currentBoardCheck.boardChecker(BOT_MARK);
 
-    return inputGameState;
+    return super.doMove(inputGameState);
   }
 }

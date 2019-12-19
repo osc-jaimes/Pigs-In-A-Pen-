@@ -433,7 +433,7 @@ public class PlayScreen extends AppCompatActivity {
   public void onClickVertical35(View v){
     buttonClicked(v);
     cellX = 1;
-    cellY = 6;
+    cellY = 5;
     isHorizontal = false;
   }
 

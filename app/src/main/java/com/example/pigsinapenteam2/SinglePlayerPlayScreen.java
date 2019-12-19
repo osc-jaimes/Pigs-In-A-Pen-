@@ -32,7 +32,6 @@ public class SinglePlayerPlayScreen extends PlayScreen {
     boardSize = SinglePlayerSetupScreen.boardSize;
     boardType = SinglePlayerSetupScreen.boardType;
 
-
    boardSizeSetter();
    difficultySetter();
    scoreBoardDefaulter();
@@ -48,7 +47,7 @@ public class SinglePlayerPlayScreen extends PlayScreen {
     //===== Current Chosen 'Fence' Button =======
     currentButton = null;
     //===== Board State & Game State ======
-    BoardState boardState = new BoardState(width,height);
+    boardState = new BoardState(width,height);
     BoardType boardLayout = new BoardType(boardState,boardType, boardSize);
     gameState = new GameState(boardState, player1, player2,0);
     //===== Full Screen =====
@@ -76,8 +75,7 @@ public class SinglePlayerPlayScreen extends PlayScreen {
       gameState = player1.doMove(gameState, cellX, cellY, PLAYERONEINT, isHorizontal);
       gameState.runBoardCheck();
       updateScore();
-      leftIndicator.setVisibility(View.GONE);
-      rightIndicator.setVisibility(View.VISIBLE);
+
 
     if (gameState.player1Points + gameState.player2Points == totalScore) {
       endGame();
@@ -116,8 +114,6 @@ public class SinglePlayerPlayScreen extends PlayScreen {
         AIButton.setBackgroundColor(getResources().getColor(R.color.fences));
         AIButton.setVisibility(View.VISIBLE);
         AIButton.setClickable(false);
-        rightIndicator.setVisibility(View.GONE);
-        leftIndicator.setVisibility(View.VISIBLE);
       }//if statement
 
       if (gameState.player1Points + gameState.player2Points == totalScore) {

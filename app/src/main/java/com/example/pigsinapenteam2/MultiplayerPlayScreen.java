@@ -23,28 +23,34 @@ public class MultiplayerPlayScreen extends PlayScreen {
 
   public BoardState boardState;
 
-
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_multiplayer_play_screen);
     setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
     ScreenLogic.fullScreen(this);
+
+
+
     boardSizeSetter();
+
+    gameButtons.setVisibility(View.VISIBLE);
 
     scoreBoardDefaulter();
     isMultiplayer = true;
+
     confirmButtonPlayer1 = findViewById(R.id.confirmButtonPlayer1);
     confirmButtonPlayer2 = findViewById(R.id.confirmButtonPlayer2);
     confirmButtonPlayer2.setVisibility(View.GONE);
     this.pauseMenuLayout = findViewById(R.id.pauseMenuLayout);
-    gameButtons.setVisibility(View.VISIBLE);
     rightIndicator = findViewById(R.id.RightIndicator);
     leftIndicator = findViewById(R.id.LeftIndicator);
     rightIndicator.setVisibility(View.GONE);
 
     pauseMenuLayout.setVisibility(View.GONE);
     confirmButtonPlayer1.setVisibility(View.VISIBLE);
+
+
 
 
     currentPlayer = player1;
@@ -103,6 +109,7 @@ public class MultiplayerPlayScreen extends PlayScreen {
    */
   public void onClickConfirmationButton(View v) throws InterruptedException {
     try {
+      System.out.print(boardState);
       currentButton.setClickable(false);
       currentButton = null;
       playerHasMoved = true;
@@ -185,7 +192,7 @@ public class MultiplayerPlayScreen extends PlayScreen {
     } else if (MultiplayerSetupScreen.boardSize == 2) {
       width = 5;
       height = 4;
-      //this.gameButtons = findViewById(R.id.largeGameButtons); //largeButtons
+      this.gameButtons = findViewById(R.id.largeGameButtons); //largeButtons
     }
   }
   public void onResume(){

@@ -8,19 +8,15 @@
 
     <ImageView
         android:id="@+id/pauseButton"
-        android:layout_width="42dp"
-        android:layout_height="47dp"
-        android:layout_marginStart="624dp"
-        android:layout_marginTop="54dp"
-        android:layout_marginEnd="65dp"
-        android:layout_marginBottom="310dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="40dp"
         android:contentDescription="@string/pause_button"
         android:elevation="3dp"
         android:onClick="onClickPause"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/background"
+        app:layout_constraintTop_toTopOf="@+id/background"
         app:srcCompat="@drawable/pause_button" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -541,12 +537,12 @@
 
         <ImageView
             android:id="@+id/hill1"
-            android:layout_width="127dp"
-            android:layout_height="62dp"
-            android:layout_marginStart="412dp"
-            android:layout_marginTop="173dp"
-            android:layout_marginEnd="411dp"
-            android:layout_marginBottom="252dp"
+            android:layout_width="93dp"
+            android:layout_height="47dp"
+            android:layout_marginStart="319dp"
+            android:layout_marginTop="156dp"
+            android:layout_marginEnd="319dp"
+            android:layout_marginBottom="208dp"
             android:elevation="4dp"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -557,12 +553,12 @@
 
         <ImageView
             android:id="@+id/hill2"
-            android:layout_width="127dp"
-            android:layout_height="62dp"
-            android:layout_marginStart="412dp"
-            android:layout_marginTop="264dp"
-            android:layout_marginEnd="411dp"
-            android:layout_marginBottom="161dp"
+            android:layout_width="93dp"
+            android:layout_height="47dp"
+            android:layout_marginStart="319dp"
+            android:layout_marginTop="228dp"
+            android:layout_marginEnd="319dp"
+            android:layout_marginBottom="135dp"
             android:elevation="4dp"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -578,7 +574,7 @@
         android:id="@+id/mediumGameButtons"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="visible"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -1318,12 +1314,12 @@
 
         <ImageView
             android:id="@+id/garden3"
-            android:layout_width="148dp"
-            android:layout_height="89dp"
-            android:layout_marginStart="582dp"
-            android:layout_marginTop="136dp"
-            android:layout_marginEnd="220dp"
-            android:layout_marginBottom="262dp"
+            android:layout_width="113dp"
+            android:layout_height="108dp"
+            android:layout_marginStart="500dp"
+            android:layout_marginTop="96dp"
+            android:layout_marginEnd="118dp"
+            android:layout_marginBottom="207dp"
             android:elevation="4dp"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -1334,14 +1330,13 @@
 
         <ImageView
             android:id="@+id/garden4"
-            android:layout_width="148dp"
-            android:layout_height="89dp"
-            android:layout_marginStart="582dp"
-            android:layout_marginTop="225dp"
-            android:layout_marginEnd="220dp"
-            android:layout_marginBottom="173dp"
+            android:layout_width="113dp"
+            android:layout_height="108dp"
+            android:layout_marginStart="500dp"
+            android:layout_marginTop="152dp"
+            android:layout_marginEnd="118dp"
+            android:layout_marginBottom="151dp"
             android:elevation="4dp"
-            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -1350,14 +1345,13 @@
 
         <ImageView
             android:id="@+id/garden5"
-            android:layout_width="148dp"
-            android:layout_height="89dp"
-            android:layout_marginStart="223dp"
-            android:layout_marginTop="229dp"
-            android:layout_marginEnd="579dp"
-            android:layout_marginBottom="169dp"
+            android:layout_width="113dp"
+            android:layout_height="108dp"
+            android:layout_marginStart="118dp"
+            android:layout_marginTop="204dp"
+            android:layout_marginEnd="500dp"
+            android:layout_marginBottom="99dp"
             android:elevation="4dp"
-            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -1366,68 +1360,18 @@
 
         <ImageView
             android:id="@+id/garden6"
-            android:layout_width="148dp"
-            android:layout_height="89dp"
-            android:layout_marginStart="221dp"
-            android:layout_marginTop="318dp"
-            android:layout_marginEnd="581dp"
-            android:layout_marginBottom="80dp"
+            android:layout_width="113dp"
+            android:layout_height="108dp"
+            android:layout_marginStart="118dp"
+            android:layout_marginTop="256dp"
+            android:layout_marginEnd="500dp"
+            android:layout_marginBottom="47dp"
             android:elevation="4dp"
-            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/field" />
-
-        <ImageView
-            android:id="@+id/Mountain3"
-            android:layout_width="119dp"
-            android:layout_height="66dp"
-            android:layout_marginStart="355dp"
-            android:layout_marginTop="237dp"
-            android:layout_marginEnd="476dp"
-            android:layout_marginBottom="184dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/mountain" />
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/TurnIndicators"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <ImageView
-                android:id="@+id/LeftIndicator"
-                android:layout_width="66dp"
-                android:layout_height="26dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="120dp"
-                android:elevation="10dp"
-                android:rotation="90"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/blueturn" />
-
-            <ImageView
-                android:id="@+id/RightIndicator"
-                android:layout_width="66dp"
-                android:layout_height="26dp"
-                android:layout_marginTop="120dp"
-                android:layout_marginEnd="24dp"
-                android:elevation="10dp"
-                android:rotation="90"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/blueturn" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -2699,5 +2643,36 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/pig" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/TurnIndicators"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/LeftIndicator"
+            android:layout_width="66dp"
+            android:layout_height="26dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="120dp"
+            android:elevation="10dp"
+            android:rotation="90"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/blueturn" />
+
+        <ImageView
+            android:id="@+id/RightIndicator"
+            android:layout_width="66dp"
+            android:layout_height="26dp"
+            android:layout_marginTop="120dp"
+            android:layout_marginEnd="24dp"
+            android:elevation="10dp"
+            android:rotation="90"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/blueturn" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
