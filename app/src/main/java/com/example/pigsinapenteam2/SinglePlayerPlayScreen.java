@@ -56,6 +56,7 @@ public class SinglePlayerPlayScreen extends PlayScreen {
 
 
     totalScore = totalScoreCalculator();
+    System.out.println(totalScore + "SCORE NEEDED");
   }
 
 
