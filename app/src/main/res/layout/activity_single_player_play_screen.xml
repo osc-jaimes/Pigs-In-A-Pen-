@@ -6,23 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".SinglePlayerPlayScreen">
 
-    <ImageView
-        android:id="@+id/pauseButton"
-        android:layout_width="42dp"
-        android:layout_height="47dp"
-        android:layout_marginStart="624dp"
-        android:layout_marginTop="54dp"
-        android:layout_marginEnd="65dp"
-        android:layout_marginBottom="310dp"
-        android:contentDescription="@string/pause_button"
-        android:elevation="3dp"
-        android:onClick="onClickPause"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/pause_button" />
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/pauseMenuLayout"
         android:layout_width="match_parent"
@@ -2583,6 +2566,17 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/blueturn" />
+
+        <ImageView
+            android:id="@+id/pauseButton"
+            android:layout_width="42dp"
+            android:layout_height="47dp"
+            android:contentDescription="@string/pause_button"
+            android:elevation="3dp"
+            android:onClick="onClickPause"
+            app:srcCompat="@drawable/pause_button"
+            tools:layout_editor_absoluteX="653dp"
+            tools:layout_editor_absoluteY="30dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

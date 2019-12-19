@@ -47,4 +47,12 @@
         <item>Hill</item>
     </string-array>
 
+    <string-array name="animal_options">
+        <item>Pig</item>
+        <item>Sheep</item>
+        <item>Cat</item>
+        <item>Cow</item>
+        <item>Horse</item>
+    </string-array>
+
 </resources>
