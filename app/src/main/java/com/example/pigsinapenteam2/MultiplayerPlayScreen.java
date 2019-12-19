@@ -23,6 +23,8 @@ public class MultiplayerPlayScreen extends PlayScreen {
 
   public BoardState boardState;
 
+  private int boardSize;
+
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -139,7 +141,8 @@ public class MultiplayerPlayScreen extends PlayScreen {
     if (currentPlayer == player1) {
       int tempScore = gameState.player1Points;
       gameState = player1.doMove(gameState, cellX, cellY, PLAYERONEINT, isHorizontal);
-
+      updateClaimedCells(gameState.currentBoardState,boardSize);
+      gameState.currentBoardCheck.scoreCheck();
       gameState.runBoardCheck();
       updateScore();
       if (gameState.player1Points > tempScore) {
@@ -155,6 +158,8 @@ public class MultiplayerPlayScreen extends PlayScreen {
     } else {
       int tempScore = gameState.player2Points;
       gameState = player2.doMove(gameState, cellX, cellY, PLAYERTWOINT, isHorizontal);
+      updateClaimedCells(gameState.currentBoardState,boardSize);
+      gameState.currentBoardCheck.scoreCheck();
       gameState.runBoardCheck();
       updateScore();
       if (gameState.player2Points > tempScore) {
@@ -172,17 +177,18 @@ public class MultiplayerPlayScreen extends PlayScreen {
   }
 
   public void boardSizeSetter() {
-    if (MultiplayerSetupScreen.boardSize == 0) {
+    boardSize = MultiplayerSetupScreen.boardSize;
+    if (boardSize == 0) {
       width = 3;
       height = 2;
       this.gameButtons = findViewById(R.id.smallGameButtons); //smallButtons
 
-    } else if (MultiplayerSetupScreen.boardSize == 1) {
+    } else if (boardSize == 1) {
 
       width = 4;
       height = 3;
       this.gameButtons = findViewById(R.id.mediumGameButtons); //mediumButtons
-    } else if (MultiplayerSetupScreen.boardSize == 2) {
+    } else if (boardSize == 2) {
       width = 5;
       height = 4;
       this.gameButtons = findViewById(R.id.largeGameButtons); //largeButtons
