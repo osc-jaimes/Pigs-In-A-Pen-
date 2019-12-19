@@ -20,7 +20,9 @@ public class MultiplayerSetupScreen extends AppCompatActivity {
 
   Spinner gameBoardSizeSpinner;
   public static int boardSize;
+  public static int boardType;
   protected String sizeText;
+  protected String typeText;
   public static String player1Animal;
   public static String player2Animal;
 
@@ -73,6 +75,17 @@ public class MultiplayerSetupScreen extends AppCompatActivity {
     }
     else if(sizeText.equals("Large")){
       boardSize = 2;
+    }
+
+    typeText = gameBoardSizeSpinner.getSelectedItem().toString();
+    if(typeText.equals("Normal")){
+      boardType = 1;
+    }
+    else if(typeText.equals("Garden")){
+      boardType = 2;
+    }
+    else if(typeText.equals("Hill")){
+      boardType = 3;
     }
 
     Intent goToPlayScreen = new Intent(getApplicationContext(), MultiplayerPlayScreen.class);

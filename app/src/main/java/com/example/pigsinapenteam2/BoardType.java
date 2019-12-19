@@ -45,9 +45,13 @@ public class BoardType {
     //sets corners as void
     inputtedState.setCellState(0, width, voidedCell);
     inputtedState.setTopWallState(0, width);
+    inputtedState.setBottomWallState(0, width);
     inputtedState.setRightWallState(0, width);
+    inputtedState.setLeftWallState(0,width);
     inputtedState.setCellState(height, 0, voidedCell);
+    inputtedState.setTopWallState(height, 0);
     inputtedState.setBottomWallState(height, 0);
+    inputtedState.setRightWallState();
     inputtedState.setLeftWallState(height, 0);
 
 

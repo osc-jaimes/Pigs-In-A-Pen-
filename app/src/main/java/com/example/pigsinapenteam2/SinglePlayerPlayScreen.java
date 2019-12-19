@@ -439,7 +439,7 @@ public class SinglePlayerPlayScreen extends PlayScreen {
 
 
       }//medium hill map
-    }
-  }
+    }//large map
+  }//layoutSetter
 
 }//singlePlayerPlayScreen
