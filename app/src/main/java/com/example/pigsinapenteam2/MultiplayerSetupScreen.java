@@ -43,6 +43,9 @@ public class MultiplayerSetupScreen extends AppCompatActivity {
 
     gameBoardSizeSpinner = findViewById(R.id.board_size_drop_down);
 
+    player2Animal = "";
+    player1Animal = "";
+
     cat = findViewById(R.id.cat);
     cow = findViewById(R.id.cow);
     dog = findViewById(R.id.dog);

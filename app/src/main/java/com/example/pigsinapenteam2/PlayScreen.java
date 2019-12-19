@@ -1014,7 +1014,7 @@ public class PlayScreen extends AppCompatActivity {
         return width * height - 6;
       }
     }
-    else if(boardType == 2){
+    else if(boardType == 3){
       return width * height - 2;
     }
     return width * height;
