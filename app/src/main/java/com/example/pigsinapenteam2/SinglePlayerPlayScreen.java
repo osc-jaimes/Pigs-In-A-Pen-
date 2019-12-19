@@ -359,12 +359,19 @@ public class SinglePlayerPlayScreen extends PlayScreen {
         garden6Right.setClickable(false);
         garden6Right.setBackgroundColor(getResources().getColor(R.color.fences));
 
-
-
-
-
-
       }//garden large board
+      else if(SinglePlayerSetupScreen.boardType == 3) {
+        ImageView hill5 = findViewById(R.id.hill5);
+        hill5.setVisibility(View.VISIBLE);
+        ImageView hill6 = findViewById(R.id.hill6);
+        hill6.setVisibility(View.VISIBLE);
+
+        Button hill3Top = findViewById(R.id.h37);
+        hill3Top.setClickable(false);
+        hill3Top.setBackgroundColor(getResources().getColor(R.color.fences));
+
+
+      }//medium hill map
     }
   }
 
