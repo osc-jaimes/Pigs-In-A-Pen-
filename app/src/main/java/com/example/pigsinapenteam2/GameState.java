@@ -24,7 +24,6 @@ public class GameState {
   Player player2;
   int player1Points;
   int player2Points;
-  int gameMode;
   public WallCoordinate botLastMove;
   //
 
@@ -63,62 +62,6 @@ public class GameState {
     player1Points = currentBoardCheck.getPlayerOneScore();
     player2Points = currentBoardCheck.getPlayerTwoScore();
     this.currentPlayer = currentPlayer;
-  }
-
-
-  /**
-   * getGameMode
-   *
-   * Getter for gameMode
-   *
-   * @return int gameMode
-   */
-  public int getGameMode(){
-    return gameMode;
-  }
-
-  /**
-   * isBotP1
-   *
-   * Return true or false if player one is a bot or not: true for bot, false for human
-   *
-   * @return boolean isBot
-   */
-  public boolean isBotPlayer1(){
-   return this.player1.isBot();
-  }
-
-  /**
-   * isBotP2
-   *
-   * return true or false if player two is a bot or human; true for bot, false for human
-   *
-   * @return boolean isBot
-   */
-
-  public boolean isBotPlayer2(){
-
-    return this.player2.isBot();
-
-  }
-
-
-  public int getPlayer1Points(){
-
-    return player1Points;
-
-  }
-
-  public int getPlayer2Points(){
-
-    return player2Points;
-
-  }
-
-  public BoardState getBoardState(){
-
-    return this.currentBoardState;
-
   }
   public void runBoardCheck(){
 
