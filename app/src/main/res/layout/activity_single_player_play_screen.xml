@@ -132,7 +132,7 @@
         android:id="@+id/smallGameButtons"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:visibility="visible"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -539,6 +539,38 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/field" />
 
+        <ImageView
+            android:id="@+id/hill1"
+            android:layout_width="127dp"
+            android:layout_height="62dp"
+            android:layout_marginStart="412dp"
+            android:layout_marginTop="173dp"
+            android:layout_marginEnd="411dp"
+            android:layout_marginBottom="252dp"
+            android:elevation="4dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/mountain" />
+
+        <ImageView
+            android:id="@+id/hill2"
+            android:layout_width="127dp"
+            android:layout_height="62dp"
+            android:layout_marginStart="412dp"
+            android:layout_marginTop="264dp"
+            android:layout_marginEnd="411dp"
+            android:layout_marginBottom="161dp"
+            android:elevation="4dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/mountain" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -546,7 +578,7 @@
         android:id="@+id/mediumGameButtons"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -1283,6 +1315,101 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/garden3"
+            android:layout_width="148dp"
+            android:layout_height="89dp"
+            android:layout_marginStart="582dp"
+            android:layout_marginTop="136dp"
+            android:layout_marginEnd="220dp"
+            android:layout_marginBottom="262dp"
+            android:elevation="4dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/field" />
+
+        <ImageView
+            android:id="@+id/garden4"
+            android:layout_width="148dp"
+            android:layout_height="89dp"
+            android:layout_marginStart="582dp"
+            android:layout_marginTop="225dp"
+            android:layout_marginEnd="220dp"
+            android:layout_marginBottom="173dp"
+            android:elevation="4dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/field" />
+
+        <ImageView
+            android:id="@+id/garden5"
+            android:layout_width="148dp"
+            android:layout_height="89dp"
+            android:layout_marginStart="223dp"
+            android:layout_marginTop="229dp"
+            android:layout_marginEnd="579dp"
+            android:layout_marginBottom="169dp"
+            android:elevation="4dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/field" />
+
+        <ImageView
+            android:id="@+id/garden6"
+            android:layout_width="148dp"
+            android:layout_height="89dp"
+            android:layout_marginStart="221dp"
+            android:layout_marginTop="318dp"
+            android:layout_marginEnd="581dp"
+            android:layout_marginBottom="80dp"
+            android:elevation="4dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/field" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/TurnIndicators"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/LeftIndicator"
+                android:layout_width="66dp"
+                android:layout_height="26dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="120dp"
+                android:elevation="10dp"
+                android:rotation="90"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/blueturn" />
+
+            <ImageView
+                android:id="@+id/RightIndicator"
+                android:layout_width="66dp"
+                android:layout_height="26dp"
+                android:layout_marginTop="120dp"
+                android:layout_marginEnd="24dp"
+                android:elevation="10dp"
+                android:rotation="90"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/blueturn" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -2554,35 +2681,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/pig" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/TurnIndicators"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <ImageView
-            android:id="@+id/LeftIndicator"
-            android:layout_width="66dp"
-            android:layout_height="26dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="120dp"
-            android:elevation="10dp"
-            android:rotation="90"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/blueturn" />
-
-        <ImageView
-            android:id="@+id/RightIndicator"
-            android:layout_width="66dp"
-            android:layout_height="26dp"
-            android:layout_marginTop="120dp"
-            android:layout_marginEnd="24dp"
-            android:elevation="10dp"
-            android:rotation="90"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/blueturn" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
