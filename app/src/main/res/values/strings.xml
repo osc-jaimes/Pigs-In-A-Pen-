@@ -1,3 +1,56 @@
 <resources>
-    <string name="app_name">Pigs in a Pen (Team 2)</string>
+    <string name="app_name">Pigs in a Pen</string>
+    <string name="open_screen_background"> Open Screen Background</string>
+    <string name="logo"> Pigs in a pen logo</string>
+
+    <string name="character">Character:</string>
+    <string name="paused">Game Paused</string>
+
+    <string name="main_screen_background">main_screen_background</string>
+    <string name="main_screen_pig"> Main Screen Pig</string>
+    <string name="single_player_button">Single Player</string>
+    <string name="multi_player_button">Multiplayer</string>
+    <string name="difficulty_header">Difficulty:</string>
+    <string name="playing_background">Background for setup and play screen</string>
+    <string name="pig">pig icon for the game</string>
+    <string name="board_size_header">Board Size:</string>
+    <string name="board_type_header">Board Type:</string>
+    <string name="drop_down_button">Button to control drop down menu</string>
+    <string name="play_button">Start Game</string>
+    <string name="end_turn_button">End Turn</string>
+    <string name="score_board">Sore Board for the game</string>
+    <string name="pausedInfo">Paused</string>
+    <string name="resumeText">Resume</string>
+    <string name="pause_button">Button to pause the game</string>
+    <string name="restartButton">Restart</string>
+    <string name="menuButton">Menu</string>
+    <string name="victoryText">Wins!</string>
+    <string name="playerWhoWon"></string>
+    <string name="Player1WinnerText">Player    1</string>
+    <string name="Player2WinnerText">Player    2</string>
+    <string name="NoOneWinnerText">No    One</string>
+
+    <string-array name="board_size_options">
+        <item>Small</item>
+        <item>Medium</item>
+        <item>Large</item>
+    </string-array>
+
+    <string name="easy_option">Easy</string>
+    <string name="medium_option">Medium</string>
+    <string name="hard_option">Hard</string>
+
+    <string-array name="board_type_options">
+        <item>Normal</item>
+        <item>Garden</item>
+        <item>Hill</item>
+    </string-array>
+
+    <string-array name="animal_options">
+        <item>Pig</item>
+        <item>Sheep</item>
+        <item>Cat</item>
+        <item>Cow</item>
+    </string-array>
+
 </resources>

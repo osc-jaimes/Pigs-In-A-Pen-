@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MultiplayerSetupScreen">
+
+    <ImageView
+        android:id="@+id/dog"
+        android:layout_width="67dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="348dp"
+        android:layout_marginTop="232dp"
+        android:layout_marginBottom="128dp"
+        android:elevation="4dp"
+        android:onClick="onClickDog"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/dog" />
+
+    <ImageView
+        android:id="@+id/pig"
+        android:layout_width="67dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="252dp"
+        android:layout_marginTop="160dp"
+        android:layout_marginBottom="200dp"
+        android:elevation="4dp"
+        android:onClick="onClickPig"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/pig" />
+
+    <ImageView
+        android:id="@+id/pig2"
+        android:layout_width="67dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="547dp"
+        android:layout_marginTop="231dp"
+        android:layout_marginEnd="117dp"
+        android:layout_marginBottom="129dp"
+        android:elevation="4dp"
+        android:onClick="onClickPig2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/pig" />
+
+    <ImageView
+        android:id="@+id/cat"
+        android:layout_width="67dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="348dp"
+        android:layout_marginTop="160dp"
+        android:layout_marginBottom="200dp"
+        android:elevation="4dp"
+        android:onClick="onClickCat"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/cat" />
+
+    <ImageView
+        android:id="@+id/cow"
+        android:layout_width="67dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="257dp"
+        android:layout_marginTop="232dp"
+        android:layout_marginEnd="407dp"
+        android:layout_marginBottom="128dp"
+        android:elevation="4dp"
+        android:onClick="onClickCow"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/cow" />
+
+    <ImageView
+        android:id="@+id/background"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/playing_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/grass_background" />
+
+    <Button
+        android:id="@+id/secondaryBackground"
+        android:layout_width="586dp"
+        android:layout_height="271dp"
+        android:background="@color/buttonColor"
+        android:clickable="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/background"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/background" />
+
+    <Button
+        android:id="@+id/secondBg"
+        android:layout_width="541dp"
+        android:layout_height="230dp"
+        android:background="@color/accent"
+        android:clickable="false"
+        app:layout_constraintBottom_toBottomOf="@+id/secondaryBackground"
+        app:layout_constraintEnd_toEndOf="@+id/secondaryBackground"
+        app:layout_constraintHorizontal_bias="0.511"
+        app:layout_constraintStart_toStartOf="@+id/secondaryBackground"
+        app:layout_constraintTop_toTopOf="@+id/secondaryBackground"
+        app:layout_constraintVertical_bias="0.487" />
+
+    <TextView
+        android:id="@+id/boardSizeHeader"
+        android:layout_width="130dp"
+        android:layout_height="30dp"
+        android:elevation="2dp"
+        android:text="@string/board_size_header"
+        android:textColor="@android:color/background_light"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/secondBg"
+        app:layout_constraintHorizontal_bias="0.024"
+        app:layout_constraintStart_toStartOf="@+id/secondBg"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.275" />
+
+    <TextView
+        android:id="@+id/boardSizeHeader4"
+        android:layout_width="130dp"
+        android:layout_height="30dp"
+        android:elevation="2dp"
+        android:text="Player 1:"
+        android:textColor="@android:color/background_light"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/secondBg"
+        app:layout_constraintHorizontal_bias="0.447"
+        app:layout_constraintStart_toStartOf="@+id/secondBg"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.275" />
+
+    <TextView
+        android:id="@+id/boardSizeHeader5"
+        android:layout_width="130dp"
+        android:layout_height="30dp"
+        android:elevation="2dp"
+        android:text="Player 2:"
+        android:textColor="@android:color/background_light"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/secondBg"
+        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintStart_toStartOf="@+id/secondBg"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.275" />
+
+    <TextView
+        android:id="@+id/boardSizeHeader2"
+        android:layout_width="130dp"
+        android:layout_height="30dp"
+        android:elevation="2dp"
+        android:text="@string/board_type_header"
+        android:textColor="@android:color/background_light"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/secondBg"
+        app:layout_constraintHorizontal_bias="0.031"
+        app:layout_constraintStart_toStartOf="@+id/secondBg"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.527" />
+
+    <Spinner
+        android:id="@+id/board_size_drop_down"
+        android:layout_width="127dp"
+        android:layout_height="36dp"
+        android:background="@color/dropdown"
+        android:elevation="2dp"
+        android:entries="@array/board_size_options"
+        android:popupBackground="@color/dropdown"
+        android:spinnerMode="dropdown"
+        app:layout_constraintBottom_toBottomOf="@+id/secondBg"
+        app:layout_constraintEnd_toEndOf="@+id/secondBg"
+        app:layout_constraintHorizontal_bias="0.031"
+        app:layout_constraintStart_toStartOf="@+id/secondBg"
+        app:layout_constraintTop_toBottomOf="@+id/boardSizeHeader"
+        app:layout_constraintVertical_bias="0.1" />
+
+    <Spinner
+        android:id="@+id/board_size_drop_down_difficulty"
+        android:layout_width="127dp"
+        android:layout_height="36dp"
+        android:background="@color/dropdown"
+        android:elevation="2dp"
+        android:entries="@array/board_type_options"
+        android:popupBackground="@color/dropdown"
+        android:spinnerMode="dropdown"
+        app:layout_constraintBottom_toBottomOf="@+id/secondBg"
+        app:layout_constraintEnd_toEndOf="@+id/secondBg"
+        app:layout_constraintHorizontal_bias="0.038"
+        app:layout_constraintStart_toStartOf="@+id/secondBg"
+        app:layout_constraintTop_toBottomOf="@+id/boardSizeHeader"
+        app:layout_constraintVertical_bias="0.751" />
+
+    <ImageView
+        android:id="@+id/dropDownButton"
+        android:layout_width="25dp"
+        android:layout_height="24dp"
+        android:contentDescription="@string/drop_down_button"
+        android:elevation="2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/background"
+        app:layout_constraintHorizontal_bias="0.18"
+        app:layout_constraintStart_toStartOf="@+id/secondBg"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.392"
+        app:srcCompat="@android:drawable/arrow_down_float" />
+
+    <ImageView
+        android:id="@+id/dropDownButton2"
+        android:layout_width="25dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="96dp"
+        android:contentDescription="@string/drop_down_button"
+        android:elevation="2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/board_size_drop_down_difficulty"
+        app:layout_constraintTop_toBottomOf="@+id/dropDownButton"
+        app:layout_constraintVertical_bias="0.36"
+        app:srcCompat="@android:drawable/arrow_down_float" />
+
+    <Button
+        android:id="@+id/playButton"
+        android:layout_width="172dp"
+        android:layout_height="43dp"
+        android:background="@color/buttonColor"
+        android:onClick="playGame"
+        android:text="@string/play_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.499"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/board_size_drop_down_difficulty"
+        app:layout_constraintVertical_bias="0.259" />
+
+    <ImageView
+        android:id="@+id/rooster"
+        android:layout_width="67dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="451dp"
+        android:layout_marginTop="160dp"
+        android:layout_marginEnd="213dp"
+        android:layout_marginBottom="200dp"
+        android:elevation="2dp"
+        android:onClick="onClickRooser"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/rooster" />
+
+    <ImageView
+        android:id="@+id/horse"
+        android:layout_width="67dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="547dp"
+        android:layout_marginTop="160dp"
+        android:layout_marginEnd="117dp"
+        android:layout_marginBottom="200dp"
+        android:elevation="2dp"
+        android:onClick="onClickHorse"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/horse" />
+
+    <ImageView
+        android:id="@+id/player2"
+        android:layout_width="67dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="451dp"
+        android:layout_marginTop="232dp"
+        android:layout_marginEnd="213dp"
+        android:layout_marginBottom="128dp"
+        android:elevation="2dp"
+        android:onClick="onClickSheep"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/sheep" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,4 +3,16 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="buttonColor">#F0774C24</color>
+    <color name="buttonTextColor">#F6BF45</color>
+    <color name="accent">#9CA383</color>
+    <color name="dropdown">#87795D</color>
+    <color name ="transparent">#00FF001C</color>
+    <color name ="fencePost">#654321</color>
+    <color name ="fences">#C69D08</color>
+    <color name = "transparentMenu">#E69CA383</color>
+    <color name = "transBlue">#3546e3</color>
+    <color name = "transRed">#e33535</color>
+    <color name="Player1Color">#3F51B5</color>
+    <color name="Player2Color">#C62828</color>
 </resources>
