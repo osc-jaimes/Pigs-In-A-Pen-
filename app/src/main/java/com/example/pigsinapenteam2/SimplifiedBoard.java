@@ -28,6 +28,10 @@ public class SimplifiedBoard {
   private final int NO_WALL = 0;
   private final int WALL_PRESENT = 1;
 
+  /**
+   * SimplifiedBoard():
+   *    default constructor.
+   */
   public SimplifiedBoard() {
     chains = new LinkedList<>();
     legalMoves = new LinkedList<>();
@@ -37,6 +41,11 @@ public class SimplifiedBoard {
     width = 0;
   }
 
+  /**
+   * SimplifiedBoard(BoardState):
+   *    constructor.
+   * @param board: state of the board, to be simplified.
+   */
   public SimplifiedBoard(BoardState board) {
     height = board.getHeight();
     width = board.getWidth();
@@ -75,7 +84,8 @@ public class SimplifiedBoard {
    *    opportunity to gain a point, relative to one side.
    * @param state: current state of the board
    * @param coords: location of the wall
-   * @return
+   * @return: whether the cell at the x,y coords will be capturable next turn if a
+   * wall is placed here.
    */
   private boolean willWallConcedePointOneSided(BoardState state, WallCoordinate coords) {
     int cellDegree = 0;
@@ -105,7 +115,7 @@ public class SimplifiedBoard {
    *    opportunity to gain a point.
    * @param state: current state of the board
    * @param coords: location of the wall
-   * @return
+   * @return: whether placing a wall here will make a neighbor cell capturable next turn.
    */
   protected boolean willWallConcedePoint(BoardState state, WallCoordinate coords) {
     WallCoordinate otherSide = coords.getOtherSideCoordinate();
@@ -122,7 +132,7 @@ public class SimplifiedBoard {
    *    states whether taking the wall is a legal play.
    * @param state: current state of the board.
    * @param coords: location of the wall.
-   * @return
+   * @return: whether there's no wall here.
    */
   protected boolean isWallLegal(BoardState state, WallCoordinate coords) {
     int wallState = coords.getStateOfThisWall(state);
@@ -135,7 +145,7 @@ public class SimplifiedBoard {
    *    states whether taking the wall will give you a point.
    * @param state: current state of the board.
    * @param coords: location of the wall.
-   * @return
+   * @return: whether placing a wall here makes a box of 4.
    */
   protected boolean isWallACapture(BoardState state, WallCoordinate coords) {
     int numWalls = 0;
