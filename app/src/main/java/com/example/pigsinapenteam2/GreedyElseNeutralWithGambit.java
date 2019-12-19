@@ -7,6 +7,8 @@ package com.example.pigsinapenteam2;
  *    normally would take otherwise. If this is not possible, do the same as
  *    GreedyElseNeutral.
  *
+ *  By Luke Rostad, 2019
+ *
  *  chooseMove(BoardFlags, SimplifiedBoard) -> WallCoordinate:
  *    Chooses a move to do, based on the algorithm.
  */

@@ -7,6 +7,8 @@ import java.util.Random;
  *    Captures if possible, else avoids giving you a point.
  *    If must give the player a point, gives the player the smallest 'Chain'.
  *
+ *  By Luke Rostad, 2019
+ *
  *  chooseMove(BoardFlags, SimplifiedBoard) -> WallCoordinate:
  *    Chooses a move to do, based on the algorithm.
  */

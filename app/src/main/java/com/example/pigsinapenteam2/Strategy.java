@@ -4,6 +4,8 @@ package com.example.pigsinapenteam2;
  *  Strategy: chooses a move from the board.
  *    This is the parent class for actual strategy classes.
  *
+ *  By Luke Rostad, 2019
+ *
  *  chooseMove(BoardFlags, SimplifiedBoard) -> WallCoordinate:
  *    Default move: returns an empty WallCoordinate Object.
  */
