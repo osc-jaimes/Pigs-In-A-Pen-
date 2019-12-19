@@ -51,7 +51,7 @@ public class BoardType {
     inputtedState.setCellState(height, 0, voidedCell);
     inputtedState.setTopWallState(height, 0);
     inputtedState.setBottomWallState(height, 0);
-    inputtedState.setRightWallState();
+    inputtedState.setRightWallState(height, 0);
     inputtedState.setLeftWallState(height, 0);
 
 
@@ -61,9 +61,13 @@ public class BoardType {
 
       inputtedState.setCellState(1, width, voidedCell);
       inputtedState.setTopWallState(1, width);
+      inputtedState.setBottomWallState(1, width);
       inputtedState.setRightWallState(1, width);
+      inputtedState.setLeftWallState(1, width);
       inputtedState.setCellState(height - 1, 0, voidedCell);
+      inputtedState.setTopWallState(height-1, 0);
       inputtedState.setBottomWallState(height - 1, 0);
+      inputtedState.setRightWallState(height - 1, 0);
       inputtedState.setLeftWallState(height - 1, 0);
 
     }//if statement
@@ -72,9 +76,13 @@ public class BoardType {
 
       inputtedState.setCellState(0, width -1, voidedCell);
       inputtedState.setTopWallState(0, width -1);
+      inputtedState.setBottomWallState(0, width - 1);
       inputtedState.setRightWallState(0, width - 1);
+      inputtedState.setLeftWallState(0, width - 1);
       inputtedState.setCellState(height, 1, voidedCell);
+      inputtedState.setTopWallState(height, 1);
       inputtedState.setBottomWallState(height, 1);
+      inputtedState.setRightWallState(height, 1);
       inputtedState.setLeftWallState(height, 1);
 
     }//if statement
