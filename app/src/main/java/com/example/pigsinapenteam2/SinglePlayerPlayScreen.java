@@ -166,6 +166,11 @@ public class SinglePlayerPlayScreen extends PlayScreen {
     }
   }
 
+  /**
+   * LayoutSetter
+   *
+   * sets the map for the game from garden, as well as other maps
+   */
   public void animalSetter(){
     if(SinglePlayerSetupScreen.animal.equals("dog")){
       playerOnePicture.setImageResource(R.drawable.dog);
@@ -275,19 +280,19 @@ public class SinglePlayerPlayScreen extends PlayScreen {
       }//medium garden map
 
 
+      else if(SinglePlayerSetupScreen.boardType == 3) {
+        ImageView hill3 = findViewById(R.id.hill3);
+        hill3.setVisibility(View.VISIBLE);
+        ImageView hill4 = findViewById(R.id.hill4);
+        hill4.setVisibility(View.VISIBLE);
 
+        Button hill3Top = findViewById(R.id.v15);
+        hill3Top.setClickable(false);
+        hill3Top.setBackgroundColor(getResources().getColor(R.color.fences));
+
+
+      }//medium hill map
     }
   }
 
-
-
-
-
-  public void residentSleeper(){
-    try {
-      Thread.sleep(1000);
-    }catch (InterruptedException e){
-      return;
-    }
-  }
 }//singlePlayerPlayScreen

@@ -1,3 +1,9 @@
+/**
+ * SinglePlayerSetupScreen.java
+ * Jared Boonstra and Oscar Jaimes
+ *
+ * Sets up the variables and settings of the single player game.
+ */
 package com.example.pigsinapenteam2;
 
 import androidx.appcompat.app.AppCompatActivity;
