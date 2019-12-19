@@ -136,8 +136,11 @@ public class MultiplayerPlayScreen extends PlayScreen {
         confirmButtonPlayer2.setVisibility(View.VISIBLE);
         confirmButtonPlayer1.setVisibility(View.GONE);
       }
+      System.out.println("the Total Score is: " + totalScore);
+      System.out.println("playerOne + playerTwo is: "+ gameState.player1Points + gameState.player2Points);
       if (gameState.player1Points + gameState.player2Points == totalScore) {
         endGame();
+        return;
       }
     } catch (Exception e) {
       return;
@@ -152,7 +155,7 @@ public class MultiplayerPlayScreen extends PlayScreen {
    * @param cellY        - the y position of the fence clicked
    * @param isHorizontal - If the fence clicked is horizontal
    */
-  public void confirmAction(int cellX, int cellY, boolean isHorizontal) throws InterruptedException {
+  public void confirmAction(int cellX, int cellY, boolean isHorizontal) {
     if (currentPlayer == player1) {
       int tempScore = gameState.player1Points;
       gameState = player1.doMove(gameState, cellX, cellY, PLAYERONEINT, isHorizontal);
@@ -187,6 +190,9 @@ public class MultiplayerPlayScreen extends PlayScreen {
       confirmButtonPlayer2.setVisibility(View.GONE);
       confirmButtonPlayer1.setVisibility(View.VISIBLE);
 
+      if (gameState.player1Points + gameState.player2Points == totalScore) {
+        endGame();
+      }
     }
 
   }
