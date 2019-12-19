@@ -34,6 +34,14 @@ public class MultiplayerPlayScreen extends PlayScreen {
 
     scoreBoardDefaulter();
     isMultiplayer = true;
+
+    View small = findViewById(R.id.smallGameButtons);
+    View med = findViewById(R.id.mediumGameButtons);
+    View lrg = findViewById(R.id.largeGameButtons);
+    small.setVisibility(View.GONE);
+    med.setVisibility(View.GONE);
+    lrg.setVisibility(View.GONE);
+
     confirmButtonPlayer1 = findViewById(R.id.confirmButtonPlayer1);
     confirmButtonPlayer2 = findViewById(R.id.confirmButtonPlayer2);
     confirmButtonPlayer2.setVisibility(View.GONE);
@@ -45,6 +53,8 @@ public class MultiplayerPlayScreen extends PlayScreen {
 
     pauseMenuLayout.setVisibility(View.GONE);
     confirmButtonPlayer1.setVisibility(View.VISIBLE);
+
+
 
 
     currentPlayer = player1;
