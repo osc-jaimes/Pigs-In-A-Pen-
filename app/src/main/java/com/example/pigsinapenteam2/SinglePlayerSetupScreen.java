@@ -62,7 +62,7 @@ public class SinglePlayerSetupScreen extends AppCompatActivity {
     dog = findViewById(R.id.dog);
     pig = findViewById(R.id.pig);
 
-
+    SinglePlayerSetupScreen.animal = "";
 
   }
 

@@ -168,16 +168,17 @@ public class SinglePlayerPlayScreen extends PlayScreen {
 
 
   public void animalSetter(){
-    if(SinglePlayerSetupScreen.animal.equals("dog")){
-      playerOnePicture.setImageResource(R.drawable.dog);
-    }else if(SinglePlayerSetupScreen.animal.equals("cat")){
-      playerOnePicture.setImageResource(R.drawable.cat);
-    }else if(SinglePlayerSetupScreen.animal.equals("cow")){
-      playerOnePicture.setImageResource(R.drawable.cow);
-    }else if(SinglePlayerSetupScreen.animal.equals("pig")){
-      playerOnePicture.setImageResource(R.drawable.pig);
-    }else{
-      playerOnePicture.setImageResource(R.drawable.pig);
+    playerOnePicture.setImageResource(R.drawable.pig);
+    if(!SinglePlayerSetupScreen.animal.isEmpty()) {
+      if (SinglePlayerSetupScreen.animal.equals("dog")) {
+        playerOnePicture.setImageResource(R.drawable.dog);
+      } else if (SinglePlayerSetupScreen.animal.equals("cat")) {
+        playerOnePicture.setImageResource(R.drawable.cat);
+      } else if (SinglePlayerSetupScreen.animal.equals("cow")) {
+        playerOnePicture.setImageResource(R.drawable.cow);
+      } else if (SinglePlayerSetupScreen.animal.equals("pig")) {
+        playerOnePicture.setImageResource(R.drawable.pig);
+      }
     }
   }
 
