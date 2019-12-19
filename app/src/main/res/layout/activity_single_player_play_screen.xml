@@ -1325,6 +1325,7 @@
             android:layout_marginEnd="220dp"
             android:layout_marginBottom="262dp"
             android:elevation="4dp"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -1340,6 +1341,7 @@
             android:layout_marginEnd="220dp"
             android:layout_marginBottom="173dp"
             android:elevation="4dp"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -1355,6 +1357,7 @@
             android:layout_marginEnd="579dp"
             android:layout_marginBottom="169dp"
             android:elevation="4dp"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -1370,11 +1373,26 @@
             android:layout_marginEnd="581dp"
             android:layout_marginBottom="80dp"
             android:elevation="4dp"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/field" />
+
+        <ImageView
+            android:id="@+id/Mountain3"
+            android:layout_width="119dp"
+            android:layout_height="66dp"
+            android:layout_marginStart="355dp"
+            android:layout_marginTop="237dp"
+            android:layout_marginEnd="476dp"
+            android:layout_marginBottom="184dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/mountain" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/TurnIndicators"

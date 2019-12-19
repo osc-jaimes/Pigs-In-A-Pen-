@@ -215,7 +215,7 @@ public class SinglePlayerPlayScreen extends PlayScreen {
         return;
       }//if statement
 
-      else if(boardType == 2){
+      else if(boardType == 2) {
         ImageView garden3 = findViewById(R.id.garden3);
         garden3.setVisibility(View.VISIBLE);
         ImageView garden4 = findViewById(R.id.garden4);
@@ -245,14 +245,21 @@ public class SinglePlayerPlayScreen extends PlayScreen {
         garden3Top.setClickable(false);
         garden3Top.setBackgroundColor(getResources().getColor(R.color.fences));
 
-        Button garden3right = findViewById(R.id.v18);
+        Button garden3right = findViewById(R.id.v17);
         garden3right.setClickable(false);
         garden3right.setBackgroundColor(getResources().getColor(R.color.fences));
 
         Button garden4Top = findViewById(R.id.h21);
         garden4Top.setClickable(false);
         garden4Top.setBackgroundColor(getResources().getColor(R.color.fences));
-      }
+
+        Button garden4Right = findViewById(R.id.v18);
+        garden4Right.setClickable(false);
+        garden4Right.setBackgroundColor(getResources().getColor(R.color.fences));
+
+      }//medium garden map
+
+
 
     }
   }
