@@ -76,6 +76,8 @@ public class SinglePlayerPlayScreen extends PlayScreen {
 
       int tempScore = gameState.player1Points;
       gameState = player1.doMove(gameState, cellX, cellY, PLAYERONEINT, isHorizontal);
+      updateClaimedCells(gameState.currentBoardState,boardSize);
+      gameState.currentBoardCheck.scoreCheck();
       gameState.runBoardCheck();
       updateScore();
 
@@ -108,6 +110,8 @@ public class SinglePlayerPlayScreen extends PlayScreen {
       int tempScorePlayer2 = gameState.player2Points;
       if (true) {
         gameState = player2.doMove(gameState);
+        updateClaimedCells(gameState.currentBoardState,boardSize);
+        gameState.currentBoardCheck.scoreCheck();
         String id = gameState.botLastMove.getButtonName(SinglePlayerSetupScreen.boardSize);
         gameState.runBoardCheck();
         updateScore();
