@@ -20,8 +20,6 @@ public class SinglePlayerPlayScreen extends PlayScreen {
   //Players
   public BotPlayer player2;
   private Player currentPlayer;
-  private int boardSize;
-  private int boardType;
   ImageView playerOnePicture;
 
   @Override
@@ -55,7 +53,9 @@ public class SinglePlayerPlayScreen extends PlayScreen {
     gameState = new GameState(boardState, player1, player2,0);
     //===== Full Screen =====
     ScreenLogic.fullScreen(this);
-    totalScore = (width * height);
+
+
+    totalScore = totalScoreCalculator();
   }
 
 

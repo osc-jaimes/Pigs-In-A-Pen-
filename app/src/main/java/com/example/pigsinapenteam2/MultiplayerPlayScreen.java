@@ -66,7 +66,7 @@ public class MultiplayerPlayScreen extends PlayScreen {
 
     boardState = new BoardState(width, height);
     gameState = new GameState(boardState, player1, player2, 0);
-    totalScore = (width * height);
+    totalScore = totalScoreCalculator();
   }
 
 

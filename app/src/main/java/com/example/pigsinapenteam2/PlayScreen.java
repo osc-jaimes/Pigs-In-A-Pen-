@@ -44,6 +44,8 @@ public class PlayScreen extends AppCompatActivity {
   public int height;
   public final int PLAYERONEINT = 1;
   public final int PLAYERTWOINT = 2;
+  public int boardType;
+  public int boardSize;
 
 
   //Bools
@@ -997,5 +999,24 @@ public class PlayScreen extends AppCompatActivity {
       }
     }
   }
-
+  public int totalScoreCalculator(){
+    if(boardType == 1){
+      return width * height;
+    }
+    else if(boardType == 2){
+      if(boardSize == 0){
+        return width * height - 2;
+      }
+      else if(boardSize == 1){
+        return width * height - 4;
+      }
+      else if(boardSize == 2){
+        return width * height - 6;
+      }
+    }
+    else if(boardType == 2){
+      return width * height - 2;
+    }
+    return width * height;
+  }
 }
