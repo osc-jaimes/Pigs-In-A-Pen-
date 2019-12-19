@@ -6,6 +6,8 @@ import java.util.Random;
  *  GreedyElseRandom: chooses a move from the board.
  *    Captures if possible, otherwise goes randomly.
  *
+ *  By Luke Rostad, 2019
+ *
  *  chooseMove(BoardFlags, SimplifiedBoard) -> WallCoordinate:
  *    Chooses a move to do, based on the algorithm.
  */

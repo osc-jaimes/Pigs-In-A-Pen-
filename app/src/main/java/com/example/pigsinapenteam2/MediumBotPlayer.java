@@ -4,6 +4,8 @@ package com.example.pigsinapenteam2;
  *  MediumBotPlayer: plays the game at medium difficulty.
  *    Uses the 'Greedy Else Neutral' algorithm (see GreedyElseNeutral)
  *
+ *  By Luke Rostad, 2019
+ *
  *  doMove(GameState) -> GameState:
  *    picks the move to do and applies it.
  */
