@@ -42,7 +42,6 @@
 
     <string-array name="board_type_options">
         <item>Normal</item>
-        <item>Walls</item>
         <item>Garden</item>
         <item>Hill</item>
     </string-array>
@@ -52,7 +51,6 @@
         <item>Sheep</item>
         <item>Cat</item>
         <item>Cow</item>
-        <item>Horse</item>
     </string-array>
 
 </resources>

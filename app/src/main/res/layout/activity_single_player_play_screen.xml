@@ -6,19 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".SinglePlayerPlayScreen">
 
-    <ImageView
-        android:id="@+id/pauseButton"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="40dp"
-        android:contentDescription="@string/pause_button"
-        android:elevation="3dp"
-        android:onClick="onClickPause"
-        app:layout_constraintEnd_toEndOf="@+id/background"
-        app:layout_constraintTop_toTopOf="@+id/background"
-        app:srcCompat="@drawable/pause_button" />
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/pauseMenuLayout"
         android:layout_width="match_parent"
@@ -535,6 +522,38 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/field" />
 
+        <ImageView
+            android:id="@+id/hill1"
+            android:layout_width="93dp"
+            android:layout_height="47dp"
+            android:layout_marginStart="319dp"
+            android:layout_marginTop="156dp"
+            android:layout_marginEnd="319dp"
+            android:layout_marginBottom="208dp"
+            android:elevation="4dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/mountain" />
+
+        <ImageView
+            android:id="@+id/hill2"
+            android:layout_width="93dp"
+            android:layout_height="47dp"
+            android:layout_marginStart="319dp"
+            android:layout_marginTop="228dp"
+            android:layout_marginEnd="319dp"
+            android:layout_marginBottom="135dp"
+            android:elevation="4dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/mountain" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -542,7 +561,7 @@
         android:id="@+id/mediumGameButtons"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -1279,6 +1298,100 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/garden3"
+            android:layout_width="113dp"
+            android:layout_height="108dp"
+            android:layout_marginStart="500dp"
+            android:layout_marginTop="96dp"
+            android:layout_marginEnd="118dp"
+            android:layout_marginBottom="207dp"
+            android:elevation="4dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/field" />
+
+        <ImageView
+            android:id="@+id/garden4"
+            android:layout_width="113dp"
+            android:layout_height="108dp"
+            android:layout_marginStart="500dp"
+            android:layout_marginTop="152dp"
+            android:layout_marginEnd="118dp"
+            android:layout_marginBottom="151dp"
+            android:elevation="4dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/field" />
+
+        <ImageView
+            android:id="@+id/garden5"
+            android:layout_width="113dp"
+            android:layout_height="108dp"
+            android:layout_marginStart="118dp"
+            android:layout_marginTop="204dp"
+            android:layout_marginEnd="500dp"
+            android:layout_marginBottom="99dp"
+            android:elevation="4dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/field" />
+
+        <ImageView
+            android:id="@+id/garden6"
+            android:layout_width="113dp"
+            android:layout_height="108dp"
+            android:layout_marginStart="118dp"
+            android:layout_marginTop="256dp"
+            android:layout_marginEnd="500dp"
+            android:layout_marginBottom="47dp"
+            android:elevation="4dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/field" />
+
+        <ImageView
+            android:id="@+id/hill3"
+            android:layout_width="138dp"
+            android:layout_height="51dp"
+            android:layout_marginStart="243dp"
+            android:layout_marginTop="206dp"
+            android:layout_marginEnd="350dp"
+            android:layout_marginBottom="154dp"
+            android:elevation="4dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/mountain" />
+
+        <ImageView
+            android:id="@+id/hill4"
+            android:layout_width="138dp"
+            android:layout_height="51dp"
+            android:layout_marginStart="343dp"
+            android:layout_marginTop="206dp"
+            android:layout_marginEnd="250dp"
+            android:layout_marginBottom="154dp"
+            android:elevation="4dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/mountain" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -2536,31 +2649,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/player1Pig"
-        android:layout_width="74dp"
-        android:layout_height="128dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="170dp"
-        android:layout_marginEnd="634dp"
-        android:layout_marginBottom="113dp"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/pig" />
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/TurnIndicators"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="1dp">
 
         <ImageView
             android:id="@+id/LeftIndicator"
             android:layout_width="66dp"
             android:layout_height="26dp"
-            android:layout_marginStart="24dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="120dp"
             android:elevation="10dp"
             android:rotation="90"
@@ -2579,6 +2680,38 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/blueturn" />
+
+        <ImageView
+            android:id="@+id/player1"
+            android:layout_width="74dp"
+            android:layout_height="128dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="168dp"
+            android:layout_marginEnd="647dp"
+            android:layout_marginBottom="115dp"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@color/transparent" />
+
+        <ImageView
+            android:id="@+id/pauseButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="663dp"
+            android:layout_marginTop="23dp"
+            android:layout_marginEnd="28dp"
+            android:layout_marginBottom="348dp"
+            android:contentDescription="@string/pause_button"
+            android:elevation="3dp"
+            android:onClick="onClickPause"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/pause_button" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

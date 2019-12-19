@@ -28,8 +28,6 @@ public class BoardCheck {
 
         }//if statement
 
-        cellScoreCheck(i,j);
-
       }//inner for loop
     }//for loop
   }//boardChecker
@@ -56,6 +54,16 @@ public class BoardCheck {
     }//switch
 
   }//cellScoreCheck
+
+  public void scoreCheck() {
+    for(int i = 0; i < currentBoard.getHeight(); i++){
+      for(int j = 0; j < currentBoard.getWidth(); j++){
+
+        cellScoreCheck(i,j);
+
+      }//inner for loop
+    }//for loop
+  }
 
 
 

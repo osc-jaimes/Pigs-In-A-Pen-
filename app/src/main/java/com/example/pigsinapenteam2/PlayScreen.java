@@ -9,6 +9,7 @@ package com.example.pigsinapenteam2;
 import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -941,6 +942,60 @@ public class PlayScreen extends AppCompatActivity {
   protected void onResume(){
     super.onResume();
     ScreenLogic.fullScreen(this);
+  }
+
+  /**
+   * updateClaimedCells(BoardState, int)
+   *    updates the color of a cell if it's claimed.
+   * @param state: current board state
+   * @param boardSize: 0,1, or 2 if small, medium, or large
+   */
+  protected void updateClaimedCells(BoardState state, int boardSize) {
+    int cellState;
+    String cellName = "CellClaimed";
+    int cellNum;
+    int width = state.getWidth();
+    int height = state.getHeight();
+
+    switch (boardSize) {
+      case 0:
+        cellName = "small" + cellName;
+        break;
+      case 1:
+        cellName = "medium" + cellName;
+        break;
+      case 2:
+        cellName = "large" + cellName;
+        break;
+      default:
+        assert (false): "INVALID BOARD SIZE.";
+        break;
+    }
+    String currentCellName;
+    ImageView cellImage;
+    for (int y = 0; y < height; y++) {
+      for (int x = 0; x < width; x++) {
+        cellState = state.getCellState(y,x);
+        cellNum = y * width + x;
+        currentCellName = cellName + cellNum;
+        int resID = this.getResources().getIdentifier(currentCellName,
+            "id", this.getPackageName());
+        cellImage = findViewById(resID);
+
+
+        switch (cellState) {
+          case 1:
+            cellImage.setBackgroundColor(getResources().getColor(R.color.Player1Color));
+            break;
+          case 2:
+            cellImage.setBackgroundColor(getResources().getColor(R.color.Player2Color));
+            break;
+          default:
+            assert (false) : "invalid cell state";
+            break;
+        }
+      }
+    }
   }
 
 }
