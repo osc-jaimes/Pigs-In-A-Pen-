@@ -28,6 +28,9 @@ public class MultiplayerPlayScreen extends PlayScreen {
   ImageView playerTwoPic;
 
 
+  private int boardSize;
+
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -44,7 +47,6 @@ public class MultiplayerPlayScreen extends PlayScreen {
 
     scoreBoardDefaulter();
     isMultiplayer = true;
-
     confirmButtonPlayer1 = findViewById(R.id.confirmButtonPlayer1);
     confirmButtonPlayer2 = findViewById(R.id.confirmButtonPlayer2);
     confirmButtonPlayer2.setVisibility(View.GONE);
@@ -55,8 +57,6 @@ public class MultiplayerPlayScreen extends PlayScreen {
 
     pauseMenuLayout.setVisibility(View.GONE);
     confirmButtonPlayer1.setVisibility(View.VISIBLE);
-
-
 
 
     currentPlayer = player1;
@@ -115,7 +115,6 @@ public class MultiplayerPlayScreen extends PlayScreen {
    */
   public void onClickConfirmationButton(View v) throws InterruptedException {
     try {
-      System.out.print(boardState);
       currentButton.setClickable(false);
       currentButton = null;
       playerHasMoved = true;
@@ -152,7 +151,8 @@ public class MultiplayerPlayScreen extends PlayScreen {
     if (currentPlayer == player1) {
       int tempScore = gameState.player1Points;
       gameState = player1.doMove(gameState, cellX, cellY, PLAYERONEINT, isHorizontal);
-
+      updateClaimedCells(gameState.currentBoardState,boardSize);
+      gameState.currentBoardCheck.scoreCheck();
       gameState.runBoardCheck();
       updateScore();
       if (gameState.player1Points > tempScore) {
@@ -168,6 +168,8 @@ public class MultiplayerPlayScreen extends PlayScreen {
     } else {
       int tempScore = gameState.player2Points;
       gameState = player2.doMove(gameState, cellX, cellY, PLAYERTWOINT, isHorizontal);
+      updateClaimedCells(gameState.currentBoardState,boardSize);
+      gameState.currentBoardCheck.scoreCheck();
       gameState.runBoardCheck();
       updateScore();
       if (gameState.player2Points > tempScore) {
@@ -185,17 +187,18 @@ public class MultiplayerPlayScreen extends PlayScreen {
   }
 
   public void boardSizeSetter() {
-    if (MultiplayerSetupScreen.boardSize == 0) {
+    boardSize = MultiplayerSetupScreen.boardSize;
+    if (boardSize == 0) {
       width = 3;
       height = 2;
       this.gameButtons = findViewById(R.id.smallGameButtons); //smallButtons
 
-    } else if (MultiplayerSetupScreen.boardSize == 1) {
+    } else if (boardSize == 1) {
 
       width = 4;
       height = 3;
       this.gameButtons = findViewById(R.id.mediumGameButtons); //mediumButtons
-    } else if (MultiplayerSetupScreen.boardSize == 2) {
+    } else if (boardSize == 2) {
       width = 5;
       height = 4;
       this.gameButtons = findViewById(R.id.largeGameButtons); //largeButtons

@@ -76,6 +76,8 @@ public class SinglePlayerPlayScreen extends PlayScreen {
 
       int tempScore = gameState.player1Points;
       gameState = player1.doMove(gameState, cellX, cellY, PLAYERONEINT, isHorizontal);
+      updateClaimedCells(gameState.currentBoardState,boardSize);
+      gameState.currentBoardCheck.scoreCheck();
       gameState.runBoardCheck();
       updateScore();
 
@@ -108,6 +110,8 @@ public class SinglePlayerPlayScreen extends PlayScreen {
       int tempScorePlayer2 = gameState.player2Points;
       if (true) {
         gameState = player2.doMove(gameState);
+        updateClaimedCells(gameState.currentBoardState,boardSize);
+        gameState.currentBoardCheck.scoreCheck();
         String id = gameState.botLastMove.getButtonName(SinglePlayerSetupScreen.boardSize);
         gameState.runBoardCheck();
         updateScore();
@@ -162,6 +166,11 @@ public class SinglePlayerPlayScreen extends PlayScreen {
     }
   }
 
+  /**
+   * LayoutSetter
+   *
+   * sets the map for the game from garden, as well as other maps
+   */
   public void animalSetter(){
     if(SinglePlayerSetupScreen.animal.equals("dog")){
       playerOnePicture.setImageResource(R.drawable.dog);
@@ -203,20 +212,87 @@ public class SinglePlayerPlayScreen extends PlayScreen {
 
       }//small gardens
       else if(SinglePlayerSetupScreen.boardType == 3){
+        ImageView hill1 = findViewById(R.id.hill1);
+        hill1.setVisibility(View.VISIBLE);
+        ImageView hill2 = findViewById(R.id.hill2);
+        hill2.setVisibility(View.VISIBLE);
 
+        Button hill1Top = findViewById(R.id.h1);
+        hill1Top.setClickable(false);
+        hill1Top.setBackgroundColor(getResources().getColor(R.color.fences));
+
+        Button hill2Top = findViewById(R.id.h4);
+        hill2Top.setClickable(false);
+        hill2Top.setBackgroundColor(getResources().getColor(R.color.fences));
+
+        Button hill3Top = findViewById(R.id.h7);
+        hill3Top.setClickable(false);
+        hill3Top.setBackgroundColor(getResources().getColor(R.color.fences));
       }//hill map small
+    }//map size small
+    else if(SinglePlayerSetupScreen.boardSize == 1){
+      if(boardType == 1){
+        return;
+      }//if statement
+
+      else if(boardType == 2) {
+        ImageView garden3 = findViewById(R.id.garden3);
+        garden3.setVisibility(View.VISIBLE);
+        ImageView garden4 = findViewById(R.id.garden4);
+        garden4.setVisibility(View.VISIBLE);
+        ImageView garden5 = findViewById(R.id.garden5);
+        garden5.setVisibility(View.VISIBLE);
+        ImageView garden6 = findViewById(R.id.garden6);
+        garden6.setVisibility(View.VISIBLE);
+
+        Button garden1Top = findViewById(R.id.h12);
+        garden1Top.setClickable(false);
+        garden1Top.setBackgroundColor(getResources().getColor(R.color.fences));
+
+        Button garden1Right = findViewById(R.id.v12);
+        garden1Right.setClickable(false);
+        garden1Right.setBackgroundColor(getResources().getColor(R.color.fences));
+
+        Button garden2Top = findViewById(R.id.h16);
+        garden2Top.setClickable(false);
+        garden2Top.setBackgroundColor(getResources().getColor(R.color.fences));
+
+        Button garden2Right = findViewById(R.id.v13);
+        garden2Right.setClickable(false);
+        garden2Right.setBackgroundColor(getResources().getColor(R.color.fences));
+
+        Button garden3Top = findViewById(R.id.h17);
+        garden3Top.setClickable(false);
+        garden3Top.setBackgroundColor(getResources().getColor(R.color.fences));
+
+        Button garden3right = findViewById(R.id.v17);
+        garden3right.setClickable(false);
+        garden3right.setBackgroundColor(getResources().getColor(R.color.fences));
+
+        Button garden4Top = findViewById(R.id.h21);
+        garden4Top.setClickable(false);
+        garden4Top.setBackgroundColor(getResources().getColor(R.color.fences));
+
+        Button garden4Right = findViewById(R.id.v18);
+        garden4Right.setClickable(false);
+        garden4Right.setBackgroundColor(getResources().getColor(R.color.fences));
+
+      }//medium garden map
+
+
+      else if(SinglePlayerSetupScreen.boardType == 3) {
+        ImageView hill3 = findViewById(R.id.hill3);
+        hill3.setVisibility(View.VISIBLE);
+        ImageView hill4 = findViewById(R.id.hill4);
+        hill4.setVisibility(View.VISIBLE);
+
+        Button hill3Top = findViewById(R.id.v15);
+        hill3Top.setClickable(false);
+        hill3Top.setBackgroundColor(getResources().getColor(R.color.fences));
+
+
+      }//medium hill map
     }
   }
 
-
-
-
-
-  public void residentSleeper(){
-    try {
-      Thread.sleep(1000);
-    }catch (InterruptedException e){
-      return;
-    }
-  }
 }//singlePlayerPlayScreen

@@ -1,3 +1,8 @@
+/**
+ * OpenScreen.java
+ *
+ * This class holds the xml and associated methods for the initial screen on loadup of app
+ */
 package com.example.pigsinapenteam2;
 
 import androidx.appcompat.app.AppCompatActivity;
