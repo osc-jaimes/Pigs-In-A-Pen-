@@ -15,7 +15,6 @@
         <activity android:name=".MultiplayerSetupScreen" />
         <activity android:name=".VictoryScreen" />
         <activity android:name=".SinglePlayerPlayScreen" />
-        <activity android:name=".MultiPlayerScreen" />
         <activity android:name=".SinglePlayerSetupScreen" />
         <activity android:name=".MainScreen" />
         <activity android:name=".OpenScreen">
