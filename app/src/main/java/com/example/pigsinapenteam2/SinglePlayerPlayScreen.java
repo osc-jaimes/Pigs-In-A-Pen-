@@ -170,6 +170,7 @@ public class SinglePlayerPlayScreen extends PlayScreen {
 
   public void animalSetter(){
     playerOnePicture.setImageResource(R.drawable.pig);
+
     if(!SinglePlayerSetupScreen.animal.isEmpty()) {
       if (SinglePlayerSetupScreen.animal.equals("dog")) {
         playerOnePicture.setImageResource(R.drawable.dog);

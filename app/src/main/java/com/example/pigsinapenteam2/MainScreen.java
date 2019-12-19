@@ -37,6 +37,7 @@ public class MainScreen extends AppCompatActivity {
 
   public void quickPlay(View V){
     Intent quickPlay = new Intent(getApplicationContext(), SinglePlayerPlayScreen.class);
+    SinglePlayerSetupScreen.animal = "pig";
     startActivity(quickPlay);
   }
 
