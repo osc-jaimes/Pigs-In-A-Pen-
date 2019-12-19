@@ -5,6 +5,8 @@ package com.example.pigsinapenteam2;
  *    Holds information about connections on the board and about the process
  *    of chain finding.
  *
+ *  By Luke Rostad, 2019
+ *
  *  getX() -> int:
  *    returns the x coordinate of this cell.
  *  getY() -> int:

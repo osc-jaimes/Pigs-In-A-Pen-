@@ -5,6 +5,8 @@ package com.example.pigsinapenteam2;
  *    Uses the 'Greedy Else Neutral With Gambit' algorithm
  *    (see GreedyElseNeutralWithGambit)
  *
+ *  By Luke Rostad, 2019
+ *
  *  doMove(GameState) -> GameState:
  *    picks the move to do and applies it.
  */
