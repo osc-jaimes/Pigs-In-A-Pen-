@@ -22,6 +22,7 @@ public class SinglePlayerPlayScreen extends PlayScreen {
   private Player currentPlayer;
   private int boardSize;
   private int boardType;
+  ImageView playerOnePicture;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -31,11 +32,13 @@ public class SinglePlayerPlayScreen extends PlayScreen {
     isMultiplayer = false;
     boardSize = SinglePlayerSetupScreen.boardSize;
     boardType = SinglePlayerSetupScreen.boardType;
+    playerOnePicture = findViewById(R.id.player1);
 
    boardSizeSetter();
    difficultySetter();
    scoreBoardDefaulter();
    layoutSetter();
+   animalSetter();
    startGameButtonsGone();
 
     //===== Game Buttons Layout ======
@@ -156,6 +159,18 @@ public class SinglePlayerPlayScreen extends PlayScreen {
       this.player2 = new MediumBotPlayer();
     } else{
       this.player2 = new HardBotPlayer();
+    }
+  }
+
+  public void animalSetter(){
+    if(SinglePlayerSetupScreen.animal.equals("dog")){
+      playerOnePicture.setImageResource(R.drawable.dog);
+    }else if(SinglePlayerSetupScreen.animal.equals("cat")){
+      playerOnePicture.setImageResource(R.drawable.cat);
+    }else if(SinglePlayerSetupScreen.animal.equals("cow")){
+      playerOnePicture.setImageResource(R.drawable.cow);
+    }else if(SinglePlayerSetupScreen.animal.equals("pig")){
+      playerOnePicture.setImageResource(R.drawable.pig);
     }
   }
 

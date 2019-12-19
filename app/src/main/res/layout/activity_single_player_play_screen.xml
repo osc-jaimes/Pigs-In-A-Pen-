@@ -6,19 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".SinglePlayerPlayScreen">
 
-    <ImageView
-        android:id="@+id/pauseButton"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="40dp"
-        android:contentDescription="@string/pause_button"
-        android:elevation="3dp"
-        android:onClick="onClickPause"
-        app:layout_constraintEnd_toEndOf="@+id/background"
-        app:layout_constraintTop_toTopOf="@+id/background"
-        app:srcCompat="@drawable/pause_button" />
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/pauseMenuLayout"
         android:layout_width="match_parent"
@@ -2629,31 +2616,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/player1Pig"
-        android:layout_width="74dp"
-        android:layout_height="128dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="170dp"
-        android:layout_marginEnd="634dp"
-        android:layout_marginBottom="113dp"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/pig" />
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/TurnIndicators"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="1dp">
 
         <ImageView
             android:id="@+id/LeftIndicator"
             android:layout_width="66dp"
             android:layout_height="26dp"
-            android:layout_marginStart="24dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="120dp"
             android:elevation="10dp"
             android:rotation="90"
@@ -2672,6 +2647,38 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/blueturn" />
+
+        <ImageView
+            android:id="@+id/player1"
+            android:layout_width="74dp"
+            android:layout_height="128dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="168dp"
+            android:layout_marginEnd="647dp"
+            android:layout_marginBottom="115dp"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@color/transparent" />
+
+        <ImageView
+            android:id="@+id/pauseButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="663dp"
+            android:layout_marginTop="23dp"
+            android:layout_marginEnd="28dp"
+            android:layout_marginBottom="348dp"
+            android:contentDescription="@string/pause_button"
+            android:elevation="3dp"
+            android:onClick="onClickPause"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/pause_button" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
