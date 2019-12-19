@@ -19,6 +19,7 @@ public class SinglePlayerSetupScreen extends AppCompatActivity {
   public static int boardSize;
   public static int gameDifficulty;
   public static int boardType;
+  public static String animal;
   protected String sizeText;
   protected String boardLayout;
 
@@ -119,6 +120,7 @@ public class SinglePlayerSetupScreen extends AppCompatActivity {
     dog.setBackgroundColor(getResources().getColor(R.color.transparent));
     cow.setBackgroundColor(getResources().getColor(R.color.transparent));
     cat.setBackgroundColor(getResources().getColor(R.color.transparent));
+    SinglePlayerSetupScreen.animal = "pig";
   }
 
   public void onClickDog(View v){
@@ -126,6 +128,7 @@ public class SinglePlayerSetupScreen extends AppCompatActivity {
     pig.setBackgroundColor(getResources().getColor(R.color.transparent));
     cow.setBackgroundColor(getResources().getColor(R.color.transparent));
     cat.setBackgroundColor(getResources().getColor(R.color.transparent));
+    SinglePlayerSetupScreen.animal = "dog";
   }
 
   public void onClickCow(View v){
@@ -133,6 +136,7 @@ public class SinglePlayerSetupScreen extends AppCompatActivity {
     pig.setBackgroundColor(getResources().getColor(R.color.transparent));
     dog.setBackgroundColor(getResources().getColor(R.color.transparent));
     cat.setBackgroundColor(getResources().getColor(R.color.transparent));
+    SinglePlayerSetupScreen.animal = "cow";
   }
 
   public void onClickCat(View v){
@@ -140,6 +144,7 @@ public class SinglePlayerSetupScreen extends AppCompatActivity {
     pig.setBackgroundColor(getResources().getColor(R.color.transparent));
     dog.setBackgroundColor(getResources().getColor(R.color.transparent));
     cow.setBackgroundColor(getResources().getColor(R.color.transparent));
+    SinglePlayerSetupScreen.animal = "cat";
   }
 
 }
