@@ -143,6 +143,9 @@ public class SimplifiedBoard {
   /**
    * isWallACapture(BoardState, WallCoordinate) -> boolean:
    *    states whether taking the wall will give you a point.
+   *
+   * By Luke Rostad, 2019
+   *
    * @param state: current state of the board.
    * @param coords: location of the wall.
    * @return: whether placing a wall here makes a box of 4.
