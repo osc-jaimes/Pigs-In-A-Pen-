@@ -221,7 +221,7 @@
             app:layout_constraintVertical_bias="0.423" />
 
         <ImageView
-            android:id="@+id/smallCellClaime0"
+            android:id="@+id/smallCellClaimed0"
             android:layout_width="75dp"
             android:layout_height="39dp"
             app:layout_constraintBottom_toTopOf="@+id/h3"
@@ -1583,7 +1583,7 @@
         android:id="@+id/largeGameButtons"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="visible"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
