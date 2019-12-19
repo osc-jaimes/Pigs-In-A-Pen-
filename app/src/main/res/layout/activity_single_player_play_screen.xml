@@ -3130,18 +3130,6 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/field" />
 
-        <ImageView
-            android:id="@+id/garden11"
-            android:layout_width="78dp"
-            android:layout_height="66dp"
-            app:srcCompat="@drawable/field" />
-
-        <ImageView
-            android:id="@+id/garden12"
-            android:layout_width="78dp"
-            android:layout_height="66dp"
-            app:srcCompat="@drawable/field" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageView
