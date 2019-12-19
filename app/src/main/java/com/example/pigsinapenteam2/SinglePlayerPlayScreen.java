@@ -47,7 +47,7 @@ public class SinglePlayerPlayScreen extends PlayScreen {
     //===== Current Chosen 'Fence' Button =======
     currentButton = null;
     //===== Board State & Game State ======
-    BoardState boardState = new BoardState(width,height);
+    boardState = new BoardState(width,height);
     BoardType boardLayout = new BoardType(boardState,boardType, boardSize);
     gameState = new GameState(boardState, player1, player2,0);
     //===== Full Screen =====
